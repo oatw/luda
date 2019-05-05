@@ -52,7 +52,7 @@ If you want to remove the readonly state dynamically in Javascript,
 don't remove the `data-readonly` attribute, set its value to `false` instead.
 
 ``` javascript
-luda.$child('#my-readonly-element').setAttribute('data-readonly', false)
+document.querySelector('#my-readonly-element').setAttribute('data-readonly', false)
 ```
 
 ## Sass Variables

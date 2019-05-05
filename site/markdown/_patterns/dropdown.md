@@ -362,7 +362,7 @@ Toggle a dropdown.
 
 ``` javascript
 luda.on('luda:dropdown:activate', '#my-dropdown', function(event){
-  let $myDropdown = this, $activateDropdown = e.target
+  let $myDropdown = this, $activateDropdown = event.target
   event.preventDefault() // Prevent the dropdown from being activated if necessary.
 })
 ```
@@ -373,7 +373,7 @@ Will be triggered before the `.dropdown-active` class added to a dropdown.
 
 ``` javascript
 luda.on('luda:dropdown:activated', '#my-dropdown', function(event){
-  let $myDropdown = this, $activatedDropdown = e.target
+  let $myDropdown = this, $activatedDropdown = event.target
 })
 ```
 
@@ -384,7 +384,7 @@ and CSS transition finished.
 
 ``` javascript
 luda.on('luda:dropdown:deactivate', '#my-dropdown', function(event){
-  let $myDropdown = this, $deactivateDropdown = e.target
+  let $myDropdown = this, $deactivateDropdown = event.target
   event.preventDefault() // Prevent the dropdown from being deactivated if necessary.
 })
 ```
@@ -396,7 +396,7 @@ a dropdown.
 
 ``` javascript
 luda.on('luda:dropdown:deactivated', '#my-dropdown', function(event){
-  let $myDropdown = this, $deactivatedDropdown = e.target
+  let $myDropdown = this, $deactivatedDropdown = event.target
 })
 ```
 
