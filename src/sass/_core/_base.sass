@@ -1,0 +1,430 @@
++install(shared-base)
+  // sass-lint:disable max-file-line-count
+
+  // Based on sanitize.css v6.0.0 CC0 License
+  // github.com/csstools/sanitize.css 
+
+
+
+  // Document
+  // ==========================================================================
+
+  // 1. Remove repeating backgrounds in all browsers (opinionated).
+  // 2. Add border box sizing in all browsers (opinionated).
+  *,
+  ::before,
+  ::after
+    box-sizing: border-box // 2
+    background-repeat: no-repeat // 1
+
+  // 1. Add text decoration inheritance in all browsers (opinionated).
+  // 2. Add vertical alignment inheritance in all browsers (opinionated).
+  ::before,
+  ::after
+    vertical-align: inherit // 2
+    text-decoration: inherit // 1
+
+  // change firefox tap highlight default gray background color
+  a:active,
+  label:active
+    background-color: $base-tap-highlight-color
+
+  // 1. Add the default cursor in all browsers (opinionated).
+  // 2. Breaks words to prevent prevent overflow in all browsers (opinionated).
+  // 3. Prevent adjustments of font size after orientation changes
+  //    in IE on Windows Phone and in iOS.
+  html
+    font-size: _baseline-height-px(1)
+    word-break: $base-word-break // 2
+    cursor: $base-cursor // 1
+    font-family: $typography-main
+    text-rendering: $base-text-rendering
+    text-underline-position: $base-text-underline-position
+    background: $base-html-background
+    -ms-text-size-adjust: 100% // 3
+    -webkit-text-size-adjust: 100% // 3
+    -webkit-font-smoothing: $base-webkit-font-smoothing
+    -moz-osx-font-smoothing: $base-moz-font-smoothing
+    -webkit-tap-highlight-color: $base-tap-highlight-color
+    -webkit-touch-callout: $base-webkit-touch-callout
+
+  // fix ios safari not fire mouse event on some elements
+  +browser-ios-safari
+    html
+      cursor: pointer
+
+  +browser-firefox
+    html
+      color: transparent
+
+    body
+      color: if($typography-main-color, null, initial)
+
+
+
+  body
+    min-height: $base-body-min-height
+    margin: 0 // 1
+    font-size: px-to-rem($typography-main-size-px)
+    line-height: $typography-main-line-height-ratio // 2
+    color: $typography-main-color
+    background: $base-body-background
+
+  // Correct the font size and margin on `h1` elements
+  // within `section` and `article` contexts in Chrome, Firefox, and Safari.
+  h1
+    margin: 0
+    font-size: typo-size(1)
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  figure
+    margin: 0
+
+
+
+  // Grouping content
+  // ==========================================================================
+
+  // 1. Add the correct box sizing in Firefox.
+  // 2. Show the overflow in Edge and IE.
+  hr
+    box-sizing: content-box // 1
+    flex-shrink: 0
+    width: 100%
+    height: 0 // 1
+    margin: 0
+    border: none
+    overflow: visible // 2
+
+  // Add the correct display in IE.
+  main
+    display: block
+
+  ul,
+  ol,
+  dl,
+  dd
+    margin: 0
+
+  ul,
+  ol
+    padding: 0
+
+  // Remove the list style on navigation lists in all browsers (opinionated).
+  nav ol,
+  nav ul
+    list-style: none
+
+  // 1. Correct the inheritance and scaling of font size in all browsers.
+  // 2. Correct the odd `em` font sizing in all browsers.
+  pre
+    margin: 0
+    font-size: 1em // 2
+    word-break: if($base-word-break, normal, null)
+    overflow: auto
+    -webkit-overflow-scrolling: touch
+    font-family: monospace, monospace // 1
+
+
+
+  // Text-level semantics
+  // ==========================================================================
+
+  // 1. Remove the gray background on active links in IE 10.
+  a
+    cursor: pointer
+    background-color: transparent // 1
+
+  // 1. Add the correct text decoration in Edge, IE, Opera, and Safari.
+  abbr[title]
+    cursor: help
+    text-decoration: underline dotted // 1
+
+  // Add the correct font weight in Chrome, Edge, and Safari.
+  b,
+  strong
+    font-weight: 700
+
+  // 1. Correct the inheritance and scaling of font size in all browsers.
+  // 2. Correct the odd `em` font sizing in all browsers.
+  code,
+  kbd,
+  samp
+    font-size: 1em // 2
+    font-family: monospace, monospace // 1
+
+  // Add the correct font size in all browsers.
+  small
+    font-size: 100% / $typography-size-scale-ratio
+
+  // Remove the text shadow on text selections in Firefox 61- (opinionated).
+  // 1. Restore the coloring undone by defining the text shadow
+  //    in all browsers (opinionated).
+  ::-moz-selection
+    color: $base-selection-color // 1
+    text-shadow: none
+    background-color: $base-selection-background-color // 1
+
+  ::selection
+    color: $base-selection-color // 1
+    text-shadow: none
+    background-color: $base-selection-background-color // 1
+
+
+
+  // Embedded content
+  // ==========================================================================
+
+  // Change the alignment on media elements in all browers (opinionated).
+  audio,
+  canvas,
+  iframe,
+  img,
+  svg,
+  video
+    vertical-align: top
+
+  // Add the correct display in IE 9-.
+  audio,
+  video
+    display: inline-block
+
+  // Add the correct display in iOS 4-7.
+  audio:not([controls])
+    display: none
+    height: 0
+
+  // Remove the border on images inside links in IE 10-.
+  img
+    border-style: none
+
+  iframe
+    border: none
+
+  // Change the fill color to match the text color in all browsers (opinionated).
+  svg
+    fill: currentColor
+
+  // Hide the overflow in IE.
+  svg:not(:root)
+    overflow: hidden
+
+
+
+  // Tabular data
+  // ==========================================================================
+
+  // Collapse border spacing in all browsers (opinionated).
+  table
+    border-collapse: collapse
+
+  th,
+  td
+    padding: 0
+
+
+
+  // Forms
+  // ==========================================================================
+
+  // Remove the margin in Firefox and Safari.
+  button,
+  input,
+  optgroup,
+  select,
+  textarea
+    margin: 0
+
+  // Inherit styling in all browsers (opinionated).
+  button,
+  input,
+  select,
+  textarea
+    font-size: inherit
+    line-height: inherit
+    color: inherit
+    font-family: inherit
+    border-radius: 0
+
+  // prevent word break in safari
+  button,
+  input,
+  select,
+  textarea,
+  optgroup,
+  option
+    word-break: if($base-word-break, normal, null)
+
+  // 1. Show the overflow in IE.
+  // 2. Remove the inheritance of text transform in Edge, Firefox, and IE.
+  button
+    overflow: visible // 1
+    text-transform: none // 2
+
+  // Correct the inability to style clickable types in iOS and Safari.
+  button,
+  [type=button],
+  [type=reset],
+  [type=submit]
+    -webkit-appearance: button
+
+  // Restore the focus styles unset by the previous rule in Firefox.
+  button:-moz-focusring,
+  [type=button]:-moz-focusring,
+  [type=reset]:-moz-focusring,
+  [type=submit]:-moz-focusring
+    outline: 1px dotted ButtonText
+
+  // Remove the inner border and padding in Firefox.
+  ::-moz-focus-inner
+    padding: 0
+    border-style: none
+
+  // 1. Correct the padding in Firefox.
+  fieldset
+    padding: 0 // 1
+    margin: 0
+    border: none
+
+  // Show the overflow in Edge and IE.
+  input
+    overflow: visible
+
+  // 1. Correct the text wrapping in Edge and IE.
+  // 2. Correct the color inheritance from `fieldset` elements in IE.
+  // 3. Remove the padding so developers are not caught out
+  //    when they zero out `fieldset` elements in all browsers.
+  legend
+    box-sizing: border-box // 1
+    display: table // 1
+    max-width: 100% // 1
+    padding: 0 // 3
+    white-space: normal // 1
+    color: inherit // 2
+
+  // 1. Add the correct display in Edge and IE.
+  // 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+  progress
+    display: inline-block // 1
+    vertical-align: top // 2
+
+  // Remove the inheritance of text transform in Firefox.
+  select
+    text-transform: none
+
+  // 1. Remove the default vertical scrollbar in IE.
+  // 2. Change the resize direction on textareas in all browsers (opinionated).
+  textarea
+    overflow: auto // 1
+    -webkit-overflow-scrolling: touch
+    resize: vertical // 2
+
+  // 1. Add the correct box sizing in IE 10-.
+  // 2. Remove the padding in IE 10-.
+  [type=checkbox],
+  [type=radio]
+    box-sizing: border-box // 1
+    padding: 0 // 2
+
+  // Correct the cursor style of increment and decrement buttons in Chrome.
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button
+    height: auto
+
+  // 1. Correct the odd appearance in Chrome and Safari.
+  // 2. Correct the outline style in Safari.
+  [type=search]
+    -webkit-appearance: textfield // 1
+    outline-offset: -2px // 2
+
+  // Remove the inner padding in Chrome and Safari on macOS.
+  ::-webkit-search-decoration
+    -webkit-appearance: none
+
+  // 1. Correct the inability to style clickable types in iOS and Safari.
+  // 2. Change font properties to `inherit` in Safari.
+  ::-webkit-file-upload-button
+    -webkit-appearance: button // 1
+    font: inherit // 2
+
+
+
+  // Interactive
+  // ==========================================================================
+
+  // Add the correct display in Edge and IE.
+  details
+    display: block
+
+  // Add the correct display in all browsers.
+  summary
+    display: list-item
+
+
+
+  // Scripting
+  // ==========================================================================
+
+  // Add the correct display in IE 9-.
+  canvas
+    display: inline-block
+
+  // Add the correct display in IE.
+  template
+    display: none
+
+
+
+  // User interaction
+  // ==========================================================================
+
+  // 1. Remove the tapping delay on clickable elements
+  //    in all browsers (opinionated).
+  // 2. Remove the tapping delay in IE 10.
+  a,
+  area,
+  button,
+  input,
+  label,
+  select,
+  summary,
+  textarea,
+  [tabindex]
+    -ms-touch-action: manipulation // 1
+    touch-action: manipulation // 2
+
+  // Add the correct display in IE 10-.
+  [hidden]
+    display: none
+
+
+
+  // Accessibility
+  // ==========================================================================
+
+  // Change the cursor on busy elements in all browsers (opinionated).
+  [aria-busy=true]
+    cursor: progress
+
+  // Change the cursor on control elements in all browsers (opinionated).
+  [aria-controls]
+    cursor: pointer
+
+  // Change the cursor on disabled, not-editable, or otherwise inoperable elements
+  // in all browsers (opinionated).
+  [aria-disabled],
+  [disabled]
+    cursor: not-allowed
+
+  // Change the display on visually hidden accessible elements
+  // in all browsers (opinionated).
+  [aria-hidden=false][hidden]:not(:focus)
+    display: inherit
+    position: absolute
+    clip: rect(0, 0, 0, 0)

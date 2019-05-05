@@ -1,0 +1,20 @@
++install(shared-element-form-label)
+
+  .fm-label
+    +typo-level($form-label-typography-size-level, $typography-main-baseline-offset-ratio)
+    display: block
+    color: $form-label-color
+
+
+
+  .fm-label-required.fm-label::after
+    content: $form-label-required-content
+    color: $form-label-required-color
+
+  @if $form-label-small-typography-size-level
+    .fm-label-small.fm-label
+      +typo-level($form-label-small-typography-size-level, $typography-main-baseline-offset-ratio)
+
+  @if $form-label-large-typography-size-level
+    .fm-label-large.fm-label
+      +typo-level($form-label-large-typography-size-level, $typography-main-baseline-offset-ratio)

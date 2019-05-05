@@ -1,0 +1,19 @@
++install(shared-element-baseline)
+
+  .baseline
+    position: relative
+
+  $_baseline-gradient: linear-gradient(to bottom, #0ff 0, rgba(255, 255, 255, 0) 1px)
+  $_baseline-background: $_baseline-gradient left top / 100% 1rem repeat-y
+
+  .baseline::after
+    display: block
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    z-index: $z-index-highest
+    pointer-events: none
+    content: ""
+    background: $_baseline-background

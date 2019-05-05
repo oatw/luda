@@ -1,0 +1,21 @@
++install(shared-utility-float)
+
+  .clear::after
+    display: block
+    clear: both
+    content: ""
+
+  @each $breakpoint in map-keys($breakpoint-width-pxs)
+
+    $class-fix: _responsive-class-fix($breakpoint)
+
+    +media-width($breakpoint)
+
+      .f-left#{$class-fix}
+        float: left !important
+
+      .f-right#{$class-fix}
+        float: right !important
+
+      .f-none#{$class-fix}
+        float: none !important

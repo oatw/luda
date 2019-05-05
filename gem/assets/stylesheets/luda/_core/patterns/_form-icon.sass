@@ -1,0 +1,67 @@
++install(shared-pattern-form-icon)
+
+  .fm.fm-ico-left input,
+  .fm.fm-ico-left select[multiple],
+  .fm.fm-ico-left textarea
+    padding-left: $form-element-horizontal-padding-em * 2 + $form-element-icon-size-em
+
+  .fm.fm-ico-right input,
+  .fm.fm-ico-right select[multiple],
+  .fm.fm-ico-right textarea
+    padding-right: $form-element-horizontal-padding-em * 2 + $form-element-icon-size-em
+
+
+
+  .fm-select.fm-ico-right input,
+  .fm-file.fm-ico-right input,
+  .fm-search.fm-ico-right input
+    background: $form-element-background
+
+  // sass-lint:disable empty-args
+  .fm-select.fm-ico-right[data-error] input,
+  .fm-file.fm-ico-right[data-error] input,
+  .fm-search.fm-ico-right[data-error] input
+    background: form-element-background-on-error()
+
+  .fm.fm-select.fm-ico-right .focus ~ input,
+  .fm.fm-select.fm-ico-right input.focus,
+  .fm.fm-file.fm-ico-right .focus ~ input,
+  .fm.fm-search.fm-ico-right input.focus
+    background: form-element-background-on-focus()
+  // sass-lint:enable empty-args
+
+
+  .fm > .ico
+    margin-top: _form-icon-margin-top($form-element-height-rem, $form-element-typography-size-level)
+    font-size: $form-element-icon-size-em
+    pointer-events: none
+    color: $form-element-icon-color
+    fill: $form-element-icon-color
+
+
+
+  .fm.fm-ico-left > .ico
+    margin-left: $form-element-horizontal-padding-em / strip-unit($form-element-icon-size-em)
+
+  .fm.fm-ico-right > .ico
+    margin-right: $form-element-horizontal-padding-em / strip-unit($form-element-icon-size-em)
+    margin-left: auto
+
+
+
+  .fm-small.fm > .ico
+    margin-top: _form-icon-margin-top($form-element-small-height-rem, $form-element-small-typography-size-level)
+
+  .fm-large.fm > .ico
+    margin-top: _form-icon-margin-top($form-element-large-height-rem, $form-element-large-typography-size-level)
+
+
+
+  .fm[data-error] .ico
+    color: $form-element-icon-color-on-error
+    fill: $form-element-icon-color-on-error
+
+  .fm.fm-ico-left .focus ~ .ico,
+  .fm.fm-ico-right .focus ~ .ico
+    color: $form-element-icon-color-on-focus
+    fill: $form-element-icon-color-on-focus

@@ -1,0 +1,11 @@
++install(shared-element-overlay)
+
+  html:has(.overlay.toggle-active),
+  body:has(.overlay.toggle-active)
+    overflow: hidden
+
+  .overlay
+    +overlay
+
+  .overlay-body
+    +overlay-body

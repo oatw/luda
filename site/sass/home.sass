@@ -1,0 +1,38 @@
+#home #main-header,
+#home #main-footer
+  background: none !important
+
+#home #main-header
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1)
+
+#home #main-footer
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1)
+
++media-width(m)
+  #home #main-header,
+  #home #main-footer
+    box-shadow: none
+
+#home #main-header #site-versions
+  margin-top: 0 !important
+  background: none
+
+#home #main-header #site-versions .btn
+  padding-right: 0
+
+#home-background
+  height: 100vh
+  background-color: darken($background-color-primary, 10%)
+
+#home-background video
+  transform: translate3d(calc(50vw - 50%), 0, 0)
+
+@media (min-aspect-ratio: 16 / 9)
+  #home-background video
+    width: 100%
+    height: auto
+
+@media (max-aspect-ratio: 16 / 9)
+  #home-background video
+    width: auto
+    height: 100%

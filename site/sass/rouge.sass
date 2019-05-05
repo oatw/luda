@@ -1,0 +1,205 @@
+.highlight
+  background: $background-color-muted
+
+.highlight pre
+  padding: $spacing-small-rem $spacing-medium-rem
+
+.highlight code
+  $baseline-offset: existing($typography-code-baseline-offset-ratio, $typography-main-baseline-offset-ratio)
+  +typo-level($typography-block-code-size-level, $baseline-offset)
+  display: block
+  padding-right: 0
+  padding-left: 0
+  background: none
+
+.highlight .cm
+  color: #998
+  font-style: italic
+
+.highlight .cp
+  color: #999
+
+.highlight .c1
+  color: #998
+  font-style: italic
+
+.highlight .cs
+  color: #999
+  font-style: italic
+
+.highlight .c,
+.highlight .cd
+  color: #998
+  font-style: italic
+
+.highlight .err
+  color: #a61717
+  background-color: #e3d2d2
+
+.highlight .gd
+  color: darken($color-primary, 10%)
+  background-color: #fdd
+
+.highlight .ge
+  color: darken($color-primary, 10%)
+  font-style: italic
+
+.highlight .gr
+  color: #a00
+
+.highlight .gh
+  color: #999
+
+.highlight .gi
+  color: darken($color-primary, 10%)
+  background-color: #dfd
+
+.highlight .go
+  color: #888
+
+.highlight .gp
+  color: #555
+
+.highlight .gu
+  color: #aaa
+
+.highlight .gt
+  color: #a00
+
+.highlight .kc
+  color: darken($color-primary, 10%)
+
+.highlight .kd
+  color: darken($color-primary, 10%)
+
+.highlight .kn
+  color: darken($color-primary, 10%)
+
+.highlight .kp
+  color: darken($color-primary, 10%)
+
+.highlight .kr
+  color: darken($color-primary, 10%)
+
+.highlight .kt
+  color: #458
+
+.highlight .k,
+.highlight .kv
+  font-weight: 700
+
+// .highlight .mf
+//   color: $color-main
+
+// .highlight .mh
+//   color: $color-main
+
+// .highlight .il
+//   color: $color-main
+
+// .highlight .mi
+//   color: $color-main
+
+// .highlight .mo
+//   color: $color-main
+
+// .highlight .m,
+// .highlight .mb,
+// .highlight .mx
+//   color: $color-main
+
+// .highlight .sb
+//   color: $color-main
+
+// .highlight .sc
+//   color: $color-main
+
+// .highlight .sd
+//   color: $color-main
+
+// .highlight .s2
+//   color: $color-main
+
+// .highlight .se
+//   color: $color-main
+
+// .highlight .sh
+//   color: $color-main
+
+// .highlight .si
+//   color: $color-main
+
+// .highlight .sx
+//   color: $color-main
+
+.highlight .sr
+  color: #009926
+
+.highlight .s1
+  color: darken($color-primary, 10%)
+
+.highlight .ss
+  color: #990073
+
+.highlight .s
+  color: darken($color-primary, 10%)
+
+.highlight .na
+  font-weight: 700
+
+.highlight .bp
+  color: #999
+
+// .highlight .nb
+//   color: #0086b3
+
+.highlight .nc
+  color: #458
+
+.highlight .no
+  color: darken($color-primary, 10%)
+
+.highlight .nd
+  color: #3c5d5d
+
+.highlight .ni
+  color: #800080
+
+// .highlight .ne
+//   color: $color-main
+
+// .highlight .nf
+//   color: $color-main
+
+// .highlight .nl
+//   color: $color-main
+
+.highlight .nn
+  color: #555
+
+// .highlight .nt
+//   color: darken($color-primary, 10%)
+
+.highlight .vc
+  color: darken($color-primary, 10%)
+
+.highlight .vg
+  color: darken($color-primary, 10%)
+
+.highlight .vi
+  color: darken($color-primary, 10%)
+
+.highlight .nv
+  color: darken($color-primary, 10%)
+
+// .highlight .ow
+//   color: $color-main
+
+// .highlight .o
+//   color: $color-main
+
+.highlight .w
+  color: #bbb
+
+.language-bash .highlight .nv
+  color: #999

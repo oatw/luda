@@ -1,0 +1,21 @@
++install(shared-pattern-breadcrumb)
+
+  .breadcrumb
+    display: flex
+    flex-wrap: wrap
+    list-style: none
+    padding: $breadcrumb-padding-rem
+    color: $breadcrumb-color
+
+  .breadcrumb li:not(:first-child)::before
+    padding: $breadcrumb-spliter-padding-em
+    content: $breadcrumb-spliter
+
+  .breadcrumb a
+    text-decoration: none
+
+  .breadcrumb a:hover
+    text-decoration: existing($typography-link-hover-text-decoration, $typography-link-text-decoration)
+
+  .breadcrumb a:active
+    text-decoration: $typography-link-active-text-decoration

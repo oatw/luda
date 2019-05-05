@@ -1,0 +1,66 @@
+=_media-query($breakpoints, $breakpoint, $query-rule, $minus-value: 0)
+  $breakpoint-value: map-get($breakpoints, $breakpoint)
+  $query-rule-min: null
+  $breakpoint-max-value: null
+  $query-rule-max: null
+
+  @if $breakpoint-value > 0
+    @if $query-rule == aspect-ratio
+      $query-rule-min: "(min-aspect-ratio:#{$breakpoint-value * 10000}/10000)"
+    @else
+      $query-rule-min: "(min-#{$query-rule}:#{$breakpoint-value})"
+
+  @if $minus-value > 0
+    $breakpoints-keys: map-keys($breakpoints)
+    $breakpoints-values: map-values($breakpoints)
+    $breakpoint-index: index($breakpoints-keys, $breakpoint)
+    $breakpoint-max-value: null
+    @if $breakpoint-index < length($breakpoints-keys)
+      $breakpoint-max-value: nth($breakpoints-values, $breakpoint-index + 1) - $minus-value
+    @else
+      $breakpoint-max-value: null
+    @if $breakpoint-max-value and $breakpoint-max-value > 0
+      @if $query-rule == aspect-ratio
+        $query-rule-max: "(max-aspect-ratio:#{$breakpoint-max-value * 10000}/10000)"
+      @else
+        $query-rule-max: "(max-#{$query-rule}:#{$breakpoint-max-value})"
+
+  @if $query-rule-min or $query-rule-max
+    @if $query-rule-min
+      @media #{$query-rule-min}
+        @if $query-rule-max
+          @media #{$query-rule-max}
+            @content
+        @else
+          // sass-lint:disable indentation
+          @content
+          // sass-lint:enable indentation
+    @else
+      @if $query-rule-max
+        @media #{$query-rule-max}
+          @content
+      @else
+        @content
+  @else
+    @content
+
+
+
+=media-width($breakpoint, $less-than-next: false)
+  $minus-value: if($less-than-next, 1, 0)
+  +_media-query($breakpoint-width-pxs, $breakpoint, width, $minus-value)
+    @content
+
+=media-resolution($breakpoint, $less-than-next: false)
+  $minus-value: if($less-than-next, 9.6, 0)
+  +_media-query($breakpoint-resolutions, $breakpoint, resolution, $minus-value)
+    @content
+
+=media-aspect-ratio($breakpoint, $less-than-next: false)
+  $minus-value: if($less-than-next, 0.0001, 0)
+  +_media-query($breakpoint-aspect-ratios, $breakpoint, aspect-ratio, $minus-value)
+    @content
+
+=media-print
+  @media print
+    @content

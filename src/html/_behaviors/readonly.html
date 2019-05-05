@@ -1,0 +1,33 @@
+---
+title: Readonly
+---
+
+<div id="readonly-form-elements">
+  <h4><a href="#readonly-form-elements">#readonly-form-elements</a></h4>
+
+  <div class="fm-group">
+    <label>This input should be not focused.</label>
+    <div class="fm fm-text" data-readonly>
+      <input data-readonly type="text" placeholder="A readonly text input">
+    </div>
+  </div>
+
+  <div class="fm-group">
+    <label>This select should not be focused.</label>
+    <div class="fm fm-select" data-readonly>
+      <select data-readonly placeholder="A readonly select">
+        <option value="1">One</option>
+        <option value="2">Two</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="fm-group">
+    <div class="fm fm-radio" data-readonly>
+      <label>
+        <input type="radio" name="readonly" data-readonly>
+        This radio should not be focused.
+      </label>
+    </div>
+  </div>
+</div>

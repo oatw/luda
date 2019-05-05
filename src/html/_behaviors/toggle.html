@@ -1,0 +1,54 @@
+---
+title: Toggle
+---
+
+<div id="toggle" class="mb-large">
+  <h4><a href="#toggle">#toggle</a></h4>
+  <button class="btn btn-primary" data-toggle-for="toggle_target">Toggle trigger</button>
+  <div class="bc-dark p-large" data-toggle-target="toggle_target" data-toggle>
+    <button class="btn btn-light" data-toggle-disabled>None toggle</button>
+  </div>
+</div>
+
+<div id="toggle-event">
+  <style type="text/css">
+    #toggle-event-preview{
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    #toggle-event-preview.toggle-active{
+      opacity: 1;
+    }
+  </style>
+  <h4><a href="#toggle-event">#toggle event</a></h4>
+  <button class="btn btn-primary" data-toggle-for="toggle_event_target">Toggle trigger</button>
+  <h5 id="toggle-event-activate-note"></h5>
+  <h5 id="toggle-event-activated-note"></h5>
+  <h5 id="toggle-event-deactivate-note"></h5>
+  <h5 id="toggle-event-deactivated-note"></h5>
+  <div id="toggle-event-preview" class="d-block bc-dark p-large" data-toggle-target="toggle_event_target" data-toggle-auto-deactivate data-toggle></div>
+  <script type="text/javascript">
+    (function(){
+      let activateStart = Date.now(), deactivateStart = Date.now()
+      luda.on('luda:toggle:activate', '#toggle-event-preview', function(e) {
+        activateStart = Date.now()
+        luda.$child('#toggle-event-activate-note').innerHTML = 'Activate at: ' + activateStart
+      })
+      luda.on('luda:toggle:activated', '#toggle-event-preview', function(e) {
+        console.log('activated')
+        duration = Date.now() - activateStart
+        luda.$child('#toggle-event-activated-note').innerHTML = 'Activated in: ' + duration + 'ms'
+      })
+      luda.on('luda:toggle:deactivate', '#toggle-event-preview', function(e) {
+        deactivateStart = Date.now()
+        luda.$child('#toggle-event-deactivate-note').innerHTML = 'Deactivate at: ' + deactivateStart
+      })
+      luda.on('luda:toggle:deactivated', '#toggle-event-preview', function(e) {
+        console.log('deactivated')
+        duration = Date.now() - deactivateStart
+        luda.$child('#toggle-event-deactivated-note').innerHTML = 'Deactivated in: ' + duration + 'ms'
+      })
+    })()
+  </script>
+</div>
+

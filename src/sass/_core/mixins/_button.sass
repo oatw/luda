@@ -1,0 +1,92 @@
+// sass-lint:disable max-line-length
+
+=button-solid($name: null, $color: null, $hover-color: null, $active-color: null, $background: null, $hover-background: null, $active-background: null, $border-color: null, $hover-border-color: null, $active-border-color: null, $box-shadow: null, $hover-box-shadow: null, $active-box-shadow: null)
+
+  .btn.btn-#{$name},
+  .btn-check.btn-#{$name} label,
+  .btn-radio.btn-#{$name} label,
+  .btn-file.btn-#{$name} label
+    color: $color
+    background: $background
+    border-color: existing($border-color, transparent)
+    box-shadow: $box-shadow
+
+  .btn.btn-#{$name}:hover,
+  .btn-file.btn-#{$name} input:hover ~ label
+    color: $hover-color
+    background: $hover-background
+    border-color: $hover-border-color
+    box-shadow: $hover-box-shadow
+
+  .btn.btn-#{$name}:active,
+  .btn.btn-#{$name}.btn-active,
+  .btn-file.btn-#{$name} input:active ~ label,
+  .btn-check.btn-#{$name} input:checked ~ label,
+  .btn-radio.btn-#{$name} input:checked ~ label,
+  .btn-check.btn-#{$name}.btn-active input ~ label,
+  .btn-radio.btn-#{$name}.btn-active input ~ label,
+  .btn-file.btn-#{$name}.btn-active input ~ label
+    color: $active-color
+    background: $active-background
+    border-color: $active-border-color
+    box-shadow: $active-box-shadow
+
+
+
+=button-hollow($name: null, $color: null, $hover-color: null, $active-color: null, $hover-background: null, $active-background: null, $border-color: null, $hover-border-color: null, $active-border-color: null, $box-shadow: null, $hover-box-shadow: null, $active-box-shadow: null)
+
+  .btn.btn-hollow-#{$name},
+  .btn-check.btn-hollow-#{$name} label,
+  .btn-radio.btn-hollow-#{$name} label,
+  .btn-file.btn-hollow-#{$name} label
+    color: $color
+    border-color: existing($border-color, $color)
+    box-shadow: $box-shadow
+
+  .btn.btn-hollow-#{$name}:hover,
+  .btn-file.btn-hollow-#{$name} input:hover ~ label
+    color: $hover-color
+    background: $hover-background
+    border-color: $hover-border-color
+    box-shadow: $hover-box-shadow
+
+  .btn.btn-hollow-#{$name}:active,
+  .btn.btn-hollow-#{$name}.btn-active,
+  .btn-file.btn-hollow-#{$name} input:active ~ label,
+  .btn-check.btn-hollow-#{$name} input:checked ~ label,
+  .btn-radio.btn-hollow-#{$name} input:checked ~ label,
+  .btn-check.btn-hollow-#{$name}.btn-active input ~ label,
+  .btn-radio.btn-hollow-#{$name}.btn-active input ~ label,
+  .btn-file.btn-hollow-#{$name}.btn-active input ~ label
+    color: $active-color
+    background: $active-background
+    border-color: $active-border-color
+    box-shadow: $active-box-shadow
+
+
+
+=button-text($name: null, $color: null, $hover-color: null, $active-color: null, $text-shadow: null, $hover-text-shadow: null, $active-text-shadow: null)
+
+  .btn.btn-text-#{$name},
+  .btn-check.btn-text-#{$name},
+  .btn-radio.btn-text-#{$name},
+  .btn-file.btn-text-#{$name}
+    color: $color
+    text-shadow: $text-shadow
+    border-color: transparent
+
+  .btn.btn-text-#{$name}:hover,
+  .btn-file.btn-text-#{$name} input:hover ~ label
+    color: $hover-color
+    text-shadow: $hover-text-shadow
+
+  .btn.btn-text-#{$name}:active,
+  .btn.btn-text-#{$name}.btn-active,
+  .btn-file.btn-text-#{$name} input:active ~ label,
+  .btn-check.btn-text-#{$name} input:checked ~ label,
+  .btn-radio.btn-text-#{$name} input:checked ~ label,
+  .btn-check.btn-text-#{$name}.btn-active input ~ label,
+  .btn-radio.btn-text-#{$name}.btn-active input ~ label,
+  .btn-file.btn-text-#{$name}.btn-active input ~ label
+    color: $active-color
+    text-shadow: $active-text-shadow

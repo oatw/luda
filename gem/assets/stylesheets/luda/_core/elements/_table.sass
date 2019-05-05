@@ -1,0 +1,102 @@
++install(shared-element-table)
+
+  .table,
+  .table-border
+    word-break: normal
+    overflow: auto
+    -webkit-overflow-scrolling: touch
+    border-radius: $table-border-radius
+
+  .table table,
+  .table-border table
+    min-width: 100%
+
+  .table thead,
+  .table-border thead
+    background: $table-head-background
+
+  .table tbody tr:nth-child(even),
+  .table-border tbody tr:nth-child(even)
+    background: $table-row-even-background
+
+  .table tbody tr:nth-child(odd),
+  .table-border tbody tr:nth-child(odd)
+    background: $table-row-odd-background
+
+  .table th,
+  .table td,
+  .table-border th,
+  .table-border td
+    vertical-align: top
+    text-align: left
+
+  .table th,
+  .table-border th
+    color: $table-head-color
+    font-weight: 700
+
+  .table td,
+  .table-border td
+    color: $table-body-color
+
+  .table th,
+  .table td
+    padding: $table-cell-padding-rem
+
+  $_table-border-cell-padding-top: null
+  $_table-border-top-width-is-rem: _is-rem(nth($table-border-width, 1))
+  $_table-cell-padding-top: nth($table-cell-padding-rem, 1)
+  $_table-border-top-width: nth($table-border-width, 1)
+  @if $_table-border-top-width-is-rem
+    $_table-border-cell-padding-top: $_table-cell-padding-top - $_table-border-top-width
+  @else
+    $_table-border-cell-padding-top: calc(#{$_table-cell-padding-top} - #{$_table-border-top-width})
+  +_sass-lint-fix-if-else
+
+  .table-border
+    border: $table-border-style $table-border-width $table-border-color
+
+  .table-border th,
+  .table-border td
+    $padding-right: mirror-nth($table-cell-padding-rem, 2)
+    $padding-bottom: mirror-nth($table-cell-padding-rem, 3)
+    $padding-left: mirror-nth($table-cell-padding-rem, 4)
+    padding: $_table-border-cell-padding-top $padding-right $padding-bottom $padding-left
+
+  .table-border td
+    border-top: $table-border-style $table-border-width $table-border-color
+
+  .table-border tbody tr:last-child td
+    $padding-right: mirror-nth($table-cell-padding-rem, 2)
+    $padding-bottom: null
+    $padding-left: mirror-nth($table-cell-padding-rem, 4)
+    $table-cell-padding-bottom: mirror-nth($table-cell-padding-rem, 3)
+    $table-border-bottom-width: mirror-nth($table-border-width, 3)
+    $table-border-bottom-width-is-rem: _is-rem(mirror-nth($table-border-width, 3))
+    @if $table-border-bottom-width-is-rem
+      $padding-bottom: $table-cell-padding-bottom - $table-border-bottom-width
+    @else
+      $padding-bottom: calc(#{$table-cell-padding-bottom} - #{$table-border-bottom-width})
+    padding: $_table-border-cell-padding-top $padding-right $padding-bottom $padding-left
+
+
+
+  .table-nowrap.table th,
+  .table-nowrap.table td,
+  .table-nowrap.table-border th,
+  .table-nowrap.table-border td
+    vertical-align: middle
+    white-space: nowrap
+
+  .table-stripless.table thead,
+  .table-stripless.table-border thead
+    background: none
+
+  .table-stripless.table table tbody tr,
+  .table-stripless.table-border table tbody tr
+    background: none
+
+  .table-hover.table tbody tr:hover,
+  .table-hover.table-border tbody tr:hover
+    color: $table-row-hover-color
+    background: $table-row-hover-background

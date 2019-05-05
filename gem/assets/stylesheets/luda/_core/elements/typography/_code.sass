@@ -1,0 +1,27 @@
++install(shared-element-typography-code)
+
+  code,
+  kbd,
+  samp
+    padding: $typography-code-padding-em
+    line-height: 0
+    color: $typography-code-color
+    font-family: $typography-code
+    background: $typography-code-background
+    border-radius: $typography-code-border-radius
+
+  .code
+    padding: $typography-code-block-padding-rem
+    background: $typography-code-background
+    border-radius: $typography-code-border-radius
+
+  .code code,
+  .code samp,
+  .code kbd
+    $baseline-offset: existing($typography-code-baseline-offset-ratio, $typography-main-baseline-offset-ratio)
+    +typo-level($typography-block-code-size-level, $baseline-offset)
+    display: block
+    padding-right: 0
+    padding-left: 0
+    background: none
+    border-radius: if($typography-code-border-radius, 0, null)

@@ -1,0 +1,37 @@
+---
+title: Modal
+---
+
+<div id="modal" class="mb-large">
+  <h4><a href="#modal">#modal</a></h4>
+  <div class="modal">
+    <h4>Confirm your operation</h4>
+    <p>Do you really want to delete this? This operation is permanent!</p>
+    <div class="btns-x btns-margin mt-small">
+      <button class="btn btn-primary">Yes, delete it.</button>
+      <button class="btn btn-secondary">No, don't delete.</button>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="modal-in-overlay">
+  <h4><a href="#modal-in-overlay">#modal-in-overlary</a></h4>
+  <button class="btn btn-danger mt-small" data-toggle-for="delete_confirmation">Delete</button>
+  <div class="overlay" data-toggle-target="delete_confirmation" data-toggle>
+    <div class="overlay-body" data-toggle-disabled>
+      <div class="modal">
+        <h4>Do you really want to delete this?</h4>
+        <p>This operation is permanent, password must be entered to confirm.</p>
+        <div class="fm fm-text">
+          <input type="password" placeholder="Enter password">
+        </div>
+        <div class="btns-x btns-margin mt-medium" data-toggle>
+          <button class="btn btn-primary">Yes, delete it.</button>
+          <button class="btn btn-secondary">No, don't delete.</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

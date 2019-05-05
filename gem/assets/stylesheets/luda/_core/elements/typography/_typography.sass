@@ -1,0 +1,52 @@
++install(shared-element-typography-typography)
+
+  @for $type-level from 1 through 6
+
+    $is-default-typo-level: $type-level == $typography-main-size-level
+    $paragraph-selector: if($is-default-typo-level, "p,.p#{$type-level}", ".p#{$type-level}")
+    $heading-selector: "h#{$type-level},.h#{$type-level}"
+    $baseline-offset-ratio-changed: $typography-heading-baseline-offset-ratio != $typography-main-baseline-offset-ratio
+
+    @if $typography-heading-baseline-offset-ratio and $baseline-offset-ratio-changed
+
+      #{$heading-selector}
+        +typo-level($type-level, $typography-heading-baseline-offset-ratio)
+        display: block
+
+      #{$paragraph-selector}
+        +typo-level($type-level, $typography-main-baseline-offset-ratio)
+        display: block
+
+    @else
+
+      #{$heading-selector},
+      #{$paragraph-selector}
+        +typo-level($type-level, $typography-main-baseline-offset-ratio)
+        display: block
+
+  +_sass-lint-fix-if-else
+
+
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6
+    color: $typography-heading-color
+    font-family: $typography-heading
+    font-weight: $typography-heading-font-weight
+
+
+
+  .typo-inline
+    display: inline !important
+    padding: 0 !important
+    line-height: 0 !important

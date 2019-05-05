@@ -1,0 +1,15 @@
+=browser-firefox
+  @-moz-document url-prefix()
+    @content
+
+=browser-ios-safari
+  @supports (-webkit-overflow-scrolling: touch)
+    @content
+
+=browser-edge
+  @supports (-ms-ime-align: auto)
+    @content
+
+=browser-chrome-and-opera
+  @media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm)
+    @content

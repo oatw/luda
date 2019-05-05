@@ -1,0 +1,42 @@
+=_dropdown-absolute($breakpoint: null)
+
+  $class-fix: if($breakpoint, "-#{$breakpoint}", null)
+
+  .dropdown-absolute#{$class-fix} > .dropdown-menu
+    position: relative
+    z-index: $z-index-much-higher
+    margin: 0
+    overflow: visible
+
+  .dropdown-absolute#{$class-fix}.dropdown-active > .dropdown-menu
+    display: block
+
+  .dropdown-absolute#{$class-fix} > .dropdown-menu > .dropdown-items
+    position: absolute
+    max-height: $dropdown-absolute-max-height-rem
+    margin: $dropdown-absolute-active-gap-rem 0 0
+    overflow: auto
+    -webkit-overflow-scrolling: touch
+    background: $dropdown-absolute-fixed-background
+    border-radius: $dropdown-absolute-border-radius
+    box-shadow: $dropdown-absolute-box-shadow
+
+  .dropdown-absolute#{$class-fix}.dropdown-top > .dropdown-menu,
+  .dropdown-absolute#{$class-fix}.dropdown-left > .dropdown-menu,
+  .dropdown-absolute#{$class-fix}.dropdown-right > .dropdown-menu
+    order: -1
+
+  .dropdown-absolute#{$class-fix}.dropdown-top > .dropdown-menu > .dropdown-items
+    bottom: 0
+    margin: 0 0 $dropdown-absolute-active-gap-rem
+
+  .dropdown-absolute#{$class-fix}.dropdown-align-right > .dropdown-menu > .dropdown-items
+    right: 0
+
+  .dropdown-absolute#{$class-fix}.dropdown-right > .dropdown-menu > .dropdown-items
+    left: 100%
+    margin: 0 0 0 $dropdown-absolute-active-gap-rem
+
+  .dropdown-absolute#{$class-fix}.dropdown-left > .dropdown-menu > .dropdown-items
+    right: 100%
+    margin: 0 $dropdown-absolute-active-gap-rem 0 0

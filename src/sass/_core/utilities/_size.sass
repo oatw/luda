@@ -1,0 +1,67 @@
++install(shared-utility-size)
+
+  .max-w-100
+    max-width: 100% !important
+
+  .min-w-100
+    min-width: 100% !important
+
+  .min-w-100vw
+    min-width: 100vw !important
+
+  .max-h-100
+    max-height: 100% !important
+
+  .min-h-100
+    min-height: 100% !important
+
+  .min-h-100vh
+    min-height: 100vh !important
+
+  @each $breakpoint in map-keys($breakpoint-width-pxs)
+
+    $class-fix: _responsive-class-fix($breakpoint)
+
+    +media-width($breakpoint)
+
+      .w-100#{$class-fix}
+        width: 100% !important
+
+      .w-75#{$class-fix}
+        width: 75% !important
+
+      .w-66#{$class-fix}
+        width: 66.6667% !important
+
+      .w-50#{$class-fix}
+        width: 50% !important
+
+      .w-33#{$class-fix}
+        width: 33.3333% !important
+
+      .w-25#{$class-fix}
+        width: 25% !important
+
+      .w-auto#{$class-fix}
+        width: auto !important
+
+      .h-100#{$class-fix}
+        height: 100% !important
+
+      .h-75#{$class-fix}
+        height: 75% !important
+
+      .h-66#{$class-fix}
+        height: 66.6667% !important
+
+      .h-50#{$class-fix}
+        height: 50% !important
+
+      .h-33#{$class-fix}
+        height: 33.3333% !important
+
+      .h-25#{$class-fix}
+        height: 25% !important
+
+      .h-auto#{$class-fix}
+        height: auto !important

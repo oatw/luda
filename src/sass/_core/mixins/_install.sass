@@ -1,0 +1,7 @@
+$installed-modules: () !default
+
+=install($module-name)
+  @if index($installed-modules, $module-name) == null
+    $installed-modules: append($installed-modules, $module-name) !global
+    @at-root
+      @content

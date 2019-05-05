@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ page.title }} | Luda TDD</title>
+    {% include head.html %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% if jekyll.environment contains "-test" %}
+    <link rel="stylesheet" type="text/css" href="/.dist/css/luda-{{ jekyll.environment | remove: '-test' }}.min.css">
+    <script type="text/javascript" src="/.dist/js/luda-degradation.min.js"></script>
+    <script type="text/javascript" src="/.dist/js/luda.min.js"></script>
+    {% else %}
+    <link rel="stylesheet" type="text/css" href="/.dist/css/luda-{{ jekyll.environment }}.css">
+    <script type="text/javascript" src="/.dist/js/luda-degradation.js"></script>
+    <script type="text/javascript" src="/.dist/js/luda.js"></script>
+    {% endif %}
+  </head>
+  <body>
+    <div id="container" class="container p-medium p-large-m">
+      {{ content }}
+    </div>
+    <div id="visible-detector" class="p-tiny"></div>
+  </body>
+</html>

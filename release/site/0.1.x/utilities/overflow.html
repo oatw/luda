@@ -1,0 +1,457 @@
+<!-- markdownlint-disable -->
+<!-- markdownlint-disable -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" data-init-theme="default" data-applied-theme="default" data-theme-path-pattern="/luda/0.1.x/.dist/css/luda-$theme$.min.css">
+  <head>
+    <title>Overflow | Luda - A lightweight and responsive UI framework for modern web development.</title>
+    <!-- markdownlint-disable -->
+<meta charset="UTF-8">
+<!-- viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<!-- render -->
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!-- apple app mode -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Luda">
+<!-- chrome -->
+<meta name="mobile-web-app-capable" content="yes">
+<!-- Chrome, Firefox OS and Opera -->
+<!-- <meta name="theme-color" content="#8c447c"> -->
+<!-- Windows Phone -->
+<!-- <meta name="msapplication-navbutton-color" content="#8c447c"> -->
+<meta name="application-name" content="Luda">
+<!-- apple no tel -->
+<meta content="telephone=no" name="format-detection">
+<!-- windows phone no tap color -->
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="author" content="Oatw">
+<meta name="keywords" content="luda, lightweight, responsive, modular, ui framework">
+<meta name="description" content="Luda is a lightweight and responsive UI framework for modern web development.">
+    <link rel="shortcut icon" href="/luda/0.1.x/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900">
+    <script type="text/javascript" src="/luda/0.1.x/assets/js/turbolinks.js"></script>
+    <link rel="stylesheet" type="text/css" data-theme-style="default" href="/luda/0.1.x/.dist/css/luda-default.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="/luda/0.1.x/.dist/css/site.min.css">
+    <script type="text/javascript" src="/luda/0.1.x/.dist/js/luda-degradation.min.js"></script>
+    <script type="text/javascript" src="/luda/0.1.x/.dist/js/luda.min.js"></script>
+    <script type="text/javascript" src="/luda/0.1.x/assets/js/clipboard.js"></script>
+    <script type="text/javascript" src="/luda/0.1.x/.dist/js/site.min.js"></script>
+    <script type="text/javascript" src="/luda/version.js"></script>
+    <!-- markdownlint-disable -->
+<script type="text/javascript">
+  window.site = window.site || {}
+  window.site.version = "0.1.x"
+  luda.on('docready', function(){
+    if(window.site.version != window.site.latestVersion){
+      luda.toggle.active('site-version-alert')
+    }
+  })
+</script>
+
+    
+  </head>
+  <body>
+    
+    <!-- markdownlint-disable -->
+<div class="alert fix-t fix-l w-100 bc-danger jc-center" style="z-index:100" data-toggle-target="site-version-alert">
+  <div class="alert-content">
+    <p>
+      There is a newer version of <a class="link-light" href="/luda/0.1.x/">Luda</a>.
+    </p>
+  </div>
+  <div class="alert-action">
+    <a href="/luda/0.1.x/" class="btn btn-light btn-small mr-small">Let's go!</a>
+    <button data-toggle class="btn btn-hollow-light btn-small">I don't care.</button>
+  </div>
+</div>
+
+    
+    <!-- markdownlint-disable -->
+<div id="doc" class="grid-edge">
+  <!-- markdownlint-disable -->
+
+<aside id="doc-aside" class="nav-aside col-12 col-3-m">
+  <a href="/luda/0.1.x/" data-turbolinks="false" class="nav-logo">
+    <img src="/luda/0.1.x/assets/img/logo-text.svg" alt="logo">
+  </a>
+  <!-- markdownlint-disable -->
+<!-- markdownlint-disable -->
+
+
+
+<div id="theme-dropdown" data-turbolinks-permanent class="dropdown-fixed ml-auto d-none-m">
+  <button class="btn btn-ico btn-text-primary">
+    <i class="change-theme-trigger ico material-icons">brush</i>
+  </button>
+  <div class="dropdown-menu">
+    <div class="dropdown-items">
+      <div class="btns-y">
+        
+        <div class="btn-radio btn-hollow-primary">
+          
+          <input class="change-theme" checked type="radio" name="theme_dropdown_apply_theme" value="default">
+          
+          <label class="bd-none">Theme default</label>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+  <button class="nav-open btn btn-text-light btn-ico ml-none" data-toggle-for="nav-aside-menu">
+    <i class="ico ico-menu"></i>
+  </button>
+  <div class="nav-menu" data-toggle-target="nav-aside-menu" data-toggle>
+    <button class="nav-close btn btn-text-light btn-ico">
+      <i class="ico ico-cross"></i>
+    </button>
+    <div class="nav-items">
+      <p class="px-small c-light">Get Started</p>
+      
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/general/introduction">Introduction</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/general/installation">Installation</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/general/theming">Theming</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/general/breakpoints">Breakpoints</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/general/browser-support">Browser Support</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/general/modular-import">Modular Imports</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="px-small c-light">Behaviors</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/behaviors/disabled">Disabled</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/behaviors/enter">Enter</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/behaviors/focus">Focus</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/behaviors/readonly">Readonly</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/behaviors/tabulate">Tabulate</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/behaviors/toggle">Toggle</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="px-small c-light">Elements</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/badge">Badge</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/baseline">Baseline</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/button">Button</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/container">Container</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/form">Form</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/grid">Grid</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/icon">Icon</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/media">Media</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/overlay">Overlay</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/progress">Progress</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/scrollbar">Scrollbar</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/table">Table</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/elements/typography">Typography</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="px-small c-light">Patterns</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/alert">Alert</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/avatar">Avatar</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/breadcrumb">Breadcrumb</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/button-group">Button Group</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/button-icon">Button Icon</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/carousel">Carousel</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/dropdown">Dropdown</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/form-dropdown">Form Dropdown</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/form-group">Form Group</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/form-icon">Form Icon</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/modal">Modal</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/navigation">Navigation</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/search-bar">Search Bar</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/patterns/tab">Tab</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="px-small c-light">Utilities</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/alignment">Alignment</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/background">Background</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/border">Border</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/color">Color</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/display">Display</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/flex">Flex</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/float">Float</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/opacity">Opacity</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light btn-active" href="/luda/0.1.x/utilities/overflow">Overflow</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/position">Position</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/shadow">Shadow</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/shape">Shape</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/size">Size</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/spacing">Spacing</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/text">Text</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/visibility">Visibility</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light" href="/luda/0.1.x/utilities/z-index">Z-index</a>
+  
+
+
+    </div>
+  </div>
+</aside>
+
+  <main id="doc-container" class="col-auto pt-medium pb-large px-medium p-large-m">
+    <h1 class="page-title mt-large mt-small-m">Overflow</h1>
+    <p class="p3 page-sub-title">Use overflow utilities to control how content overflows a container.</p>
+    <h2 id="introduction">Introduction</h2>
+
+<p>Overflow utilities are classes for setting the value of the
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/overflow"><code class="highlighter-rouge">overflow</code></a> property.
+There’re three overflow classes: <code class="highlighter-rouge">.of-hidden</code>, <code class="highlighter-rouge">.of-auto</code> and <code class="highlighter-rouge">.of-visible</code>.
+Let’s see the below examples for detail.</p>
+
+<h2 id="example">Example</h2>
+
+<div class="my-small of-hidden bc-dark" style="height: 8rem">
+  <div class="bc-primary" style="width: 80%; height: 200%">
+    <p class="c-light px-medium">.of-hidden</p>
+  </div>
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"of-hidden"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"height: 200%"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<div class="mt-medium mb-small of-auto bc-dark" style="height: 8rem">
+  <div class="bc-primary" style="width: 80%; height: 200%">
+    <p class="c-light px-medium">.of-auto</p>
+  </div>
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"of-auto"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"height: 200%"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<div class="mt-medium of-visible bc-dark" style="height: 8rem; margin-bottom: 9rem">
+  <div class="bc-primary" style="width: 80%; height: 200%">
+    <p class="c-light px-medium">.of-visible</p>
+  </div>
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"of-visible"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">style=</span><span class="s">"height: 200%"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+  </main>
+  <nav id="doc-sub-nav" class="nav-aside col-auto zi-normal d-none d-block-l pr-large pl-medium pb-medium bc-none bi-none">
+    <div class="nav-items m-none">
+    </div>
+  </nav>
+  <!-- markdownlint-disable -->
+<!-- markdownlint-disable -->
+
+
+
+
+<div id="theme-pannel" data-turbolinks-permanent class="d-none d-block-m fix-r fix-b zi-high mr-large mb-large">
+
+  <div class="btns-x btns-margin jc-end" data-toggle-target="change_theme">
+    
+    <div class="btn-radio btn-hollow-dark bc-main circle">
+      
+      <input class="change-theme" checked type="radio" name="theme_pannel_apply_theme" value="default">
+      
+      <label class="bd-none circle sd-high">Theme default</label>
+    </div>
+    
+    <div class="btn btn-light btn-ico circle sd-high" data-toggle data-toggle-for="change_theme_trigger">
+      <i class="ico ico-cross"></i>
+    </div>
+  </div>
+
+  <button class="btn btn-ico-left btn-dark toggle-active mb-small mr-small circle sd-high" data-toggle-for="change_theme" data-toggle-target="change_theme_trigger" data-toggle>
+    <i class="ico material-icons">brush</i>
+    Change Theme
+  </button>
+
+</div>
+</div>
+  </body>
+</html>

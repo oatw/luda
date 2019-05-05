@@ -1,0 +1,31 @@
++install(shared-element-progress)
+
+  .progress
+    display: flex
+    height: $progress-height-rem
+    background: $progress-background
+    border-radius: $progress-border-radius
+
+  .progress-bar
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    min-width: $progress-bar-min-width-em
+    height: 100%
+    padding: $progress-bar-padding
+    font-size: typo-size($progress-bar-typography-size-level)
+    white-space: nowrap
+    overflow: hidden
+    color: $progress-bar-color
+    background: $progress-bar-background
+    border-radius: $progress-border-radius
+
+  @if $progress-border-radius and $progress-border-radius != 0
+
+    .progress-bar:not(:first-child)
+      border-top-left-radius: 0
+      border-bottom-left-radius: 0
+
+    .progress-bar:not(:last-child)
+      border-top-right-radius: 0
+      border-bottom-right-radius: 0

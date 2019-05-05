@@ -1,0 +1,51 @@
++install(shared-utility-position)
+
+  .sta
+    position: static !important
+
+  .rel
+    position: relative !important
+
+  // sass-lint:disable no-duplicate-properties
+  .sti,
+  .sti-t,
+  .sti-l,
+  .sti-b,
+  .sti-r
+    position: -webkit-sticky !important
+    position: sticky !important
+  // sass-lint:enable no-duplicate-properties
+
+  .fix,
+  .fix-t,
+  .fix-b,
+  .fix-l,
+  .fix-r
+    position: fixed !important
+
+  .abs,
+  .abs-t,
+  .abs-b,
+  .abs-l,
+  .abs-r
+    position: absolute !important
+
+  .fix-t,
+  .abs-t,
+  .sti-t
+    top: 0 !important
+
+  .fix-b,
+  .sti-b,
+  .abs-b
+    bottom: 0 !important
+
+  .fix-l,
+  .abs-l,
+  .sti-l
+    left: 0 !important
+
+  .fix-r,
+  .sti-r,
+  .abs-r
+    right: 0 !important

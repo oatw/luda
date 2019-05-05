@@ -1,0 +1,283 @@
+---
+title: Form
+---
+
+<div id="form-label" class="mb-large">
+  <h4><a href="#form-label">#form-label</a></h4>
+  <label class="fm-label">Name label</label>
+  <div class="fm fm-text">
+    <input type="text" placeholder="Please enter your name">
+  </div>
+</div>
+
+
+
+<div id="form-label-required" class="mb-large">
+  <h4><a href="#form-label-required">#form-label-required</a></h4>
+  <label class="fm-label fm-label-required">Name label required</label>
+  <div class="fm fm-text">
+    <input type="text" placeholder="Please enter your name">
+  </div>
+</div>
+
+
+
+<div id="form-text" class="mb-large">
+  <h4><a href="#form-text">#form-text</a></h4>
+  <div class="fm fm-text">
+    <input name="name" placeholder="Enter some text">
+    <datalist id="name">
+      <option value="BMW">BMW</option>
+      <option value="Ford">Ford</option>
+      <option value="Volvo">Volvo</option>
+    </datalist>
+  </div>
+</div>
+
+
+
+<div id="form-textarea" class="mb-large">
+  <h4><a href="#form-textarea">#form-textarea</a></h4>
+  <div class="fm fm-text">
+    <textarea placeholder="Enter more text"></textarea>
+  </div>
+</div>
+
+
+
+<div id="form-search" class="mb-large">
+  <h4><a href="#form-search">#form-search</a></h4>
+  <div class="fm fm-search">
+    <input placeholder="Search anything...">
+  </div>
+</div>
+
+
+
+<div id="form-select" class="mb-large">
+  <h4><a href="#form-select">#form-select</a></h4>
+  <div class="fm fm-select">
+    <select placeholder="Select a word">
+      <option value="hello">Hello!</option>
+      <option value="goodbye">Goodbye!</option>
+    </select>
+  </div>
+</div>
+
+
+
+<div id="form-select-multiple" class="mb-large">
+  <h4><a href="#form-select-multiple">#form-select-multiple</a></h4>
+  <div class="fm fm-select">
+    <select multiple placeholder="Select words">
+      <option value="hello">Hello!</option>
+      <option value="goodbye">Goodbye!</option>
+    </select>
+  </div>
+</div>
+
+
+
+<div id="form-file" class="mb-large">
+  <h4><a href="#form-file">#form-file</a></h4>
+  <div class="fm fm-file">
+    <input type="file" placeholder="Add a file">
+  </div>
+</div>
+
+
+
+<div id="form-file-multiple" class="mb-large">
+  <h4><a href="#form-file-multiple">#form-file-multiple</a></h4>
+  <div class="fm fm-file">
+    <input type="file" multiple placeholder="Add files">
+  </div>
+</div>
+
+
+
+<div id="form-file-value" class="mb-large">
+  <h4><a href="#form-file-value">#form-file-value</a></h4>
+  <div class="fm fm-file">
+    <input type="file" multiple value="application_helper.rb   application_record.rb" placeholder="Add files">
+  </div>
+</div>
+
+
+
+<div id="form-range" class="mb-large">
+  <h4><a href="#form-range">#form-range</a></h4>
+  <div class="fm fm-range">
+    <input type="range">
+  </div>
+</div>
+
+
+
+<div id="form-check" class="mb-large">
+  <h4><a href="#form-check">#form-check</a></h4>
+  <div class="fm fm-check">
+    <input type="checkbox">
+  </div>
+</div>
+
+
+
+<div id="form-check-in-label" class="mb-large">
+  <h4><a href="#form-check-in-label">#form-check-in-label</a></h4>
+  <div class="fm fm-check">
+    <label><input type="checkbox">Checkbox in label</label>
+    <label><input type="checkbox">Checkbox in label</label>
+  </div>
+</div>
+
+
+
+<div id="form-radio" class="mb-large">
+  <h4><a href="#form-radio">#form-radio</a></h4>
+  <div class="fm fm-radio">
+    <input type="radio" name="single">
+  </div>
+</div>
+
+
+
+<div id="form-radio-in-label" class="mb-large">
+  <h4><a href="#form-radio-in-label">#form-radio-in-label</a></h4>
+  <div class="fm fm-radio">
+    <label><input type="radio" name="multiple">Radio in label</label>
+    <label><input type="radio" name="multiple">Radio in label</label>
+  </div>
+</div>
+
+
+
+<div id="form-element-readonly" class="mb-large">
+  <h4><a href="#form-element-readonly">#form-element-readonly</a></h4>
+  <div class="fm fm-text mb-small" data-readonly>
+    <input data-readonly value="A readonly form text" placeholder="Enter some text">
+  </div>
+  <div class="fm fm-check mb-small" data-readonly>
+    <label><input data-readonly checked type="checkbox">A readonly form checkbox</label>
+  </div>
+  <div class="fm fm-select" data-readonly>
+    <select data-readonly placeholder="Select a word">
+      <option selected value="hello">A readonly select with Hello selected</option>
+      <option value="goodbye">Goodbye!</option>
+    </select>
+  </div>
+</div>
+
+
+
+<div id="form-element-disabled" class="mb-large">
+  <h4><a href="#form-element-disabled">#form-element-disabled</a></h4>
+  <div class="fm fm-search mb-small" disabled>
+    <input disabled placeholder="A disabled form search">
+  </div>
+  <div class="fm fm-radio mb-small" disabled>
+    <label><input disabled type="radio" name="disabled_radio">A disabled form radio</label>
+  </div>
+  <div class="fm fm-select mb-small" disabled>
+    <select disabled placeholder="A disabled form select">
+      <option value="1">Hello</option>
+      <option value="2">Goodbye</option>
+    </select>
+  </div>
+  <div class="fm fm-file mb-small" disabled>
+    <input disabled type="file" placeholder="A disabled form file">
+  </div>
+  <div class="fm fm-select" disabled>
+    <select disabled multiple placeholder="A disabled form select">
+      <option value="1">Hello</option>
+      <option value="2">Goodbye</option>
+    </select>
+  </div>
+</div>
+
+
+
+<div id="form-element-small" class="mb-large">
+  <h4><a href="#form-element-small">#form-element-small</a></h4>
+  <div class="fm fm-check fm-small mb-small">
+    <label><input type="checkbox">A small form checkbox</label>
+  </div>
+  <div class="fm fm-range fm-small mb-small">
+    <input type="range">
+  </div>
+  <div class="fm fm-search fm-small mb-small">
+    <input placeholder="A small form search">
+  </div>
+  <div class="fm fm-text">
+    <textarea placeholder="A small from textarea"></textarea>
+  </div>
+</div>
+
+
+
+<div id="form-element-large" class="mb-large">
+  <h4><a href="#form-element-large">#form-element-large</a></h4>
+  <div class="fm fm-radio fm-large mb-small">
+    <label><input type="radio" name="large">A large form radio</label>
+  </div>
+  <div class="fm fm-file fm-large mb-small">
+    <input type="file" placeholder="A large form file">
+  </div>
+  <div class="fm fm-text fm-large mb-small">
+    <input placeholder="A large form text">
+  </div>
+  <div class="fm fm-select">
+    <select multiple placeholder="A large multiple select">
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+</div>
+
+
+
+<div id="form-element-inline" class="mb-large">
+  <h4><a href="#form-element-inline">#form-element-inline</a></h4>
+  <div class="fm fm-check fm-inline">
+    <label><input type="checkbox">A inline checbox</label>
+  </div>
+  <div class="fm fm-text fm-small fm-inline">
+    <input placeholder="A small inline form text">
+  </div>
+  <div class="fm fm-search fm-inline">
+    <input placeholder="A inline form search">
+  </div>
+  <div class="fm fm-file fm-large fm-inline">
+    <input type="file" placeholder="A large inline form file">
+  </div>
+  <div class="fm fm-text fm-small fm-inline">
+    <textarea placeholder="A small inline textarea"></textarea>
+  </div>
+</div>
+
+
+
+<div id="form-element-hint" class="mb-large">
+  <h4><a href="#form-element-hint">#form-element-hint</a></h4>
+  <div class="fm fm-text mb-small" data-hint="Your email will be a secret.">
+    <input type="email" placeholder="Please enter your email">
+  </div>
+  <div class="fm fm-radio" data-hint="Your gender also will be a secret.">
+    <label><input type="radio" name="gender" value="male">Male</label>
+    <label><input type="radio" name="gender" value="female">Female</label>
+  </div>
+</div>
+
+
+
+<div id="form-element-error" class="mb-large">
+  <h4><a href="#form-element-error">#form-element-error</a></h4>
+  <div class="fm fm-text my-small" data-error="Email must be entered!">
+    <input type="email" placeholder="Please enter your email">
+  </div>
+  <div class="fm fm-radio my-small" data-error="Genger must be choosed!">
+    <label><input type="radio" name="errorGender" value="male">Male</label>
+    <label><input type="radio" name="errorGender" value="female">Female</label>
+  </div>
+</div>

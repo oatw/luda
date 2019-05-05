@@ -1,0 +1,85 @@
++install(shared-utility-text)
+
+  .fs-italic
+    font-style: italic !important
+
+  .fs-normal
+    font-style: normal !important
+
+  .fw-lightest
+    font-weight: 100 !important
+
+  .fw-lighter
+    font-weight: 200 !important
+
+  .fw-light
+    font-weight: 300 !important
+
+  .fw-regular
+    font-weight: 400 !important
+
+  .fw-medium
+    font-weight: 500 !important
+
+  .fw-semibold
+    font-weight: 600 !important
+
+  .fw-bold
+    font-weight: 700 !important
+
+  .fw-bolder
+    font-weight: 800 !important
+
+  .fw-boldest
+    font-weight: 900 !important
+
+  .tt-upper
+    letter-spacing: 0.1em !important
+    text-transform: uppercase !important
+
+  .tt-lower
+    text-transform: lowercase !important
+
+  .tt-cap
+    text-transform: capitalize !important
+
+  .wb-all
+    word-break: break-all !important
+
+  .ws-normal
+    white-space: normal !important
+
+  .ws-nowrap
+    white-space: nowrap !important
+
+  .text-ellipsis
+    white-space: nowrap !important
+    overflow: hidden !important
+    text-overflow: ellipsis
+
+  .td-stroke
+    text-decoration: line-through !important
+
+  .td-underline
+    text-decoration: underline !important
+
+  .td-none
+    text-decoration: none !important
+
+  @each $breakpoint in map-keys($breakpoint-width-pxs)
+
+    $class-fix: _responsive-class-fix($breakpoint)
+
+    +media-width($breakpoint)
+
+      .ta-left#{$class-fix}
+        text-align: left !important
+
+      .ta-right#{$class-fix}
+        text-align: right !important
+
+      .ta-center#{$class-fix}
+        text-align: center !important
+
+      .ta-justify#{$class-fix}
+        text-align: justify !important

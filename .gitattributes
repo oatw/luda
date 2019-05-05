@@ -1,0 +1,4 @@
+package.json      binary
+dist/**           binary
+src/js/**         binary
+release/site/**   binary

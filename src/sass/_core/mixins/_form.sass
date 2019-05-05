@@ -1,0 +1,27 @@
+=form-element-checkfield-background($icon, $icon-color, $background)
+  background: url(svg-icon($icon, $icon-color)) center / contain no-repeat, $background
+
+=form-element-background($icon, $icon-color, $background)
+  background: url(svg-icon($icon, $icon-color)) right $form-element-horizontal-padding-em (center / $form-element-icon-size-em) no-repeat, $background
+
+=_form-range-track-skin
+  background: $form-element-track-background
+  border-radius: $form-element-track-border-radius
+
+=_form-thumb-styles
+  width: $form-element-thumb-width-em
+  height: $form-element-thumb-height-em
+  border: $form-element-border-style $form-element-border-width $form-element-thumb-border-color
+  background: $form-element-thumb-background
+  border-radius: $form-element-thumb-border-radius
+  box-shadow: $form-element-box-shadow
+
+=_form-thumb-skin-on-focus
+  background: $form-element-thumb-background-on-focus
+  border-color: $form-element-thumb-border-color-on-focus
+  box-shadow: $form-element-box-shadow-on-focus
+
+=_form-thumb-skin-on-error
+  background: $form-element-thumb-background-on-error
+  border-color: $form-element-thumb-border-color-on-error
+  box-shadow: $form-element-box-shadow-on-error

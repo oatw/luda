@@ -1,0 +1,15 @@
++install(shared-element-typography-link)
+
+  a:not(.btn)
+    color: $typography-link-color
+    text-decoration: $typography-link-text-decoration
+
+  a:not(.btn):hover
+    color: $typography-link-hover-color
+    text-decoration: $typography-link-hover-text-decoration
+
+  a:not(.btn):active
+    color: $typography-link-active-color
+    text-decoration: $typography-link-active-text-decoration
+
+  +typo-link(light, $typography-link-light-color, $typography-link-light-hover-color, $typography-link-light-active-color)

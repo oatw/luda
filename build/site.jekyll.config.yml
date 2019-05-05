@@ -1,0 +1,61 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+host: 0.0.0.0
+
+markdown: kramdown
+kramdown:
+  auto_ids: true
+permalink: pretty
+
+# Build settings
+source: site
+destination: site/.jekyll
+sass:
+  cache: false
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+exclude:
+  - coffee
+  - sass
+
+include:
+  - .dist
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "doc"
+
+layouts_dir: markdown/_layouts
+includes_dir: markdown/_includes
+
+collections_dir: markdown
+ 
+collections:
+  general:
+    output: true
+    permalink: /:collection/:name
+  behaviors:
+    output: true
+    permalink: /:collection/:name
+  elements:
+    output: true
+    permalink: /:collection/:name
+  patterns:
+    output: true
+    permalink: /:collection/:name
+  utilities:
+    output: true
+    permalink: /:collection/:name
