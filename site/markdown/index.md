@@ -5,7 +5,7 @@ permalink: /
 ---
 <!-- markdownlint-disable -->
 <div id="home-background" class="fix w-100 of-hidden">
-  <video autoplay loop muted playsinline class="o-more-muted">
+  <video autoplay loop muted playsinline class="o-most-muted">
     <source type="video/mp4" src="{{ '/assets/video/home-background.mp4' | relative_url }}">
   </video>
 </div>
