@@ -90,7 +90,7 @@ all the value words are listed in the below table.
 </div>
 
 When you use font weight utilities,
-make sure the value words you pick up are supported by the fonts you embeded
+make sure the value words you pick up are supported by the fonts you embedded
 in your projects. Otherwise, the font weight effects will not be visible.
 
 Let's preview the effects through the below examples.
