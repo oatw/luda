@@ -9,7 +9,6 @@ If you need show some contents with a cover on the document viewport,
 you can use the `.overlay` class to create the cover,
 and wrap the `.overlay-body` container which contains the contents
 in the cover.
-
 Let's see the below example.
 
 <!-- markdownlint-disable -->

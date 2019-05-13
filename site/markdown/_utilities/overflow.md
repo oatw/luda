@@ -10,7 +10,7 @@ Overflow utilities are classes for setting the value of the
 There're three overflow classes: `.of-hidden`, `.of-auto` and `.of-visible`.
 Let's see the below examples for detail.
 
-## Example
+## Examples
 
 <div class="my-small of-hidden bc-dark" style="height: 8rem">
   <div class="bc-primary" style="width: 80%; height: 200%">

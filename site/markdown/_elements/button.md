@@ -89,19 +89,18 @@ let's have a look at what they can do.
 
 Checkbox buttons looks like buttons but
 behave the same as normal checkboxes.
-
 A checkbox button is very simple to create, add the `.btn-check` class
 and the button style classes to a container,
 then wrap a `<input type="checkbox">` and a `<label>` inside.
 
 {% capture checkbox_button %}
 <div class="btn-check btn-hollow-primary">
-  <input type="checkbox" name="favriout_films" value="kill_bill">
-  <label>Kill Bill</label>
+  <input type="checkbox" id="kill-bill" name="example1" value="kill_bill">
+  <label for="kill-bill">Kill Bill</label>
 </div>
 <div class="btn-check btn-hollow-primary">
-  <input type="checkbox" name="favriout_films" value="django">
-  <label>Django</label>
+  <input type="checkbox" id="django" name="example1" value="django">
+  <label for="django">Django</label>
 </div>
 {% endcapture %}
 <div class="button-example">
@@ -113,19 +112,18 @@ then wrap a `<input type="checkbox">` and a `<label>` inside.
 
 Radio buttons looks like buttons but
 behave the same as normal radios.
-
 A radio button is very simple to create, add the `.btn-radio` class
 and the button style classes to a container,
 then wrap a `<input type="radio">` and a `<label>` inside.
 
 {% capture radio_button %}
 <div class="btn-radio btn-hollow-primary">
-  <input type="radio" name="decision" value="yes">
-  <label>Yes, I agree.</label>
+  <input type="radio" id="yes" name="example2" value="yes">
+  <label for="yes">Yes, I agree.</label>
 </div>
 <div class="btn-radio btn-hollow-danger">
-  <input type="radio" name="decision" value="no">
-  <label>No, I disagree.</label>
+  <input type="radio" id="no" name="example2" value="no">
+  <label for="no">No, I disagree.</label>
 </div>
 {% endcapture %}
 <div class="button-example">
@@ -141,12 +139,12 @@ Let's go straight to the below examples.
 
 {% capture file_button %}
 <div class="btn-file btn-primary">
-  <input type="file">
-  <label>Upload a file</label>
+  <input type="file" id="example3" name="example3">
+  <label for="example3">Upload a file</label>
 </div>
 <div class="btn-file btn-hollow-primary">
-  <input multiple type="file">
-  <label>Upload files</label>
+  <input multiple type="file" id="example4" name="example4">
+  <label for="example4">Upload files</label>
 </div>
 {% endcapture %}
 <div class="button-example">
@@ -168,18 +166,18 @@ or a functional button, you can see the effect in the below examples.
 <button class="btn btn-hollow-primary btn-active">Button</button>
 <!-- An active checkbox button -->
 <div class="btn-check btn-hollow-primary btn-active">
-  <input type="check">
-  <label>Checkbox button</label>
+  <input type="check" id="example5" name="example5" value="example">
+  <label for="example5">Checkbox button</label>
 </div>
 <!-- An active radio button -->
 <div class="btn-radio btn-hollow-primary btn-active">
-  <input type="radio">
-  <label>Radio button</label>
+  <input type="radio" id="example6" name="example6" value="example">
+  <label for="example6">Radio button</label>
 </div>
 <!-- An active file button -->
 <div class="btn-file btn-hollow-primary btn-active">
-  <input type="file">
-  <label>File button</label>
+  <input type="file" id="example7" name="example7">
+  <label for="example7">File button</label>
 </div>
 {% endcapture %}
 <div class="button-example">
@@ -203,18 +201,18 @@ the `disabled` attribute to the nested `<input>`.
 <button class="btn btn-hollow-primary" disabled>Button</button>
 <!-- A disabled checkbox button -->
 <div class="btn-check btn-hollow-primary" disabled>
-  <input disabled type="checkbox">
-  <label>Checkbox button</label>
+  <input disabled type="checkbox" id="example8" name="example8" value="example">
+  <label for="example8">Checkbox button</label>
 </div>
 <!-- A disabled radio button -->
 <div class="btn-radio btn-hollow-primary" disabled>
-  <input disabled type="radio">
-  <label>Radio button</label>
+  <input disabled type="radio" id="example9" name="example9" value="example">
+  <label for="example9">Radio button</label>
 </div>
 <!-- A disabled file button -->
 <div class="btn-file btn-hollow-primary" disabled>
-  <input disabled type="file">
-  <label>File button</label>
+  <input disabled type="file" id="example10" name="example10">
+  <label for="example10">File button</label>
 </div>
 {% endcapture %}
 <div class="button-example">
@@ -235,13 +233,13 @@ add the `data-readonly` attribute to it and the nested `<input>`.
 {% capture readonly_button %}
 <!-- A readonly checkbox button -->
 <div class="btn-check btn-hollow-primary" data-readonly>
-  <input type="checkbox" data-readonly>
-  <label>Checkbox button</label>
+  <input type="checkbox" data-readonly id="example11" name="example11" value="example">
+  <label for="example11">Checkbox button</label>
 </div>
 <!-- A readonly radio button -->
 <div class="btn-radio btn-hollow-primary" data-readonly>
-  <input type="radio" data-readonly>
-  <label>Radio button</label>
+  <input type="radio" data-readonly id="example12" name="example12" value="example">
+  <label for="example12">Radio button</label>
 </div>
 {% endcapture %}
 <div class="button-example">
@@ -258,13 +256,13 @@ the nested `<input>` elements.
 {% capture checked_button %}
 <!-- A checked checkbox button -->
 <div class="btn-check btn-hollow-primary">
-  <input checked type="checkbox">
-  <label>Checkbox button</label>
+  <input checked type="checkbox" id="example13" name="example13" value="example">
+  <label for="example13">Checkbox button</label>
 </div>
 <!-- A checked radio button -->
 <div class="btn-radio btn-hollow-primary">
-  <input checked type="radio">
-  <label>Radio button</label>
+  <input checked type="radio" id="example14" name="example14" value="example">
+  <label for="example14">Radio button</label>
 </div>
 {% endcapture %}
 <div class="button-example">
@@ -276,7 +274,7 @@ the nested `<input>` elements.
 
 If you want to change the size of a button, you can use size modifier classes.
 
-### Small{% include modifier.md %}
+### .btn-small{% include modifier.md %}
 
 The `.btn-small` class makes a button smaller.
 
@@ -289,18 +287,18 @@ The `.btn-small` class makes a button smaller.
 <button class="btn btn-text-primary btn-small">Text button</button>
 <!-- A small checkbox button -->
 <div class="btn-check btn-hollow-primary btn-small">
-  <input type="checkbox">
-  <label>Checkbox button</label>
+  <input type="checkbox" id="example15" name="example15" value="example">
+  <label for="example15">Checkbox button</label>
 </div>
 <!-- A small radio button -->
 <div class="btn-radio btn-hollow-primary btn-small">
-  <input type="radio">
-  <label>Radio button</label>
+  <input type="radio" id="example16" name="example16" value="example">
+  <label for="example16">Radio button</label>
 </div>
 <!-- A small file button -->
 <div class="btn-file btn-hollow-primary btn-small">
-  <input type="file">
-  <label>File button</label>
+  <input type="file" id="example17" name="example17">
+  <label for="example17">File button</label>
 </div>
 {% endcapture %}
 <div class="button-example">
@@ -308,7 +306,7 @@ The `.btn-small` class makes a button smaller.
 </div>
 ``` html{{ small_button }}```
 
-### Large{% include modifier.md %}
+### .btn-large{% include modifier.md %}
 
 Oppsitely, the `.btn-large` class makes a button larger.
 
@@ -321,18 +319,18 @@ Oppsitely, the `.btn-large` class makes a button larger.
 <button class="btn btn-text-primary btn-large">Text button</button>
 <!-- A large checkbox button -->
 <div class="btn-check btn-hollow-primary btn-large">
-  <input type="checkbox">
-  <label>Checkbox button</label>
+  <input type="checkbox" id="example18" name="example18" value="example">
+  <label for="example18">Checkbox button</label>
 </div>
 <!-- A large radio button -->
 <div class="btn-radio btn-hollow-primary btn-large">
-  <input type="radio">
-  <label>Radio button</label>
+  <input type="radio" id="example19" name="example19" value="example">
+  <label for="example19">Radio button</label>
 </div>
 <!-- A large file button -->
 <div class="btn-file btn-hollow-primary btn-large">
-  <input type="file">
-  <label>File button</label>
+  <input type="file" id="example20" name="example20">
+  <label for="example20">File button</label>
 </div>
 {% endcapture %}
 <div class="button-example">
@@ -340,7 +338,7 @@ Oppsitely, the `.btn-large` class makes a button larger.
 </div>
 ``` html{{ large_button }}```
 
-### Fluid{% include modifier.md %}
+### .btn-fluid{% include modifier.md %}
 
 If you want a button takes all the availiable horizontal space
 in its container, you can add the `.btn-fluid` class to it.
@@ -355,18 +353,18 @@ The `.btn-fluid` class can be mixed with other size modifier classes.
 <button class="btn btn-text-primary btn-fluid">Text button</button>
 <!-- A fluid checkbox button -->
 <div class="btn-check btn-hollow-primary btn-fluid">
-  <input type="checkbox">
-  <label>Checkbox button</label>
+  <input type="checkbox" id="example21" name="example21" value="example">
+  <label for="example21">Checkbox button</label>
 </div>
 <!-- A fluid radio button -->
 <div class="btn-radio btn-hollow-primary btn-fluid">
-  <input type="radio">
-  <label>Radio button</label>
+  <input type="radio" id="example22" name="example22" value="example">
+  <label for="example22">Radio button</label>
 </div>
 <!-- A fluid file button -->
 <div class="btn-file btn-primary btn-fluid">
-  <input type="file">
-  <label>File button</label>
+  <input type="file" id="example23" name="example23">
+  <label for="example23">File button</label>
 </div>
 {% endcapture %}
 <div class="button-example">
@@ -400,33 +398,33 @@ This mixin can be used to create more text style classes for buttons.
 ### Size
 
 ``` sass
-$button-height-rem: 3rem !default
+$button-height-rem: baseline(3) !default
 ```
 
 ``` sass
-$button-small-height-rem: 2rem !default
+$button-small-height-rem: baseline(2) !default
 ```
 
 ``` sass
-$button-large-height-rem: 4rem !default
+$button-large-height-rem: baseline(4) !default
 ```
 
 ``` sass
-$button-helvertical-padding-em: strip-unit($spacing-small-rem) * 1em !default
+$button-helvertical-padding-em: 0.6875em !default
 ```
 
 ### Typography
 
 ``` sass
-$button-typography-size-level: 5 !default
+$button-typography-size-level: 6 !default
 ```
 
 ``` sass
-$button-small-typography-size-level: 6 !default
+$button-small-typography-size-level: 7 !default
 ```
 
 ``` sass
-$button-large-typography-size-level: 4 !default
+$button-large-typography-size-level: 5 !default
 ```
 
 ### Border
@@ -700,19 +698,19 @@ $button-hollow-primary-color: $color-primary !default
 ```
 
 ``` sass
-$button-hollow-primary-hover-color: existing($button-primary-hover-color, $button-primary-color) !default
+$button-hollow-primary-hover-color: null !default
 ```
 
 ``` sass
-$button-hollow-primary-active-color: existing($button-primary-active-color, $button-hollow-primary-hover-color) !default
+$button-hollow-primary-active-color: existing($button-primary-active-color, $button-primary-hover-color, $button-primary-color) !default
 ```
 
 ``` sass
-$button-hollow-primary-hover-background: existing($button-primary-hover-background, $button-primary-background) !default
+$button-hollow-primary-hover-background: rgba($background-color-primary, $opacity-most-muted) !default
 ```
 
 ``` sass
-$button-hollow-primary-active-background: existing($button-primary-active-background, $button-hollow-primary-hover-background) !default
+$button-hollow-primary-active-background: existing($button-primary-active-background, $button-primary-hover-background, $button-primary-background) !default
 ```
 
 ``` sass
@@ -720,11 +718,11 @@ $button-hollow-primary-border-color: null !default
 ```
 
 ``` sass
-$button-hollow-primary-hover-border-color: existing($button-primary-hover-border-color, $button-primary-border-color, transparent) !default
+$button-hollow-primary-hover-border-color: null !default
 ```
 
 ``` sass
-$button-hollow-primary-active-border-color: existing($button-primary-active-border-color, $button-hollow-primary-hover-border-color) !default
+$button-hollow-primary-active-border-color: existing($button-primary-active-border-color, $button-primary-hover-border-color, $button-primary-border-color, transparent) !default
 ```
 
 ``` sass
@@ -746,19 +744,19 @@ $button-hollow-secondary-color: $color-main !default
 ```
 
 ``` sass
-$button-hollow-secondary-hover-color: existing($button-secondary-hover-color, $button-secondary-color) !default
+$button-hollow-secondary-hover-color: null !default
 ```
 
 ``` sass
-$button-hollow-secondary-active-color: existing($button-secondary-active-color, $button-hollow-secondary-hover-color) !default
+$button-hollow-secondary-active-color: existing($button-secondary-active-color, $button-secondary-hover-color, $button-secondary-color) !default
 ```
 
 ``` sass
-$button-hollow-secondary-hover-background: existing($button-secondary-hover-background, $button-secondary-background) !default
+$button-hollow-secondary-hover-background: rgba($background-color-secondary, $opacity-more-muted) !default
 ```
 
 ``` sass
-$button-hollow-secondary-active-background: existing($button-secondary-active-background, $button-hollow-secondary-hover-background) !default
+$button-hollow-secondary-active-background: existing($button-secondary-active-background, $button-secondary-hover-background, $button-secondary-background) !default
 ```
 
 ``` sass
@@ -766,11 +764,11 @@ $button-hollow-secondary-border-color: $line-color-secondary !default
 ```
 
 ``` sass
-$button-hollow-secondary-hover-border-color: existing($button-secondary-hover-border-color, $button-secondary-border-color, transparent) !default
+$button-hollow-secondary-hover-border-color: null !default
 ```
 
 ``` sass
-$button-hollow-secondary-active-border-color: existing($button-secondary-active-border-color, $button-hollow-secondary-hover-border-color) !default
+$button-hollow-secondary-active-border-color: existing($button-secondary-active-border-color, $button-secondary-hover-border-color, $button-secondary-border-color, transparent) !default
 ```
 
 ``` sass
@@ -792,19 +790,19 @@ $button-hollow-danger-color: $color-danger !default
 ```
 
 ``` sass
-$button-hollow-danger-hover-color: existing($button-danger-hover-color, $button-danger-color) !default
+$button-hollow-danger-hover-color: null !default
 ```
 
 ``` sass
-$button-hollow-danger-active-color: existing($button-danger-active-color, $button-hollow-danger-hover-color) !default
+$button-hollow-danger-active-color: existing($button-danger-active-color, $button-danger-hover-color, $button-danger-color) !default
 ```
 
 ``` sass
-$button-hollow-danger-hover-background: existing($button-danger-hover-background, $button-danger-background) !default
+$button-hollow-danger-hover-background: rgba($background-color-danger, $opacity-most-muted) !default
 ```
 
 ``` sass
-$button-hollow-danger-active-background: existing($button-danger-active-background, $button-hollow-danger-hover-background) !default
+$button-hollow-danger-active-background: existing($button-danger-active-background, $button-danger-hover-background, $button-danger-background) !default
 ```
 
 ``` sass
@@ -812,11 +810,11 @@ $button-hollow-danger-border-color: null !default
 ```
 
 ``` sass
-$button-hollow-danger-hover-border-color: existing($button-danger-hover-border-color, $button-danger-border-color, transparent) !default
+$button-hollow-danger-hover-border-color: null !default
 ```
 
 ``` sass
-$button-hollow-danger-active-border-color: existing($button-danger-active-border-color, $button-hollow-danger-hover-border-color) !default
+$button-hollow-danger-active-border-color: existing($button-danger-active-border-color, $button-danger-hover-border-color, $button-danger-border-color, transparent) !default
 ```
 
 ``` sass
@@ -838,19 +836,19 @@ $button-hollow-dark-color: $color-dark !default
 ```
 
 ``` sass
-$button-hollow-dark-hover-color: existing($button-dark-hover-color, $button-dark-color) !default
+$button-hollow-dark-hover-color: null !default
 ```
 
 ``` sass
-$button-hollow-dark-active-color: existing($button-dark-active-color, $button-hollow-dark-hover-color) !default
+$button-hollow-dark-active-color: existing($button-dark-active-color, $button-dark-hover-color, $button-dark-color) !default
 ```
 
 ``` sass
-$button-hollow-dark-hover-background: existing($button-dark-hover-background, $button-dark-background) !default
+$button-hollow-dark-hover-background: rgba($background-color-dark, $opacity-most-muted) !default
 ```
 
 ``` sass
-$button-hollow-dark-active-background: existing($button-dark-active-background, $button-hollow-dark-hover-background) !default
+$button-hollow-dark-active-background: existing($button-dark-active-background, $button-dark-hover-background, $button-dark-background) !default
 ```
 
 ``` sass
@@ -858,11 +856,11 @@ $button-hollow-dark-border-color: null !default
 ```
 
 ``` sass
-$button-hollow-dark-hover-border-color: existing($button-dark-hover-border-color, $button-dark-border-color, transparent) !default
+$button-hollow-dark-hover-border-color: null !default
 ```
 
 ``` sass
-$button-hollow-dark-active-border-color: existing($button-dark-active-border-color, $button-hollow-dark-hover-border-color) !default
+$button-hollow-dark-active-border-color: existing($button-dark-active-border-color, $button-dark-hover-border-color, $button-dark-border-color, transparent) !default
 ```
 
 ``` sass
@@ -884,19 +882,19 @@ $button-hollow-light-color: $color-light !default
 ```
 
 ``` sass
-$button-hollow-light-hover-color: existing($button-light-hover-color, $button-light-color) !default
+$button-hollow-light-hover-color: null !default
 ```
 
 ``` sass
-$button-hollow-light-active-color: existing($button-light-active-color, $button-hollow-light-hover-color) !default
+$button-hollow-light-active-color: existing($button-light-active-color, $button-light-hover-color, $button-light-color) !default
 ```
 
 ``` sass
-$button-hollow-light-hover-background: existing($button-light-hover-background, $button-light-background) !default
+$button-hollow-light-hover-background: rgba($background-color-light, $opacity-most-muted) !default
 ```
 
 ``` sass
-$button-hollow-light-active-background: existing($button-light-active-background, $button-hollow-light-hover-background) !default
+$button-hollow-light-active-background: existing($button-light-active-background, $button-light-hover-background, $button-light-background) !default
 ```
 
 ``` sass
@@ -904,11 +902,11 @@ $button-hollow-light-border-color: null !default
 ```
 
 ``` sass
-$button-hollow-light-hover-border-color: existing($button-light-hover-border-color, $button-light-border-color, transparent) !default
+$button-hollow-light-hover-border-color: null !default
 ```
 
 ``` sass
-$button-hollow-light-active-border-color: existing($button-light-active-border-color, $button-hollow-light-hover-border-color) !default
+$button-hollow-light-active-border-color: existing($button-light-active-border-color, $button-light-hover-border-color, $button-light-border-color, transparent) !default
 ```
 
 ``` sass

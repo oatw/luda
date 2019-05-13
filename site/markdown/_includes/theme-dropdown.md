@@ -14,7 +14,7 @@
           {% else %}
           <input class="change-theme" type="radio" name="theme_dropdown_apply_theme" value="{{ theme_name }}">
           {% endif %}
-          <label class="bd-none">Theme {{ theme_name }}</label>
+          <label class="bd-none tt-cap">Theme {{ theme_name }}</label>
         </div>
         {% endfor %}
       </div>

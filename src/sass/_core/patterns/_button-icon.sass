@@ -3,10 +3,13 @@
   [class*=btn-].btn-ico
     width: 0
 
-  [class*=btn-]:not([class*=btn-text]).btn-ico .ico,
-  [class*=btn-]:not([class*=btn-text]).btn-ico-left .ico,
-  [class*=btn-]:not([class*=btn-text]).btn-ico-right .ico,
-  [class*=btn-]:not([class*=btn-text]).btn-ico-top .ico
+  [class*=btn-].btn-ico,
+  [class*=btn-].btn-ico label
+    padding: 0
+
+  [class*=btn-].btn-ico .ico,
+  [class*=btn-].btn-ico-left .ico,
+  [class*=btn-].btn-ico-right .ico
     font-size: $button-icon-size-em
     pointer-events: none
 
@@ -37,6 +40,7 @@
     order: -1
     margin: $button-icon-top-margin-em
     font-size: $button-icon-top-size-em
+    pointer-events: none
 
 
 

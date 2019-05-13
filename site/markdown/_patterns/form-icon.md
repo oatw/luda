@@ -11,15 +11,15 @@ then wrap an icon element inside.
 
 {% capture left %}
 <div class="fm fm-text fm-ico-left fm-small">
-  <input placeholder="A text field with an icon in the left">
+  <input name="example1" placeholder="Search anything...">
   <i class="ico ico-search"></i>
 </div>
 <div class="fm fm-text fm-ico-left">
-  <input placeholder="A text field with an icon in the left">
+  <input name="example2" placeholder="Search anything...">
   <i class="ico ico-search"></i>
 </div>
 <div class="fm fm-text fm-ico-left fm-large">
-  <input placeholder="A text field with an icon in the left">
+  <input name="example3" placeholder="Search anything...">
   <i class="ico ico-search"></i>
 </div>
 {% endcapture %}
@@ -36,23 +36,23 @@ then wrap an icon element inside.
 
 {% capture right %}
 <div class="fm fm-select fm-ico-right fm-small">
-  <select placeholder="A select field with an icon in the right">
-    <option>Gmail</option>
-    <option>Hotmail</option>
+  <select name="example4" placeholder="E.g., Gamil">
+    <option value="gmail">Gmail</option>
+    <option value="hotmail">Hotmail</option>
   </select>
   <i class="ico material-icons">mail</i>
 </div>
 <div class="fm fm-select fm-ico-right">
-  <select placeholder="A select field with an icon in the right">
-    <option>Gmail</option>
-    <option>Hotmail</option>
+  <select name="example5" placeholder="E.g., Gamil">
+    <option value="gmail">Gmail</option>
+    <option value="hotmail">Hotmail</option>
   </select>
   <i class="ico material-icons">mail</i>
 </div>
 <div class="fm fm-select fm-ico-right fm-large">
-  <select placeholder="A select field with an icon in the right">
-    <option>Gmail</option>
-    <option>Hotmail</option>
+  <select name="example6" placeholder="E.g., Gamil">
+    <option value="gmail">Gmail</option>
+    <option value="hotmail">Hotmail</option>
   </select>
   <i class="ico material-icons">mail</i>
 </div>
@@ -65,11 +65,11 @@ then wrap an icon element inside.
 ## Sass Variables
 
 ``` sass
-$form-element-icon-size-em: 1.286em !default
+$form-element-icon-size-em: null !default
 ```
 
 ``` sass
-$form-element-icon-color: $form-element-border-color !default
+$form-element-icon-color: lighten($color-muted, 10%) !default
 ```
 
 ``` sass

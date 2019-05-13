@@ -62,7 +62,7 @@ Of course, you'd better change the height in stylesheets in real projects.
 ### Size
 
 ``` sass
-$progress-height-rem: 2rem !default
+$progress-height-rem: baseline(2) !default
 ```
 
 ``` sass
@@ -76,10 +76,10 @@ $progress-bar-padding: 0 $spacing-tiny-rem !default
 ### Others
 
 ``` sass
-$progress-bar-typography-size-level: 6 !default
+$progress-bar-typography-size-level: 7 !default
 ```
 
-The value must be an integer between 1 and 6.
+The value must be an integer between 5 and 8.
 
 ``` sass
 $progress-bar-color: $color-inverse-main !default

@@ -16,16 +16,16 @@ to create a horizontal button group.
 </div>
 <div class="btns-x">
   <div class="btn-check btn-hollow-primary">
-    <input type="checkbox">
-    <label>Check</label>
+    <input type="checkbox" id="example1" name="example1" value="example">
+    <label for="example1">Check</label>
   </div>
   <div class="btn-radio btn-hollow-primary">
-    <input type="radio">
-    <label>Radio</label>
+    <input type="radio" id="example12" name="example2" value="example">
+    <label for="example2">Radio</label>
   </div>
   <div class="btn-file btn-hollow-primary">
-    <input type="file">
-    <label>File</label>
+    <input type="file" id="example3" name="example3">
+    <label for="example3">File</label>
   </div>
 </div>
 {% endcapture%}
@@ -60,7 +60,7 @@ to create a vertical button group.
 
 ## Style Modifiers
 
-### Fluid{% include modifier.md %}
+### .btns-fluid{% include modifier.md %}
 
 A fluid button group takes all the availiable horizontal space.
 To make a fluid button group, add the `.btns-fluid` class to the
@@ -78,12 +78,12 @@ To make a fluid button group, add the `.btns-fluid` class to the
   <button class="btn btn-ico-left btn-hollow-secondary">Delete <i class="ico ico-cross"></i></button>
 </div>
 {% endcapture %}
-<div class="button-example">
+<div class="button-example mb-none">
   {{ button_group_fluid }}
 </div>
 ``` html{{ button_group_fluid }}```
 
-### Margin{% include modifier.md %}
+### .btns-margin{% include modifier.md %}
 
 If you want to split buttons in a button group, you can use the `.btns-margin` class.
 This modifier adds margins at the right and bottom of wrapped buttons.
@@ -106,6 +106,7 @@ This modifier adds margins at the right and bottom of wrapped buttons.
   {{ button_group_margin }}
 </div>
 ``` html{{ button_group_margin }}```
+{: .mt-small}
 
 ## Sass Variables
 

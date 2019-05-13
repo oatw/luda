@@ -3,9 +3,7 @@ title: Badge
 description: Badge is designed to show short text in notifications.
 ---
 
-## Badge Styles
-
-### Badge
+## Examples
 
 Badge is simple to create,
 just add the `.badge` class to an inline element.
@@ -18,15 +16,11 @@ Let's see the below examples.
 {% endcapture %}
 {{ badge }}
 ``` html{{ badge }}```
-
-### Align to Baseline
-
-If you want a badge aligned to text baseline,
-replace the `.badge` class with the `.badge-baseline` class.
+{: .mt-small}
 
 {% capture badge_baseline %}
 <button class="btn btn-hollow-primary">
-  Messages <span class="badge-baseline">22</span>
+  Messages <span class="badge">22</span>
 </button>
 {% endcapture %}
 <div class="button-example">
@@ -34,14 +28,14 @@ replace the `.badge` class with the `.badge-baseline` class.
 </div>
 ``` html{{ badge_baseline }}```
 
-### Colors and Backgrounds
+## Colors and Backgrounds
 
 Change the color and background of the badge
 with color utilities and background utilities.
 
 {% capture badge_color_and_background %}
 <button class="btn btn-dark">
-  Messages <span class="badge-baseline c-dark bc-light">99+</span>
+  Messages <span class="badge c-dark bc-light">99+</span>
 </button>
 {% endcapture %}
 <div class="button-example">
@@ -54,19 +48,11 @@ with color utilities and background utilities.
 ### Size
 
 ``` sass
-$badge-offset-top-em: -0.4em !default
+$badge-margin-left-em: 0.5em !default
 ```
 
 ``` sass
-$badge-offset-left-em: 0.4em !default
-```
-
-``` sass
-$badge-height-em: 1.2em !default
-```
-
-``` sass
-$badge-padding-em: 0.4em !default
+$badge-horizontal-padding-em: 0.4em !default
 ```
 
 ### Others

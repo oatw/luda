@@ -24,7 +24,7 @@ available horizontal space is larger than the max width limit.
 ## Sass Variables
 
 ``` sass
-$container-max-width-rem: 105.076923rem !default
+$container-max-width-rem: px-to-rem(1366px) !default
 ```
 
 ``` sass

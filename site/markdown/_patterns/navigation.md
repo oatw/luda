@@ -17,7 +17,6 @@ the other parts in a navigation component can be optional.
 A navigation component can be created with these classes:
 `.nav-header`, `.nav-aside`, `.nav-logo`, `.nav-open`,
 `.nav-menu`, `.nav-close`, `.nav-items` and `.nav-sub-items`.
-
 Let's see the below examples for clarification.
 
 ## Header Navigation
@@ -38,7 +37,7 @@ then wrap necessary elements like the below example.
       <i class="ico ico-cross"></i>
     </button>
     <div class="nav-search fm fm-search fm-small">
-      <input type="search" placeholder="Search anything...">
+      <input type="search" name="keywords" placeholder="Search anything...">
     </div>
     <nav class="nav-items" data-toggle>
       <a class="btn btn-text-light btn-active" data-turbolinks="false" href="#header-navigation">Home</a>
@@ -79,7 +78,7 @@ then wrap necessary elements like the below example.
     </button>
     <!-- The search field -->
     <div class="nav-search fm fm-search fm-small">
-      <input type="search" placeholder="Search anything...">
+      <input type="search" name="keywords" placeholder="Search anything...">
     </div>
     <!-- The main menu items -->
     <nav class="nav-items" data-toggle>
@@ -129,7 +128,7 @@ then wrap necessary elements like the below example.
     </button>
     <!-- The search filed -->
     <div class="nav-search fm fm-search fm-small">
-      <input type="search" placeholder="Search anything...">
+      <input type="search" name="keywords" placeholder="Search anything...">
     </div>
     <!-- The main menu items -->
     <nav class="nav-items" data-toggle>
@@ -173,7 +172,7 @@ then wrap necessary elements like the below example.
         <i class="ico ico-cross"></i>
       </button>
       <div class="nav-search fm fm-search fm-small">
-        <input type="search" placeholder="Search anything...">
+        <input type="search" name="keywords" placeholder="Search anything...">
       </div>
       <nav class="nav-items" data-toggle>
         <a class="btn btn-text-light btn-active" data-turbolinks="false" href="#aside-navigation">Home</a>
@@ -221,7 +220,7 @@ $navigation-logo-margin-rem: 0 $spacing-small-rem !default
 ```
 
 ``` sass
-$navigation-logo-image-height-rem: 2rem !default
+$navigation-logo-image-height-rem: baseline(2) !default
 ```
 
 ``` sass
@@ -249,6 +248,10 @@ $navigation-sub-items-margin-rem: $navigation-items-margin-rem !default
 #### Header Navigation Sizes
 
 ``` sass
+$navigation-header-breakpoint-padding-rem: $spacing-small-rem !default
+```
+
+``` sass
 $navigation-header-breakpoint-search-field-margin-rem: 0 $spacing-small-rem !default
 ```
 
@@ -261,7 +264,7 @@ $navigation-header-breakpoint-sub-items-margin-rem: 0 !default
 ```
 
 ``` sass
-$navigation-header-breakpoint-search-field-width-rem: 16rem !default
+$navigation-header-breakpoint-search-field-width-rem: baseline(16) !default
 ```
 
 #### Aside Navigation Sizes
@@ -277,19 +280,19 @@ $navigation-aside-breakpoint-logo-margin-rem: 3 * $spacing-small-rem $spacing-me
 <!-- markdownlint-enable -->
 
 ``` sass
-$navigation-aside-breakpoint-logo-image-height-rem: 7rem !default
+$navigation-aside-breakpoint-logo-image-height-rem: baseline(8) !default
 ```
 
 ``` sass
-$navigation-aside-breakpoint-logo-image-width-rem: 9rem !default
+$navigation-aside-breakpoint-logo-image-width-rem: baseline(10) !default
 ```
 
 ``` sass
-$navigation-aside-breakpoint-min-width-rem: 18rem !default
+$navigation-aside-breakpoint-min-width-rem: baseline(20) !default
 ```
 
 ``` sass
-$navigation-aside-breakpoint-max-width-rem: 20rem !default
+$navigation-aside-breakpoint-max-width-rem: baseline(22) !default
 ```
 
 ### Others

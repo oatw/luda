@@ -20,7 +20,7 @@ all abbreviations and value words are listed in the below tables.
 
 ### Direction Abbreviations
 
-<div class="table table-border mb-small">
+<div class="table table-border">
   <table>
     <thead>
       <tr><th>Abbreviation</th><th>Direction</th></tr>
@@ -38,7 +38,7 @@ all abbreviations and value words are listed in the below tables.
 
 ### Value Words
 
-<div class="table table-border mb-small">
+<div class="table table-border">
   <table>
     <thead>
       <tr><th>Word</th><th>Value</th></tr>
@@ -54,7 +54,7 @@ all abbreviations and value words are listed in the below tables.
   </table>
 </div>
 
-## Example
+## Examples
 
 In the below example, we control the elements' margins and paddings
  responsively according to screen widths.

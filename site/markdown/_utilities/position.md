@@ -28,7 +28,7 @@ They are named using the formats:
 We use the first letter of each position word for short,
 all position abbreviations are listed in the below table.
 
-<div class="table table-border my-small">
+<div class="table table-border">
   <table>
     <thead>
       <tr><th>Abbreviation</th><th>Position</th></tr>
@@ -42,7 +42,7 @@ all position abbreviations are listed in the below table.
   </table>
 </div>
 
-### Example
+### Examples
 
 {% capture position %}
 <div class="rel bc-dark" style="height: 9rem">

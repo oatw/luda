@@ -15,7 +15,7 @@ You can preview their effects in the below example.
 If you want to remove the shadow effects of an element,
 add the `.sd-none` class to it.
 
-## Example
+## Examples
 
 {% capture shadow %}
 <p class="sd-low px-medium mb-medium">.sd-low</p>

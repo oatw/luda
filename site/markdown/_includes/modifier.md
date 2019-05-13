@@ -1,1 +1,1 @@
-<!-- markdownlint-disable --><span class="badge bc-dark">Modifier</span>
+<!-- markdownlint-disable --><span class="badge bc-dark fw-regular">Modifier</span>
