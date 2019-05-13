@@ -8,15 +8,12 @@ description: Lean how to control the appearances of images and videos with the m
 Wrap a media element like an `<img/>` or a `<video>`
 with the `.media` container to prevent it from
 breaking out of the container.
-
 A light background color will show
 when the inside media element is being loaded,
 so users can know there is something not ready.
-
 The aspect radio of the inside media element depends on
 its original size and its `width` and `height` attributes,
 but we can change it with the `.media-content` class.
-
 Let's see the below examples for detail.
 
 ## Image
@@ -60,7 +57,6 @@ A `<video>` element can also be wrapped in the `.media` container.
 A `.media-content` container can be wrapped in the `.media` container
 to make the inside media element responsive, the aspect ratio of
 the `.media-content` container is 16:9 by default.
-
 Size utility classes can be used to change the `.media`'s
 width responsively.
 
@@ -130,7 +126,6 @@ This is useful when include videos from external sites such as youtube.
 You can change a responsive media elements' aspect ratio to `1:1`
 by replacing the `.media-content` class with
 the `.media-content-1by1` class.
-
 The value of a `.media-content-1by1` container's `padding-top` property
 is set at 100%, you can create more aspect ratio classes by changing
 the value of the `padding-top` property.
@@ -168,7 +163,7 @@ the value of the `padding-top` property.
 
 ## Style Modifiers
 
-### Contain{% include modifier.md %}
+### .media-contain{% include modifier.md %}
 
 The wrapped media element occupies the whole space of its container by default,
 if the aspect radio of the element is different from its container,

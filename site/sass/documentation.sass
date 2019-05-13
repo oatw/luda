@@ -1,39 +1,14 @@
+$doc-container-width: baseline(62)
+$doc-aside-max-width: baseline(19)
+$doc-aside-min-width: baseline(19)
+
 #doc-aside,
 #doc-container .overlay
   z-index: 5
 
 #doc-container
-  max-width: 58rem
+  max-width: $doc-container-width
   margin: 0 auto
-
-#doc-container h1.page-title,
-#doc-container h2.rendered,
-#doc-container h3.rendered,
-#doc-container h4.rendered
-  font-weight: 400
-
-#doc-container h2.rendered
-  margin-top: $spacing-base-rem * 4
-
-#doc-container h3.rendered,
-#doc-container h4.rendered
-  margin-top: $spacing-medium-rem
-
-#doc-container h5.rendered
-  margin-top: $spacing-small-rem
-
-#doc-container h2 + .highlighter-rouge,
-#doc-container h3 + .highlighter-rouge,
-#doc-container h4 + .highlighter-rouge,
-#doc-container .highlighter-rouge + .highlighter-rouge,
-#doc-container p + .highlighter-rouge
-  margin-top: $spacing-small-rem
-
-#doc-container .highlighter-rouge + .example
-  margin-top: $spacing-medium-rem
-
-#doc-container .page-sub-title
-  font-family: $typography-heading
 
 #doc-container .doc-anchor
   display: none
@@ -48,9 +23,17 @@
 #doc-container h6:hover .doc-anchor
   display: block
 
+#doc-container > .article > h1,
+#doc-container > .article > h2,
+#doc-container > .article > h3,
+#doc-container > .article > h4,
+#doc-container > .article > h5,
+#doc-container > .article > h6
+  font-weight: 400
+
 #doc-sub-nav
-  padding-top: $spacing-base-rem * 8.5
-  opacity: $opacity-muted
+  padding-top: baseline(9.5)
+  opacity: $opacity-more-muted
 
 #doc-sub-nav:hover
   opacity: $opacity-emphasis
@@ -58,44 +41,32 @@
 #doc-sub-nav .doc-sub-nav-item:hover
   color: $color-primary
 
-#doc-container .grid-example
-  padding-top: $spacing-small-rem
-  margin-top: $spacing-small-rem
-  margin-bottom: $spacing-small-rem
-  background: $color-dark
+#doc-container .article > h2
+  margin-top: baseline(3)
 
-#doc-container .grid-example [class^=col]
-  margin-bottom: $spacing-small-rem
-  box-shadow: inset 1px 1px 0 rgba($color-primary, $opacity-muted), inset -1px -1px 0 rgba($color-primary, $opacity-muted)
+#doc-container .article > h3 + .highlighter-rouge,
+#doc-container .article > h4 + .highlighter-rouge
+  margin-top: $spacing-small-rem
+
+#doc-container .highlighter-rouge + p
+  margin-top: - $spacing-small-rem
 
 #doc-container .example,
+#doc-container .button-example,
 #doc-container .form-example,
-#doc-container .background-example
+#doc-container .grid-example,
+#doc-container .background-example,
+#doc-container .typography-example
   margin-top: $spacing-small-rem
-  margin-bottom: $spacing-small-rem
 
-#doc-container .button-example
-  margin-top: $spacing-small-rem
+#doc-container .button-example,
+#doc-container .typography-example
+  margin-bottom: - $spacing-small-rem
 
 #doc-container .background-example
   display: flex
   flex-wrap: wrap
-
-#doc-container .background-example > div
-  margin: 0 1rem 1rem 0
-
-#doc-container .background-example > div > div
-  flex: 0 0 auto
-  width: 9rem
-  height: 4rem
-  border: solid 1px $line-color-main
-
-#doc-container .background-example > div > .p6
-  width: 9rem
-  white-space: nowrap
-  text-align: center
-  overflow: hidden
-
+  margin-bottom: - $spacing-medium-rem
 
 #doc-container .button-example > .btn,
 #doc-container .button-example > .btn-check,
@@ -107,19 +78,51 @@
 #doc-container .background-example > div
   margin-bottom: $spacing-small-rem
 
+#doc-container .grid-example
+  padding-top: $spacing-small-rem
+  background: $background-color-dark
+
+#doc-container .grid-example [class^=col]
+  margin-bottom: $spacing-small-rem
+  box-shadow: inset 1px 1px 0 rgba($color-primary, $opacity-muted), inset -1px -1px 0 rgba($color-primary, $opacity-muted)
+
+#doc-container .background-example > div
+  margin: 0 $spacing-small-rem $spacing-small-rem 0
+
+#doc-container .background-example > div > div
+  flex: 0 0 auto
+  width: baseline(9)
+  height: baseline(4)
+  border: solid 1px $line-color-muted
+
+#doc-container .background-example > div > .p7
+  width: baseline(9)
+  white-space: nowrap
+  text-align: center
+  overflow: hidden
+
 +media-width(m)
   #doc-aside
-    max-width: 18rem
-    min-width: 16rem
+    width: $doc-aside-min-width
+    max-width: $doc-aside-max-width
+    min-width: $doc-aside-min-width
+
+  #doc-aside .nav-logo img
+    width: baseline(9)
 
 +media-width(l)
+
   #doc-container
-    flex: 58rem 0 0
-    margin: 0 0 0 calc(50% - 9rem - 29rem - 8rem)
+    $value: $doc-aside-max-width + $doc-container-width / 2
+    flex: $doc-container-width 0 0
+    margin: 0 0 0 calc(50% - #{$value})
+
+  #doc-container .page-sub-title
+    margin-bottom: baseline(5)
 
   #doc-sub-nav
     max-width: 100%
     min-width: 0
 
   #doc-sub-nav .nav-items
-    max-width: 16rem
+    max-width: baseline(16)

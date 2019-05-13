@@ -10,13 +10,12 @@ and some texts like user name in the bottom.
 To create a vertical avatar, add the `.avatar-y` class to a container,
 then wrap an user photo with the `.media` class, wrap user information
 with the `.avatar-info` class.
-
 Let's see the below example for clarification.
 
 {% capture avatar_y %}
 <div class="avatar-y">
   <figure class="media">
-    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}">
+    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}" alt="avatar">
   </figure>
   <div class="avatar-info">
     <p class="avatar-name">Olivia Johnson</p>
@@ -37,7 +36,7 @@ with the `.avatar-x` class.
 {% capture avatar_x %}
 <div class="avatar-x">
   <figure class="media">
-    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}">
+    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}" alt="avatar">
   </figure>
   <div class="avatar-info">
     <p class="avatar-name">Olivia Johnson</p>
@@ -52,14 +51,14 @@ with the `.avatar-x` class.
 
 ## Style Mofifiers
 
-### Small{% include modifier.md %}
+### .avatar-small{% include modifier.md %}
 
 The `.avatar-small` class is used to make an avatar smaller.
 
 {% capture avatar_small %}
 <div class="avatar-y avatar-small">
   <figure class="media">
-    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}">
+    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}" alt="avatar">
   </figure>
   <div class="avatar-info">
     <p class="avatar-name">Olivia Johnson</p>
@@ -68,7 +67,7 @@ The `.avatar-small` class is used to make an avatar smaller.
 </div>
 <div class="avatar-x avatar-small">
   <figure class="media">
-    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}">
+    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}" alt="avatar">
   </figure>
   <div class="avatar-info">
     <p class="avatar-name">Olivia Johnson</p>
@@ -81,14 +80,14 @@ The `.avatar-small` class is used to make an avatar smaller.
 </div>
 ``` html{{ avatar_small }}```
 
-### Large{% include modifier.md %}
+### .avatar-large{% include modifier.md %}
 
 Oppsitely, the `.avatar-lager` class is used to make an avatar larger.
 
 {% capture avatar_large %}
 <div class="avatar-y avatar-large">
   <figure class="media">
-    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}">
+    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}" alt="avatar">
   </figure>
   <div class="avatar-info">
     <p class="avatar-name">Olivia Johnson</p>
@@ -97,7 +96,7 @@ Oppsitely, the `.avatar-lager` class is used to make an avatar larger.
 </div>
 <div class="avatar-x avatar-large">
   <figure class="media">
-    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}">
+    <img src="{{ '/assets/img/avatar.jpg' | relative_url }}" alt="avatar">
   </figure>
   <div class="avatar-info">
     <p class="avatar-name">Olivia Johnson</p>
@@ -115,43 +114,43 @@ Oppsitely, the `.avatar-lager` class is used to make an avatar larger.
 ### Size
 
 ``` sass
-  $avatar-image-size-rem: 3rem !default
+  $avatar-image-size-rem: baseline(4) !default
 ```
 
 ``` sass
-  $avatar-large-image-size-rem: 6rem !default
+  $avatar-large-image-size-rem: baseline(5) !default
 ```
 
 ``` sass
-  $avatar-small-image-size-rem: 2rem !default
+  $avatar-small-image-size-rem: baseline(3) !default
 ```
 
 ``` sass
-  $avatar-info-height-rem: 3rem !default
+  $avatar-info-height-rem: baseline(3) !default
 ```
 
 ``` sass
-  $avatar-info-padding-top-rem: 0.3rem !default
+  $avatar-info-padding-top-rem: $spacing-tiny-rem !default
 ```
 
 ``` sass
-  $avatar-info-padding-left-rem: 0.5rem !default
+  $avatar-info-padding-left-rem: $spacing-small-rem !default
 ```
 
 ``` sass
-  $avatar-large-info-height-rem: 4rem !default
+  $avatar-large-info-height-rem: null !default
 ```
 
 ``` sass
-  $avatar-large-info-padding-top-rem: 0.6rem !default
+  $avatar-large-info-padding-top-rem: null !default
 ```
 
 ``` sass
-  $avatar-large-info-padding-left-rem: 1rem !default
+  $avatar-large-info-padding-left-rem: null !default
 ```
 
 ``` sass
-  $avatar-small-info-height-rem: null !default
+  $avatar-small-info-height-rem: baseline(3) !default
 ```
 
 ``` sass
@@ -165,40 +164,40 @@ Oppsitely, the `.avatar-lager` class is used to make an avatar larger.
 ### Typography
 
 ``` sass
-  $avatar-name-typography-size-level: 5 !default
+  $avatar-name-typography-size-level: 6 !default
 ```
 
-The value must be an integer between 1 and 6.
+The value must be an integer between 5 and 8.
 
 ``` sass
-  $avatar-large-name-typography-size-level: 4 !default
+  $avatar-large-name-typography-size-level: 5 !default
 ```
 
-The value must be an integer between 1 and 6.
+The value must be an integer between 5 and 8.
 
 ``` sass
-  $avatar-small-name-typography-size-level: 6 !default
+  $avatar-small-name-typography-size-level: 7 !default
 ```
 
-The value must be an integer between 1 and 6.
+The value must be an integer between 5 and 8.
 
 ``` sass
-  $avatar-description-typography-size-level: 6 !default
+  $avatar-description-typography-size-level: 7 !default
 ```
 
-The value must be an integer between 1 and 6.
+The value must be an integer between 5 and 8.
 
 ``` sass
-  $avatar-large-description-typography-size-level: 5 !default
+  $avatar-large-description-typography-size-level: 6 !default
 ```
 
-The value must be an integer between 1 and 6.
+The value must be an integer between 5 and 8.
 
 ``` sass
-  $avatar-small-description-typography-size-level: null !default
+  $avatar-small-description-typography-size-level: 8 !default
 ```
 
-The value must be an integer between 1 and 6.
+The value must be an integer between 5 and 8.
 
 ### Others
 

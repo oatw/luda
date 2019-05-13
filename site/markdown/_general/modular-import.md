@@ -3,10 +3,10 @@ title: Modular Imports
 description: Luda is modular, you can import the components which you need in asset management tools.
 order: 6
 ---
-
+<!-- markdownlint-disable -->
 ## In Node.js Powered Apps
 
-### Theme Sass Modular Imports in Node.js
+Theme Sass Modular Imports in Node.js
 
 ``` sass
 // Import your custom variable overrides.
@@ -39,6 +39,7 @@ order: 6
 @import 'path_to_node_modules/luda/src/sass/default/elements/typography'
 // Theme Patterns
 @import 'path_to_node_modules/luda/src/sass/default/patterns/alert'
+@import 'path_to_node_modules/luda/src/sass/default/patterns/article'
 @import 'path_to_node_modules/luda/src/sass/default/patterns/avatar'
 @import 'path_to_node_modules/luda/src/sass/default/patterns/button-group'
 @import 'path_to_node_modules/luda/src/sass/default/patterns/button-icon'
@@ -70,8 +71,10 @@ order: 6
 @import 'path_to_node_modules/luda/src/sass/default/utilities/visibility'
 @import 'path_to_node_modules/luda/src/sass/default/utilities/z-index'
 ```
+{: .mt-none}
 
-### JavaScript Modular Imports in Node.js
+JavaScript Modular Imports in Node.js
+{: .mt-medium}
 
 ``` javascript
 // Behaviors
@@ -89,10 +92,11 @@ import 'luda/src/js/patterns/dropdown'
 import 'luda/src/js/patterns/form-dropdown'
 import 'luda/src/js/patterns/tab'
 ```
+{: .mt-small}
 
 ## In Ruby on Rails Apps
 
-### Theme Sass Modular Imports in Ruby on Rails
+Theme Sass Modular Imports in Ruby on Rails
 
 ``` sass
 // Import your custom variable overrides.
@@ -125,6 +129,7 @@ import 'luda/src/js/patterns/tab'
 @import luda/default/elements/typography
 //Theme Patterns
 @import luda/default/patterns/alert
+@import luda/default/patterns/article
 @import luda/default/patterns/avatar
 @import luda/default/patterns/breadcrumb
 @import luda/default/patterns/button-group
@@ -157,8 +162,10 @@ import 'luda/src/js/patterns/tab'
 @import luda/default/utilities/visibility
 @import luda/default/utilities/z-index
 ```
+{: .mt-small}
 
-### JavaScript Modular Imports in Ruby on Rails
+JavaScript Modular Imports in Ruby on Rails
+{: .mt-medium}
 
 ``` javascript
 // Behaviors
@@ -176,15 +183,11 @@ import 'luda/src/js/patterns/tab'
 //= require luda/patterns/form-dropdown
 //= require luda/patterns/tab
 ```
+{: .mt-small}
 
 ## In Hanami Apps
 
-### Theme Sass Modular Imports in Hanami
-
 Sass modular imports in Hanami are the same as in Ruby on Rails.
-
-### JavaScript Modular Imports in Hanami
-
 Hanami team is considering add Webpack support in v2,
 but before that you have to manually handle Javascript dependencies
 if thirdparty assets management gems not installed.

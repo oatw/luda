@@ -8,26 +8,26 @@ description: Luda supports most modern browsers, for browsers not supported,
 ## Supported Browsers
 
 <!-- markdownlint-disable -->
-<div class="d-flex fw-wrap mt-small">
+<div class="d-flex fw-wrap mb-none">
   <div class="mr-small ta-center">
-    <img width="50" height="50" src="{{ '/assets/img/chrome.svg' | relative_url }}" alt="chrome">
-    <p class="p6">Latest Versions</p>
+    <img width="48" height="48" src="{{ '/assets/img/chrome.svg' | relative_url }}" alt="chrome">
+    <p class="p7">latest versions</p>
   </div>
   <div class="mr-small ta-center">
-    <img width="50" height="50" src="{{ '/assets/img/firefox.svg' | relative_url }}" alt="firefox">
-    <p class="p6">Latest Versions</p>
+    <img width="48" height="48" src="{{ '/assets/img/firefox.svg' | relative_url }}" alt="firefox">
+    <p class="p7">latest versions</p>
   </div>
   <div class="mr-small ta-center">
-    <img width="50" height="50" src="{{ '/assets/img/safari.svg' | relative_url }}" alt="safari">
-    <p class="p6">Latest Versions</p>
+    <img width="48" height="48" src="{{ '/assets/img/safari.svg' | relative_url }}" alt="safari">
+    <p class="p7">latest versions</p>
   </div>
   <div class="mr-small ta-center">
-    <img width="50" height="50" src="{{ '/assets/img/opera.svg' | relative_url }}" alt="opera">
-    <p class="p6">Latest Versions</p>
+    <img width="48" height="48" src="{{ '/assets/img/opera.svg' | relative_url }}" alt="opera">
+    <p class="p7">latest versions</p>
   </div>
   <div class="mr-small ta-center">
-    <img width="50" height="50" src="{{ '/assets/img/edge.svg' | relative_url }}" alt="edge">
-    <p class="p6">Latest Versions</p>
+    <img width="48" height="48" src="{{ '/assets/img/edge.svg' | relative_url }}" alt="edge">
+    <p class="p7">latest versions</p>
   </div>
 </div>
 <!-- markdownlint-enable -->
@@ -64,20 +64,26 @@ If you use assets bundlers to import the degeradation script,
 make sure it's bundled as a standalone file.
 {: .c-danger}
 
-### Import in Node.js Apps
+<!-- markdownlint-disable -->
+Import in Node.js Apps
 
 ``` javascript
 import 'luda/src/js/degeradation'
 ```
+{: .mt-small}
 
-### Import in Ruby on Rails Apps
+Import in Ruby on Rails Apps
+{: .mt-medium}
 
 ``` javascript
 //= require luda-degeradation
 ```
+{: .mt-small}
 
-### Import in Hanami Apps
+Import in Hanami Apps
+{: .mt-medium}
 
 ``` erb
 <% javascript 'luda-degeradation' %>
 ```
+{: .mt-small}

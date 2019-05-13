@@ -123,7 +123,11 @@ $alert-padding-rem: $spacing-small-rem !default
 ```
 
 ``` sass
-$alert-action-margin-left-rem: $spacing-small-rem !default
+$alert-action-margin-rem: null !default
+```
+
+``` sass
+$alert-content-margin-rem: 0 $spacing-small-rem !default
 ```
 
 ### Others

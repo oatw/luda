@@ -11,14 +11,12 @@ then wrap contents inside.
 {% capture modal %}
 <div class="modal">
   <h4>Confirm Your Operation</h4>
-  <p>
+  <p class="mb-small">
     Do you really want to delete this article?
     This operation is permanent, think twice.
   </p>
-  <div class="btns-x btns-margin mt-small">
-    <button class="btn btn-primary">Yes, delete it!</button>
-    <button class="btn btn-secondary">No, give up.</button>
-  </div>
+  <button class="btn btn-primary mr-small">Yes, delete it!</button>
+  <button class="btn btn-secondary">No, give up.</button>
 </div>
 {% endcapture %}
 <div class="example">
@@ -32,6 +30,7 @@ We can combine the modal component with the overlay component
 and the toggle behavior to make the modal more powerful.
 Let's see the below example.
 
+<!-- markdownlint-disable -->
 {% capture modal_toggle %}
 <button class="btn btn-danger" data-toggle-for="delete_confirmation">
   Delete this article
@@ -40,14 +39,14 @@ Let's see the below example.
   <div class="overlay-body">
     <div class="modal" data-toggle-disabled>
       <h4>Are You Serious?</h4>
-      <p>This operation is permanent, password must be entered to confirm.</p>
-      <div class="fm fm-text">
-        <input type="password" placeholder="Enter password">
+      <div class="fm-group mb-medium">
+        <label class="fm-label" for="pwd">This operation is permanent, password must be entered to confirm.</label>
+        <div class="fm fm-text">
+          <input type="password" id="pwd" name="pwd" placeholder="E.g., Mypassword@12345">
+        </div>        
       </div>
-      <div class="btns-x btns-margin mt-medium" data-toggle>
-        <button class="btn btn-primary">Yes, delete it!</button>
-        <button class="btn btn-secondary">No, give up.</button>
-      </div>
+      <button class="btn btn-primary mr-small" data-toggle>Yes, delete it!</button>
+      <button class="btn btn-secondary" data-toggle>No, give up.</button>
     </div>
   </div>
 </div>
@@ -56,6 +55,7 @@ Let's see the below example.
   {{ modal_toggle }}
 </div>
 ``` html{{ modal_toggle }}```
+<!-- markdownlint-enable -->
 
 ## Sass Variables
 
@@ -66,11 +66,11 @@ $modal-padding-rem: $spacing-medium-rem !default
 ```
 
 ``` sass
-$modal-in-overlay-max-width-rem: 46.153846rem !default
+$modal-in-overlay-max-width-rem: px-to-rem(640px) !default
 ```
 
 ``` sass
-$modal-in-overlay-min-width-rem: 24.615384rem !default
+$modal-in-overlay-min-width-rem: px-to-rem(320px) !default
 ```
 
 ### Others

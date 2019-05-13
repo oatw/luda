@@ -66,6 +66,7 @@ All built-in CSS icons are listed in the below gallery.
 <i class="ico ico-menu"></i>
 <i class="ico ico-search"></i>
 ```
+{: .mt-none}
 <!-- markdownlint-enable -->
 
 ## Font Icons
@@ -87,6 +88,7 @@ CSS icons. Let's see the below example for clarification.
 <!-- Add the .ico class and the material icon class .material-icons together. -->
 <i class="ico material-icons">backspace</i>
 ```
+{: .mt-none}
 <!-- markdownlint-enable -->
 
 ## Svg Icons and Icon Sprites
@@ -102,16 +104,17 @@ which may be included in your projects.
     svg icon
   </span>
 </p>
-<!-- markdownlint-enable -->
 
 ``` html
 <svg class="ico" viewBox="...">...</svg>
 ```
+{: .mt-none}
 
+<!-- markdownlint-enable -->
 ## Sass Variables
 
 ``` sass
-$icon-size-em: 1.15em !default
+$icon-size-em: 1em !default
 ```
 
 ``` sass

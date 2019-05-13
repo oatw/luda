@@ -12,7 +12,7 @@ When you pick up a color class, consider the meaning in your context
 but not only the appearance, since in different themes colors may be
 changed but the meanings are the same.
 
-<div class="example d-flex fw-wrap mt-none">
+<div class="example d-flex fw-wrap my-none">
   <p class="mr-small c-primary">.c-primary</p>
   <p class="mr-small c-secondary">.c-secondary</p>
   <p class="mr-small c-danger">.c-danger</p>
@@ -26,6 +26,7 @@ changed but the meanings are the same.
   <p class="mr-small c-inverse-muted"><span class="px-tiny bc-inverse-main">.c-inverse-muted</span></p>
 </div>
 
+<!-- markdownlint-disable -->
 ``` html
 <p class="c-primary"></p>
 <p class="c-secondary"></p>
@@ -39,6 +40,8 @@ changed but the meanings are the same.
 <p class="c-inverse-main"></p>
 <p class="c-inverse-muted"></p>
 ```
+{: .mt-small}
+<!-- markdownlint-enable -->
 
 ## Sass Variables
 

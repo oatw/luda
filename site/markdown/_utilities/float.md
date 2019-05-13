@@ -11,7 +11,7 @@ they are responsive and named using the format:
 `.f-{value}-{postfix}`. The value can be one of `left`, `right` and `none`.
 To clear float, use the `.clear` class.
 
-## Example
+## Examples
 
 {% capture float %}
 <div class="clear bc-dark">

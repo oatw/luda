@@ -120,7 +120,7 @@ you can preview the effects in the below example.
 
 ## HTML Attributes
 
-### data-carousel-interval="milliseconds | false"
+### data-carousel-interval
 
 ``` html
 <div class="carousel" data-carousel-interval="10000">...</div>
@@ -135,7 +135,7 @@ The interval time is 5000 milliseconds by default.
 
 Disable the auto-play function.
 
-### data-carousel-wrap="false"
+### data-carousel-wrap
 
 ``` html
 <div class="carousel" data-carousel-wrap="false">...</div>

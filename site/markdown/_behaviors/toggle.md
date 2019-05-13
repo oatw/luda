@@ -8,7 +8,6 @@ description: Quickly show or hide elements without writting any Javascript code.
 It's a very common situation to show or hide an element dynamically
 in front-end development. Toggle behavior helps you to do this
 without having to write Javascript codes.
-
 Let's see the below examples for clarification.
 
 ## Examples
@@ -49,7 +48,7 @@ in the target, so when the disabled area clicked, the target will not be hided.
 
 ## HTML Attributes
 
-### data-toggle-target="name"
+### data-toggle-target
 
 ``` html
 <div data-toggle-target="demo"></div>
@@ -57,7 +56,7 @@ in the target, so when the disabled area clicked, the target will not be hided.
 
 Define a target.
 
-### data-toggle-for="name"
+### data-toggle-for
 
 ``` html
 <div data-toggle-for="demo"></div>

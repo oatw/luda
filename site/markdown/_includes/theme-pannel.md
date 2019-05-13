@@ -5,13 +5,13 @@
 
   <div class="btns-x btns-margin jc-end" data-toggle-target="change_theme">
     {% for theme_name in site.luda.themes %}
-    <div class="btn-radio btn-hollow-dark bc-main circle">
+    <div class="theme-pannel-option btn-radio btn-hollow-dark bc-main circle">
       {% if theme_name == theme %}
       <input class="change-theme" checked type="radio" name="theme_pannel_apply_theme" value="{{ theme_name }}">
       {% else %}
       <input class="change-theme" type="radio" name="theme_pannel_apply_theme" value="{{ theme_name }}">
       {% endif %}
-      <label class="bd-none circle sd-high">Theme {{ theme_name }}</label>
+      <label class="bd-none circle sd-high tt-cap">Theme {{ theme_name }}</label>
     </div>
     {% endfor %}
     <div class="btn btn-light btn-ico circle sd-high" data-toggle data-toggle-for="change_theme_trigger">
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <button class="btn btn-ico-left btn-dark toggle-active mb-small mr-small circle sd-high" data-toggle-for="change_theme" data-toggle-target="change_theme_trigger" data-toggle>
+  <button class="theme-pannel-trigger btn btn-ico-left btn-dark toggle-active mb-small mr-small circle sd-high" data-toggle-for="change_theme" data-toggle-target="change_theme_trigger" data-toggle>
     <i class="ico material-icons">brush</i>
     Change Theme
   </button>

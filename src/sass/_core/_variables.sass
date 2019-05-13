@@ -5,28 +5,6 @@
 
 
 // global variables
-$breakpoint-width-pxs:        (s: 0, m: 768px, l: 1200px) !default
-$breakpoint-aspect-ratios:    (p: 0, l: 1.0001) !default
-$breakpoint-resolutions:      (l: 0, h: 105.6dpi, xh: 201.6dpi) !default
-
-
-$spacing-base-rem:      1rem !default
-$spacing-tiny-rem:      $spacing-base-rem / 2 !default
-$spacing-small-rem:     $spacing-base-rem !default
-$spacing-medium-rem:    $spacing-base-rem * 2 !default
-$spacing-large-rem:     $spacing-base-rem * 4 !default
-
-
-
-$z-index-low:             -1 !default
-$z-index-normal:          0 !default
-$z-index-high:            1 !default
-$z-index-higher:          2 !default
-$z-index-much-higher:     3 !default
-$z-index-highest:         4 !default
-
-
-
 $opacity-emphasis:      1 !default
 $opacity-main:          0.9 !default
 $opacity-muted:         0.618 !default
@@ -39,11 +17,11 @@ $opacity-disabled:      $opacity-muted
 $color-primary:             hsba(340, 54, 98) !default
 $color-secondary:           hsba(0, 0, 56) !default
 $color-danger:              hsba(0, 82, 82) !default
-$color-dark:                hsba(0, 0, 32) !default
+$color-dark:                hsba(0, 0, 12) !default
 $color-light:               hsba(0, 0, 100) !default
 $color-emphasis:            $color-dark !default
 $color-main:                lighten($color-dark, 10%) !default
-$color-muted:               lighten($color-dark, 50%) !default
+$color-muted:               lighten($color-dark, 60%) !default
 $color-inverse-emphasis:    $color-light !default
 $color-inverse-main:        rgba($color-light, $opacity-main) !default
 $color-inverse-muted:       rgba($color-light, $opacity-muted) !default
@@ -53,7 +31,7 @@ $color-inverse-muted:       rgba($color-light, $opacity-muted) !default
 $background-color-primary:             $color-primary !default
 $background-color-secondary:           lighten($color-secondary, 30%) !default
 $background-color-danger:              $color-danger !default
-$background-color-dark:                $color-dark !default
+$background-color-dark:                lighten($color-dark, 10%) !default
 $background-color-light:               $color-light !default
 $background-color-muted:               darken($background-color-light, 3%) !default
 $background-color-emphasis:            lighten($background-color-primary, 22%) !default
@@ -70,15 +48,12 @@ $line-color-danger:              $color-danger !default
 $line-color-dark:                $color-dark !default
 $line-color-light:               $color-light !default
 $line-color-emphasis:            $line-color-primary !default
-$line-color-main:                lighten($line-color-dark, 60%) !default
-$line-color-muted:               lighten($line-color-dark, 40%) !default
+$line-color-main:                darken($line-color-light, 30%) !default
+$line-color-muted:               darken($line-color-light, 8%) !default
 $line-color-inverse-emphasis:    $line-color-primary !default
 $line-color-inverse-main:        rgba($line-color-light, $opacity-main) !default
 $line-color-inverse-muted:       rgba($line-color-light, $opacity-muted) !default
-
-
-
-$line-width-main:    1px !default
+$line-width-main:                1px !default
 
 
 
@@ -104,11 +79,44 @@ $text-shadow-high:           null !default
 
 
 
-$transition-duration-short:     0.25s !default
-$transition-duration-normal:    0.5s !default
-$transition-duration-long:      1s !default
-
+$transition-duration-short:          0.25s !default
+$transition-duration-normal:         0.5s !default
+$transition-duration-long:           1s !default
 $transition-timing-function-main:    ease !default
+
+
+
+$baseline-height-px:          12px !default
+$breakpoint-width-pxs:        (s: 0, m: 768px, l: 1200px) !default
+$breakpoint-aspect-ratios:    (p: 0, l: 1.0001) !default
+$breakpoint-resolutions:      (l: 0, h: 105.6dpi, xh: 201.6dpi) !default
+
+
+
+$typography-baseline-divided:                    false !default
+$typography-size-scale-ratio:                    constant-get(scale-ratios, major-second) !default
+$typography-main:                                constant-get(typography-stacks, sans-serif) !default
+$typography-main-baseline-offset-ratio:          constant-get(baseline-offset-ratios, "Helvetica Neue") !default
+$typography-main-size-px:                        16px !default
+$typography-main-expected-line-height-ratios:    (1.3, 1.5, 1.5, 1.5) !default
+$typography-main-color:                          $color-main !default
+
+
+
+$spacing-tiny-rem:      baseline(0.5) !default
+$spacing-small-rem:     baseline(1) !default
+$spacing-medium-rem:    baseline(2) !default
+$spacing-large-rem:     baseline(4) !default
+
+
+
+$z-index-low:             -1 !default
+$z-index-normal:          0 !default
+$z-index-high:            1 !default
+$z-index-higher:          2 !default
+$z-index-much-higher:     3 !default
+$z-index-highest:         4 !default
+
 
 
 // variables for base
@@ -141,31 +149,29 @@ $base-selection-background-color:    $background-color-dark !default
 // variables for behaviors
 $focus-outline-style:        dashed !default
 $focus-outline-width-px:     2px !default
-$focus-outline-color:        $line-color-muted !default
+$focus-outline-color:        $line-color-main !default
 $focus-outline-offset-px:    - $focus-outline-width-px !default
 
 
 
 // variables for elements
-$badge-offset-top-em:     -0.4em !default
-$badge-offset-left-em:    0.4em !default
-$badge-height-em:         1.2em !default
-$badge-padding-em:        0.4em !default
-$badge-background:        $background-color-primary !default
-$badge-color:             $color-inverse-emphasis !default
+$badge-margin-left-em:           0.5em !default
+$badge-horizontal-padding-em:    0.4em !default
+$badge-background:               $background-color-primary !default
+$badge-color:                    $color-inverse-emphasis !default
 
 
 
-$button-height-rem:                     3rem !default
-$button-small-height-rem:               2rem !default
-$button-large-height-rem:               4rem !default
-$button-horizontal-padding-em:          strip-unit($spacing-small-rem) * 1em !default
-$button-typography-size-level:          5 !default
-$button-small-typography-size-level:    6 !default
-$button-large-typography-size-level:    4 !default
-$button-border-width:                   $line-width-main !default
-$button-border-style:                   solid !default
-$button-border-radius:                  $border-radius-main !default
+$button-height-rem:                      baseline(3) !default
+$button-small-height-rem:                baseline(2) !default
+$button-large-height-rem:                baseline(4) !default
+$button-horizontal-padding-em:           0.6875em !default
+$button-typography-size-level:           6 !default
+$button-small-typography-size-level:     7 !default
+$button-large-typography-size-level:     5 !default
+$button-border-width:                    $line-width-main !default
+$button-border-style:                    solid !default
+$button-border-radius:                   $border-radius-main !default
 
 
 
@@ -245,13 +251,13 @@ $button-light-active-box-shadow:      $button-light-box-shadow !default
 
 
 $button-hollow-primary-color:                  $color-primary !default
-$button-hollow-primary-hover-color:            existing($button-primary-hover-color, $button-primary-color) !default
-$button-hollow-primary-active-color:           existing($button-primary-active-color, $button-hollow-primary-hover-color) !default
-$button-hollow-primary-hover-background:       existing($button-primary-hover-background, $button-primary-background) !default
-$button-hollow-primary-active-background:      existing($button-primary-active-background, $button-hollow-primary-hover-background) !default
+$button-hollow-primary-hover-color:            null !default
+$button-hollow-primary-active-color:           existing($button-primary-active-color, $button-primary-hover-color, $button-primary-color) !default
+$button-hollow-primary-hover-background:       rgba($background-color-primary, $opacity-most-muted) !default
+$button-hollow-primary-active-background:      existing($button-primary-active-background, $button-primary-hover-background, $button-primary-background) !default
 $button-hollow-primary-border-color:           null !default
-$button-hollow-primary-hover-border-color:     existing($button-primary-hover-border-color, $button-primary-border-color, transparent) !default
-$button-hollow-primary-active-border-color:    existing($button-primary-active-border-color, $button-hollow-primary-hover-border-color) !default
+$button-hollow-primary-hover-border-color:     null !default
+$button-hollow-primary-active-border-color:    existing($button-primary-active-border-color, $button-primary-hover-border-color, $button-primary-border-color, transparent) !default
 $button-hollow-primary-box-shadow:             $button-primary-box-shadow !default
 $button-hollow-primary-hover-box-shadow:       $button-primary-hover-box-shadow !default
 $button-hollow-primary-active-box-shadow:      $button-primary-active-box-shadow !default
@@ -259,13 +265,13 @@ $button-hollow-primary-active-box-shadow:      $button-primary-active-box-shadow
 
 
 $button-hollow-secondary-color:                  $color-main !default
-$button-hollow-secondary-hover-color:            existing($button-secondary-hover-color, $button-secondary-color) !default
-$button-hollow-secondary-active-color:           existing($button-secondary-active-color, $button-hollow-secondary-hover-color) !default
-$button-hollow-secondary-hover-background:       existing($button-secondary-hover-background, $button-secondary-background) !default
-$button-hollow-secondary-active-background:      existing($button-secondary-active-background, $button-hollow-secondary-hover-background) !default
+$button-hollow-secondary-hover-color:            null !default
+$button-hollow-secondary-active-color:           existing($button-secondary-active-color, $button-secondary-hover-color, $button-secondary-color) !default
+$button-hollow-secondary-hover-background:       rgba($background-color-secondary, $opacity-more-muted) !default
+$button-hollow-secondary-active-background:      existing($button-secondary-active-background, $button-secondary-hover-background, $button-secondary-background) !default
 $button-hollow-secondary-border-color:           $line-color-secondary !default
-$button-hollow-secondary-hover-border-color:     existing($button-secondary-hover-border-color, $button-secondary-border-color, transparent) !default
-$button-hollow-secondary-active-border-color:    existing($button-secondary-active-border-color, $button-hollow-secondary-hover-border-color) !default
+$button-hollow-secondary-hover-border-color:     null !default
+$button-hollow-secondary-active-border-color:    existing($button-secondary-active-border-color, $button-secondary-hover-border-color, $button-secondary-border-color, transparent) !default
 $button-hollow-secondary-box-shadow:             $button-secondary-box-shadow !default
 $button-hollow-secondary-hover-box-shadow:       $button-secondary-hover-box-shadow !default
 $button-hollow-secondary-active-box-shadow:      $button-secondary-active-box-shadow !default
@@ -273,13 +279,13 @@ $button-hollow-secondary-active-box-shadow:      $button-secondary-active-box-sh
 
 
 $button-hollow-danger-color:                  $color-danger !default
-$button-hollow-danger-hover-color:            existing($button-danger-hover-color, $button-danger-color) !default
-$button-hollow-danger-active-color:           existing($button-danger-active-color, $button-hollow-danger-hover-color) !default
-$button-hollow-danger-hover-background:       existing($button-danger-hover-background, $button-danger-background) !default
-$button-hollow-danger-active-background:      existing($button-danger-active-background, $button-hollow-danger-hover-background) !default
+$button-hollow-danger-hover-color:            null !default
+$button-hollow-danger-active-color:           existing($button-danger-active-color, $button-danger-hover-color, $button-danger-color) !default
+$button-hollow-danger-hover-background:       rgba($background-color-danger, $opacity-most-muted) !default
+$button-hollow-danger-active-background:      existing($button-danger-active-background, $button-danger-hover-background, $button-danger-background) !default
 $button-hollow-danger-border-color:           null !default
-$button-hollow-danger-hover-border-color:     existing($button-danger-hover-border-color, $button-danger-border-color, transparent) !default
-$button-hollow-danger-active-border-color:    existing($button-danger-active-border-color, $button-hollow-danger-hover-border-color) !default
+$button-hollow-danger-hover-border-color:     null !default
+$button-hollow-danger-active-border-color:    existing($button-danger-active-border-color, $button-danger-hover-border-color, $button-danger-border-color, transparent) !default
 $button-hollow-danger-box-shadow:             $button-danger-box-shadow !default
 $button-hollow-danger-hover-box-shadow:       $button-danger-hover-box-shadow !default
 $button-hollow-danger-active-box-shadow:      $button-danger-active-box-shadow !default
@@ -287,13 +293,13 @@ $button-hollow-danger-active-box-shadow:      $button-danger-active-box-shadow !
 
 
 $button-hollow-dark-color:                  $color-dark !default
-$button-hollow-dark-hover-color:            existing($button-dark-hover-color, $button-dark-color) !default
-$button-hollow-dark-active-color:           existing($button-dark-active-color, $button-hollow-dark-hover-color) !default
-$button-hollow-dark-hover-background:       existing($button-dark-hover-background, $button-dark-background) !default
-$button-hollow-dark-active-background:      existing($button-dark-active-background, $button-hollow-dark-hover-background) !default
+$button-hollow-dark-hover-color:            null !default
+$button-hollow-dark-active-color:           existing($button-dark-active-color, $button-dark-hover-color, $button-dark-color) !default
+$button-hollow-dark-hover-background:       rgba($background-color-dark, $opacity-most-muted) !default
+$button-hollow-dark-active-background:      existing($button-dark-active-background, $button-dark-hover-background, $button-dark-background) !default
 $button-hollow-dark-border-color:           null !default
-$button-hollow-dark-hover-border-color:     existing($button-dark-hover-border-color, $button-dark-border-color, transparent) !default
-$button-hollow-dark-active-border-color:    existing($button-dark-active-border-color, $button-hollow-dark-hover-border-color) !default
+$button-hollow-dark-hover-border-color:     null !default
+$button-hollow-dark-active-border-color:    existing($button-dark-active-border-color, $button-dark-hover-border-color, $button-dark-border-color, transparent) !default
 $button-hollow-dark-box-shadow:             $button-dark-box-shadow !default
 $button-hollow-dark-hover-box-shadow:       $button-dark-hover-box-shadow !default
 $button-hollow-dark-active-box-shadow:      $button-dark-active-box-shadow !default
@@ -301,13 +307,13 @@ $button-hollow-dark-active-box-shadow:      $button-dark-active-box-shadow !defa
 
 
 $button-hollow-light-color:                  $color-light !default
-$button-hollow-light-hover-color:            existing($button-light-hover-color, $button-light-color) !default
-$button-hollow-light-active-color:           existing($button-light-active-color, $button-hollow-light-hover-color) !default
-$button-hollow-light-hover-background:       existing($button-light-hover-background, $button-light-background) !default
-$button-hollow-light-active-background:      existing($button-light-active-background, $button-hollow-light-hover-background) !default
+$button-hollow-light-hover-color:            null !default
+$button-hollow-light-active-color:           existing($button-light-active-color, $button-light-hover-color, $button-light-color) !default
+$button-hollow-light-hover-background:       rgba($background-color-light, $opacity-most-muted) !default
+$button-hollow-light-active-background:      existing($button-light-active-background, $button-light-hover-background, $button-light-background) !default
 $button-hollow-light-border-color:           null !default
-$button-hollow-light-hover-border-color:     existing($button-light-hover-border-color, $button-light-border-color, transparent) !default
-$button-hollow-light-active-border-color:    existing($button-light-active-border-color, $button-hollow-light-hover-border-color) !default
+$button-hollow-light-hover-border-color:     null !default
+$button-hollow-light-active-border-color:    existing($button-light-active-border-color, $button-light-hover-border-color, $button-light-border-color, transparent) !default
 $button-hollow-light-box-shadow:             $button-light-box-shadow !default
 $button-hollow-light-hover-box-shadow:       $button-light-hover-box-shadow !default
 $button-hollow-light-active-box-shadow:      $button-light-active-box-shadow !default
@@ -359,26 +365,26 @@ $button-text-light-active-text-shadow:    null !default
 
 
 
-$container-max-width-rem:    105.076923rem !default
+$container-max-width-rem:    px-to-rem(1366px) !default
 $container-padding-rem:      $spacing-medium-rem $spacing-small-rem !default
 
 
 
-$form-label-typography-size-level:          5 !default
-$form-label-small-typography-size-level:    6 !default
-$form-label-large-typography-size-level:    4 !default
-$form-label-color:                          $color-emphasis !default
+$form-label-typography-size-level:          6 !default
+$form-label-small-typography-size-level:    7 !default
+$form-label-large-typography-size-level:    5 !default
+$form-label-color:                          null !default
 $form-label-required-content:               " | Required" !default
 $form-label-required-color:                 $color-danger !default
 
 
 
-$form-element-inline-width-rem:               18rem !default
-$form-element-small-inline-width-rem:         14rem !default
-$form-element-large-inline-width-rem:         22rem !default
-$form-element-typography-size-level:          5 !default
-$form-element-small-typography-size-level:    6 !default
-$form-element-large-typography-size-level:    4 !default
+$form-element-inline-width-rem:               baseline(22) !default
+$form-element-small-inline-width-rem:         baseline(18) !default
+$form-element-large-inline-width-rem:         baseline(26) !default
+$form-element-typography-size-level:          6 !default
+$form-element-small-typography-size-level:    7 !default
+$form-element-large-typography-size-level:    5 !default
 $form-element-color:                          $color-main !default
 $form-element-color-on-error:                 null !default
 $form-element-color-on-focus:                 null !default
@@ -388,43 +394,43 @@ $form-element-background-on-error:            null !default
 $form-element-border-width:                   $line-width-main !default
 $form-element-border-style:                   solid !default
 $form-element-border-radius:                  $border-radius-main !default
-$form-element-border-color:                   $line-color-main !default
+$form-element-border-color:                   $line-color-muted !default
 $form-element-border-color-on-error:          $line-color-danger !default
 $form-element-border-color-on-focus:          $line-color-primary !default
 $form-element-box-shadow:                     null !default
 $form-element-box-shadow-on-focus:            null !default
 $form-element-box-shadow-on-error:            null !default
-$form-element-icon-size-em:                   1.286em !default
-$form-element-icon-color:                     $form-element-border-color !default
+$form-element-icon-size-em:                   null !default
+$form-element-icon-color:                     lighten($color-muted, 10%) !default
 $form-element-icon-color-on-error:            $form-element-border-color-on-error !default
 $form-element-icon-color-on-focus:            $form-element-border-color-on-focus !default
 
 
 
-$form-element-horizontal-padding-em:             strip-unit($spacing-small-rem) * 1em !default
-$form-element-height-rem:                        3rem !default
-$form-element-small-height-rem:                  2rem !default
-$form-element-large-height-rem:                  4rem !default
-$form-element-multiple-rows-height-rem:          9rem !default
-$form-element-multiple-rows-small-height-rem:    6rem !default
-$form-element-multiple-rows-large-height-rem:    12rem !default
+$form-element-horizontal-padding-em:             0.6875em !default
+$form-element-height-rem:                        baseline(3) !default
+$form-element-small-height-rem:                  baseline(2) !default
+$form-element-large-height-rem:                  baseline(4) !default
+$form-element-multiple-rows-height-rem:          $form-element-height-rem * 3 !default
+$form-element-multiple-rows-small-height-rem:    $form-element-small-height-rem * 3 !default
+$form-element-multiple-rows-large-height-rem:    $form-element-large-height-rem * 3 !default
 
 
 
-$form-element-checkfield-size-em:             1.4em !default
+$form-element-checkfield-size-em:             1.25em !default
 $form-element-checked-icon-color:             $form-element-color !default
 $form-element-checked-icon-color-on-error:    null !default
 $form-element-checked-icon-color-on-focus:    null !default
 
 
 
-$form-element-track-height-em:                0.4em !default
-$form-element-track-background:               darken($background-color-muted, 4%) !default !default
+$form-element-track-height-em:                0.25em !default
+$form-element-track-background:               darken($background-color-muted, 5%) !default
 $form-element-track-background-on-focus:      null !default
 $form-element-track-background-on-error:      null !default
 $form-element-track-border-radius:            $border-radius-main !default
-$form-element-thumb-height-em:                1.4em !default
-$form-element-thumb-width-em:                 1.4em !default
+$form-element-thumb-width-em:                 1.25em !default
+$form-element-thumb-height-em:                $form-element-thumb-width-em !default
 $form-element-thumb-background:               $form-element-track-background !default
 $form-element-thumb-background-on-error:      null !default
 $form-element-thumb-background-on-focus:      $background-color-primary !default
@@ -435,9 +441,10 @@ $form-element-thumb-border-color-on-focus:    null !default
 
 
 
-$form-helper-typography-size-level:          6 !default
+$form-helper-margin-rem:                     null !default
+$form-helper-typography-size-level:          7 !default
 $form-helper-small-typography-size-level:    null !default
-$form-helper-large-typography-size-level:    5 !default
+$form-helper-large-typography-size-level:    6 !default
 $form-hint-color:                            $color-muted !default
 $form-error-color:                           $color-danger !default
 $form-placeholder-color:                     $color-muted !default
@@ -458,9 +465,14 @@ $grid-gutter-width-rem:    $spacing-medium-rem !default
 
 
 
-$icon-size-em:                1.15em !default
-$icon-stroke-width:           2px !default
-$icon-firefox-line-height:    1.11 !default
+$icon-size-em:         1em !default
+$icon-stroke-width:    2px !default
+
+
+
+$media-content-aspect-ratio:    16 / 9 !default
+$media-border-radius:           $border-radius-main !default
+$media-background-color:        $background-color-muted !default
 
 
 
@@ -468,10 +480,10 @@ $overlay-background:    rgba($background-color-dark, $opacity-main) !default
 
 
 
-$progress-height-rem:                   2rem !default
+$progress-height-rem:                   baseline(2) !default
 $progress-border-radius:                $border-radius-main !default
 $progress-background:                   $background-color-muted !default
-$progress-bar-typography-size-level:    6 !default
+$progress-bar-typography-size-level:    7 !default
 $progress-bar-min-width-em:             3em !default
 $progress-bar-padding:                  0 $spacing-tiny-rem !default
 $progress-bar-background:               $background-color-primary !default
@@ -480,10 +492,10 @@ $progress-bar-color:                    $color-inverse-main !default
 
 
 $scrollbar-width-breakpoint:                    m !default
-$scrollbar-breakpoint-vertical-width-rem:       0.5rem !default
-$scrollbar-breakpoint-horizontal-height-rem:    0.5rem !default
+$scrollbar-breakpoint-vertical-width-rem:       $spacing-tiny-rem !default
+$scrollbar-breakpoint-horizontal-height-rem:    $scrollbar-breakpoint-vertical-width-rem !default
 $scrollbar-thumb-background:                    rgba($color-muted, $opacity-more-muted) !default
-$scrollbar-thumb-border-radius:                 0.5rem !default
+$scrollbar-thumb-border-radius:                 $scrollbar-breakpoint-vertical-width-rem !default
 $scrollbar-edge-overflow-style:                 -ms-autohiding-scrollbar !default
 
 
@@ -491,7 +503,7 @@ $scrollbar-edge-overflow-style:                 -ms-autohiding-scrollbar !defaul
 $table-cell-padding-rem:        $spacing-small-rem !default
 $table-border-style:            solid !default
 $table-border-width:            $line-width-main !default
-$table-border-color:            $line-color-main !default
+$table-border-color:            $line-color-muted !default
 $table-border-radius:           $border-radius-main !default
 $table-head-background:         $background-color-muted !default
 $table-head-color:              $color-emphasis !default
@@ -503,39 +515,39 @@ $table-row-hover-color:         null !default
 
 
 
-$typography-size-scale-ratio:    constant-get(scale-ratios, minor-third) !default
+
+$typography-heading:                                null !default
+$typography-heading-baseline-offset-ratio:          $typography-main-baseline-offset-ratio !default
+$typography-heading-expected-line-height-ratios:    (1.2, 1.2, 1.2, 1, 1, 1) !default
+$typography-heading-color:                          null !default
+$typography-heading-font-weight:                    500 !default
 
 
 
-$typography-main-size-px:                  14px !default
-$typography-main-size-level:               5 !default
-$typography-main-line-height-ratio:        26 / strip-unit($typography-main-size-px) !default
-$typography-main:                          constant-get(typography-stacks, sans-serif) !default
-$typography-main-baseline-offset-ratio:    constant-get(baseline-offset-ratios, "Helvetica Neue") !default
-$typography-main-color:                    $color-main !default
+$typography-code:                               constant-get(typography-stacks, code) !default
+$typography-code-baseline-offset-ratio:         constant-get(baseline-offset-ratios, "Courier New") !default
+$typography-code-expected-line-height-ratio:    nth($typography-main-expected-line-height-ratios, 2) !default
+$typography-code-padding-em:                    0 0.2em !default
+$typography-code-background:                    $background-color-muted !default
+$typography-code-color:                         $color-main !default
+$typography-code-border-radius:                 $border-radius-main !default
+$typography-block-code-size-level:              7 !default
+$typography-block-code-padding-rem:             0 $spacing-medium-rem !default
 
 
 
-$typography-heading:                          null !default
-$typography-heading-baseline-offset-ratio:    $typography-main-baseline-offset-ratio !default
-$typography-heading-color:                    $color-emphasis !default
-$typography-heading-font-weight:              700 !default
+$typography-quote:                               null !default
+$typography-quote-baseline-offset-ratio:         $typography-main-baseline-offset-ratio !default
+$typography-quote-expected-line-height-ratio:    nth($typography-main-expected-line-height-ratios, 1) !default
+$typography-cite-color:                          $color-muted !default
+$typography-block-quote-size-level:              5 !default
+$typography-block-quote-padding-rem:             $spacing-medium-rem !default
+$typography-block-quote-p-margin-rem:            0 auto $spacing-small-rem !default
+$typography-block-quote-cite-line-height:        $line-width-main !default
 
 
 
-$typography-code:                          constant-get(typography-stacks, code) !default
-$typography-code-baseline-offset-ratio:    constant-get(baseline-offset-ratios, "Courier New") !default
-$typography-block-code-size-level:         6 !default
-
-
-
-$typography-quote:                          null !default
-$typography-quote-baseline-offset-ratio:    $typography-main-baseline-offset-ratio !default
-$typography-block-quote-size-level:         4 !default
-
-
-
-$typography-mark-padding-em:       0.1em 0.3em !default
+$typography-mark-padding-em:       0 0.2em !default
 $typography-mark-background:       $background-color-emphasis !default
 $typography-mark-color:            $color-primary !default
 $typography-mark-border-radius:    $border-radius-main !default
@@ -554,28 +566,14 @@ $typography-link-light-active-color:        null !default
 
 
 
-$typography-code-block-padding-rem:    0 $spacing-medium-rem !default
-$typography-code-padding-em:           0.1em 0.3em !default
-$typography-code-background:           $background-color-muted !default
-$typography-code-color:                $color-main !default
-$typography-code-border-radius:        $border-radius-main !default
-
-
-
-$typography-cite-color:                      $color-muted !default
-$typography-quote-block-padding-rem:         $spacing-medium-rem !default
-$typography-quote-block-p-margin-rem:        0 auto $spacing-small-rem !default
-$typography-quote-block-cite-line-height:    $line-width-main !default
-
-
-
 $typography-sub-sup-size:            100% / $typography-size-scale-ratio !default
 $typography-sub-bottom-offset-em:    -0.25em !default
 $typography-sup-top-offset-em:       -0.5em !default
 
 
 
-$typography-list-nested-padding-em:    0 0 0 strip-unit($spacing-medium-rem) * 1em !default
+$typography-list-nested-padding-em:    0 0 0 2em !default
+
 
 
 $turbolinks-progress-bar-height-px:     2px !default
@@ -588,33 +586,47 @@ $alert-padding-rem:               $spacing-small-rem !default
 $alert-border-radius:             $border-radius-main !default
 $alert-background:                $background-color-dark !default
 $alert-box-shadow:                null !default
-$alert-action-margin-left-rem:    $spacing-small-rem !default
-$alert-title-color:               $color-inverse-emphasis !default
+$alert-action-margin-rem:         null !default
+$alert-content-margin-rem:        0 $spacing-small-rem !default
 $alert-content-color:             $color-inverse-main !default
 
 
 
-$avatar-image-size-rem:                             3rem !default
-$avatar-large-image-size-rem:                       6rem !default
-$avatar-small-image-size-rem:                       2rem !default
-$avatar-image-border-radius:                        100% !default
-$avatar-default-image-background-size:              50% auto !default
-$avatar-default-image:                              svg-icon('<svg viewBox="0 0 512 512"><path fill="#fill" d="M437.02,330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521,243.251,404,198.548,404,148 C404,66.393,337.607,0,256,0S108,66.393,108,148c0,50.548,25.479,95.251,64.262,121.962 c-36.21,12.495-69.398,33.136-97.281,61.018C26.629,379.333,0,443.62,0,512h40c0-119.103,96.897-216,216-216s216,96.897,216,216 h40C512,443.62,485.371,379.333,437.02,330.98z M256,256c-59.551,0-108-48.448-108-108S196.449,40,256,40 c59.551,0,108,48.448,108,108S315.551,256,256,256z"/></svg>',$line-color-muted) !default
-$avatar-info-height-rem:                            3rem !default
-$avatar-info-padding-top-rem:                       0.3rem !default
-$avatar-info-padding-left-rem:                      0.5rem !default
-$avatar-large-info-height-rem:                      4rem !default
-$avatar-large-info-padding-top-rem:                 0.6rem !default
-$avatar-large-info-padding-left-rem:                1rem !default
-$avatar-small-info-height-rem:                      null !default
+$article-padding-rem:                                     $spacing-small-rem !default
+$article-max-width-rem:                                   px-to-rem($typography-main-size-px * 70 / 2) + mirror-nth($article-padding-rem, 4) !default
+$article-elements-margin-rem:                             $spacing-medium-rem 0 !default
+$article-headings-margin-rem:                             $spacing-medium-rem 0 $spacing-small-rem !default
+$article-heading-group-heading-margin-rem:                $spacing-small-rem 0 !default
+$article-paragraph-margin-rem:                            $spacing-small-rem 0 !default
+$article-table-margin-rem:                                null !default
+$article-block-code-margin-rem:                           null !default
+$article-block-quote-margin-rem:                          null !default
+$article-media-margin-rem:                                null !default
+$article-list-margin-rem:                                 $article-paragraph-margin-rem !default
+
+
+
+$avatar-image-size-rem:                             baseline(4) !default
+$avatar-small-image-size-rem:                       baseline(3) !default
+$avatar-large-image-size-rem:                       baseline(5) !default
+$avatar-info-height-rem:                            baseline(4) !default
+$avatar-small-info-height-rem:                      baseline(3) !default
+$avatar-large-info-height-rem:                      null !default
+$avatar-info-padding-top-rem:                       $spacing-tiny-rem !default
+$avatar-info-padding-left-rem:                      $spacing-small-rem !default
 $avatar-small-info-padding-top-rem:                 null !default
 $avatar-small-info-padding-left-rem:                null !default
-$avatar-name-typography-size-level:                 5 !default
-$avatar-large-name-typography-size-level:           4 !default
-$avatar-small-name-typography-size-level:           6 !default
-$avatar-description-typography-size-level:          6 !default
-$avatar-large-description-typography-size-level:    5 !default
-$avatar-small-description-typography-size-level:    null !default
+$avatar-large-info-padding-top-rem:                 null !default
+$avatar-large-info-padding-left-rem:                null !default
+$avatar-name-typography-size-level:                 6 !default
+$avatar-description-typography-size-level:          7 !default
+$avatar-small-name-typography-size-level:           7 !default
+$avatar-small-description-typography-size-level:    8 !default
+$avatar-large-name-typography-size-level:           5 !default
+$avatar-large-description-typography-size-level:    6 !default
+$avatar-image-border-radius:                        100% !default
+$avatar-default-image-background-size:              50% auto !default
+$avatar-default-image:                              svg-icon('<svg viewBox="0 0 512 512"><path fill="#fill" d="M437.02,330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521,243.251,404,198.548,404,148 C404,66.393,337.607,0,256,0S108,66.393,108,148c0,50.548,25.479,95.251,64.262,121.962 c-36.21,12.495-69.398,33.136-97.281,61.018C26.629,379.333,0,443.62,0,512h40c0-119.103,96.897-216,216-216s216,96.897,216,216 h40C512,443.62,485.371,379.333,437.02,330.98z M256,256c-59.551,0-108-48.448-108-108S196.449,40,256,40 c59.551,0,108,48.448,108,108S315.551,256,256,256z"/></svg>',$line-color-main) !default
 $avatar-background-color:                           $background-color-muted !default
 $avatar-name-color:                                 $color-muted !default
 $avatar-description-color:                          $avatar-name-color !default
@@ -624,22 +636,22 @@ $avatar-description-color:                          $avatar-name-color !default
 $breadcrumb-padding-rem:           $spacing-small-rem 0 !default
 $breadcrumb-color:                 $color-muted !default
 $breadcrumb-spliter:               "/" !default
-$breadcrumb-spliter-padding-em:    0 strip-unit($spacing-tiny-rem) * 1em !default
+$breadcrumb-spliter-padding-em:    0 1em !default
 
 
 $button-group-box-shadow:             null !default
-$button-group-buttons-margin-rem:    0 $spacing-small-rem $spacing-small-rem 0 !default
+$button-group-buttons-margin-rem:     0 $spacing-small-rem $spacing-small-rem 0 !default
 
 
 
-$button-icon-size-em:                 1.286em !default
-$button-icon-top-size-em:             1.5em !default
-$button-icon-left-margin-em:          0 0.4em 0 0 !default
-$button-icon-right-margin-em:         0 0 0 0.4em !default
-$button-icon-top-margin-em:           0 0 0.15em 0 !default
-$button-icon-top-height-rem:          4rem !default
-$button-icon-top-large-height-rem:    5rem !default
-$button-icon-top-small-height-rem:    3rem !default
+$button-icon-size-em:                 null !default
+$button-icon-top-size-em:             null !default
+$button-icon-left-margin-em:          0 0.5em 0 0 !default
+$button-icon-right-margin-em:         0 0 0 0.5em !default
+$button-icon-top-margin-em:           0.1em 0 !default
+$button-icon-top-height-rem:          baseline(4) !default
+$button-icon-top-small-height-rem:    baseline(3) !default
+$button-icon-top-large-height-rem:    baseline(5) !default
 
 
 
@@ -671,7 +683,7 @@ $carousel-custom-opacity-transition-timing-function:      $transition-timing-fun
 
 $dropdown-width-breakpoint:               m !default
 $dropdown-static-menu-margin-left-rem:    $spacing-small-rem !default
-$dropdown-absolute-max-height-rem:        33rem !default
+$dropdown-absolute-max-height-rem:        baseline(50) !default
 $dropdown-absolute-active-gap-rem:        $spacing-tiny-rem !default
 $dropdown-absolute-border-radius:         $border-radius-main !default
 $dropdown-absolute-fixed-background:      $background-color-main !default
@@ -679,19 +691,14 @@ $dropdown-absolute-box-shadow:            null !default
 
 
 
+$form-group-label-vertical-margin-rem:      null !default
 $form-group-element-vertical-margin-rem:    $spacing-small-rem !default
 
 
 
-$media-content-aspect-ratio:    16 / 9 !default
-$media-border-radius:           $border-radius-main !default
-$media-background-color:        $background-color-muted !default
-
-
-
 $modal-padding-rem:                 $spacing-medium-rem !default
-$modal-in-overlay-max-width-rem:    46.153846rem !default
-$modal-in-overlay-min-width-rem:    24.615384rem !default
+$modal-in-overlay-max-width-rem:    px-to-rem(640px) !default
+$modal-in-overlay-min-width-rem:    px-to-rem(320px) !default
 $modal-background:                  $background-color-muted !default
 $modal-border-radius:               $border-radius-main !default
 $modal-box-shadow:                  null !default
@@ -706,16 +713,17 @@ $navigation-close-button-margin-rem:    $spacing-small-rem $spacing-small-rem 0 
 $navigation-search-field-margin-rem:    $spacing-medium-rem !default
 $navigation-items-margin-rem:           $spacing-small-rem !default
 $navigation-sub-items-margin-rem:       $navigation-items-margin-rem !default
-$navigation-logo-image-height-rem:      2rem !default
+$navigation-logo-image-height-rem:      baseline(2) !default
 $navigation-background:                 $background-color-dark !default
 
 
 
 $navigation-header-box-shadow:                            null !default
+$navigation-header-breakpoint-padding-rem:                $spacing-small-rem !default
 $navigation-header-breakpoint-search-field-margin-rem:    0 $spacing-small-rem !default
 $navigation-header-breakpoint-items-margin-rem:           0 auto 0 0 !default
 $navigation-header-breakpoint-sub-items-margin-rem:       0 !default
-$navigation-header-breakpoint-search-field-width-rem:     16rem !default
+$navigation-header-breakpoint-search-field-width-rem:     baseline(16) !default
 $navigation-header-breakpoint-dropdown-background:        $navigation-background !default
 
 
@@ -723,10 +731,10 @@ $navigation-header-breakpoint-dropdown-background:        $navigation-background
 $navigation-aside-box-shadow:                          $navigation-header-box-shadow !default
 $navigation-aside-breakpoint-padding-rem:              0 !default
 $navigation-aside-breakpoint-logo-margin-rem:          3 * $spacing-small-rem $spacing-medium-rem $spacing-small-rem !default
-$navigation-aside-breakpoint-logo-image-height-rem:    7rem !default
-$navigation-aside-breakpoint-logo-image-width-rem:     9rem !default
-$navigation-aside-breakpoint-min-width-rem:            18rem !default
-$navigation-aside-breakpoint-max-width-rem:            20rem !default
+$navigation-aside-breakpoint-logo-image-height-rem:    baseline(8) !default
+$navigation-aside-breakpoint-logo-image-width-rem:     baseline(10) !default
+$navigation-aside-breakpoint-min-width-rem:            baseline(20) !default
+$navigation-aside-breakpoint-max-width-rem:            baseline(22) !default
 $navigation-aside-breakpoint-box-shadow:               none !default
 
 

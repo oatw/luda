@@ -21,11 +21,11 @@ create a text filed or a text area.
 {% capture text_field %}
 <!-- Wrap an <input> -->
 <div class="fm fm-text">
-  <input placeholder="Enter some text">
+  <input name="form_example1" placeholder="E.g., A text field">
 </div>
 <!-- Wrap a <textarea> -->
 <div class="fm fm-text">
-  <textarea placeholder="Enter more text"></textarea>
+  <textarea name="form_example2" placeholder="E.g., A text area"></textarea>
 </div>
 {% endcapture %}
 <div class="form-example">
@@ -41,7 +41,7 @@ typing texts should be wrapped inside.
 
 {% capture search_field %}
 <div class="fm fm-search">
-  <input type="search" placeholder="Search anything...">
+  <input type="search" name="form_example3" placeholder="Search anything">
 </div>
 {% endcapture %}
 <div class="form-example">
@@ -59,16 +59,16 @@ seting the value of their `selected` attributes to `selected`.
 {% capture select_field %}
 <!-- A select field -->
 <div class="fm fm-select">
-  <select placeholder="Select a word">
-    <option value="hello">Hello!</option>
-    <option value="goodbye">Goodbye!</option>
+  <select name="form_example4" placeholder="E.g., Male">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
   </select>
 </div>
 <!-- A multiple select filed with a default selected option -->
 <div class="fm fm-select">
-  <select multiple placeholder="Select words">
-    <option value="hello" selected="selected">Hello!</option>
-    <option value="goodbye">Goodbye!</option>
+  <select multiple name="form_example5" placeholder="E.g., Chinese">
+    <option value="en" selected="selected">English</option>
+    <option value="zh">Chinese</option>
   </select>
 </div>
 {% endcapture %}
@@ -102,11 +102,11 @@ The value attribute of the wrapped `<input>` can be used to set a default value.
 {% capture file_picker %}
 <!-- A file picker -->
 <div class="fm fm-file">
-  <input type="file" placeholder="Add a file">
+  <input type="file" name="form_example6" placeholder="E.g., my_resume.pdf">
 </div>
 <!-- A file picker can pick up multiple files with a default initial value -->
 <div class="fm fm-file">
-  <input type="file" multiple value="luda.min.css" placeholder="Add files">
+  <input type="file" multiple name="form_example7" value="luda.min.js">
 </div>
 {% endcapture %}
 <div class="form-example">
@@ -128,14 +128,9 @@ Add the `.fm-check` class to the `.fm` container to create checkboxes,
 one or more `<input type="checkbox">` tags can be wrapped inside.
 
 {% capture checkboxes %}
-<!-- A checkbox without a label -->
 <div class="fm fm-check">
-  <input type="checkbox">
-</div>
-<!-- Checkboxes with labels -->
-<div class="fm fm-check">
-  <label><input type="checkbox">Checkbox one</label>
-  <label><input type="checkbox">Checkbox two</label>
+  <label><input type="checkbox" name="form_example8" value="1">Checkbox one</label>
+  <label><input type="checkbox" name="form_example8" value="2">Checkbox two</label>
 </div>
 {% endcapture %}
 <div class="form-example">
@@ -150,14 +145,9 @@ Just like creating checkboxes, one or more `<input type="radio">`
 tags can be wrapped inside.
 
 {% capture radios %}
-<!-- A radio without a label -->
 <div class="fm fm-radio">
-  <input type="radio" name="radio_example">
-</div>
-<!-- Radios with labels -->
-<div class="fm fm-radio">
-  <label><input type="radio" name="radio_example" value="one">Radio one</label>
-  <label><input type="radio" name="radio_example" value="two">Radio two</label>
+  <label><input type="radio" name="form_example9" value="1">Radio one</label>
+  <label><input type="radio" name="form_example9" value="2">Radio two</label>
 </div>
 {% endcapture %}
 <div class="form-example">
@@ -190,20 +180,21 @@ from responding to user actions.
 To make an input element readonly, add the `data-readonly` attribute
 to itself and its `.fm` container.
 
+<!-- markdownlint-disable -->
 {% capture readonly %}
 <!-- A readonly text field -->
 <div class="fm fm-text" data-readonly>
-  <input data-readonly value="A readonly text field">
+  <input data-readonly name="example11" value="I'm readonly">
 </div>
 <!-- A readonly checkbox -->
 <div class="fm fm-check" data-readonly>
-  <label><input data-readonly checked type="checkbox">A readonly checkbox</label>
+  <label><input data-readonly checked type="checkbox" name="example12" value="example">A readonly checkbox</label>
 </div>
 <!-- A readonly select field -->
 <div class="fm fm-select" data-readonly>
-  <select data-readonly placeholder="Select a word">
-    <option selected="selected" value="hello">A readonly select with Hello selected</option>
-    <option value="goodbye">Goodbye!</option>
+  <select data-readonly name="example13">
+    <option selected="selected" value="male">Male</option>
+    <option value="female">Female</option>
   </select>
 </div>
 {% endcapture %}
@@ -211,6 +202,7 @@ to itself and its `.fm` container.
   {{ readonly }}
 </div>
 ``` html{{ readonly }}```
+<!-- markdownlint-enable -->
 
 ### Disabled
 
@@ -219,37 +211,40 @@ user actions nor submitted.
 To disable an input element, add the `disabled` attribute to itself
 and its `.fm` container.
 
+<!-- markdownlint-disable -->
 {% capture disabled %}
 <!-- A disabled search field -->
 <div class="fm fm-search" disabled>
-  <input disabled value="This search field is disabled">
+  <input disabled name="example14" value="I'm disabled">
 </div>
 <!-- A disabled radio -->
 <div class="fm fm-radio" disabled>
-  <label><input disabled type="radio">This radio is disabled</label>
+  <label><input disabled type="radio" name="example15" value="example">This radio is disabled</label>
 </div>
 <!-- A disabled file picker -->
 <div class="fm fm-file" disabled>
-  <input disabled type="file" value="This file picker is disabled">
+  <input disabled type="file" name="example16" value="This file picker is disabled">
 </div>
 {% endcapture %}
 <div class="form-example">
   {{ disabled }}
 </div>
 ``` html{{ disabled }}```
+<!-- markdownlint-enable -->
 
 ## Input Element Modifiers
 
 The size of input elements can be changed by adding size modifier classes.
 
-### Small{% include modifier.md %}
+### .fm-small{% include modifier.md %}
 
 If you want a smaller input element, add the `.fm-small` class to its `.fm` container.
 
+<!-- markdownlint-disable -->
 {% capture small %}
 <!-- A small checkbox -->
 <div class="fm fm-check fm-small">
-  <label><input type="checkbox">A small form checkbox</label>
+  <label><input type="checkbox" name="example17" value="example">A small form checkbox</label>
 </div>
 <!-- A small range slider -->
 <div class="fm fm-range fm-small">
@@ -257,19 +252,20 @@ If you want a smaller input element, add the `.fm-small` class to its `.fm` cont
 </div>
 <!-- A small search field -->
 <div class="fm fm-search fm-small">
-  <input placeholder="A small form search">
+  <input name="example18" placeholder="Search anything...">
 </div>
 <!-- A small textarea -->
 <div class="fm fm-text fm-small">
-  <textarea placeholder="A small from textarea"></textarea>
+  <textarea name="example19" placeholder="E.g., Once upon a time..."></textarea>
 </div>
 {% endcapture %}
 <div class="form-example">
   {{ small }}
 </div>
 ``` html{{ small }}```
+<!-- markdonwlint-enable -->
 
-### Large{% include modifier.md %}
+### .fm-large{% include modifier.md %}
 
 The size of an input element can be larger by
 adding the `.fm-large` class to its `.fm` container.
@@ -277,22 +273,22 @@ adding the `.fm-large` class to its `.fm` container.
 {% capture large %}
 <!-- A large radio -->
 <div class="fm fm-radio fm-large">
-  <label><input type="radio">A large form radio</label>
+  <label><input type="radio" name="example20" value="example">A large form radio</label>
 </div>
 <!-- A large file picker -->
 <div class="fm fm-file fm-large">
-  <input type="file" placeholder="A large form file">
+  <input type="file" name="example21" placeholder="E.g., my_resume.pdf">
 </div>
 <!-- A large text filed -->
 <div class="fm fm-text fm-large">
-  <input placeholder="A large form text">
+  <input name="example22" placeholder="E.g., Once upon a time...">
 </div>
 <!-- A large select field -->
 <div class="fm fm-select fm-large">
-  <select multiple placeholder="A large multiple select">
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+  <select multiple name="example23" placeholder="E.g., English, Chinese">
+    <option value="en">English</option>
+    <option value="zh">Chinese</option>
+    <option value="ja">Japanese</option>
   </select>
 </div>
 {% endcapture %}
@@ -301,7 +297,7 @@ adding the `.fm-large` class to its `.fm` container.
 </div>
 ``` html{{ large }}```
 
-### Inline{% include modifier.md %}
+### .fm-inline{% include modifier.md %}
 
 Luda form elements takes all available space in the horizontal by default.
 If you want to change this behavior, you can add the `.fm-inline` to their
@@ -310,21 +306,22 @@ If you want to change this behavior, you can add the `.fm-inline` to their
 {% capture inline %}
 <!-- An inline search field -->
 <div class="fm fm-search fm-inline">
-  <input placeholder="An inline form search">
+  <input type="search" name="example24" placeholder="Search anything...">
 </div>
 <!-- An inline file picker -->
 <div class="fm fm-file fm-inline">
-  <input type="file" placeholder="An inline form file">
+  <input type="file" name="example25" placeholder="E.g., my_resume.pdf">
 </div>
 <!-- An inline checkbox -->
 <div class="fm fm-check fm-inline">
-  <label><input type="checkbox">An inline checbox</label>
+  <label><input type="checkbox" name="example26" value="example">An inline checbox</label>
 </div>
 {% endcapture %}
-<div class="form-example">
+<div class="form-example mb-none">
   {{ inline }}
 </div>
 ``` html{{ inline }}```
+{: .mt-small}
 
 ## Input Helpers
 
@@ -339,12 +336,12 @@ The value of this attribute shows at the bottom of the `.fm` container.
 {% capture hint %}
 <!-- Show hint texts for the text field -->
 <div class="fm fm-text" data-hint="Your email will be a secret.">
-  <input type="email" placeholder="Please enter your email">
+  <input type="email" name="example27" placeholder="E.g., oatwoatw@gmail.com">
 </div>
 <!-- Show hint texts for the radios -->
 <div class="fm fm-radio" data-hint="Your gender also will be a secret.">
-  <label><input type="radio" value="male">Male</label>
-  <label><input type="radio" value="female">Female</label>
+  <label><input type="radio" name="example28" value="male">Male</label>
+  <label><input type="radio" name="example28" value="female">Female</label>
 </div>
 {% endcapture %}
 <div class="form-example">
@@ -364,12 +361,12 @@ only shows the error texts.
 {% capture error %}
 <!-- Show error texts for the text field -->
 <div class="fm fm-text" data-error="Email cannot be blank!">
-  <input type="email" placeholder="Please enter your email">
+  <input type="email" name="example29" placeholder="E.g., oatwoatw@gmail.com">
 </div>
 <!-- Show error texts for the radios -->
 <div class="fm fm-radio" data-error="Please choose your gender!">
-  <label><input type="radio" value="male">Male</label>
-  <label><input type="radio" value="female">Female</label>
+  <label><input type="radio" name="example30" value="male">Male</label>
+  <label><input type="radio" name="example30" value="female">Female</label>
 </div>
 {% endcapture %}
 <div class="form-example">
@@ -385,11 +382,12 @@ The label element represents a caption for an item in a form.
 
 Add the `.fm-label` class to a `<label>` tag
 to create a caption for the text field.
+{: .mb-none}
 
 {% capture form_label %}
-<label class="fm-label">Fullname</label>
+<label class="fm-label" for="example31">Fullname</label>
 <div class="fm fm-text">
-  <input placeholder="Please enter your fullname">
+  <input id="example31" name="example31" placeholder="E.g., James Bond">
 </div>
 {% endcapture %}
 <div class="form-example mt-none">
@@ -402,14 +400,15 @@ to create a caption for the text field.
 You can change a label's size and show the "Required" texts
 by using label modifier classes.
 
-#### Required{% include modifier.md %}
+#### .fm-label-required{% include modifier.md %}
 
 Add the `.fm-label-required` class to show the "Required" text.
+{: .mb-none}
 
 {% capture required_form_label %}
-<label class="fm-label fm-label-required">Fullname</label>
+<label class="fm-label fm-label-required" for="example32">Fullname</label>
 <div class="fm fm-text">
-  <input placeholder="Please enter your fullname">
+  <input id="example32" name="example32" placeholder="E.g., James Bond">
 </div>
 {% endcapture %}
 <div class="form-example mt-none">
@@ -417,14 +416,15 @@ Add the `.fm-label-required` class to show the "Required" text.
 </div>
 ``` html{{ required_form_label }}```
 
-#### Small Label{% include modifier.md %}
+#### .fm-label-small{% include modifier.md %}
 
 Add the `.fm-label-small` class to make the label smaller.
+{: .mb-none}
 
 {% capture small_form_label %}
-<label class="fm-label fm-label-small">Fullname</label>
+<label class="fm-label fm-label-small" for="example33">Fullname</label>
 <div class="fm fm-text fm-small">
-  <input placeholder="Please enter your fullname">
+  <input id="example33" name="example33" placeholder="E.g., James Bond">
 </div>
 {% endcapture %}
 <div class="form-example mt-none">
@@ -432,14 +432,15 @@ Add the `.fm-label-small` class to make the label smaller.
 </div>
 ``` html{{ small_form_label }}```
 
-#### Large Label{% include modifier.md %}
+#### .fm-label-large{% include modifier.md %}
 
 Add the `.fm-label-large` class to to make the label larger.
+{: .mb-none}
 
 {% capture large_form_label %}
-<label class="fm-label fm-label-large">Fullname</label>
+<label class="fm-label fm-label-large" for="example34">Fullname</label>
 <div class="fm fm-text fm-large">
-  <input placeholder="Please enter your fullname">
+  <input id="example34" name="example34" placeholder="E.g., James Bond">
 </div>
 {% endcapture %}
 <div class="form-example mt-none">
@@ -452,77 +453,79 @@ Add the `.fm-label-large` class to to make the label larger.
 ### Size
 
 ``` sass
-$form-element-inline-width-rem: 18rem !default
+$form-element-inline-width-rem: baseline(22) !default
 ```
 
 ``` sass
-$form-element-small-inline-width-rem: 14rem !default
+$form-element-small-inline-width-rem: baseline(18) !default
 ```
 
 ``` sass
-$form-element-large-inline-width-rem: 22rem !default
+$form-element-large-inline-width-rem: baseline(26) !default
 ```
 
 ``` sass
-$form-element-horizontal-padding-em: strip-unit($spacing-small-rem) * 1em !default
+$form-element-horizontal-padding-em: 0.6875em !default
 ```
 
 ``` sass
-$form-element-height-rem: 3rem !default
+$form-element-height-rem: baseline(3) !default
 ```
 
 ``` sass
-$form-element-small-height-rem: 2rem !default
+$form-element-small-height-rem: baseline(2) !default
 ```
 
 ``` sass
-$form-element-large-height-rem: 4rem !default
+$form-element-large-height-rem: baseline(4) !default
 ```
 
 ``` sass
-$form-element-multiple-rows-height-rem: 9rem !default
+$form-element-multiple-rows-height-rem: $form-element-height-rem * 3 !default
 ```
 
 Default height of multiple select field and textarea.
 
+<!-- markdownlint-disable -->
 ``` sass
-$form-element-multiple-rows-small-height-rem: 6rem !default
+$form-element-multiple-rows-small-height-rem: $form-element-small-height-rem * 3 !default
 ```
 
 ``` sass
-$form-element-multiple-rows-large-height-rem: 12rem !default
+$form-element-multiple-rows-large-height-rem: $form-element-large-height-rem * 3 !default
 ```
+<!-- markdownlint-enable -->
 
 ``` sass
-$form-element-checkfield-size-em: 1.4em !default
+$form-element-checkfield-size-em: 1.25em !default
 ```
 
 Default size of checkboxes and radios.
 
 ``` sass
-$form-element-track-height-em: 0.4em !default
+$form-element-track-height-em: 0.25em !default
 ```
 
 ``` sass
-$form-element-thumb-height-em: 1.4em !default
+$form-element-thumb-width-em: 1.25em !default
 ```
 
 ``` sass
-$form-element-thumb-width-em: 1.4em !default
+$form-element-thumb-height-em: $form-element-thumb-width-em !default
 ```
 
 ### Typography
 
 ``` sass
-$form-element-typography-size-level: 5 !default
+$form-element-typography-size-level: 6 !default
 ```
 
 ``` sass
-$form-element-small-typography-size-level: 6 !default
+$form-element-small-typography-size-level: 7 !default
 ```
 
 ``` sass
-$form-element-large-typography-size-level: 4 !default
+$form-element-large-typography-size-level: 5 !default
 ```
 
 ### Border
@@ -540,7 +543,7 @@ $form-element-border-radius: $border-radius-main !default
 ```
 
 ``` sass
-$form-element-border-color: $line-color-main !default
+$form-element-border-color: $line-color-muted !default
 ```
 
 ``` sass
@@ -652,11 +655,11 @@ $form-element-box-shadow-on-error: null !default
 ### Icon
 
 ``` sass
-$form-element-icon-size-em: 1.286em !default
+$form-element-icon-size-em: null !default
 ```
 
 ``` sass
-$form-element-icon-color: $form-element-border-color !default
+$form-element-icon-color: lighten($color-muted, 10%) !default
 ```
 
 ``` sass
@@ -710,7 +713,7 @@ $form-element-checked-icon-color-on-focus: null !default
 ### Helper
 
 ``` sass
-$form-helper-typography-size-level: 6 !default
+$form-helper-typography-size-level: 7 !default
 ```
 
 ``` sass
@@ -718,7 +721,7 @@ $form-helper-small-typography-size-level: null !default
 ```
 
 ``` sass
-$form-helper-large-typography-size-level: 5 !default
+$form-helper-large-typography-size-level: 6 !default
 ```
 
 ``` sass
@@ -732,19 +735,19 @@ $form-error-color: $color-danger !default
 ### Label
 
 ``` sass
-$form-label-typography-size-level: 5 !default
+$form-label-typography-size-level: 6 !default
 ```
 
 ``` sass
-$form-label-small-typography-size-level: 6 !default
+$form-label-small-typography-size-level: 7 !default
 ```
 
 ``` sass
-$form-label-large-typography-size-level: 4 !default
+$form-label-large-typography-size-level: 5 !default
 ```
 
 ``` sass
-$form-label-color: $color-emphasis !default
+$form-label-color: null !default
 ```
 
 ``` sass

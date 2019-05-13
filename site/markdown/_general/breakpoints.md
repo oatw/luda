@@ -6,9 +6,7 @@ description: Luda provides width breakpoints, aspect ratio breakpoints
              and use them in your projects. 
 ---
 
-## Screen Width Breakpoints
-
-### Introduction to Width Breakpoints
+## Width Breakpoints
 
 Luda provides 3 screen width breakpoints by default:
 small, medium and large. The first letters of these breakpoints are
@@ -18,7 +16,7 @@ middle size screens and large screens.
 
 The width breakpoints and classname postfixes are listed in the below table.
 
-<div class="table table-nowrap table-border my-small">
+<div class="table table-nowrap table-border">
   <table>
     <thead>
       <tr>
@@ -66,9 +64,7 @@ If the value of the `$less-than-next` parameter is `true`,
 a `max-width` media query rule will be added, and the max width
 will be the result of next breakpoint's value minus `1px`.
 
-## Screen Aspect Ratio Breakpoints
-
-### Introduction to Aspect Ratio Breakpoints
+## Aspect Ratio Breakpoints
 
 Luda provides 2 aspect ratio breakpoints by default,
 portrait and landscape. Components' classnames are
@@ -78,7 +74,7 @@ for responsive control.
 
 The aspect ratio breakpoints and their abbreviations are listed in the below table.
 
-<div class="table table-nowrap table-border my-small">
+<div class="table table-nowrap table-border">
   <table>
     <thead>
       <tr>
@@ -118,9 +114,7 @@ a `max-aspect-ratio` media query rule will be added,
 and the max aspect ratio will be the result of
 next breakpoint's value minus `0.0001`.
 
-## Screen Resolution Breakpoints
-
-### Introduction to Resolution Breakpoints
+## Resolution Breakpoints
 
 Luda provides 3 resolution breakpoints by default,
 low, high and extra high. Components' classnames
@@ -130,7 +124,7 @@ for responsive control.
 
 The resolution breakpoints and their abbreviations are listed in the below table.
 
-<div class="table table-nowrap table-border my-small">
+<div class="table table-nowrap table-border">
   <table>
     <thead>
       <tr>

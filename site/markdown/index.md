@@ -13,33 +13,33 @@ permalink: /
 <div id="home" class="rel zi-high d-flex fd-column jc-between-m min-h-100vh pt-medium-m pb-small-m">
   {% include main-header.md %}
   <div class="home-main grid container w-100 py-large py-none-m">
-    <h1 class="col-12 col-8-m col-6-l mt-large fw-regular c-light">
-      A lightweight and responsive UI framework for modern web development.
+    <h1 id="luda-title" class="display col-12 mt-large mt-medium-m c-light">
+      A lightweight and responsive UI framework <br class="d-none d-block-m"> for modern web development.
     </h1>
     <hr class="mb-medium-m">
     <div class="col-12 col-3-m mt-large ta-right ta-left-m">
-      <h3 class="fw-regular c-light">Lightweight</h3>
+      <h4 class="fw-regular c-light">Lightweight</h4>
       <p class="c-light">
         No external dependencies<br>
         Each theme is about 25kb after gzipped
       </p>
     </div>
     <div class="col-12 col-3-m mt-large">
-      <h3 class="fw-regular c-light">Modular</h3>
+      <h4 class="fw-regular c-light">Modular</h4>
       <p class="c-light">
         Sass &amp; Coffeescript &amp; Javascript<br>
         Modular imports are well supported
       </p>
     </div>
     <div class="col-12 col-3-m mt-large ta-right ta-left-m">
-      <h3 class="fw-regular c-light">Rhythmical</h3>
+      <h4 class="fw-regular c-light">Rhythmical</h4>
       <p class="c-light">
         Sticks to baseline grid system<br>
         Provides a harmonious vertical rhythm
       </p>
     </div>
     <div class="col-12 col-3-m mt-large">
-      <h3 class="fw-regular c-light">Automatic</h3>
+      <h4 class="fw-regular c-light">Automatic</h4>
       <p class="c-light">
         Based on Mutation Observer<br>
         Lifecycles are automatically handled

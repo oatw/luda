@@ -21,16 +21,16 @@ then wrap tab indicators and tab panes like the below example.
 <div class="tab">
   <nav class="tab-indicators btns-x">
     <div class="btn-radio btn-hollow-secondary">
-      <input type="radio" name="tab_demo">
-      <label>Tab One</label>
+      <input type="radio" id="indicator1" name="tab_example1" value="1">
+      <label for="indicator1">Tab One</label>
     </div>
     <div class="btn-radio btn-hollow-secondary">
-      <input type="radio" name="tab_demo">
-      <label>Tab Two</label>
+      <input type="radio" id="indicator2" name="tab_example1" value="2">
+      <label for="indicator2">Tab Two</label>
     </div>
     <div class="btn-radio btn-hollow-secondary">
-      <input type="radio" name="tab_demo">
-      <label>Tab Three</label>
+      <input type="radio" id="indicator3" name="tab_example1" value="3">
+      <label for="indicator3">Tab Three</label>
     </div>
   </nav>
   <div class="tab-panes">
@@ -72,16 +72,16 @@ Let's see the below example for detail.
     <div class="col-4 col-3-m">
       <nav class="tab-indicators btns-y btns-fluid">
         <div class="btn-radio btn-hollow-secondary">
-          <input type="radio" name="horizontal_tab">
-          <label>One</label>
+          <input type="radio" id="indicator_1" name="tab_example2" value="1">
+          <label for="indicator_1">One</label>
         </div>
         <div class="btn-radio btn-hollow-secondary">
-          <input type="radio" checked name="horizontal_tab">
-          <label>Two</label>
+          <input type="radio" checked id="indicator_2" name="tab_example2" value="2">
+          <label for="indicator_2">Two</label>
         </div>
         <div class="btn-radio btn-hollow-secondary">
-          <input type="radio" name="horizontal_tab">
-          <label>Three</label>
+          <input type="radio" id="indicator_3" name="tab_example2" value="3">
+          <label for="indicator_3">Three</label>
         </div>
       </nav>
     </div>
