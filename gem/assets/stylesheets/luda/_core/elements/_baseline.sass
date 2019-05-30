@@ -3,9 +3,6 @@
   .baseline
     position: relative
 
-  $_baseline-gradient: linear-gradient(to bottom, #0ff 0, rgba(255, 255, 255, 0) 1px)
-  $_baseline-background: $_baseline-gradient left top / 100% 1rem repeat-y
-
   .baseline::after
     display: block
     position: absolute
@@ -16,4 +13,7 @@
     z-index: $z-index-highest
     pointer-events: none
     content: ""
-    background: $_baseline-background
+    @if $typography-baseline-divided
+      background: _baseline-background($baseline-height-px, #0ff), _baseline-background($baseline-height-px / 2, #0ff)
+    @else
+      background: _baseline-background($baseline-height-px, #0ff)

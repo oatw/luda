@@ -2,12 +2,12 @@
 
   .ico
     display: inline-block
-    vertical-align: text-bottom
+    vertical-align: baseline
     position: relative
     width: 1em
     height: 1em
     font-size: $icon-size-em
-    line-height: normal
+    line-height: 1
     overflow: hidden
     -webkit-user-select: none
     -moz-user-select: none
@@ -18,10 +18,6 @@
     font-style: normal
     background-position: center
     background-size: contain
-
-  +browser-firefox
-    .ico
-      line-height: $icon-firefox-line-height
 
   .ico::before,
   .ico::after

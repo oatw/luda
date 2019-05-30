@@ -4,6 +4,7 @@
     color: $form-placeholder-color
 
   .fm ::-moz-placeholder
+    opacity: 1
     color: $form-placeholder-color
 
   .fm :-ms-input-placeholder
@@ -39,6 +40,7 @@
   .fm[data-hint]::after
     display: block
     width: 100%
+    margin: $form-helper-margin-rem
     font-size: typo-size($form-helper-typography-size-level)
     line-height: typo-line-height($form-helper-typography-size-level)
 

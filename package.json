@@ -1,6 +1,6 @@
 {
   "name": "luda",
-  "version": "0.1.13",
+  "version": "0.2.0",
   "description": "A responsive and lightweight UI framework for modern web development",
   "keywords": [
     "front-end",
@@ -26,14 +26,15 @@
     "github": "https://github.com/oatw"
   },
   "config": {
-    "version": "0.1.13",
+    "version": "0.2.0",
     "theme": "default",
     "themes": [
       "default"
     ],
     "siteBaseUrl": "/luda",
-    "siteVersion": "0.1.x",
+    "siteVersion": "0.2.x",
     "siteVersions": [
+      "0.2.x",
       "0.1.x"
     ],
     "port": "3333",

@@ -33,7 +33,7 @@
   .table th,
   .table-border th
     color: $table-head-color
-    font-weight: 700
+    font-weight: 500
 
   .table td,
   .table-border td
@@ -78,6 +78,14 @@
     @else
       $padding-bottom: calc(#{$table-cell-padding-bottom} - #{$table-border-bottom-width})
     padding: $_table-border-cell-padding-top $padding-right $padding-bottom $padding-left
+
+
+
+  .table-middle.table th,
+  .table-middle.table td,
+  .table-middle.table-border th,
+  .table-middle.table-border td
+    vertical-align: middle
 
 
 
