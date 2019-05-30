@@ -32,11 +32,11 @@
           v{{ site.luda.siteVersion }}
         </button>
         {% endif %}
-        <div class="dropdown-menu mx-small-m">
+        <div class="dropdown-menu">
           <div id="site-versions" class="dropdown-items mt-small-m">
             {% for version in site.luda.siteVersions %}
             {% if version != site.luda.siteVersion %}
-            <a data-turbolinks="false" class="btn btn-text-light" href="/{{ version }}">v{{ version }}</a>
+            <a data-turbolinks="false" class="btn btn-text-light" href="{{ site.luda.siteBaseUrl }}/{{ version }}">v{{ version }}</a>
             {% endif %}
             {% endfor %}
           </div>
