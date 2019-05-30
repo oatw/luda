@@ -1,17 +1,17 @@
 <!-- markdownlint-disable -->
 
 ``` sass
-$spacing-tiny-rem: $spacing-base-rem / 2 !default
+$spacing-tiny-rem: baseline(0.5) !default
 ```
 
 ``` sass
-$spacing-small-rem: $spacing-base-rem !default
+$spacing-small-rem: baseline(1) !default
 ```
 
 ``` sass
-$spacing-medium-rem: $spacing-base-rem * 2 !default
+$spacing-medium-rem: baseline(2) !default
 ```
 
 ``` sass
-$spacing-large-rem: $spacing-base-rem * 4 !default
+$spacing-large-rem: baseline(4) !default
 ```

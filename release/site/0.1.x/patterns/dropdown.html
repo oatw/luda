@@ -878,7 +878,7 @@ for a specific element and the element’s descendant elements.</p>
 <h3 id="ludadropdownactivate">luda:dropdown:activate</h3>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">luda</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'luda:dropdown:activate'</span><span class="p">,</span> <span class="s1">'#my-dropdown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-  <span class="kd">let</span> <span class="nx">$myDropdown</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> <span class="nx">$activateDropdown</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span>
+  <span class="kd">let</span> <span class="nx">$myDropdown</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> <span class="nx">$activateDropdown</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span>
   <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span> <span class="c1">// Prevent the dropdown from being activated if necessary.</span>
 <span class="p">})</span>
 </code></pre></div></div>
@@ -888,7 +888,7 @@ for a specific element and the element’s descendant elements.</p>
 <h3 id="ludadropdownactivated">luda:dropdown:activated</h3>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">luda</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'luda:dropdown:activated'</span><span class="p">,</span> <span class="s1">'#my-dropdown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-  <span class="kd">let</span> <span class="nx">$myDropdown</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> <span class="nx">$activatedDropdown</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span>
+  <span class="kd">let</span> <span class="nx">$myDropdown</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> <span class="nx">$activatedDropdown</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span>
 <span class="p">})</span>
 </code></pre></div></div>
 
@@ -898,7 +898,7 @@ and CSS transition finished.</p>
 <h3 id="ludadropdowndeactivate">luda:dropdown:deactivate</h3>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">luda</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'luda:dropdown:deactivate'</span><span class="p">,</span> <span class="s1">'#my-dropdown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-  <span class="kd">let</span> <span class="nx">$myDropdown</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> <span class="nx">$deactivateDropdown</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span>
+  <span class="kd">let</span> <span class="nx">$myDropdown</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> <span class="nx">$deactivateDropdown</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span>
   <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span> <span class="c1">// Prevent the dropdown from being deactivated if necessary.</span>
 <span class="p">})</span>
 </code></pre></div></div>
@@ -909,7 +909,7 @@ a dropdown.</p>
 <h3 id="ludadropdowndeactivated">luda:dropdown:deactivated</h3>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">luda</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'luda:dropdown:deactivated'</span><span class="p">,</span> <span class="s1">'#my-dropdown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
-  <span class="kd">let</span> <span class="nx">$myDropdown</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> <span class="nx">$deactivatedDropdown</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span>
+  <span class="kd">let</span> <span class="nx">$myDropdown</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> <span class="nx">$deactivatedDropdown</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span>
 <span class="p">})</span>
 </code></pre></div></div>
 

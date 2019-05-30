@@ -25,18 +25,14 @@
   cite
     color: $typography-cite-color
     font-style: italic
-    font-weight: 700
+    font-weight: 500
 
   .quote
-    padding: $typography-quote-block-padding-rem
+    padding: $typography-block-quote-padding-rem
 
   .quote p
-    $offset-diff: $typography-quote-baseline-offset-ratio != $typography-main-baseline-offset-ratio
-    $size-diff: $typography-block-quote-size-level != $typography-main-size-level
-    @if $typography-quote-baseline-offset-ratio and $offset-diff or $size-diff
-      $baseline-offset-ratio: existing($typography-quote-baseline-offset-ratio, $typography-main-baseline-offset-ratio)
-      +typo-level($typography-block-quote-size-level, $baseline-offset-ratio)
-    margin: $typography-quote-block-p-margin-rem
+    +typo-level($typography-block-quote-size-level, quote)
+    margin: $typography-block-quote-p-margin-rem
 
   .quote p:first-child
     position: relative
@@ -45,10 +41,9 @@
     display: block
     position: absolute
     top: 0
-    left: - mirror-nth($typography-quote-block-padding-rem, 4)
-    width: mirror-nth($typography-quote-block-padding-rem, 4)
-    font-size: 3em
-    text-align: center
+    left: - mirror-nth($typography-block-quote-padding-rem, 4)
+    width: mirror-nth($typography-block-quote-padding-rem, 4)
+    font-size: 2.5em
     content: '"'
     color: $typography-cite-color
 
@@ -63,6 +58,6 @@
     vertical-align: middle
     width: 2em
     margin-right: 1em
-    border-width: $typography-quote-block-cite-line-height 0 0
+    border-width: $typography-block-quote-cite-line-height 0 0
     content: ""
     border-style: solid

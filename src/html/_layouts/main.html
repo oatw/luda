@@ -15,9 +15,19 @@
     {% endif %}
   </head>
   <body>
+    <button class="toggle-baseline btn btn-primary fix-r fix-t mr-small mt-small">Toggle Baseline</button>
     <div id="container" class="container p-medium p-large-m">
       {{ content }}
     </div>
     <div id="visible-detector" class="p-tiny"></div>
+    <script>
+      luda.on('click', '.toggle-baseline', function(){
+        if(document.body.classList.contains('baseline')){
+          document.body.classList.remove('baseline')
+        }else{
+          document.body.classList.add('baseline')
+        }
+      })
+    </script>
   </body>
 </html>

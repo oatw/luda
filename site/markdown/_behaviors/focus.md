@@ -13,20 +13,20 @@ Except form elements, the `.focus` class will be added
 to a focusable element only when it's focused through keyboard.
 For a form element, the `.focus` class will be added no matter how it's focused.
 
-## Examples
-
-### Link
+## Link Examples
 
 This link will show an outline only when it's focused through keyboard.
+{: .mb-none}
 
-<p class="example mt-none">
+<p class="example my-none">
   <a href="#" data-turbolinks="false">Focus me by pressing the tab key.</a>
 </p>
 ``` html
 <a href="#">Focus this link</a>
 ```
+{: .mt-small}
 
-### Button
+## Button Examples
 
 This button will show an outline only when it's focused through keyboard.
 
@@ -38,14 +38,14 @@ This button will show an outline only when it's focused through keyboard.
 </div>
 ``` html{{ button_focus }}```
 
-### Form
+## Form Examples
 
 The border color of this text field will be changed
 no matter how the text field is focused.
 
 {% capture form_focus %}
 <div class="fm fm-text">
-  <input placeholder="A text filed">
+  <input placeholder="E.g., focus behavior in a text field">
 </div>
 {% endcapture %}
 <div class="example">

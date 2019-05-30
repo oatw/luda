@@ -11,7 +11,7 @@ then wrap a search filed and a button inside.
 {% capture search_bar %}
 <div class="search-bar">
   <div class="fm fm-text">
-    <input type="search" placeholder="Search anything...">
+    <input type="search" name="keywords" placeholder="Search anything...">
   </div>
   <button class="btn btn-ico btn-primary">
     <i class="ico ico-search"></i>
@@ -37,19 +37,19 @@ into the search bar container like the below example.
       <div class="dropdown-items">
         <div class="btns-y">
           <div class="btn-radio btn-hollow-primary">
-            <input type="radio" checked name="search_option" value="one">
-            <label>Videos</label>
+            <input type="radio" checked id="option-video" name="search_option" value="video">
+            <label for="option-video">Videos</label>
           </div>
           <div class="btn-radio btn-hollow-primary">
-            <input type="radio" name="search_option" value="two">
-            <label>Pictures</label>
+            <input type="radio" name="search_option" id="option-picture" value="picture">
+            <label for="option-picture">Pictures</label>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="fm fm-text">
-    <input type="search" placeholder="Enter keywords">
+    <input type="search" name="keywords" placeholder="E.g., James Bond">
   </div>
   <button class="btn btn-primary">Search</button>
 </div>

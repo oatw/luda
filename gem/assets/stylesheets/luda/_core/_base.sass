@@ -4,6 +4,26 @@
   // Based on sanitize.css v6.0.0 CC0 License
   // github.com/csstools/sanitize.css 
 
+  \:root
+    +root-var(--baseline, baseline(1))
+    +root-var(--spacing-tiny, $spacing-tiny-rem)
+    +root-var(--spacing-small, $spacing-small-rem)
+    +root-var(--spacing-medium, $spacing-medium-rem)
+    +root-var(--spacing-large, $spacing-large-rem)
+    +root-var(--primary, $color-primary)
+    +root-var(--secondary, $color-secondary)
+    +root-var(--dark, $color-dark)
+    +root-var(--light, $color-light)
+    +root-var(--danger, $color-danger)
+    +root-var(--muted, $color-muted)
+    +root-var(--main, $color-main)
+    +root-var(--bc-primary, $background-color-primary)
+    +root-var(--bc-secondary, $background-color-secondary)
+    +root-var(--bc-dark, $background-color-dark)
+    +root-var(--bc-light, $background-color-light)
+    +root-var(--bc-danger, $background-color-danger)
+    +root-var(--bc-muted, $background-color-muted)
+    +root-var(--bc-main, $background-color-main)
 
 
   // Document
@@ -34,7 +54,9 @@
   // 3. Prevent adjustments of font size after orientation changes
   //    in IE on Windows Phone and in iOS.
   html
-    font-size: _baseline-height-px(1)
+    // sass-lint:disable empty-args
+    font-size: _root-typo-size-px()
+    // sass-lint:enable empty-args
     word-break: $base-word-break // 2
     cursor: $base-cursor // 1
     font-family: $typography-main
@@ -65,8 +87,8 @@
   body
     min-height: $base-body-min-height
     margin: 0 // 1
-    font-size: px-to-rem($typography-main-size-px)
-    line-height: $typography-main-line-height-ratio // 2
+    font-size: typo-size(6)
+    line-height: typo-line-height(6)
     color: $typography-main-color
     background: $base-body-background
 
@@ -149,7 +171,7 @@
   // Add the correct font weight in Chrome, Edge, and Safari.
   b,
   strong
-    font-weight: 700
+    font-weight: 600
 
   // 1. Correct the inheritance and scaling of font size in all browsers.
   // 2. Correct the odd `em` font sizing in all browsers.

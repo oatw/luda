@@ -1,11 +1,8 @@
-=typo-level-vertical-padding($type-level, $baseline-offset)
-  padding-top: typo-padding-top($type-level, $baseline-offset)
-  padding-bottom: typo-padding-bottom($type-level, $baseline-offset)
-
-=typo-level($type-level, $baseline-offset)
-  +typo-level-vertical-padding($type-level, $baseline-offset)
-  font-size: typo-size($type-level)
-  line-height: typo-line-height($type-level)
+=typo-level($level, $typography: main, $expected-line-height-ratio: null)
+  padding-top: typo-padding-top($level, $typography, $expected-line-height-ratio)
+  padding-bottom: typo-padding-bottom($level, $typography, $expected-line-height-ratio)
+  font-size: typo-size($level)
+  line-height: typo-line-height($level, $typography, $expected-line-height-ratio)
 
 =typo-link($name: null, $color: null, $hover-color: null, $active-color: null)
   a.link-#{$name}:not(.btn)
@@ -32,9 +29,9 @@
       @else
         $src: "url(#{$url}) format('#{$format}')"
   @at-root
-  @font-face
-    src: unquote($src)
-    font-family: $family
-    font-style: $style
-    font-weight: $weight
-    unicode-range: $unicodes
+    @font-face
+      src: unquote($src)
+      font-family: $family
+      font-style: $style
+      font-weight: $weight
+      unicode-range: $unicodes

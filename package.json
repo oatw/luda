@@ -1,6 +1,6 @@
 {
   "name": "luda",
-  "version": "0.1.13",
+  "version": "0.2.0",
   "description": "A responsive and lightweight UI framework for modern web development",
   "keywords": [
     "front-end",
@@ -26,14 +26,15 @@
     "github": "https://github.com/oatw"
   },
   "config": {
-    "version": "0.1.13",
+    "version": "0.2.0",
     "theme": "default",
     "themes": [
       "default"
     ],
     "siteBaseUrl": "/luda",
-    "siteVersion": "0.1.x",
+    "siteVersion": "0.2.x",
     "siteVersions": [
+      "0.2.x",
       "0.1.x"
     ],
     "port": "3333",
@@ -115,7 +116,7 @@
     "release-luda-js-compile-modules": "node build/js-modules.js",
     "release-luda-copy-dist": "shx cp -rf src/.dist/. dist",
     "release-luda-build": "npm-run-all --parallel release-luda-clean luda-clean luda-lint --parallel luda-js-build-dist release-luda-js-compile-modules luda-themes-build --sequential release-luda-copy-dist",
-    "release-site-clean": "shx rm -rf release/site",
+    "release-site-clean": "cross-conf-env shx rm -rf release/site/npm_package_config_siteVersion",
     "release-site-copy": "cross-conf-env shx cp -rf site/.jekyllnpm_package_config_siteBaseUrl/. release/site",
     "release-site-copy-luda": "shx cp -rf dist/. site/.dist",
     "release-site-nojekyll": "shx touch release/site/.nojekyll",

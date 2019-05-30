@@ -44,7 +44,7 @@ An absolute dropdown should be wrapped in a container which has the
 
 ### Style Modifiers
 
-#### Top{% include modifier.md %}
+#### .dropdown-top{% include modifier.md %}
 
 Add the `.dropdown-top` class to an absolute dropdown to
 align its menu on the top of its trigger.
@@ -70,7 +70,7 @@ align its menu on the top of its trigger.
 </div>
 ``` html{{ top }}```
 
-#### Right{% include modifier.md %}
+#### .dropdown-right{% include modifier.md %}
 
 Add the `.dropdown-right` class to an absolute dropdown to
 align its menu on the right of its trigger.
@@ -96,7 +96,7 @@ align its menu on the right of its trigger.
 </div>
 ``` html{{ right }}```
 
-#### Left{% include modifier.md %}
+#### .dropdown-left{% include modifier.md %}
 
 Add the `.dropdown-left` class to an absolute dropdown to
 align its menu on the left of its trigger.
@@ -122,7 +122,7 @@ align its menu on the left of its trigger.
 </div>
 ``` html{{ left }}```
 
-#### Align Right
+#### .dropdown-align-right{% include modifier.md %}
 
 Add the `.dropdown-align-right` class to an absolute dropdown to
 align its menu to the right edge of its trigger.
@@ -213,7 +213,7 @@ Let's see the below example for detail.
 ``` html{{ nested_absolute_dropdown }}```
 <!-- markdownlint-enable -->
 
-### Nested Static Dropdown
+### Nested Static Dropdowns
 
 Static dropdowns can also be nested, we can use nested static dropdowns
 to create a menu tree. Let's see the below example for detail.
@@ -269,7 +269,6 @@ the `.dropdown-fixed` class to create a responsive dropdown.
 The combination of these two classes means a fixed dropdown
 is prefered on small screens, and an absolute dropdown is prefered
 on middle size screens and large screens.
-
 Let's see the below example for detail.
 
 <!-- markdownlint-disable -->
@@ -362,7 +361,7 @@ Toggle a dropdown.
 
 ``` javascript
 luda.on('luda:dropdown:activate', '#my-dropdown', function(event){
-  let $myDropdown = this, $activateDropdown = e.target
+  let $myDropdown = this, $activateDropdown = event.target
   event.preventDefault() // Prevent the dropdown from being activated if necessary.
 })
 ```
@@ -373,7 +372,7 @@ Will be triggered before the `.dropdown-active` class added to a dropdown.
 
 ``` javascript
 luda.on('luda:dropdown:activated', '#my-dropdown', function(event){
-  let $myDropdown = this, $activatedDropdown = e.target
+  let $myDropdown = this, $activatedDropdown = event.target
 })
 ```
 
@@ -384,7 +383,7 @@ and CSS transition finished.
 
 ``` javascript
 luda.on('luda:dropdown:deactivate', '#my-dropdown', function(event){
-  let $myDropdown = this, $deactivateDropdown = e.target
+  let $myDropdown = this, $deactivateDropdown = event.target
   event.preventDefault() // Prevent the dropdown from being deactivated if necessary.
 })
 ```
@@ -396,7 +395,7 @@ a dropdown.
 
 ``` javascript
 luda.on('luda:dropdown:deactivated', '#my-dropdown', function(event){
-  let $myDropdown = this, $deactivatedDropdown = e.target
+  let $myDropdown = this, $deactivatedDropdown = event.target
 })
 ```
 
@@ -418,7 +417,7 @@ $dropdown-static-menu-margin-left-rem: $spacing-small-rem !default
 ```
 
 ``` sass
-$dropdown-absolute-max-height-rem: 33rem !default
+$dropdown-absolute-max-height-rem: baseline(50) !default
 ```
 
 ``` sass

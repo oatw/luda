@@ -1,8 +1,10 @@
 =form-element-checkfield-background($icon, $icon-color, $background)
   background: url(svg-icon($icon, $icon-color)) center / contain no-repeat, $background
 
+// sass-lint:disable empty-args
 =form-element-background($icon, $icon-color, $background)
-  background: url(svg-icon($icon, $icon-color)) right $form-element-horizontal-padding-em (center / $form-element-icon-size-em) no-repeat, $background
+  background: url(svg-icon($icon, $icon-color)) right $form-element-horizontal-padding-em (center / _form-icon-size-em()) no-repeat, $background
+// sass-lint:enable empty-args
 
 =_form-range-track-skin
   background: $form-element-track-background

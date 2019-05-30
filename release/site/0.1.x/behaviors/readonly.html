@@ -430,7 +430,7 @@ to user actions in some situations.</p>
 If you want to remove the readonly state dynamically in Javascript,
 don’t remove the <code class="highlighter-rouge">data-readonly</code> attribute, set its value to <code class="highlighter-rouge">false</code> instead.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">luda</span><span class="p">.</span><span class="nx">$child</span><span class="p">(</span><span class="s1">'#my-readonly-element'</span><span class="p">).</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">'data-readonly'</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#my-readonly-element'</span><span class="p">).</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s1">'data-readonly'</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h2 id="sass-variables">Sass Variables</h2>

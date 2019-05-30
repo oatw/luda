@@ -13,10 +13,9 @@ at first.
 
 Availiable classes include: `.va-top`, `.va-middle`, `.va-bottom`, `.va-baseline`,
 `.va-text-top` and `.va-text-bottom`.
-
 Let's see how they affect the alignment of elements in the below example.
 
-## Example
+## Examples
 
 {% capture alignment %}
 <span class="va-top">top</span>
@@ -26,8 +25,9 @@ Let's see how they affect the alignment of elements in the below example.
 <span calss="va-text-top">text-top</span>
 <span calss="va-text-bottom">text-bottom</span>
 {% endcapture %}
-<div class="example baseline">
+<div class="example baseline mb-small">
   <p class="p3 d-inline-block">Here are some texts aligned at:</p>
   {{ alignment }}
 </div>
 ``` html{{ alignment }}```
+{: .mt-small}

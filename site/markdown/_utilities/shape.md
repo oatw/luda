@@ -12,7 +12,7 @@ Like some other utility classes,
 we use the first letter of each direction for short.
 All direction abbreviations are listed in the below table.
 
-<div class="table table-border my-small">
+<div class="table table-border">
   <table>
     <thead>
       <tr><th>Abbreviation</th><th>Direction</th></tr>
@@ -31,26 +31,27 @@ All direction abbreviations are listed in the below table.
 Rounded shape utilities set a small `border-radius` value(2px by default) to elements.
 Let's see the effects in the below gallery.
 
+<!-- markdownlint-disable -->
 <div class="d-flex example mb-none">
   <div class="mr-small mb-small">
     <div class="p-medium rounded-t bc-primary"></div>
-    <p class="p6 ta-center">.rounded-t</p>
+    <p class="p7 ta-center">.rounded-t</p>
   </div>
   <div class="mr-small mb-small">
     <div class="p-medium rounded-r bc-primary"></div>
-    <p class="p6 ta-center">.rounded-r</p>
+    <p class="p7 ta-center">.rounded-r</p>
   </div>
   <div class="mr-small mb-small">
     <div class="p-medium rounded-b bc-primary"></div>
-    <p class="p6 ta-center">.rounded-b</p>
+    <p class="p7 ta-center">.rounded-b</p>
   </div>
   <div class="mr-small mb-small">
     <div class="p-medium rounded-l bc-primary"></div>
-    <p class="p6 ta-center">.rounded-l</p>
+    <p class="p7 ta-center">.rounded-l</p>
   </div>
   <div class="mb-small">
     <div class="p-medium rounded bc-primary"></div>
-    <p class="p6 ta-center">.rounded</p>
+    <p class="p7 ta-center">.rounded</p>
   </div>
 </div>
 
@@ -61,6 +62,7 @@ Let's see the effects in the below gallery.
 <div class="rounded-l"></div>
 <div class="rounded"></div>
 ```
+{: .mt-none}
 
 ## Circle
 
@@ -71,23 +73,23 @@ Let's preview the effects in the below gallery.
 <div class="d-flex example mb-none">
   <div class="mr-small mb-small">
     <div class="p-medium circle-t bc-primary"></div>
-    <p class="p6 ta-center">.circle-t</p>
+    <p class="p7 ta-center">.circle-t</p>
   </div>
   <div class="mr-small mb-small">
     <div class="p-medium circle-r bc-primary"></div>
-    <p class="p6 ta-center">.circle-r</p>
+    <p class="p7 ta-center">.circle-r</p>
   </div>
   <div class="mr-small mb-small">
     <div class="p-medium circle-b bc-primary"></div>
-    <p class="p6 ta-center">.circle-b</p>
+    <p class="p7 ta-center">.circle-b</p>
   </div>
   <div class="mr-small mb-small">
     <div class="p-medium circle-l bc-primary"></div>
-    <p class="p6 ta-center">.circle-l</p>
+    <p class="p7 ta-center">.circle-l</p>
   </div>
   <div class="mb-small">
     <div class="p-medium circle bc-primary"></div>
-    <p class="p6 ta-center">.circle</p>
+    <p class="p7 ta-center">.circle</p>
   </div>
 </div>
 
@@ -98,6 +100,7 @@ Let's preview the effects in the below gallery.
 <div class="circle-l"></div>
 <div class="circle"></div>
 ```
+{: .mt-none}
 
 ## Sharp
 
@@ -107,23 +110,23 @@ it's usually used to remove an element's border radius.
 <div class="d-flex example mb-none">
   <div class="mr-small mb-small">
     <div style="border-radius: 10px" class="p-medium sharp-t bc-primary"></div>
-    <p class="p6 ta-center">.sharp-t</p>
+    <p class="p7 ta-center">.sharp-t</p>
   </div>
   <div class="mr-small mb-small">
     <div style="border-radius: 10px" class="p-medium sharp-r bc-primary"></div>
-    <p class="p6 ta-center">.sharp-r</p>
+    <p class="p7 ta-center">.sharp-r</p>
   </div>
   <div class="mr-small mb-small">
     <div style="border-radius: 10px" class="p-medium sharp-b bc-primary"></div>
-    <p class="p6 ta-center">.sharp-b</p>
+    <p class="p7 ta-center">.sharp-b</p>
   </div>
   <div class="mr-small mb-small">
     <div style="border-radius: 10px" class="p-medium sharp-l bc-primary"></div>
-    <p class="p6 ta-center">.sharp-l</p>
+    <p class="p7 ta-center">.sharp-l</p>
   </div>
   <div class="mb-small">
     <div style="border-radius: 10px" class="p-medium sharp bc-primary"></div>
-    <p class="p6 ta-center">.sharp</p>
+    <p class="p7 ta-center">.sharp</p>
   </div>
 </div>
 
@@ -134,6 +137,7 @@ it's usually used to remove an element's border radius.
 <div style="border-radius: 10px" class="sharp-l"></div>
 <div style="border-radius: 10px" class="sharp"></div>
 ```
+{: .mt-none}
 
 ## Sass Variables
 

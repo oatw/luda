@@ -6,7 +6,7 @@ description: Alert is designed to show feedback messages to user actions.
 ## Usage
 
 Add the `.alert` class to a container, then add the `.alert-content` class
-to the wrapped element which contians the message.
+to the wrapped element which contains the message.
 
 {% capture alert %}
 <div class="alert">
@@ -123,7 +123,11 @@ $alert-padding-rem: $spacing-small-rem !default
 ```
 
 ``` sass
-$alert-action-margin-left-rem: $spacing-small-rem !default
+$alert-action-margin-rem: null !default
+```
+
+``` sass
+$alert-content-margin-rem: 0 $spacing-small-rem !default
 ```
 
 ### Others

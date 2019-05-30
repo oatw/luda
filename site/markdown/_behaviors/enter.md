@@ -11,12 +11,9 @@ have a none negative `tabindex` attribute are enhanced.
 The `click` event will be triggered on them when they're focused
 and the `Enter` key pressed. In some situations,
 this helps to improve interaction experience.
-
 Let's see the below examples for clarification.
 
-## Examples
-
-### Checkbox
+## Checkbox Examples
 
 States of these two checkboxes will be changed,
 when focused and the `Enter` key pressed.
@@ -24,10 +21,10 @@ when focused and the `Enter` key pressed.
 {% capture checkbox %}
 <div class="fm fm-check">
   <label>
-    <input type="checkbox"> One
+    <input type="checkbox" name="example1" value="1"> One
   </label>
   <label>
-    <input type="checkbox"> Two
+    <input type="checkbox" name="example1" value="2"> Two
   </label>
 </div>
 {% endcapture %}
@@ -36,7 +33,7 @@ when focused and the `Enter` key pressed.
 </div>
 ``` html{{ checkbox }}```
 
-### Radio
+## Radio Examples
 
 Focus these radios by pressing the `Tab` key, then press the `Enter` key
 to see what will happen.
@@ -44,10 +41,10 @@ to see what will happen.
 {% capture radio %}
 <div class="fm fm-radio">
   <label>
-    <input type="radio" name="enter_demo" value="one"> One
+    <input type="radio" name="example2" value="1"> One
   </label>
   <label>
-    <input type="radio" name="enter_demo" value="two"> Two
+    <input type="radio" name="example2" value="2"> Two
   </label>
 </div>
 {% endcapture %}
@@ -56,7 +53,7 @@ to see what will happen.
 </div>
 ``` html{{ radio }}```
 
-### Tabindex
+## Tabindex Examples
 
 <!-- markdownlint-disable -->
 {% capture tabindex %}
@@ -64,7 +61,7 @@ to see what will happen.
   Focus this div by pressing the Tab key, then press the Enter key to see what will happen.
 </div>
 {% endcapture %}
-<div class="example">
+<div class="example mt-medium">
   {{ tabindex }}
 </div>
 ``` html{{ tabindex }}```

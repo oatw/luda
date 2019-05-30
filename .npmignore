@@ -19,6 +19,7 @@ CHANGELOG.md
 *.swo
 *.vi
 
+.gitattributes
 .cache
 .DS_Store
 .idea

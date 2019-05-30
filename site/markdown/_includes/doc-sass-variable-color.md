@@ -13,7 +13,7 @@ $color-danger: hsba(0, 82, 82) !default
 ```
 
 ``` sass
-$color-dark: hsba(0, 0, 32) !default
+$color-dark: hsba(0, 0, 12) !default
 ```
 
 ``` sass
@@ -29,7 +29,7 @@ $color-main: lighten($color-dark, 10%) !default
 ```
 
 ``` sass
-$color-muted: lighten($color-dark, 50%) !default
+$color-muted: lighten($color-dark, 60%) !default
 ```
 
 ``` sass

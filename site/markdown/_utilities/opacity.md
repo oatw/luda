@@ -12,26 +12,27 @@ Let's see how they change an element's opacity in the below gellery.
 <div class="background-example mb-none">
   <div>
     <div class="bc-primary o-emphasis"></div>
-    <p class="p6">.o-emphasis</p>
+    <p class="p7">.o-emphasis</p>
   </div>
   <div>
     <div class="bc-primary o-main"></div>
-    <p class="p6">.o-main</p>
+    <p class="p7">.o-main</p>
   </div>
   <div>
     <div class="bc-primary o-muted"></div>
-    <p class="p6">.o-muted</p>
+    <p class="p7">.o-muted</p>
   </div>
   <div>
     <div class="bc-primary o-more-muted"></div>
-    <p class="p6">.o-more-muted</p>
+    <p class="p7">.o-more-muted</p>
   </div>
   <div>
     <div class="bc-primary o-most-muted"></div>
-    <p class="p6">.o-most-muted</p>
+    <p class="p7">.o-most-muted</p>
   </div>
 </div>
 
+<!-- markdownlint-disable  -->
 ``` html
 <div class="o-emphasis"></div>
 <div class="o-main"></div>
@@ -39,6 +40,8 @@ Let's see how they change an element's opacity in the below gellery.
 <div class="o-more-muted"></div>
 <div class="o-most-muted"></div>
 ```
+{: .mt-none}
+<!-- markdownlint-enable  -->
 
 ## Sass Variables
 

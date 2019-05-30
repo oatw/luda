@@ -8,8 +8,8 @@
     <title>{{ page.title }} | Luda - A lightweight and responsive UI framework for modern web development.</title>
     {% include head.md %}
     <link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900">
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:700,900|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="{{ '/assets/js/turbolinks.js' | relative_url }}"></script>
     <link rel="stylesheet" type="text/css" data-theme-style="{{ theme }}" href="{{ theme_path_pattern | replace: '$theme$', theme }}">
     {% if jekyll.environment == "development" %}

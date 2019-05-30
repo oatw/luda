@@ -1,3 +1,7 @@
+#home #luda-title
+  opacity: 0.96
+  text-shadow: 8px 8px 0 rgba(0, 0, 0, $opacity-most-muted)
+
 #home #main-header,
 #home #main-footer
   background: none !important
@@ -36,3 +40,7 @@
   #home-background video
     width: auto
     height: 100%
+
++media-width(m)
+  #home #luda-title
+    +typo-level(-1, heading, 1.2)
