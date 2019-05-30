@@ -6,7 +6,7 @@
     </p>
   </div>
   <div class="alert-action">
-    <a href="{{ '/' | relative_url }}" class="btn btn-light btn-small mr-small">Let's go!</a>
+    <a href="{{ site.luda.siteBaseUrl }}" class="btn btn-light btn-small mr-small">Let's go!</a>
     <button data-toggle class="btn btn-hollow-light btn-small">I don't care.</button>
   </div>
 </div>
