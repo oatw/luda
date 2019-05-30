@@ -4,7 +4,7 @@
   window.site.version = "{{ site.luda.siteVersion }}"
   luda.on('docready', function(){
     if(window.site.version != window.site.latestVersion){
-      luda.toggle.active('site-version-alert')
+      luda.toggle.activate('site-version-alert')
     }
   })
 </script>

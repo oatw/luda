@@ -2,7 +2,7 @@
 <div class="alert fix-t fix-l w-100 bc-danger jc-center" style="z-index:100" data-toggle-target="site-version-alert">
   <div class="alert-content">
     <p>
-      There is a newer version of <a class="link-light" href="{{ '/' | relative_url }}">Luda</a>.
+      There is a newer version of <a class="link-light" href="{{ site.luda.siteBaseUrl }}">Luda</a>.
     </p>
   </div>
   <div class="alert-action">
