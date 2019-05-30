@@ -13,50 +13,50 @@ When you pick up a background color class, consider the meaning in your context
 but not only the appearance, since in different themes background colors may be
 changed but the meanings are the same.
 
-<div class="background-example mb-none">
+<div class="background-example">
   <div>
     <div class="bc-primary"></div>
-    <p class="p6">.bc-primary</p>
+    <p class="p7">.bc-primary</p>
   </div>
   <div>
     <div class="bc-secondary"></div>
-    <p class="p6">.bc-secondary</p>
+    <p class="p7">.bc-secondary</p>
   </div>
   <div>
     <div class="bc-danger"></div>
-    <p class="p6">.bc-danger</p>
+    <p class="p7">.bc-danger</p>
   </div>
   <div>
     <div class="bc-dark"></div>
-    <p class="p6">.bc-dark</p>
+    <p class="p7">.bc-dark</p>
   </div>
   <div>
     <div class="bc-light"></div>
-    <p class="p6">.bc-light</p>
+    <p class="p7">.bc-light</p>
   </div>
   <div>
     <div class="bc-emphasis"></div>
-    <p class="p6">.bc-emphasis</p>
+    <p class="p7">.bc-emphasis</p>
   </div>
   <div>
     <div class="bc-main"></div>
-    <p class="p6">.bc-main</p>
+    <p class="p7">.bc-main</p>
   </div>
   <div>
     <div class="bc-muted"></div>
-    <p class="p6">.bc-muted</p>
+    <p class="p7">.bc-muted</p>
   </div>
   <div>
     <div class="bc-inverse-emphasis"></div>
-    <p class="p6">.bc-inverse-emphasis</p>
+    <p class="p7">.bc-inverse-emphasis</p>
   </div>
   <div>
     <div class="bc-inverse-main"></div>
-    <p class="p6">.bc-inverse-main</p>
+    <p class="p7">.bc-inverse-main</p>
   </div>
   <div>
     <div class="bc-inverse-muted"></div>
-    <p class="p6">.bc-inverse-muted</p>
+    <p class="p7">.bc-inverse-muted</p>
   </div>
 </div>
 
@@ -94,26 +94,26 @@ You can preview how background size utilities
 affect the size of an element's background in the below gallery.
 
 <!-- markdownlint-disable -->
-<div class="background-example mb-none">
+<div class="background-example">
   <div>
     <div class="bs-cover" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat"></div>
-    <p class="p6">.bs-cover</p>
+    <p class="p7">.bs-cover</p>
   </div>
   <div>
     <div class="bs-contain" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat"></div>
-    <p class="p6">.bs-contain</p>
+    <p class="p7">.bs-contain</p>
   </div>
   <div>
     <div class="bs-auto" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat"></div>
-    <p class="p6">.bs-auto</p>
+    <p class="p7">.bs-auto</p>
   </div>
   <div>
     <div class="bs-100-auto" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat"></div>
-    <p class="p6">.bs-100-auto</p>
+    <p class="p7">.bs-100-auto</p>
   </div>
   <div>
     <div class="bs-auto-100" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat"></div>
-    <p class="p6">.bs-auto-100</p>
+    <p class="p7">.bs-auto-100</p>
   </div>
 </div>
 <!-- markdownlint-enable -->
@@ -136,7 +136,7 @@ We use the first letter of each position word for short,
 all position abbreviations are listed in the below table.
 
 <!-- markdownlint-disable -->
-<div class="table table-border my-small">
+<div class="table table-border">
   <table>
     <thead>
       <tr><th>Abbreviation</th><th>Position</th></tr>
@@ -156,42 +156,42 @@ You can preview how they affect the position of an element's background images
 in the below gallery.
 
 <!-- markdownlint-disable -->
-<div class="background-example mb-none">
+<div class="background-example">
   <div>
     <div class="bp-c" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat;background-size: 4rem"></div>
-    <p class="p6">.bp-c</p>
+    <p class="p7">.bp-c</p>
   </div>
   <div>
     <div class="bp-rc" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat;background-size: 4rem"></div>
-    <p class="p6">.bp-rc</p>
+    <p class="p7">.bp-rc</p>
   </div>
   <div>
     <div class="bp-lc" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat;background-size: 4rem"></div>
-    <p class="p6">.bp-lc</p>
+    <p class="p7">.bp-lc</p>
   </div>
   <div>
     <div class="bp-ct" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat;background-size: 4rem"></div>
-    <p class="p6">.bp-ct</p>
+    <p class="p7">.bp-ct</p>
   </div>
   <div>
     <div class="bp-cb" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat;background-size: 4rem"></div>
-    <p class="p6">.bp-cb</p>
+    <p class="p7">.bp-cb</p>
   </div>
   <div>
     <div class="bp-lt" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat;background-size: 4rem"></div>
-    <p class="p6">.bp-lt</p>
+    <p class="p7">.bp-lt</p>
   </div>
   <div>
     <div class="bp-lb" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat;background-size: 4rem"></div>
-    <p class="p6">.bp-lb</p>
+    <p class="p7">.bp-lb</p>
   </div>
   <div>
     <div class="bp-rt" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat;background-size: 4rem"></div>
-    <p class="p6">.bp-rt</p>
+    <p class="p7">.bp-rt</p>
   </div>
   <div>
     <div class="bp-rb" style="background: url({{ '/assets/img/carousel1.jpg' | relative_url }}) no-repeat;background-size: 4rem"></div>
-    <p class="p6">.bp-rb</p>
+    <p class="p7">.bp-rb</p>
   </div>
 </div>
 <!-- markdownlint-enable -->

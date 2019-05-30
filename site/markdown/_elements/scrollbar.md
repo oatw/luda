@@ -10,7 +10,7 @@ the customized styles only shows for screens larger than the `m` width breakpoin
 The styles only work for Webkit browsers and Edge browsers
 since Firefox doesn't support customizing scrollbar appearances in CSS.
 
-## Example
+## Examples
 
 In the below example, customized scrollbar styles shows
 on middle size screens and large screens.
@@ -28,25 +28,27 @@ $scrollbar-width-breakpoint: m !default
 Default start breakpoint to show customized scrollbar styles.
 
 ``` sass
-$scrollbar-breakpoint-vertical-width-rem: 0.5rem !default
+$scrollbar-breakpoint-vertical-width-rem: $spacing-tiny-rem !default
 ```
 
 Default vertical scrollbar width for webkit browsers.
 
+<!-- markdownlint-disable -->
 ``` sass
-$scrollbar-breakpoint-horizontal-height-rem: 0.5rem !default
+$scrollbar-breakpoint-horizontal-height-rem: $scrollbar-breakpoint-vertical-width-rem !default
 ```
 
 Default horizontal scrollbar height for webkit browsers.
 
 ``` sass
-$scrollbar-thumb-background: rgba($color-muted, $opacity-more-muted) !default
+$scrollbar-thumb-background: rgba(lighten($color-muted, 10%), $opacity-more-muted) !default
 ```
+<!-- markdownlint-enable -->
 
 Default scrollbar thumb background for webkit browsers.
 
 ``` sass
-$scrollbar-thumb-border-radius: 0.5rem !default
+$scrollbar-thumb-border-radius: $scrollbar-breakpoint-vertical-width-rem !default
 ```
 
 Default scrollbar thumb border radius for webkit browsers.

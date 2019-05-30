@@ -1,13 +1,23 @@
 ---
 title: Typography
-description: Learn how to use headings, paragraphs and other  kinds of texts in Luda.
+description: Learn how to use headings, paragraphs and other kinds of texts in Luda.
 ---
+
+## Introduction
+
+Luda uses native font stacks by default, type sizes are calculated
+in a modular scale way through `$typography-main-size-px` and
+`$typography-size-scale-ratio`. There're 8 level type sizes,
+size level from 1 to 6 are available for heading texts and
+size level from 5 to 8 are available for body texts.
+`<body>` font size is set at level 6 which is the
+calculated `rem` value of `$typography-main-size-px`.
 
 ## Headings
 
 ### Heading Global Styles
 
-Global styles are added to heading elements from `h1` to `h6`,
+Global styles are added to heading elements from `<h1>` to `<h6>`,
 extra paddings are added in the top and bottom of these elements
 to ensure baseline alignment.
 
@@ -19,7 +29,7 @@ to ensure baseline alignment.
 <h5>Heading h5</h5>
 <h6>Heading h6</h6>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ headings }}
 </div>
 ``` html{{ headings }}```
@@ -36,7 +46,7 @@ The classes from `.h1` to `.h6` can be used to create texts looks like headings.
 <span class="h5">Heading class .h5</span>
 <span class="h6">Heading class .h6</span>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ heading_classes }}
 </div>
 ``` html{{ heading_classes }}```
@@ -50,47 +60,42 @@ extra paddings in the top and bottom are also added.
 
 {% capture paragraph %}
 <p>
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire. It was she who cooked the meals.
-  It was she who kept the fire going. The poor girl could not stay clean,
-  from all the ashes and cinders by the fire.
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 <p>
-  One day, big news came to town. The King and Queen were going to have a ball!
-  It was time for the Prince to find a bride.
-  All of the young ladies in the land were invited to come.
-  They were wild with joy! They would wear their most beautiful gown
-  and fix their hair extra nice. Maybe the prince would like them!
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ paragraph }}
 </div>
 ``` html{{ paragraph }}```
 
 ### Paragraph Classes
 
-You can use the classes from `.p1` to `p6`
+You can use the classes from `.p5` to `.p8`
 to create texts looks like paragraphs.
-In most cases, texts with the classes `.p4`, `.p5` or `.p6`
-are easy for reading.
 
 {% capture paragraph_classes %}
-<span class="p1">Paragraph class .p1</span>
-<span class="p2">Paragraph class .p2</span>
-<span class="p3">Paragraph class .p3</span>
-<span class="p4">Paragraph class .p4</span>
 <span class="p5">Paragraph class .p5</span>
 <span class="p6">Paragraph class .p6</span>
+<span class="p7">Paragraph class .p7</span>
+<span class="p8">Paragraph class .p8</span>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ paragraph_classes }}
 </div>
 ``` html{{ paragraph_classes }}```
 
-## Inline Modifier{% include modifier.md %}
+## .typo-inline{% include modifier.md %}
 
 Sometimes, texts have different font sizes need be nested together,
 remember to use the `.typo-inline` modifier class to ensure baseline alignment.
@@ -99,10 +104,10 @@ Let's see the below example.
 {% capture inline %}
 <p>
   Here are
-  <span class="p2 typo-inline">some nested inline texts</span>.
+  <span class="h1 typo-inline">some nested inline texts</span>.
 </p>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ inline }}
 </div>
 ``` html{{ inline }}```
@@ -112,7 +117,6 @@ Let's see the below example.
 If you need show large amount of codes in your applications,
 you'd better use code highlighters like [rouge](http://rouge.jneen.net/),
 they support many languages and features.
-
 But if you just want to show small pieces of codes,
 you can use the code styles in Luda directly.  
 
@@ -128,7 +132,7 @@ to use inline codes, just wrap you code snippets in these elements as below.
   <kbd>CTRL + ALT + M</kbd>
 </p>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ inline_code }}
 </div>
 ``` html{{ inline_code }}```
@@ -154,7 +158,7 @@ then wrap a `code` element inside.
 </code>
 </pre>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline mb-medium">
   {{ code_block }}
 </div>
 ``` html{{ code_block }}```
@@ -177,7 +181,7 @@ for short quotes, we should use the `<q>` tag.
   <cite>– Brave New World</cite>
 </p>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ inline_quote }}
 </div>
 ``` html{{ inline_quote }}```
@@ -195,12 +199,12 @@ include a `<footer>` tag.
     Words can be like X-rays, if you use them properly – they'll go through anything.
     You read and you're pierced.
   </p>
-  <footer class="p5">
+  <footer class="p6">
     <cite>Brave New World</cite>
   </footer>
 </blockquote>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ blockquote }}
 </div>
 ``` html{{ blockquote }}```
@@ -211,7 +215,7 @@ include a `<footer>` tag.
 
 Global styles are added to the `<a>` tag.
 
-<p class="example baseline">
+<p class="typography-example baseline">
   <a href="#" data-turbolinks="false">This is a link.</a>
 </p>
 
@@ -224,7 +228,7 @@ Global styles are added to the `<a>` tag.
 For using links in dark backgrounds, add the `.link-light` calss to the
 `<a>` tag.
 
-<p class="example baseline bc-dark">
+<p class="typography-example baseline bc-dark mb-medium">
   <a class="link-light" href="#" data-turbolinks="false">This is a light link.</a>
 </p>
 
@@ -241,13 +245,13 @@ For different purpose, you should use different type lists.
 The `<ul>` element represents an unordered list of items.
 
 {% capture ul %}
-<ul class="p5">
+<ul class="p6">
   <li>Unordered list item one</li>
   <li>Unordered list item two</li>
   <li>Unordered list item three</li>
 </ul>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ ul }}
 </div>
 ``` html{{ ul }}```
@@ -257,13 +261,13 @@ The `<ul>` element represents an unordered list of items.
 The `<ol>` element represents an ordered list of items.
 
 {% capture ol %}
-<ol class="p5">
+<ol class="p6">
   <li>Ordered list item one</li>
   <li>Ordered list item two</li>
   <li>Ordered list item three</li>
 </ol>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ ol }}
 </div>
 ``` html{{ ol }}```
@@ -273,7 +277,7 @@ The `<ol>` element represents an ordered list of items.
 The `<dl`> element represents a description list.
 
 {% capture dl %}
-<dl class="p5">
+<dl class="p6">
   <dt>Title One</dt>
   <dd>Definition list item one</dd>
   <dt>Title Two</dt>
@@ -282,7 +286,7 @@ The `<dl`> element represents a description list.
   <dd>Definition list item three</dd>
 </dl>
 {% endcapture %}
-<div class="example baseline">
+<div class="typography-example baseline">
   {{ dl }}
 </div>
 ``` html{{ dl }}```
@@ -291,7 +295,7 @@ The `<dl`> element represents a description list.
 
 You can preview the appearances of other inline texts in the below examples.
 
-<p class="example baseline">
+<p class="typography-example baseline">
   <b>Bold</b>&nbsp;&nbsp;
   <strong>Strong</strong>&nbsp;&nbsp;
   <ins>Inserted</ins>&nbsp;&nbsp;
@@ -365,11 +369,19 @@ $typography-heading-baseline-offset-ratio: $typography-main-baseline-offset-rati
 Default baseline offset ratio of headings, for better baseline alignment.
 
 ``` sass
-$typography-heading-color: $color-emphasis !default
+$typography-heading-expected-line-height-ratios: (1.2, 1.2, 1.2, 1, 1, 1) !default
+```
+
+Default expected line height ratios of heading texts from level 1 to 6.
+The values are used for calculating heading texts line heights
+and might not match the calcualted values exactly.
+
+``` sass
+$typography-heading-color: null !default
 ```
 
 ``` sass
-$typography-heading-font-weight: 700 !default
+$typography-heading-font-weight: 500 !default
 ```
 
 ### Code
@@ -388,14 +400,24 @@ $typography-code-baseline-offset-ratio: constant-get(baseline-offset-ratios, "Co
 
 Default baseline offset ratio of codes, for better baseline alignment.
 
+<!-- markdownlint-disable -->
 ``` sass
-$typography-block-code-size-level: 6 !default
+$typography-code-expected-line-height-ratio: nth($typography-main-expected-line-height-ratios, 2) !default
+```
+<!-- markdownlint-enable -->
+
+Default expected line height ratios of code block.
+The value is used for calculating code block line height
+and might not match the calcualted value exactly.
+
+``` sass
+$typography-block-code-size-level: 7 !default
 ```
 
-The value must be an integer between 1 and 6.
+The value must be an integer between 5 and 8.
 
 ``` sass
-$typography-code-padding-em: 0.1em 0.3em !default
+$typography-code-padding-em: 0 0.2em !default
 ```
 
 Default paddings of inline codes.
@@ -413,7 +435,7 @@ $typography-code-border-radius: $border-radius-main !default
 ```
 
 ``` sass
-$typography-code-block-padding-rem: 0 $spacing-medium-rem !default
+$typography-block-code-padding-rem: 0 $spacing-medium-rem !default
 ```
 
 ### Quote
@@ -430,28 +452,36 @@ $typography-quote-baseline-offset-ratio: $typography-main-baseline-offset-ratio 
 
 Default baseline offset ratio of quotes, for better baseline alignment.
 
+<!-- markdownlint-disable -->
 ``` sass
-$typography-block-quote-size-level: 4 !default
+$typography-quote-expected-line-height-ratio: nth($typography-main-expected-line-height-ratios, 1) !default
+```
+<!-- markdownlint-enable -->
+
+Default expected line height ratios of blockquote.
+The value is used for calculating blockquote line height
+and might not match the calcualted value exactly.
+
+``` sass
+$typography-block-quote-size-level: 5 !default
 ```
 
-The value must be an integer between 1 and 6.
+The value must be an integer between 5 and 8.
 
 ``` sass
 $typography-cite-color: $color-muted !default
 ```
 
-<!-- markdownlint-disable -->
 ``` sass
-$typography-quote-block-padding-rem: 3 * $spacing-small-rem $spacing-large-rem $spacing-medium-rem !default
-```
-<!-- markdownlint-enable -->
-
-``` sass
-$typography-quote-block-p-margin-rem: 0 auto $spacing-small-rem !default
+$typography-block-quote-padding-rem: $spacing-medium-rem !default
 ```
 
 ``` sass
-$typography-quote-block-cite-line-height: $line-width-main !default
+$typography-block-quote-p-margin-rem: 0 auto $spacing-small-rem !default
+```
+
+``` sass
+$typography-block-quote-cite-line-height: $line-width-main !default
 ```
 
 ### Link
@@ -495,7 +525,7 @@ $typography-link-light-active-color: null !default
 ### List
 
 ``` sass
-$typography-list-nested-padding-em: 0 0 0 strip-unit($spacing-medium-rem) * 1em !default
+$typography-list-nested-padding-em: 0 0 0 2em !default
 ```
 
 Default paddings of nested lists.
@@ -503,7 +533,7 @@ Default paddings of nested lists.
 ### Mark
 
 ``` sass
-$typography-mark-padding-em: 0.1em 0.3em !default
+$typography-mark-padding-em: 0 0.2em !default
 ```
 
 ``` sass

@@ -3,18 +3,18 @@ title: Installation
 description: Luda can be easily installed through multiple ways.
 order: 2
 ---
-
+<!-- markdownlint-disable -->
 ## Install Pre-built JavaScript and CSS
 
-### Step 1: Download Pre-built Files
+Step 1: Download Pre-built Files
+{: .fw-medium}
 
-<!-- markdownlint-disable -->
 [Download v{{site.luda.version}}](https://github.com/oatw/luda/raw/v{{site.luda.version}}/release/dist/luda-{{site.luda.version}}.zip){: .btn .btn-primary}
-<!-- markdownlint-enable -->
+{: .m-none .p-none}
 
-### Step 2: Include Them in Your Template
+Step 2: Include Them in Your Template
+{: .mt-medium .fw-medium}
 
-<!-- markdownlint-disable -->
 ``` html
 <!DOCTYPE html>
 <html lang="en">
@@ -31,16 +31,17 @@ order: 2
   </body>
 </html>
 ```
-<!-- markdownlint-enable -->
+{: .mt-small}
 
 You can start with this template and modify it to your needs.
 
 ## Install in Node.js Powered Apps
 
-### Step 1: Download With Yarn or Npm
+Step 1: Download With Yarn or Npm
+{: .mb-none .fw-medium}
 
-<!-- markdownlint-disable -->
 Yarn
+{: .my-none}
 
 ``` bash
 $ yarn add luda@{{site.luda.version}}
@@ -48,15 +49,15 @@ $ yarn add luda@{{site.luda.version}}
 {: .mt-none}
 
 Npm
-{: .mt-small}
+{: .mb-none}
 
 ``` bash
 $ npm install luda@{{site.luda.version}} --save
 ```
 {: .mt-none}
-<!-- markdownlint-enable -->
 
-### Step 2: Choose a Theme and Import It
+Step 2: Choose a Theme and Import It
+{: .mt-medium .fw-medium}
 
 ``` sass
 // In your sass or scss entry file
@@ -65,30 +66,35 @@ $ npm install luda@{{site.luda.version}} --save
 // Import default theme for example. Don't include multiple themes toghther.
 @import 'path_to_node_modules/luda/src/sass/default/index'
 ```
+{: .mt-small}
 
-### Step 3: Import Luda's JavaScript
+Step 3: Import Luda's JavaScript
+{: .mt-medium .fw-medium}
 
 ``` javascript
 // In your Javascript entry file
 import 'luda'
 ```
+{: .mt-small}
 
 ## Install in Ruby on Rails Apps
 
-### Step 1: Download With Bundler or Gem
+Step 1: Download With Bundler or Gem
+{: .mb-none .fw-medium}
 
 Bundler is the recommand way to install Luda in Ruby on Rails Apps.
+{: .m-none}
 
 Add luda gem to your Gemfile first:
+{: .m-none}
 
-<!-- markdownlint-disable -->
 ``` ruby
 gem 'luda', '{{site.luda.version}}'
 ```
-{: .mt-none}
+{: .mt-none .mb-small}
 
 then run bundle in command line.
-{: .mt-small}
+{: .m-none}
 
 ``` bash
 $ bundle
@@ -96,15 +102,15 @@ $ bundle
 {: .mt-none}
 
 You can also download Luda with gem.
-{: .mt-small}
+{: .mb-none}
 
 ``` bash
 $ gem install luda -v {{site.luda.version}}
 ```
 {: .mt-none}
-<!-- markdownlint-enable -->
 
-### Step 2: Choose a Theme and Import It in application.sa(c)ss
+Step 2: Choose a Theme and Import It in application.sa(c)ss
+{: .mt-medium .fw-medium}
 
 ``` sass
 // In application.sass or application.scss
@@ -113,18 +119,21 @@ $ gem install luda -v {{site.luda.version}}
 // Import default theme for example. Don't include multiple themes toghther.
 @import luda/default
 ```
+{: .mt-small}
 
 If `application.css` exists in your project,
 rename it to `.sass` or `.scss` extension.
 And don't use `require` statement to import files, use `@import` instead.
 {: .c-danger}
 
-### Step 3: Import JavaScript in application.js
+Step 3: Import JavaScript in application.js
+{: .fw-medium}
 
 ``` javascript
 // In application.js
 //= require luda
 ```
+{: .mt-small}
 
 ## Install in Other Ruby Apps
 

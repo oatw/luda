@@ -8,7 +8,7 @@ description: Indicate to users their current location in a website.
 Add the `.breadcrumb` class to an `<ol>` tag,
 then wrap `<a>` tags inside wrapped `<li>` tags.
 
-<ol class="breadcrumb">
+<ol class="breadcrumb m-none">
   <li><a href="#" data-turbolinks="false">Luda</a></li>
   <li><a href="#" data-turbolinks="false">Patterns</a></li>
   <li><a href="#" data-turbolinks="false">Breadcrumb</a></li>
@@ -20,13 +20,14 @@ then wrap `<a>` tags inside wrapped `<li>` tags.
   <li><a href="#">Breadcrumb</a></li>
 </ol>
 ```
+{: .mt-none}
 
 ## States and Colors
 
 A breadcrumb item can be disabled by replace the `<a>` tag with a `<span>` tag
 like the below example.
 
-<ol class="breadcrumb">
+<ol class="breadcrumb m-none">
   <li><a href="#" data-turbolinks="false">Luda</a></li>
   <li><a href="#" data-turbolinks="false">Patterns</a></li>
   <li><span>Breadcrumb</span></li>
@@ -38,12 +39,13 @@ like the below example.
   <li><span>Breadcrumb</span></li>
 </ol>
 ```
+{: .mt-none}
 
 If you want to enhance part of a breadcrumb,
 you can use color utility classes for highlighting.
-{: .mt-small}
+{: .mt-medium}
 
-<ol class="breadcrumb">
+<ol class="breadcrumb m-none">
   <li><a href="#" data-turbolinks="false">Luda</a></li>
   <li><a href="#" data-turbolinks="false">Patterns</a></li>
   <li><a class="c-primary" href="#" data-turbolinks="false">Breadcrumb</a></li>
@@ -55,6 +57,7 @@ you can use color utility classes for highlighting.
   <li><a class="c-primary" href="#">Breadcrumb</a></li>
 </ol>
 ```
+{: .mt-none}
 
 ## Sass Variables
 
@@ -71,5 +74,5 @@ $breadcrumb-spliter: "/" !default
 ```
 
 ``` sass
-$breadcrumb-spliter-padding-em: 0 strip-unit($spacing-tiny-rem) * 1em !default
+$breadcrumb-spliter-padding-em: 0 1em !default
 ```

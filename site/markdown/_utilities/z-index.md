@@ -11,7 +11,7 @@ They are named using the format `zi-{value}`.
 We use meaningful value words in the class names,
 all value words are listed in the below table.
 
-<div class="table table-border my-small">
+<div class="table table-border">
   <table>
     <thead>
       <tr><th>Word</th><th>Value</th></tr>
@@ -27,7 +27,7 @@ all value words are listed in the below table.
   </table>
 </div>
 
-## Example
+## Examples
 
 ``` html
 <div class="zi-low"></div>

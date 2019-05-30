@@ -15,7 +15,7 @@ In this way, your styles are more stable and maintainable.
 For convinence, there are some built-in modifier classes
 to change the appearances of components.
 Each modifier class is marked as
-<span class="badge-baseline bc-dark mr-tiny">Modifier</span> in this documentation.
+<span class="badge bc-dark">Modifier</span> in this documentation.
 If they're not enough for you, you can create your own modifiers.
 
 ## Override Default Variables
@@ -42,11 +42,17 @@ You can find all global variables in the list below.
 
 {% include doc-sass-variable-breakpoints-resolution.md %}
 
-### Spacing
+### Baseline
 
 ``` sass
-$spacing-base-rem: 1rem !default
+$baseline-height-px: 12px !default
 ```
+
+Default baseline height. For calculation convinence,
+the font size of `<html>` is set at the value of this variable,
+except when the value is less than 12px.
+
+### Spacing
 
 {% include doc-sass-variable-spacing.md %}
 
@@ -105,11 +111,11 @@ $line-color-emphasis: $line-color-primary !default
 ```
 
 ``` sass
-$line-color-main: lighten($line-color-dark, 60%) !default
+$line-color-main: darken($line-color-light, 30%) !default
 ```
 
 ``` sass
-$line-color-muted: lighten($line-color-dark, 40%) !default
+$line-color-muted: darken($line-color-light, 8%) !default
 ```
 
 ``` sass

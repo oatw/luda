@@ -61,11 +61,12 @@
         #{$title.innerText.replace(/^#/, '').replace(/modifier$/i, '')}</a>"
         switch $title.tagName.toLowerCase()
           when 'h2'
-            items += "<p class='mt-small py-none text-ellipsis'>#{link}</p>"
+            itemClass = 'p7 mt-small mb-tiny py-none text-ellipsis'
           when 'h3'
-            items += "<p class='p6 pl-small py-none text-ellipsis'>#{link}</p>"
+            itemClass = 'p7 pl-medium mb-tiny py-none text-ellipsis'
           else
-            items += "<p class='p6 pl-medium py-none text-ellipsis'>#{link}</p>"
+            itemClass = 'p7 pl-large mb-tiny py-none text-ellipsis'
+        items += "<p class='#{itemClass}'>#{link}</p>"
       luda.$child('#doc-sub-nav .nav-items').innerHTML = items
 
   luda.on 'docready', insertSubNav

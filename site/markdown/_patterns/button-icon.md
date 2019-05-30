@@ -34,16 +34,16 @@ then wrap an icon inside.
 
 {% capture icon_on_the_right %}
 <div class="btn-check btn-hollow-primary btn-ico-right btn-small">
-  <input type="checkbox">
-  <label>Check <i class="ico material-icons">check</i></label>
+  <input type="checkbox" id="example1-1" name="example1" value="1">
+  <label for="example1-1">Check <i class="ico material-icons">check</i></label>
 </div>
 <div class="btn-check btn-hollow-primary btn-ico-right">
-  <input type="checkbox">
-  <label>Check <i class="ico material-icons">check</i></label>
+  <input type="checkbox" id="example1-2" name="example1" value="2">
+  <label for="example1-2">Check <i class="ico material-icons">check</i></label>
 </div>
 <div class="btn-check btn-hollow-primary btn-ico-right btn-large">
-  <input type="checkbox">
-  <label>Check <i class="ico material-icons">check</i></label>
+  <input type="checkbox" id="example1-3" name="example1" value="3">
+  <label for="example1-3">Check <i class="ico material-icons">check</i></label>
 </div>
 {% endcapture %}
 
@@ -83,16 +83,16 @@ then wrap only an icon inside.
 
 {% capture icon_only %}
 <div class="btn-file btn-primary btn-ico btn-small">
-  <input type="file">
-  <label><i class="ico material-icons">cloud_upload</i></label>
+  <input type="file" id="example2" name="example2">
+  <label for="example2"><i class="ico material-icons">cloud_upload</i></label>
 </div>
 <div class="btn-file btn-primary btn-ico">
-  <input type="file">
-  <label><i class="ico material-icons">cloud_upload</i></label>
+  <input type="file" id="example3" name="example3">
+  <label for="example3"><i class="ico material-icons">cloud_upload</i></label>
 </div>
 <div class="btn-file btn-primary btn-ico btn-large">
-  <input type="file">
-  <label><i class="ico material-icons">cloud_upload</i></label>
+  <input type="file" id="example4" name="example4">
+  <label for="example4"><i class="ico material-icons">cloud_upload</i></label>
 </div>
 {% endcapture %}
 
@@ -104,33 +104,33 @@ then wrap only an icon inside.
 ## Sass Variables
 
 ``` sass
-$button-icon-size-em: 1.286em !default
+$button-icon-size-em: null !default
 ```
 
 ``` sass
-$button-icon-top-size-em: 1.5em !default
+$button-icon-top-size-em: null !default
 ```
 
 ``` sass
-$button-icon-left-margin-em: 0 0.4em 0 0 !default
+$button-icon-left-margin-em: 0 0.5em 0 0 !default
 ```
 
 ``` sass
-$button-icon-right-margin-em: 0 0 0 0.4em !default
+$button-icon-right-margin-em: 0 0 0 0.5em !default
 ```
 
 ``` sass
-$button-icon-top-margin-em: 0 0 0.15em 0 !default
+$button-icon-top-margin-em: 0.1em 0 !default
 ```
 
 ``` sass
-$button-icon-top-height-rem: 4rem !default
+$button-icon-top-height-rem: baseline(4) !default
 ```
 
 ``` sass
-$button-icon-top-large-height-rem: 5rem !default
+$button-icon-top-large-height-rem: baseline(5) !default
 ```
 
 ``` sass
-$button-icon-top-small-height-rem: 3rem !default
+$button-icon-top-small-height-rem: baseline(3) !default
 ```

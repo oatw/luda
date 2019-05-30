@@ -14,52 +14,56 @@ Let's preview their effects through the below examples.
 
 {% capture left %}
 <p class="ta-left">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ left }}
 </div>
 ``` html{{ left }}```
 
 {% capture right %}
 <p class="ta-right">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ right }}
 </div>
 ``` html{{ right }}```
 
 {% capture center %}
 <p class="ta-center">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ center }}
 </div>
 ``` html{{ center }}```
 
 {% capture justify %}
 <p class="ta-justify">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ justify }}
 </div>
 ``` html{{ justify }}```
@@ -70,7 +74,7 @@ Font weight utility classes are named using the format: `.fw-{value}`.
 We use meaningful value words in the class names,
 all the value words are listed in the below table.
 
-<div class="table table-border my-small">
+<div class="table table-border">
   <table>
     <thead>
       <tr><th>Word</th><th>Value</th></tr>
@@ -97,117 +101,126 @@ Let's preview the effects through the below examples.
 
 {% capture lightest %}
 <p class="fw-lightest">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ lightest }}
 </div>
 ``` html{{ lightest }}```
 
 {% capture lighter %}
 <p class="fw-lighter">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ lighter }}
 </div>
 ``` html{{ lighter }}```
 
 {% capture light %}
 <p class="fw-light">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ light }}
 </div>
 ``` html{{ light }}```
 
 {% capture regular %}
 <p class="fw-regular">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ regular }}
 </div>
 ``` html{{ regular }}```
 
 {% capture medium %}
 <p class="fw-medium">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ medium }}
 </div>
 ``` html{{ medium }}```
 
 {% capture semibold %}
 <p class="fw-semibold">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ semibold }}
 </div>
 ``` html{{ semibold }}```
 
 {% capture bold %}
 <p class="fw-bold">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ bold }}
 </div>
 ``` html{{ bold }}```
 
 {% capture bolder %}
 <p class="fw-bolder">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ bolder }}
 </div>
 ``` html{{ bolder }}```
 
 {% capture boldest %}
 <p class="fw-boldest">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ boldest }}
 </div>
 ``` html{{ boldest }}```
@@ -220,26 +233,28 @@ sets the value of the `font-style` property to `normal`.
 
 {% capture italic %}
 <p class="fs-italic">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ italic }}
 </div>
 ``` html{{ italic }}```
 
 {% capture normal %}
 <p class="fs-normal">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ normal }}
 </div>
 ``` html{{ normal }}```
@@ -250,25 +265,25 @@ Text transform utility classes are named using the format `.tt-{value}`.
 The value can be one of `upper`, `lower` and `cap`.
 
 {% capture upper %}
-<p class="tt-upper">once upon time...</p>
+<p class="tt-upper">Lorem ipsum dolor sit amet...</p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ upper }}
 </div>
 ``` html{{ upper }}```
 
 {% capture lower %}
-<p class="tt-lower">ONCE UPON TIME...</p>
+<p class="tt-lower">Lorem Ipsum Dolor Sit Amet...</p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ lower }}
 </div>
 ``` html{{ lower }}```
 
 {% capture cap %}
-<p class="tt-cap">once upon time...</p>
+<p class="tt-cap">Lorem ipsum dolor sit amet...</p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ cap }}
 </div>
 ``` html{{ cap }}```
@@ -279,25 +294,25 @@ Text decoration utility classes are named using the format `.td-{value}`.
 The value can be one of `stroke`, `underline` and `none`.
 
 {% capture stroke %}
-<p class="td-stroke">once upon time...</p>
+<p class="td-stroke">Lorem ipsum dolor sit amet...</p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ stroke }}
 </div>
 ``` html{{ stroke }}```
 
 {% capture underline %}
-<p class="td-underline">once upon time...</p>
+<p class="td-underline">Lorem ipsum dolor sit amet...</p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ underline }}
 </div>
 ``` html{{ underline }}```
 
 {% capture none %}
-<p class="td-none" style="text-decoration: underline">once upon time...</p>
+<p class="td-none" style="text-decoration: underline">Lorem ipsum dolor sit amet...</p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ none }}
 </div>
 ``` html{{ none }}```
@@ -310,22 +325,23 @@ and the `.text-ellipsis` class cuts a long word with ellipsis into a single line
 Let's preview the effects in the below examples.
 
 {% capture break_all %}
-<p class="wb-all">onceupontimeonceupontimeonceupontimeonceupontimeonceupontimeonceupontimeonceupontimeonceupontimeonceupontimeonceupontime</p>
+<p class="wb-all">LoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitamet</p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ break_all }}
 </div>
 ``` html{{ break_all }}```
 
 {% capture ellipsis %}
 <p class="text-ellipsis">
-  Once upon time a girl named Cinderella lived with her stepmother and two stepsisters.
-  Poor Cinderella had to work hard all day long so the others could rest.
-  It was she who had to wake up each morning when it was still dark
-  and cold to start the fire...
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+  nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+  erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+  et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+  Lorem ipsum dolor sit amet.
 </p>
 {% endcapture %}
-<div class="example">
+<div class="typography-example">
   {{ ellipsis }}
 </div>
 ``` html{{ ellipsis }}```
