@@ -1,14 +1,16 @@
 +install(shared-pattern-form-icon)
 
+  // sass-lint:disable empty-args
   .fm.fm-ico-left input,
   .fm.fm-ico-left select[multiple],
   .fm.fm-ico-left textarea
-    padding-left: $form-element-horizontal-padding-em * 2 + $form-element-icon-size-em
+    padding-left: $form-element-horizontal-padding-em * 2 + _form-icon-size-em()
 
   .fm.fm-ico-right input,
   .fm.fm-ico-right select[multiple],
   .fm.fm-ico-right textarea
-    padding-right: $form-element-horizontal-padding-em * 2 + $form-element-icon-size-em
+    padding-right: $form-element-horizontal-padding-em * 2 + _form-icon-size-em()
+  // sass-lint:enable empty-args
 
 
 
@@ -40,12 +42,14 @@
 
 
 
+  // sass-lint:disable empty-args
   .fm.fm-ico-left > .ico
-    margin-left: $form-element-horizontal-padding-em / strip-unit($form-element-icon-size-em)
+    margin-left: $form-element-horizontal-padding-em / strip-unit(_form-icon-size-em())
 
   .fm.fm-ico-right > .ico
-    margin-right: $form-element-horizontal-padding-em / strip-unit($form-element-icon-size-em)
+    margin-right: $form-element-horizontal-padding-em / strip-unit(_form-icon-size-em())
     margin-left: auto
+  // sass-lint:enable empty-args
 
 
 

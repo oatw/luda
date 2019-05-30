@@ -24,11 +24,13 @@
     padding: 0 $form-element-horizontal-padding-em
     background: $form-element-background
 
+  // sass-lint:disable empty-args
   .fm-search input,
   .fm-select input,
   .fm-file input
-    $padding-right: $form-element-icon-size-em + $form-element-horizontal-padding-em * 2
+    $padding-right: _form-icon-size-em() + $form-element-horizontal-padding-em * 2
     padding: 0 $padding-right 0 $form-element-horizontal-padding-em
+  // sass-lint:enable empty-args
 
   .fm-search input
     +form-element-background($form-element-search-icon, $form-element-icon-color, $form-element-background)

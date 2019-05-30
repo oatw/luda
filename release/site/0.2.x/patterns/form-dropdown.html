@@ -1,0 +1,596 @@
+<!-- markdownlint-disable -->
+<!-- markdownlint-disable -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" data-init-theme="default" data-applied-theme="default" data-theme-path-pattern="/luda/0.2.x/.dist/css/luda-$theme$.min.css">
+  <head>
+    <title>Form Dropdown | Luda - A lightweight and responsive UI framework for modern web development.</title>
+    <!-- markdownlint-disable -->
+<meta charset="UTF-8">
+<!-- viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<!-- render -->
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!-- apple app mode -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Luda">
+<!-- chrome -->
+<meta name="mobile-web-app-capable" content="yes">
+<!-- Chrome, Firefox OS and Opera -->
+<!-- <meta name="theme-color" content="#8c447c"> -->
+<!-- Windows Phone -->
+<!-- <meta name="msapplication-navbutton-color" content="#8c447c"> -->
+<meta name="application-name" content="Luda">
+<!-- apple no tel -->
+<meta content="telephone=no" name="format-detection">
+<!-- windows phone no tap color -->
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="author" content="Oatw">
+<meta name="keywords" content="luda, lightweight, responsive, modular, ui framework">
+<meta name="description" content="Luda is a lightweight and responsive UI framework for modern web development.">
+    <link rel="shortcut icon" href="/luda/0.2.x/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Playfair+Display:700,900|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/luda/0.2.x/assets/js/turbolinks.js"></script>
+    <link rel="stylesheet" type="text/css" data-theme-style="default" href="/luda/0.2.x/.dist/css/luda-default.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="/luda/0.2.x/.dist/css/site.min.css">
+    <script type="text/javascript" src="/luda/0.2.x/.dist/js/luda-degradation.min.js"></script>
+    <script type="text/javascript" src="/luda/0.2.x/.dist/js/luda.min.js"></script>
+    <script type="text/javascript" src="/luda/0.2.x/assets/js/clipboard.js"></script>
+    <script type="text/javascript" src="/luda/0.2.x/.dist/js/site.min.js"></script>
+    <script type="text/javascript" src="/luda/version.js"></script>
+    <!-- markdownlint-disable -->
+<script type="text/javascript">
+  window.site = window.site || {}
+  window.site.version = "0.2.x"
+  luda.on('docready', function(){
+    if(window.site.version != window.site.latestVersion){
+      luda.toggle.active('site-version-alert')
+    }
+  })
+</script>
+
+    
+  </head>
+  <body>
+    
+    <!-- markdownlint-disable -->
+<div class="alert fix-t fix-l w-100 bc-danger jc-center" style="z-index:100" data-toggle-target="site-version-alert">
+  <div class="alert-content">
+    <p>
+      There is a newer version of <a class="link-light" href="/luda/0.2.x/">Luda</a>.
+    </p>
+  </div>
+  <div class="alert-action">
+    <a href="/luda/0.2.x/" class="btn btn-light btn-small mr-small">Let's go!</a>
+    <button data-toggle class="btn btn-hollow-light btn-small">I don't care.</button>
+  </div>
+</div>
+
+    
+    <!-- markdownlint-disable -->
+<div id="doc" class="grid-edge">
+  <!-- markdownlint-disable -->
+
+<aside id="doc-aside" class="nav-aside col-12 col-3-m pb-medium-m">
+  <a href="/luda/0.2.x/" data-turbolinks="false" class="nav-logo">
+    <img src="/luda/0.2.x/assets/img/logo-text.svg" alt="logo">
+  </a>
+  <!-- markdownlint-disable -->
+<!-- markdownlint-disable -->
+
+
+
+<div id="theme-dropdown" data-turbolinks-permanent class="dropdown-fixed ml-auto d-none-m">
+  <button class="btn btn-ico btn-text-primary">
+    <i class="change-theme-trigger ico material-icons">brush</i>
+  </button>
+  <div class="dropdown-menu">
+    <div class="dropdown-items">
+      <div class="btns-y">
+        
+        <div class="btn-radio btn-hollow-primary">
+          
+          <input class="change-theme" checked type="radio" name="theme_dropdown_apply_theme" value="default">
+          
+          <label class="bd-none tt-cap">Theme default</label>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+  <button class="nav-open btn btn-text-light btn-ico ml-none" data-toggle-for="nav-aside-menu">
+    <i class="ico ico-menu"></i>
+  </button>
+  <div class="nav-menu" data-toggle-target="nav-aside-menu" data-toggle>
+    <button class="nav-close btn btn-text-light btn-ico">
+      <i class="ico ico-cross"></i>
+    </button>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Get Started</p>
+      
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/general/introduction">Introduction</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/general/installation">Installation</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/general/theming">Theming</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/general/breakpoints">Breakpoints</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/general/browser-support">Browser Support</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/general/modular-import">Modular Imports</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Behaviors</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/behaviors/disabled">Disabled</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/behaviors/enter">Enter</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/behaviors/focus">Focus</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/behaviors/readonly">Readonly</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/behaviors/tabulate">Tabulate</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/behaviors/toggle">Toggle</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Elements</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/badge">Badge</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/baseline">Baseline</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/button">Button</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/container">Container</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/form">Form</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/grid">Grid</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/icon">Icon</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/media">Media</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/overlay">Overlay</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/progress">Progress</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/scrollbar">Scrollbar</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/table">Table</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/elements/typography">Typography</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Patterns</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/alert">Alert</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/article">Article</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/avatar">Avatar</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/breadcrumb">Breadcrumb</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/button-group">Button Group</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/button-icon">Button Icon</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/carousel">Carousel</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/dropdown">Dropdown</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny btn-active" href="/luda/0.2.x/patterns/form-dropdown">Form Dropdown</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/form-group">Form Group</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/form-icon">Form Icon</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/modal">Modal</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/navigation">Navigation</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/search-bar">Search Bar</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/patterns/tab">Tab</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Utilities</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/alignment">Alignment</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/background">Background</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/border">Border</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/color">Color</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/display">Display</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/flex">Flex</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/float">Float</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/opacity">Opacity</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/overflow">Overflow</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/position">Position</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/shadow">Shadow</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/shape">Shape</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/size">Size</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/spacing">Spacing</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/text">Text</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/visibility">Visibility</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.2.x/utilities/z-index">Z-index</a>
+  
+
+
+    </div>
+  </div>
+</aside>
+
+<button class="btn btn-dark btn-ico fix-r fix-t zi-highest circle sd-high m-small d-none-m" data-toggle-for="nav-aside-menu">
+  <i class="ico ico-menu"></i>
+</button>
+
+  <main id="doc-container" class="col-auto p-medium pt-small-m px-large-m pb-large-m">
+    <article class="article max-w-100 p-none">
+      <h1 class="page-title display fw-semibold mt-large-m">Form Dropdown</h1>
+      <p class="h3 page-sub-title fw-light">Create beautiful dropdowns for selecting options in forms.</p>
+      <h2 id="introduction">Introduction</h2>
+
+<p>The form dropdown component is based on the dropdown component,
+it’s an alternative to the form select field.
+When create a form dropdown, the <code class="highlighter-rouge">.fm-dropdown</code> class need be
+added to the dropdown container.
+Let’s see how to create single select form dropdowns and multiple
+select form dropdowns through the below examples.</p>
+
+<h2 id="single-select-form-dropdown">Single Select Form Dropdown</h2>
+
+<p>Wrap <code class="highlighter-rouge">&lt;input type="radio"&gt;</code>s in the dropdown menu to simulate
+a single select field.
+Wrap a text field for showing the placeholder and the selected options.</p>
+
+<div class="example">
+  
+<div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
+  <div class="fm fm-select">
+    <input placeholder="E.g., Item one" />
+  </div>
+  <div class="dropdown-menu">
+    <div class="dropdown-items">
+      <div class="btns-y">
+        <div class="btn-radio btn-hollow-primary">
+          <input type="radio" id="example1-1" name="example1" value="1" />
+          <label for="example1-1">Item One</label>
+        </div>
+        <div class="btn-radio btn-hollow-primary">
+          <input type="radio" id="example1-2" name="example1" value="2" />
+          <label for="example1-2">Item Two</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"fm-dropdown dropdown-fixed dropdown-absolute-m"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"fm fm-select"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">placeholder=</span><span class="s">"E.g., Item one"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-items"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btns-y"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"example1-1"</span> <span class="na">name=</span><span class="s">"example1"</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example1-1"</span><span class="nt">&gt;</span>Item One<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"example1-2"</span> <span class="na">name=</span><span class="s">"example1"</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example1-2"</span><span class="nt">&gt;</span>Item Two<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="multiple-select-form-dropdown">Multiple Select Form Dropdown</h2>
+
+<p>Wrap <code class="highlighter-rouge">&lt;input type="checkbox"&gt;</code>s in the dropdown menu to simulate
+a multiple select field.
+Wrap a text field for showing the placeholder and the selected options.</p>
+
+<p>The <code class="highlighter-rouge">data-dropdown-toggle-disabled</code> attribute should be added to the
+<code class="highlighter-rouge">.dropdown-menu</code> to prevent the menu from being closed when menu
+items clicked.</p>
+
+<div class="example">
+  
+<div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
+  <div class="fm fm-select">
+    <input placeholder="E.g., Item One, Item Two" />
+  </div>
+  <div class="dropdown-menu">
+    <div class="dropdown-items" data-dropdown-toggle-disabled="">
+      <div class="btns-y">
+        <div class="btn-check btn-hollow-primary">
+          <input type="checkbox" id="example2-1" name="example2" value="1" />
+          <label for="example2-1">Item One</label>
+        </div>
+        <div class="btn-check btn-hollow-primary">
+          <input type="checkbox" id="example2-2" name="example2" value="2" />
+          <label for="example2-2">Item Two</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"fm-dropdown dropdown-fixed dropdown-absolute-m"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"fm fm-select"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">placeholder=</span><span class="s">"E.g., Item One, Item Two"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-items"</span> <span class="na">data-dropdown-toggle-disabled</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btns-y"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"example2-1"</span> <span class="na">name=</span><span class="s">"example2"</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example2-1"</span><span class="nt">&gt;</span>Item One<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"example2-2"</span> <span class="na">name=</span><span class="s">"example2"</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example2-2"</span><span class="nt">&gt;</span>Item Two<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="customize-option-labels">Customize Option Labels</h2>
+
+<p>The form dropdown component uses the inner texts
+of wrapped radio’s labels and checkboxes’ labels
+for display, except when the <code class="highlighter-rouge">data-fm-dropdown-label</code> attribute is
+setted on the radios or the checkboxes.</p>
+
+<p>In the below example, we set the <code class="highlighter-rouge">data-fm-dropdown-label</code> attribute
+on the radios.
+When a radio is selected, the value of its <code class="highlighter-rouge">data-fm-dropdown-label</code>
+attribute will show in the wrapped text field.</p>
+
+<!-- markdownlint-disable -->
+
+<div class="example">
+  
+<div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
+  <div class="fm fm-select"><input /></div>
+  <div class="dropdown-menu">
+    <div class="dropdown-items">
+      <div class="btns-y">
+        <div class="btn-radio btn-hollow-primary btn-ico-left">
+          <input data-fm-dropdown-label="You've selected item one." checked="" type="radio" id="example3-1" name="example3" value="1" />
+          <label for="example3-1">Item One<i class="ico material-icons">face</i></label>
+        </div>
+        <div class="btn-radio btn-hollow-primary btn-ico-left">
+          <input data-fm-dropdown-label="You've selected item two." type="radio" id="example3-2" name="example3" value="2" />
+          <label for="example3-2">Item Two<i class="ico material-icons">face</i></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"fm-dropdown dropdown-fixed dropdown-absolute-m"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"fm fm-select"</span><span class="nt">&gt;&lt;input&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-items"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btns-y"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary btn-ico-left"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">data-fm-dropdown-label=</span><span class="s">"You've selected item one."</span> <span class="na">checked</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"example3-1"</span> <span class="na">name=</span><span class="s">"example3"</span> <span class="na">value=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example3-1"</span><span class="nt">&gt;</span>Item One<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"ico material-icons"</span><span class="nt">&gt;</span>face<span class="nt">&lt;/i&gt;&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary btn-ico-left"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">data-fm-dropdown-label=</span><span class="s">"You've selected item two."</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"example3-2"</span> <span class="na">name=</span><span class="s">"example3"</span> <span class="na">value=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example3-2"</span><span class="nt">&gt;</span>Item Two<span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"ico material-icons"</span><span class="nt">&gt;</span>face<span class="nt">&lt;/i&gt;&lt;/label&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+<!-- markdownlint-enable -->
+
+    </article>
+  </main>
+  <nav id="doc-sub-nav" class="nav-aside col-auto zi-normal d-none d-block-l pr-large pl-medium pb-medium bc-none bi-none">
+    <div class="nav-items m-none">
+    </div>
+  </nav>
+  <!-- markdownlint-disable -->
+<!-- markdownlint-disable -->
+
+
+
+
+<div id="theme-pannel" data-turbolinks-permanent class="d-none d-block-m fix-r fix-b zi-high mr-large mb-large">
+
+  <div class="btns-x btns-margin jc-end" data-toggle-target="change_theme">
+    
+    <div class="theme-pannel-option btn-radio btn-hollow-dark bc-main circle">
+      
+      <input class="change-theme" checked type="radio" name="theme_pannel_apply_theme" value="default">
+      
+      <label class="bd-none circle sd-high tt-cap">Theme default</label>
+    </div>
+    
+    <div class="btn btn-light btn-ico circle sd-high" data-toggle data-toggle-for="change_theme_trigger">
+      <i class="ico ico-cross"></i>
+    </div>
+  </div>
+
+  <button class="theme-pannel-trigger btn btn-ico-left btn-dark toggle-active mb-small mr-small circle sd-high" data-toggle-for="change_theme" data-toggle-target="change_theme_trigger" data-toggle>
+    <i class="ico material-icons">brush</i>
+    Change Theme
+  </button>
+
+</div>
+</div>
+  </body>
+</html>

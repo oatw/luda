@@ -1,5 +1,5 @@
 /*! 
-   * Luda 0.1.13 | https://oatw.github.io/luda
+   * Luda 0.2.0 | https://oatw.github.io/luda
    * Copyright 2019 Oatw | https://oatw.blog
    * MIT license | http://opensource.org/licenses/MIT
    */
