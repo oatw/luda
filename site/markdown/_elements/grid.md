@@ -599,8 +599,4 @@ $grid-columns: 12 !default
 
 Default count of grid columns.
 
-``` sass
-$grid-gutter-width-rem: $spacing-medium-rem !default
-```
-
-Default horizontal padding of grid columns.
+{% include doc-sass-variable-grid.md %}

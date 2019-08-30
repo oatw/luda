@@ -1,12 +1,12 @@
 (->
   docAsideScrollTop = 0
 
-  luda.on 'turbolinks:before-visit', (e) ->
-    $container = luda.$child '#doc-aside'
+  luda(document).on 'turbolinks:before-visit', (e) ->
+    $container = luda('#doc-aside').get 0
     docAsideScrollTop = if $container then $container.scrollTop else 0
 
-  luda.on 'turbolinks:render', (e) ->
-    $container = luda.$child '#doc-aside'
+  luda(document).on 'turbolinks:render', (e) ->
+    $container = luda('#doc-aside').get 0
     $container.scrollTop = docAsideScrollTop if $container
 
 
@@ -14,13 +14,13 @@
   clipboard = null
 
   renderCode = ->
-    $codes = luda.$children '.highlight:not(.rendered)'
-    $codes.forEach ($code) ->
-      $code.classList.add 'rendered'
-      $code.outerHTML = "<div class='rel'>\
+    $codes = luda '.highlight:not(.rendered)'
+    $codes.each ->
+      luda(this).addClass('rendered')
+      @outerHTML = "<div class='rel'>\
       <button type='button' \
       class='code-copy abs-r abs-t zi-high btn btn-small btn-secondary'>\
-      Copy</button>#{$code.outerHTML}</div>"
+      Copy</button>#{@outerHTML}</div>"
 
   initClipboard = ->
     clipboard.destroy() if clipboard
@@ -29,22 +29,23 @@
     })
     clipboard.on 'success', (e) ->
       e.clearSelection()
-      e.trigger.classList.remove 'focus'
-      e.trigger.innerText = 'Copied!'
-      e.trigger.classList.add 'btn-primary'
-      e.trigger.classList.remove 'btn-secondary'
+      luda(e.trigger)
+      .removeClass('focus btn-secondary')
+      .addClass('btn-primary')
+      .text('Copied!')
       setTimeout ->
-        e.trigger.innerText = 'Copy'
-        e.trigger.classList.add 'btn-secondary'
-        e.trigger.classList.remove 'btn-primary'
+        luda(e.trigger)
+        .addClass('btn-secondary')
+        .removeClass('btn-primary')
+        .text('Copy')
       , 2000
 
   initCode = ->
     renderCode()
     initClipboard()
 
-  luda.on 'docready', initCode
-  luda.on 'turbolinks:render', initCode
+  luda.ready -> initCode()
+  luda(document).on 'turbolinks:render', initCode
 
 
 
@@ -52,14 +53,14 @@
     selectors = '#doc-container h2[id],\
     #doc-container h3[id],\
     #doc-container h4[id]'
-    $titles = luda.$children selectors
+    $titles = luda selectors
     items = ''
     if $titles.length
-      $titles.forEach ($title) ->
-        link = "<a href='##{$title.id}' data-turbolinks='false' \
+      $titles.each ->
+        link = "<a href='##{@id}' data-turbolinks='false' \
         class='doc-sub-nav-item td-none'>\
-        #{$title.innerText.replace(/^#/, '').replace(/modifier$/i, '')}</a>"
-        switch $title.tagName.toLowerCase()
+        #{luda(this).text().replace(/^#/, '').replace(/modifier$/i, '')}</a>"
+        switch @tagName.toLowerCase()
           when 'h2'
             itemClass = 'p7 mt-small mb-tiny py-none text-ellipsis'
           when 'h3'
@@ -67,10 +68,10 @@
           else
             itemClass = 'p7 pl-large mb-tiny py-none text-ellipsis'
         items += "<p class='#{itemClass}'>#{link}</p>"
-      luda.$child('#doc-sub-nav .nav-items').innerHTML = items
+      luda('#doc-sub-nav .nav-items').html items
 
-  luda.on 'docready', insertSubNav
-  luda.on 'turbolinks:render', insertSubNav
+  luda.ready -> insertSubNav()
+  luda(document).on 'turbolinks:render', insertSubNav
 
 
 
@@ -80,15 +81,14 @@
     #doc-container h4[id]:not(.rendered),\
     #doc-container h5[id]:not(.rendered),\
     #doc-container h6[id]:not(.rendered)'
-    $titles = luda.$children selectors
+    $titles = luda selectors
     if $titles.length
-      $titles.forEach ($title) ->
-        $title.classList.add 'rendered'
-        $title.classList.add 'rel'
-        link = "<a href='##{$title.id}' data-turbolinks='false' \
+      $titles.each ->
+        luda(this).addClass('rendered rel')
+        link = "<a href='##{@id}' data-turbolinks='false' \
         class='doc-anchor abs td-none c-primary'>#</a>"
-        $title.insertAdjacentHTML 'afterBegin', link
+        luda(this).prepend link
 
-  luda.on 'docready', appendAnchors
-  luda.on 'turbolinks:render', appendAnchors
+  luda.ready -> appendAnchors()
+  luda(document).on 'turbolinks:render', appendAnchors
 )()

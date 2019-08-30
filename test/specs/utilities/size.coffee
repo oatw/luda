@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'size', ->
+describe 'size', ->
 
-  test 'style', ->
+  it 'style', ->
     await utility.open '/size'
     await utility.checkElement()

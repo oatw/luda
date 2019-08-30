@@ -21,7 +21,7 @@ permalink: /
       <h4 class="fw-regular c-light">Lightweight</h4>
       <p class="c-light">
         No external dependencies<br>
-        Each theme is about 25kb after gzipped
+        Each theme is about 30kb after gzipped
       </p>
     </div>
     <div class="col-12 col-3-m mt-large">

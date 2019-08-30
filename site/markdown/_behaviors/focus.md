@@ -55,11 +55,34 @@ no matter how the text field is focused.
 
 ## HTML Attributes
 
-### data-focus-disabled
+### data-focus="false"
 
 ``` html
-<html data-focus-disabled>...</html>
+<html data-focus="false">...</html>
 ```
 
-Add this attribute to the `<html>` tag to disable the enhancement
+Add `data-focus="false"` to the `<html>` tag to disable the enhancement
 to browser's native focus behavior.
+
+## Javascript Methods
+
+### luda(selector).focus(addClass, preventScroll)
+
+``` javascript
+@param {boolean} [addClass=true]
+@param {boolean} [preventScroll=false]
+```
+
+``` javascript
+luda('#my-focusable').focus()
+```
+
+Focus a target by passing in a selector.
+
+### luda(selector).blur()
+
+``` javascript
+luda('#my-focusable').blur()
+```
+
+Blur a target by passing in a selector.

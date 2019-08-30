@@ -20,7 +20,7 @@ Wrap a text field for showing the placeholder and the selected options.
 
 {% capture single %}
 <div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
-  <div class="fm fm-select">
+  <div class="fm fm-select" data-auto="false">
     <input placeholder="E.g., Item one">
   </div>
   <div class="dropdown-menu">
@@ -50,17 +50,17 @@ Wrap `<input type="checkbox">`s in the dropdown menu to simulate
 a multiple select field.
 Wrap a text field for showing the placeholder and the selected options.
 
-The `data-dropdown-toggle-disabled` attribute should be added to the
+The `data-dropdownable="false"` attribute should be added to the
 `.dropdown-menu` to prevent the menu from being closed when menu
 items clicked.
 
 {% capture multiple %}
 <div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
-  <div class="fm fm-select">
+  <div class="fm fm-select" data-auto="false">
     <input placeholder="E.g., Item One, Item Two">
   </div>
   <div class="dropdown-menu">
-    <div class="dropdown-items" data-dropdown-toggle-disabled>
+    <div class="dropdown-items" data-dropdownable="false">
       <div class="btns-y">
         <div class="btn-check btn-hollow-primary">
           <input type="checkbox" id="example2-1" name="example2" value="1">
@@ -96,17 +96,17 @@ attribute will show in the wrapped text field.
 <!-- markdownlint-disable -->
 {% capture customized_option_text %}
 <div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
-  <div class="fm fm-select"><input></div>
+  <div class="fm fm-select" data-auto="false"><input></div>
   <div class="dropdown-menu">
     <div class="dropdown-items">
       <div class="btns-y">
         <div class="btn-radio btn-hollow-primary btn-ico-left">
-          <input data-fm-dropdown-label="You've selected item one." checked type="radio" id="example3-1" name="example3" value="1">
-          <label for="example3-1">Item One<i class="ico material-icons">face</i></label>
+          <input checked type="radio" id="example3-1" name="example3" value="1">
+          <label data-fm-dropdown-label="You've selected item one." for="example3-1">Item One<i class="ico material-icons">face</i></label>
         </div>
         <div class="btn-radio btn-hollow-primary btn-ico-left">
-          <input data-fm-dropdown-label="You've selected item two." type="radio" id="example3-2" name="example3" value="2">
-          <label for="example3-2">Item Two<i class="ico material-icons">face</i></label>
+          <input type="radio" id="example3-2" name="example3" value="2">
+          <label data-fm-dropdown-label="You've selected item two." for="example3-2">Item Two<i class="ico material-icons">face</i></label>
         </div>
       </div>
     </div>

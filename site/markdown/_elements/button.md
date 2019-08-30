@@ -227,18 +227,18 @@ it doesn't respond to user actions.
 But sill can be submitted if included in a `<form>`.
 
 If you want to make a readonly functional button,
-add the `data-readonly` attribute to it and the nested `<input>`.
+add the `readonly` attribute to it and the nested `<input>`.
 {: .c-danger}
 
 {% capture readonly_button %}
 <!-- A readonly checkbox button -->
-<div class="btn-check btn-hollow-primary" data-readonly>
-  <input type="checkbox" data-readonly id="example11" name="example11" value="example">
+<div class="btn-check btn-hollow-primary" readonly>
+  <input type="checkbox" readonly id="example11" name="example11" value="example">
   <label for="example11">Checkbox button</label>
 </div>
 <!-- A readonly radio button -->
-<div class="btn-radio btn-hollow-primary" data-readonly>
-  <input type="radio" data-readonly id="example12" name="example12" value="example">
+<div class="btn-radio btn-hollow-primary" readonly>
+  <input type="radio" readonly id="example12" name="example12" value="example">
   <label for="example12">Radio button</label>
 </div>
 {% endcapture %}
@@ -410,7 +410,7 @@ $button-large-height-rem: baseline(4) !default
 ```
 
 ``` sass
-$button-helvertical-padding-em: 0.6875em !default
+$button-helvertical-padding-em: rem-to-em(harmony-spacing($grid-gutter-width-rem / 2, $button-border-width), $button-typography-size-level) !default
 ```
 
 ### Typography

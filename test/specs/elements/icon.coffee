@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'icon', ->
+describe 'icon', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/icon'
     await element.checkElement()

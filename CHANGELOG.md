@@ -1,3 +1,29 @@
+# 0.3.0 (November 19, 2019)
+
+## Changed
+
+- Theme sass variable files are moved into each theme's directory.
+
+- The javascripts are totally rewritten, all js APIs are changed.
+
+- The `data-enter-disabled` attribute is replaced by the `data-enter="false"` attribute in the enter behavior.
+
+- The `data-focus-disabled` attribute is replaced by the `data-focus="false"` attribute in the focus behavior.
+
+- The `data-tabulate-disabled` attribute is replaced by the `data-tabulate="false"` attribute in the tabulate behavior.
+
+- The `data-readonly` attribute is replaced by the `readonly` attribute, as the readonly behavior's selector.
+
+- The `data-toggle` and `data-toggle-disabled` attributes are reaplced by the `data-toggleable` attribute in the toggle behavior.
+
+- The `data-dropdown-toggle` and `data-dropdown-toggle-disabled` attributes are replaced by the `data-dropdownable` attribute in the dropdown pattern.
+
+- `.btn-radio` buttons in the tab pattern are replaced by `.btn` buttons. 
+
+## Added
+
+- The kernel functions are added for a better experience of writting components.
+
 # 0.2.0 (May 30, 2019)
 
 ## Changed

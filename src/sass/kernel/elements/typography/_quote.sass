@@ -1,0 +1,63 @@
++install(kernel-element-typography-quote)
+
+  q,
+  .quote p
+    font-family: $typography-quote
+    font-style: italic
+
+  q
+    line-height: 0
+
+  q::before
+    padding: 0 0.3em
+    content: '"'
+
+  q::after
+    padding: 0 0.3em 0 0.2em
+    content: '"'
+
+  q q::before
+    content: "'"
+
+  q q::after
+    content: "'"
+
+  cite
+    color: $typography-cite-color
+    font-style: italic
+    font-weight: 500
+
+  .quote
+    padding: $typography-block-quote-padding-rem
+
+  .quote p
+    +typo-level($typography-block-quote-size-level, quote)
+    margin: $typography-block-quote-p-margin-rem
+
+  .quote p:first-child
+    position: relative
+
+  .quote p:first-child::before
+    display: block
+    position: absolute
+    top: 0
+    left: - mirror-nth($typography-block-quote-padding-rem, 4)
+    width: mirror-nth($typography-block-quote-padding-rem, 4)
+    font-size: 2.5em
+    content: '"'
+    color: $typography-cite-color
+
+  .quote p:last-of-type
+    margin-bottom: 0
+
+  .quote footer
+    color: $typography-cite-color
+
+  .quote footer::before
+    display: inline-block
+    vertical-align: middle
+    width: 2em
+    margin-right: 1em
+    border-width: $typography-block-quote-cite-line-height 0 0
+    content: ""
+    border-style: solid

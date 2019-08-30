@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'button icon', ->
+describe 'button icon', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/button-icon'
     await pattern.checkElement()

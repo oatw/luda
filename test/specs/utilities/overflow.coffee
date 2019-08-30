@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'overflow', ->
+describe 'overflow', ->
 
-  test 'style', ->
+  it 'style', ->
     await utility.open '/overflow'
     await utility.checkElement()

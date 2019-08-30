@@ -1,114 +1,72 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('../install.js'), require('../dom.js'), require('../event.js'), require('../factory.js')) :
-  typeof define === 'function' && define.amd ? define(['../install.js', '../dom.js', '../event.js', '../factory.js'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('../kernel/index.js'), require('../mixins/resetable.js')) :
+  typeof define === 'function' && define.amd ? define(['../kernel/index.js', '../mixins/resetable.js'], factory) :
   (factory());
 }(this, (function () { 'use strict';
 
-  luda((function() {
-    var _Class;
-
-    _Class = class extends luda.Factory {
-      reset() {
-        this._$file.value = '';
-        return this._setSimulatorInitialValue();
+  luda.component('fmFile').protect({
+    selector: {
+      root: '.fm-file',
+      file: 'input[type=file]',
+      simulator: 'input:not([type=file])'
+    },
+    data: {
+      initValue: 'data-fm-file_value'
+    },
+    splitor: '  '
+  }).protect({
+    insertSimulator: function() {
+      var simulator;
+      if (this.simulator.length) {
+        return;
       }
-
-      _getConfig() {
-        var _$file, _$simulator;
-        _$file = luda.$child(this.constructor._FILE_SELECTOR, this._$component);
-        _$simulator = luda.$child(this.constructor._SIMULATOR_SELECTOR, this._$component);
-        return {_$file, _$simulator};
+      simulator = luda('<input>');
+      simulator.els[0].tabIndex = -1;
+      return simulator.insertAfter(this.file);
+    },
+    updatePlaceholder: function() {
+      var placeholder;
+      if (!(placeholder = this.file.attr('placeholder'))) {
+        return;
       }
-
-      _constructor() {
-        ({_$file: this._$file, _$simulator: this._$simulator} = this._getConfig());
-        return this._init();
+      return this.simulator.attr('placeholder', placeholder);
+    },
+    updateValue: function() {
+      var value, values;
+      values = Array.from(this.file.els[0].files).map(function(f) {
+        return f.name;
+      });
+      value = values.join(this.splitor) || this.file.attr('value') || '';
+      return this.simulator.attr('value', value);
+    },
+    tryReset: function(target, oldVal) {
+      if (this.file.attr('value') !== '') {
+        return;
       }
-
-      _onMutations() {
-        return this._constructor();
-      }
-
-      _insertSimulator() {
-        this._$simulator = document.createElement('input');
-        this._$simulator.tabIndex = -1;
-        return luda.$after(this._$simulator, this._$file);
-      }
-
-      _setPlaceholderValue() {
-        if (this._$file.hasAttribute(this.constructor._PLACEHOLDER_ATTRIBUTE)) {
-          return this._$simulator.placeholder = this._$file.getAttribute(this.constructor._PLACEHOLDER_ATTRIBUTE);
-        }
-      }
-
-      _setSimulatorValue() {
-        var values;
-        values = [];
-        Array.from(this._$file.files).map(function(file) {
-          return values.push(file.name);
-        });
-        if (values.length) {
-          return this._$simulator.value = values.join(this.constructor._VALUE_SPLITOR);
-        }
-        return this._setSimulatorInitialValue();
-      }
-
-      _setSimulatorInitialValue() {
-        if (this._$file.hasAttribute(this.constructor._VALUE_ATTRIBUTE)) {
-          return this._$simulator.value = this._$file.getAttribute(this.constructor._VALUE_ATTRIBUTE);
-        }
-      }
-
-      _init() {
-        if (this._$file) {
-          if (!this._$simulator) {
-            this._insertSimulator();
-          }
-          this._setPlaceholderValue();
-          return this._setSimulatorValue();
-        }
-      }
-
-      static reset($file) {
-        return this.query($file).reset();
-      }
-
-      static _init() {
-        var self;
-        self = this;
-        luda.on('change', `${this._SELECTOR} ${this._FILE_SELECTOR}`, function(e) {
-          return self.query(luda.$parent(self._SELECTOR, this))._setSimulatorValue();
-        });
-        return luda.on(luda._FORM_RESET, this._SELECTOR, function(e) {
-          return setTimeout(() => {
-            return self.query(this)._setSimulatorValue();
-          });
-        });
-      }
-
-    };
-
-    _Class._SCOPE = 'fmFile';
-
-    _Class._VALUE_SPLITOR = '   ';
-
-    _Class._SELECTOR = '.fm-file';
-
-    _Class._FILE_SELECTOR = 'input[type=file]';
-
-    _Class._SIMULATOR_SELECTOR = 'input:not([type=file])';
-
-    _Class._PLACEHOLDER_ATTRIBUTE = 'placeholder';
-
-    _Class._VALUE_ATTRIBUTE = 'value';
-
-    _Class._observerConfig = {
-      childList: true,
-      subtree: true
-    };
-
-    return _Class;
-
-  }).call(this));
+      this.file.els[0].value = '';
+      return this.file.attr('value', oldVal);
+    }
+  }).help({
+    find: function() {
+      return {
+        file: this.selector.file,
+        simulator: this.selector.simulator
+      };
+    },
+    watch: function() {
+      return {
+        attr: [['value', this.selector.file, this.tryReset, this.updateValue]]
+      };
+    },
+    create: function() {
+      this.insertSimulator();
+      this.updatePlaceholder();
+      return this.updateValue();
+    },
+    listen: function() {
+      luda.mixin('resetable').get('listen').call(this, this.updateValue);
+      return [['change', this.selector.file, this.updateValue]];
+    }
+  });
 
 })));

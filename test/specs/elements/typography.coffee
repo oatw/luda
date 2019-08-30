@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'typography', ->
+describe 'typography', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/typography'
     await element.checkElement()

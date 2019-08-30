@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'scrollbar', ->
+describe 'scrollbar', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/scrollbar'
     await element.checkElement()

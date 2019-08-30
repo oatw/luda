@@ -1,0 +1,136 @@
++install(kernel-element-button)
+
+  .btn,
+  .btn-check,
+  .btn-radio,
+  .btn-file
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    display: inline-flex
+    vertical-align: top
+    flex: 0 0 auto
+    max-width: 100%
+    min-width: $button-height-rem
+    height: $button-height-rem
+    font-size: typo-size($button-typography-size-level)
+    line-height: 1
+    white-space: nowrap
+    cursor: pointer
+    -ms-touch-action: manipulation
+    touch-action: manipulation
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    text-decoration: none
+    background: none
+
+  +browser-edge
+    input.btn
+      display: inline-block
+      text-align: center
+
+  .btn,
+  .btn-check label,
+  .btn-radio label,
+  .btn-file label
+    align-items: center
+    justify-content: center
+    padding: 0 $button-horizontal-padding-em
+    border: $button-border-style $button-border-width
+    overflow: hidden
+    border-radius: existing($button-border-radius, 0)
+
+  .btn-check label,
+  .btn-radio label,
+  .btn-file label
+    display: flex
+    width: 100%
+    height: inherit
+    // pointer-events: none
+
+  .btn > *,
+  .btn-check label > *,
+  .btn-radio label > *,
+  .btn-file label > *
+    flex: 0 0 auto
+
+  .btn-check input,
+  .btn-radio input,
+  .btn-file input
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    width: 0.001px
+    min-width: 100%
+    // height: 0.001px
+    height: 100%
+    margin-right: -100%
+    overflow: hidden
+    cursor: pointer
+    opacity: 0
+
+  .btn-check input[disabled],
+  .btn-radio input[disabled],
+  .btn-file input[disabled]
+    opacity: 0
+
+  // remove webkit file upload button to prevent cursor change when hover
+  .btn-file ::-webkit-file-upload-button
+    display: none
+
+  .btn:-moz-focusring
+    outline: none
+
+  .btn.focus,
+  .btn-check input.focus ~ label,
+  .btn-radio input.focus ~ label,
+  .btn-file input.focus ~ label
+    +_focus
+
+
+
+  .btn-fluid.btn,
+  .btn-fluid.btn-check,
+  .btn-fluid.btn-radio,
+  .btn-fluid.btn-file
+    display: flex
+    flex: 1 1 auto
+    width: 100%
+
+  .btn-small.btn,
+  .btn-small.btn-check,
+  .btn-small.btn-radio,
+  .btn-small.btn-file
+    min-width: $button-small-height-rem
+    height: $button-small-height-rem
+    font-size: typo-size($button-small-typography-size-level)
+
+  .btn-large.btn,
+  .btn-large.btn-check,
+  .btn-large.btn-radio,
+  .btn-large.btn-file
+    min-width: $button-large-height-rem
+    height: $button-large-height-rem
+    font-size: typo-size($button-large-typography-size-level)
+
+
+
+  +button-solid(primary, $button-primary-color, $button-primary-hover-color, $button-primary-active-color, $button-primary-background, $button-primary-hover-background, $button-primary-active-background, $button-primary-border-color, $button-primary-hover-border-color, $button-primary-active-border-color, $button-primary-box-shadow, $button-primary-hover-box-shadow, $button-primary-active-box-shadow)
+  +button-solid(secondary, $button-secondary-color, $button-secondary-hover-color, $button-secondary-active-color, $button-secondary-background, $button-secondary-hover-background, $button-secondary-active-background, $button-secondary-border-color, $button-secondary-hover-border-color, $button-secondary-active-border-color, $button-secondary-box-shadow, $button-secondary-hover-box-shadow, $button-secondary-active-box-shadow)
+  +button-solid(danger, $button-danger-color, $button-danger-hover-color, $button-danger-active-color, $button-danger-background, $button-danger-hover-background, $button-danger-active-background, $button-danger-border-color, $button-danger-hover-border-color, $button-danger-active-border-color, $button-danger-box-shadow, $button-danger-hover-box-shadow, $button-danger-active-box-shadow)
+  +button-solid(dark, $button-dark-color, $button-dark-hover-color, $button-dark-active-color, $button-dark-background, $button-dark-hover-background, $button-dark-active-background, $button-dark-border-color, $button-dark-hover-border-color, $button-dark-active-border-color, $button-dark-box-shadow, $button-dark-hover-box-shadow, $button-dark-active-box-shadow)
+  +button-solid(light, $button-light-color, $button-light-hover-color, $button-light-active-color, $button-light-background, $button-light-hover-background, $button-light-active-background, $button-light-border-color, $button-light-hover-border-color, $button-light-active-border-color, $button-light-box-shadow, $button-light-hover-box-shadow, $button-light-active-box-shadow)
+
+  +button-hollow(primary, $button-hollow-primary-color, $button-hollow-primary-hover-color, $button-hollow-primary-active-color, $button-hollow-primary-hover-background, $button-hollow-primary-active-background, $button-hollow-primary-border-color, $button-hollow-primary-hover-border-color, $button-hollow-primary-active-border-color, $button-hollow-primary-box-shadow, $button-hollow-primary-hover-box-shadow, $button-hollow-primary-active-box-shadow)
+  +button-hollow(secondary, $button-hollow-secondary-color, $button-hollow-secondary-hover-color, $button-hollow-secondary-active-color, $button-hollow-secondary-hover-background, $button-hollow-secondary-active-background, $button-hollow-secondary-border-color, $button-hollow-secondary-hover-border-color, $button-hollow-secondary-active-border-color, $button-hollow-secondary-box-shadow, $button-hollow-secondary-hover-box-shadow, $button-hollow-secondary-active-box-shadow)
+  +button-hollow(danger, $button-hollow-danger-color, $button-hollow-danger-hover-color, $button-hollow-danger-active-color, $button-hollow-danger-hover-background, $button-hollow-danger-active-background, $button-hollow-danger-border-color, $button-hollow-danger-hover-border-color, $button-hollow-danger-active-border-color, $button-hollow-danger-box-shadow, $button-hollow-danger-hover-box-shadow, $button-hollow-danger-active-box-shadow)
+  +button-hollow(dark, $button-hollow-dark-color, $button-hollow-dark-hover-color, $button-hollow-dark-active-color, $button-hollow-dark-hover-background, $button-hollow-dark-active-background, $button-hollow-dark-border-color, $button-hollow-dark-hover-border-color, $button-hollow-dark-active-border-color, $button-hollow-dark-box-shadow, $button-hollow-dark-hover-box-shadow, $button-hollow-dark-active-box-shadow)
+  +button-hollow(light, $button-hollow-light-color, $button-hollow-light-hover-color, $button-hollow-light-active-color, $button-hollow-light-hover-background, $button-hollow-light-active-background, $button-hollow-light-border-color, $button-hollow-light-hover-border-color, $button-hollow-light-active-border-color, $button-hollow-light-box-shadow, $button-hollow-light-hover-box-shadow, $button-hollow-light-active-box-shadow)
+
+  +button-text(primary, $button-text-primary-color, $button-text-primary-hover-color, $button-text-primary-active-color, $button-text-primary-text-shadow, $button-text-primary-hover-text-shadow, $button-text-primary-active-text-shadow)
+  +button-text(secondary, $button-text-secondary-color, $button-text-secondary-hover-color, $button-text-secondary-active-color, $button-text-secondary-text-shadow, $button-text-secondary-hover-text-shadow, $button-text-secondary-active-text-shadow)
+  +button-text(danger, $button-text-danger-color, $button-text-danger-hover-color, $button-text-danger-active-color, $button-text-danger-text-shadow, $button-text-danger-hover-text-shadow, $button-text-danger-active-text-shadow)
+  +button-text(dark, $button-text-dark-color, $button-text-dark-hover-color, $button-text-dark-active-color, $button-text-dark-text-shadow, $button-text-dark-hover-text-shadow, $button-text-dark-active-text-shadow)
+  +button-text(light, $button-text-light-color, $button-text-light-hover-color, $button-text-light-active-color, $button-text-light-text-shadow, $button-text-light-hover-text-shadow, $button-text-light-active-text-shadow)

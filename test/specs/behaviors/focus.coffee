@@ -2,8 +2,8 @@ import behavior from '../../page-objects/behavior.coffee'
 
 
 
-suite 'focus', ->
+describe 'focus', ->
 
-  test 'style', ->
+  it 'style', ->
     await behavior.open '/focus'
     await behavior.checkElement()

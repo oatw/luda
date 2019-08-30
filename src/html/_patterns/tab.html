@@ -6,18 +6,9 @@ title: Tab
   <h4><a href="#tab">#tab</a></h4>
   <div class="tab">
     <nav class="btns-x tab-indicators">
-      <div class="btn-radio btn-hollow-secondary">
-        <input type="radio" name="tab">
-        <label>Tab One</label>
-      </div>
-      <div class="btn-radio btn-hollow-secondary">
-        <input type="radio" name="tab">
-        <label>Tab Two</label>
-      </div>
-      <div class="btn-radio btn-hollow-secondary">
-        <input type="radio" name="tab">
-        <label>Tab Three</label>
-      </div>
+      <button class="btn btn-hollow-secondary">Tab One</button>
+      <button class="btn btn-hollow-secondary">Tab Two</button>
+      <button class="btn btn-hollow-secondary">Tab Three</button>
     </nav>
     <div class="tab-panes">
       <div class="tab-pane">
@@ -41,18 +32,9 @@ title: Tab
     <div class="grid">
       <div class="col-5 col-3-m">
         <nav class="btns-y btns-fluid tab-indicators">
-          <div class="btn-radio btn-hollow-secondary">
-            <input type="radio" name="vertical_tab">
-            <label>Tab One</label>
-          </div>
-          <div class="btn-radio btn-hollow-secondary">
-            <input type="radio" name="vertical_tab">
-            <label>Tab Two</label>
-          </div>
-          <div class="btn-radio btn-hollow-secondary">
-            <input type="radio" name="vertical_tab">
-            <label>Tab Three</label>
-          </div>
+          <button class="btn btn-hollow-secondary">Tab One</button>
+          <button class="btn btn-hollow-secondary">Tab Two</button>
+          <button class="btn btn-hollow-secondary">Tab Three</button>
         </nav>
       </div>
       <div class="col-auto">
@@ -93,24 +75,15 @@ title: Tab
   <h4><a href="#tab-event">#tab event</a></h4>
   <div class="tab" id="tab-event-preview">
     <nav class="btns-x tab-indicators">
-      <div class="btn-radio btn-hollow-secondary">
-        <input type="radio" name="tab_event">
-        <label>Tab One</label>
-      </div>
-      <div class="btn-radio btn-hollow-secondary">
-        <input type="radio" name="tab_event">
-        <label>Tab Two</label>
-      </div>
-      <div class="btn-radio btn-hollow-secondary">
-        <input type="radio" name="tab_event">
-        <label>Tab Three</label>
-      </div>
+      <button class="btn btn-hollow-secondary">Tab One</button>
+      <button class="btn btn-hollow-secondary">Tab Two</button>
+      <button class="btn btn-hollow-secondary">Tab Three</button>
     </nav>
     <div class="tab-panes rel">
       <div class="tab-pane d-block abs-l abs-t abs-r abs-b">
         <p>This is the content of tab pane one.</p>
       </div>
-      <div class="tab-pane d-block abs-l abs-t abs-r abs-b">
+      <div class="tab-pane d-block abs-l abs-t abs-r abs-b tab-pane-active">
         <p>This is the content of tab pane two.</p>
       </div>
       <div class="tab-pane d-block abs-l abs-t abs-r abs-b">
@@ -119,29 +92,37 @@ title: Tab
     </div>
   </div>
   <h5>
-    Leave: <span id="tab-event-preview-note-leave"></span>
-    Enter: <span id="tab-event-preview-note-enter"></span><br>
-    Left: <span id="tab-event-preview-note-left"></span>
-    Entered: <span id="tab-event-preview-note-entered"></span>
+    Activate: <span id="tab-event-preview-note-enter"></span><br>
+    Deactivate: <span id="tab-event-preview-note-leave"></span><br>
+    Avtivated: <span id="tab-event-preview-note-entered"></span><br>
+    Deactivated: <span id="tab-event-preview-note-left"></span><br>
   </h5>
   <script type="text/javascript">
     (function(){
+      function calcIndex(item){
+        return luda('#tab-event .tab-pane').els.indexOf(item)
+      }
+
       let activateStart = Date.now(), deactivateStart = Date.now()
-      luda.on('luda:tab:activate', '#tab-event', function(e){
+      luda(document).on('luda:tab:activate', '#tab-event', function(e){
+        console.log('activate')
         activateStart = Date.now()
-        luda.$child('#tab-event-preview-note-enter').innerHTML = e.detail + ' at: ' + activateStart
+        luda('#tab-event-preview-note-enter').html(calcIndex(e.target) + ' at: ' + activateStart)
       })
-      luda.on('luda:tab:activated', '#tab-event', function(e){
+      .on('luda:tab:activated', '#tab-event', function(e){
+        console.log('activated')
         let duration = Date.now() - activateStart
-        luda.$child('#tab-event-preview-note-entered').innerHTML = e.detail + ' in: ' + duration + 'ms'
+        luda('#tab-event-preview-note-entered').html(calcIndex(e.target) + ' in: ' + duration + 'ms')
       })
-      luda.on('luda:tab:deactivate', '#tab-event', function(e){
+      .on('luda:tab:deactivate', '#tab-event', function(e){
+        console.log('deactivate')
         deactivateStart = Date.now()
-        luda.$child('#tab-event-preview-note-leave').innerHTML = e.detail + ' at: ' + deactivateStart
+        luda('#tab-event-preview-note-leave').html(calcIndex(e.target) + ' at: ' + deactivateStart)
       })
-      luda.on('luda:tab:deactivated', '#tab-event', function(e){
+      .on('luda:tab:deactivated', '#tab-event', function(e){
+        console.log('deactivated')
         let duration = Date.now() - deactivateStart
-        luda.$child('#tab-event-preview-note-left').innerHTML = e.detail + ' in: ' + duration + 'ms'
+        luda('#tab-event-preview-note-left').html(calcIndex(e.target) + ' in: ' + duration + 'ms')
       })
     })()
   </script>

@@ -35,9 +35,9 @@ Let's see the below example.
 <button class="btn btn-danger" data-toggle-for="delete_confirmation">
   Delete this article
 </button>
-<div class="overlay" data-toggle-target="delete_confirmation" data-toggle>
+<div class="overlay" data-toggle-target="delete_confirmation" data-toggleable>
   <div class="overlay-body">
-    <div class="modal" data-toggle-disabled>
+    <div class="modal" data-toggleable="false">
       <h4>Are You Serious?</h4>
       <div class="fm-group mb-medium">
         <label class="fm-label" for="pwd">This operation is permanent, password must be entered to confirm.</label>
@@ -45,8 +45,8 @@ Let's see the below example.
           <input type="password" id="pwd" name="pwd" placeholder="E.g., Mypassword@12345">
         </div>        
       </div>
-      <button class="btn btn-primary mr-small" data-toggle>Yes, delete it!</button>
-      <button class="btn btn-secondary" data-toggle>No, give up.</button>
+      <button class="btn btn-primary mr-small" data-toggleable>Yes, delete it!</button>
+      <button class="btn btn-secondary" data-toggleable>No, give up.</button>
     </div>
   </div>
 </div>

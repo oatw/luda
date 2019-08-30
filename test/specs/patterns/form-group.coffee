@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'form group', ->
+describe 'form group', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/form-group'
     await pattern.checkElement()

@@ -286,25 +286,21 @@ title: Dropdown
   <script type="text/javascript">
     (function(){
       let activateStart = Date.now(), deactiveStart = Date.now()
-      luda.on('luda:dropdown:activate', '#dropdown-event-preview', function(e){
-        console.log(e.target)
+      luda(document).on('luda:dropdown:activate', '#dropdown-event-preview', function(e){
         activateStart = Date.now()
-        luda.$child('#dropdown-event-preview-activate').innerHTML = 'Activate at: ' + activateStart
+        luda('#dropdown-event-preview-activate').html('Activate at: ' + activateStart)
       })
-      luda.on('luda:dropdown:activated', '#dropdown-event-preview', function(e){
-        console.log(e.target)
+      .on('luda:dropdown:activated', '#dropdown-event-preview', function(e){
         duration = Date.now() - activateStart
-        luda.$child('#dropdown-event-preview-activated').innerHTML = 'Activated in: ' + duration + 'ms'
+        luda('#dropdown-event-preview-activated').html('Activated in: ' + duration + 'ms')
       })
-      luda.on('luda:dropdown:deactivate', '#dropdown-event-preview', function(e){
-        console.log(e.target)
+      .on('luda:dropdown:deactivate', '#dropdown-event-preview', function(e){
         deactivateStart = Date.now()
-        luda.$child('#dropdown-event-preview-deactivate').innerHTML = 'Deactivate at: ' + deactivateStart
+        luda('#dropdown-event-preview-deactivate').html('Deactivate at: ' + deactivateStart)
       })
-      luda.on('luda:dropdown:deactivated', '#dropdown-event-preview', function(e){
-        console.log(e.target)
+      .on('luda:dropdown:deactivated', '#dropdown-event-preview', function(e){
         duration = Date.now() - deactivateStart
-        luda.$child('#dropdown-event-preview-deactivated').innerHTML = 'Deactivated in: ' + duration + 'ms'
+        luda('#dropdown-event-preview-deactivated').html('Deactivated in: ' + duration + 'ms')
       })
     })()
   </script>

@@ -9,6 +9,6 @@
     <span class="o-muted">Communicate @</span> <a class="link-light td-none" href="https://gitter.im/oatw/luda">Gitter</a>
     <span class="pl-small o-muted">Embedded fonts:</span>
       <a class="link-light td-none" href="https://fonts.google.com/specimen/Roboto">Roboto</a>
-      & <a class="link-light td-none" href="https://fonts.google.com/specimen/Playfair+Display">Playerfair</a>
+      & <a class="link-light td-none" href="https://fonts.google.com/specimen/Playfair+Display">Playfair</a>
   </p>
 </footer>

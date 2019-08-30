@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'overlay', ->
+describe 'overlay', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/overlay'
     await element.checkElement()

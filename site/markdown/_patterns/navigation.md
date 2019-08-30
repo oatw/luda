@@ -33,13 +33,13 @@ then wrap necessary elements like the below example.
     <i class="ico ico-menu"></i>
   </button>
   <div class="nav-menu" data-toggle-target="header-menu">
-    <button class="nav-close btn btn-ico btn-text-light" data-toggle>
+    <button class="nav-close btn btn-ico btn-text-light" data-toggleable>
       <i class="ico ico-cross"></i>
     </button>
     <div class="nav-search fm fm-search fm-small">
       <input type="search" name="keywords" placeholder="Search anything...">
     </div>
-    <nav class="nav-items" data-toggle>
+    <nav class="nav-items" data-toggleable>
       <a class="btn btn-text-light btn-active" data-turbolinks="false" href="#header-navigation">Home</a>
       <a class="btn btn-text-light" data-turbolinks="false" href="#header-navigation">Github</a>
     </nav>
@@ -49,7 +49,7 @@ then wrap necessary elements like the below example.
           Admin<i class="ico ico-down"></i>
         </button>
         <div class="dropdown-menu mx-small-m">
-          <div class="dropdown-items mt-small-m" data-toggle>
+          <div class="dropdown-items mt-small-m" data-toggleable>
             <a class="btn btn-text-light" data-turbolinks="false" href="#header-navigation">Profile</a>
             <a class="btn btn-text-light" data-turbolinks="false" href="#header-navigation">Sign out</a>
           </div>
@@ -73,7 +73,7 @@ then wrap necessary elements like the below example.
   <!-- The menu -->
   <div class="nav-menu" data-toggle-target="header_menu">
     <!-- The close button -->
-    <button class="nav-close btn btn-ico btn-text-light" data-toggle>
+    <button class="nav-close btn btn-ico btn-text-light" data-toggleable>
       <i class="ico ico-cross"></i>
     </button>
     <!-- The search field -->
@@ -81,7 +81,7 @@ then wrap necessary elements like the below example.
       <input type="search" name="keywords" placeholder="Search anything...">
     </div>
     <!-- The main menu items -->
-    <nav class="nav-items" data-toggle>
+    <nav class="nav-items" data-toggleable>
       <a class="btn btn-text-light btn-active" href="#">Home</a>
       <a class="btn btn-text-light" href="#">Github</a>
     </nav>
@@ -92,7 +92,7 @@ then wrap necessary elements like the below example.
           Admin<i class="ico ico-down"></i>
         </button>
         <div class="dropdown-menu mx-small-m">
-          <div class="dropdown-items mt-small-m" data-toggle>
+          <div class="dropdown-items mt-small-m" data-toggleable>
             <a class="btn btn-text-light" href="#">Profile</a>
             <a class="btn btn-text-light" href="#">Sign out</a>
           </div>
@@ -123,7 +123,7 @@ then wrap necessary elements like the below example.
   <!-- The menu -->
   <div class="nav-menu" data-toggle-target="aside-menu">
     <!-- The close button -->
-    <button class="nav-close btn btn-ico btn-text-light" data-toggle>
+    <button class="nav-close btn btn-ico btn-text-light" data-toggleable>
       <i class="ico ico-cross"></i>
     </button>
     <!-- The search filed -->
@@ -131,7 +131,7 @@ then wrap necessary elements like the below example.
       <input type="search" name="keywords" placeholder="Search anything...">
     </div>
     <!-- The main menu items -->
-    <nav class="nav-items" data-toggle>
+    <nav class="nav-items" data-toggleable>
       <a class="btn btn-text-light btn-active" href="#">Home</a>
       <a class="btn btn-text-light" href="#">Documentation</a>
       <a class="btn btn-text-light" href="#">Themes</a>
@@ -141,11 +141,11 @@ then wrap necessary elements like the below example.
     <!-- The sub menu items -->
     <nav class="nav-sub-items">
       <div class="dropdown-static">
-        <button class="btn btn-ico-right btn-text-light" data-none-toggle>
+        <button class="btn btn-ico-right btn-text-light" data-toggleable="false">
           Admin<i class="ico ico-down"></i>
         </button>
         <div class="dropdown-menu">
-          <div class="dropdown-items" data-toggle>
+          <div class="dropdown-items" data-toggleable>
             <a class="btn btn-text-light" href="#">Profile</a>
             <a class="btn btn-text-light" href="#">Sign out</a>
           </div>
@@ -168,13 +168,13 @@ then wrap necessary elements like the below example.
       <i class="ico ico-menu"></i>
     </button>
     <div class="nav-menu" data-toggle-target="aside-menu">
-      <button class="nav-close btn btn-ico btn-text-light" data-toggle>
+      <button class="nav-close btn btn-ico btn-text-light" data-toggleable>
         <i class="ico ico-cross"></i>
       </button>
       <div class="nav-search fm fm-search fm-small">
         <input type="search" name="keywords" placeholder="Search anything...">
       </div>
-      <nav class="nav-items" data-toggle>
+      <nav class="nav-items" data-toggleable>
         <a class="btn btn-text-light btn-active" data-turbolinks="false" href="#aside-navigation">Home</a>
         <a class="btn btn-text-light" data-turbolinks="false" href="#aside-navigation">Documentation</a>
         <a class="btn btn-text-light" data-turbolinks="false" href="#aside-navigation">Themes</a>
@@ -183,11 +183,11 @@ then wrap necessary elements like the below example.
       </nav>
       <nav class="nav-sub-items">
         <div class="dropdown-static">
-          <button class="btn btn-ico-right btn-text-light" data-none-toggle>
+          <button class="btn btn-ico-right btn-text-light" data-toggleable="false">
             Admin<i class="ico ico-down"></i>
           </button>
           <div class="dropdown-menu">
-            <div class="dropdown-items" data-toggle>
+            <div class="dropdown-items" data-toggleable>
               <a class="btn btn-text-light" data-turbolinks="false" href="#aside-navigation">Profile</a>
               <a class="btn btn-text-light" data-turbolinks="false" href="#aside-navigation">Sign out</a>
             </div>

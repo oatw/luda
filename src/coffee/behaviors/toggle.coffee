@@ -1,92 +1,88 @@
-import '../install.coffee'
-import '../dom.coffee'
-import '../event.coffee'
-import '../static.coffee'
+import '../kernel/index.coffee'
+import '../mixins/toggleable.coffee'
 
 
 
-luda class extends luda.Static
+luda.component 'toggle', '[data-toggle-target]'
 
-  @_SCOPE: 'toggle'
-  @_TOGGLE_TARGET_ATTRIBUTE: 'data-toggle-target'
-  @_TOGGLE_ATTRIBUTE: 'data-toggle'
-  @_TOGGLE_FOR_ATTRIBUTE: 'data-toggle-for'
-  @_TOGGLE_DISABLED_ATTRIBUTE: 'data-toggle-disabled'
-  @_AUTO_DEACTIVATE_ATTRIBUTE: 'data-toggle-auto-deactivate'
-  @_AUTO_DEACTIVATE_DURATION: 3000
-  @_ACTIVE_CSS_CLASS: 'toggle-active'
-  @_SELECTORS: [
-    "[#{@_TOGGLE_TARGET_ATTRIBUTE}]"
-  ]
+.protect
 
-  @activate: (name$target) ->
-    @_query$targets(name$target).forEach ($target) =>
-      return if $target.classList.contains @_ACTIVE_CSS_CLASS
-      return if @_isTransitioning $target
-      return if @_activatePrevented $target
-      $target.classList.add @_ACTIVE_CSS_CLASS
-      @_handleActivateEnd $target
-      @_delayDeactivate $target if @_shouldAutoDeactivate $target
+  cls:
+    toggleable:
+      active: 'toggle-active'
 
-  @deactivate: (name$target) ->
-    @_query$targets(name$target).forEach ($target) =>
-      return unless $target.classList.contains @_ACTIVE_CSS_CLASS
-      return if @_isTransitioning $target
-      return if @_deactivatePrevented $target
-      $target.classList.remove @_ACTIVE_CSS_CLASS
-      @_handleDeactivateEnd $target
+  data:
+    target: 'data-toggle-target'
+    for: 'data-toggle-for'
+    auto: 'data-toggle-auto-deactivate'
+    toggleable:
+      interruption: 'data-toggle_interruption'
+      trigger: 'data-toggleable'
 
-  @toggle: (name$target) ->
-    @_query$targets(name$target).forEach ($target) =>
-      if $target.classList.contains @_ACTIVE_CSS_CLASS
-        @deactivate($target)
-      else
-        @activate($target)
+  default:
+    autoDuration: 3000
 
-  @_onElementAdded: ($ele) ->
-    @_handleActivateCancel $ele
-    @_handleDeactivateCancel $ele
-    @_delayDeactivate $ele if @_shouldAutoDeactivate $ele
+  evt:
+    toggleable:
+      activate: 'luda:toggle:activate'
+      activated: 'luda:toggle:activated'
+      deactivate: 'luda:toggle:deactivate'
+      deactivated: 'luda:toggle:deactivated'
 
-  @_shouldAutoDeactivate: ($target) ->
-    $target.hasAttribute @_AUTO_DEACTIVATE_ATTRIBUTE
+.include
 
-  @_delayDeactivate: ($target) ->
-    delay = parseInt $target.getAttribute(@_AUTO_DEACTIVATE_ATTRIBUTE), 10
-    delay = @_AUTO_DEACTIVATE_DURATION if not delay
-    setTimeout =>
-      @deactivate $target if $target
-    , delay
+  activate: ->
+    return unless @toggleableActivate()
+    @toggleAutoState()
+  
+  deactivate: ->
+    return unless @toggleableDeactivate()
+    @toggleAutoState()
 
-  @_query$targets: (name$target) ->
-    if name$target instanceof Element
-      [name$target]
+  toggle: (force) ->
+    return unless @toggleableToggle force
+    @toggleAutoState()
+
+.protect luda.mixin('toggleable').all()
+
+.protect
+
+  toggleAutoState: ->
+    return unless @root.hasData @data.auto
+    if @toggleableActive()
+      @auto = setTimeout =>
+        delete @auto
+        @deactivate()
+      , @root.data(@data.auto) or @default.autoDuration
     else
-      luda.$children "[#{@_TOGGLE_TARGET_ATTRIBUTE}=#{name$target}]"
+      clearTimeout @auto
+      delete @auto
 
-  @_init: ->
+  toggleOnEvent: (e) ->
+    return unless @toggleableToggleOnEvent(e)
+    @toggleAutoState()
+
+.help
+
+  find: -> @toggleableFind()
+
+  create: ->
+    @toggleableCreate()
+    @toggleAutoState()
+
+  destroy: ->
+    @toggleableDestroy()
+    'auto' of this and clearTimeout @auto
+  
+  listen: ->
     self = this
-    clickEventSelector = "[#{@_TOGGLE_FOR_ATTRIBUTE}],[#{@_TOGGLE_ATTRIBUTE}]"
-    luda.on luda._DOC_READY, ->
-      luda.$children(self._selector).forEach ($target) ->
-        self._delayDeactivate $target if self._shouldAutoDeactivate $target
-    luda.on 'click', clickEventSelector, (e) ->
-      toggleChecked = false
-      luda.eventPath(e).some ($path) ->
-        if $path instanceof Element
-          if $path.hasAttribute(self._TOGGLE_ATTRIBUTE) \
-          or $path.hasAttribute(self._TOGGLE_FOR_ATTRIBUTE)
-            if toggleName = $path.getAttribute self._TOGGLE_FOR_ATTRIBUTE
-              self.toggle toggleName
-              toggleChecked = true
-            if $path.hasAttribute self._TOGGLE_ATTRIBUTE
-              if $path.hasAttribute self._TOGGLE_TARGET_ATTRIBUTE
-                $toggle = $path
-              else
-                $toggle = luda.$parent \
-                "[#{self._TOGGLE_TARGET_ATTRIBUTE}]", $path
-              if $toggle
-                self.toggle $toggle
-                toggleChecked = true
-          else if $path.hasAttribute self._TOGGLE_DISABLED_ATTRIBUTE
-            toggleChecked = true
+    [
+      ['click', @toggleOnEvent]
+      ['click', "[#{@data.for}]", (e) ->
+        name = luda(this).data self.data.for
+        self.con.each (ins) ->
+          return unless ins.root.data(self.data.target) is name
+          ins.toggleOnEvent(e)
+          true
+      ]
+    ]

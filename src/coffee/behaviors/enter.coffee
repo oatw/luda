@@ -1,26 +1,26 @@
-import '../install.coffee'
-import '../constants.coffee'
-import '../event.coffee'
-import '../static.coffee'
+import '../kernel/index.coffee'
 
 
-luda class extends luda.Static
 
-  @_SCOPE: 'enter'
+luda.component 'enter', document
 
-  @_SELECTORS: [
+.protect
+
+  data:
+    enable: 'enter'
+
+  selectors: [
     'input[type=checkbox]'
     'input[type=radio]'
     '[tabindex]'
   ]
 
-  @_DISABLED_ATTRIBUTE: 'data-enter-disabled'
+  trigger: (e) ->
+    return if @html.data(@data.enable) is false
+    return unless luda(e.target).matches @selectors.join(',')
+    e.preventDefault()
+    setTimeout -> e.target.click()
 
-  @_init: ->
-    self = this
-    luda.on 'keydown', (e) ->
-      if not document.documentElement.hasAttribute(self._DISABLED_ATTRIBUTE) \
-      and e.keyCode is luda.KEY_ENTER \
-      and e.target.matches(self._selector)
-        e.preventDefault()
-        setTimeout(-> e.target.click())
+.help
+
+  listen: -> [['keydown@enter', @trigger]]

@@ -61,7 +61,7 @@ var createSassIndexes = function(){
   var targetDir = path.resolve(__dirname, '../gem/assets/stylesheets/luda')
   var themes = fs.readdirSync(targetDir)
   .filter(function(dir){
-    return fs.statSync(path.join(targetDir, dir)).isDirectory() && !dir.match(/core/)
+    return fs.statSync(path.join(targetDir, dir)).isDirectory() && !dir.match(/kernel/)
   })
 
   console.log('Creating sass indexes...')

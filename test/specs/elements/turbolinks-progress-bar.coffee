@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'trubolinks progress bar', ->
+describe 'trubolinks progress bar', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/trubolinks-progress-bar'
     await element.checkElement()

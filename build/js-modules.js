@@ -8,17 +8,21 @@ var recursive = require('recursive-readdir')
 var banner = require('./banner')
 var util = require('./util')
 
+var kernelEntryPattern = /\/kernel\/index\.coffee$/
+
 
 var getEntries = function(){
   return recursive(path.resolve(__dirname, '../src/coffee'))
   .then(function(files){
-    var enteries = []
+    var entries = []
     files.forEach(function(file){
-      if(file.match(/\.coffee$/)){
-        enteries.push(file)
+      if(file.match(/\/kernel\//)){
+        file.match(kernelEntryPattern) && entries.push(file)
+      }else{
+        file.match(/\.coffee$/) && entries.push(file)
       }
     })
-    return enteries
+    return entries
   },function(error){
     console.error('Read directory error:')
     throw error
@@ -50,7 +54,7 @@ var build = function(entries){
     .then(function(bundle){
       bundle.generate({
         format: 'umd',
-        banner: entry.match(/install\.coffee$/) ? banner() : null
+        banner: entry.match(kernelEntryPattern) ? banner() : null
       })
       .then(function(output){
         var filePath = entry.replace(/coffee/g, 'js')

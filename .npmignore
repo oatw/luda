@@ -26,6 +26,8 @@ CHANGELOG.md
 .project
 .settings
 .tmproj
+.ruby-version
+.ruby-gemset
 *.esproj
 *.sublime-project
 *.sublime-workspace

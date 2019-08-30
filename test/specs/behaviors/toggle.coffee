@@ -2,8 +2,8 @@ import behavior from '../../page-objects/behavior.coffee'
 
 
 
-suite 'toggle', ->
+describe 'toggle', ->
 
-  test 'style', ->
+  it 'style', ->
     await behavior.open '/toggle'
     await behavior.checkElement()
