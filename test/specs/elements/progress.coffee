@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'progress', ->
+describe 'progress', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/progress'
     await element.checkElement()

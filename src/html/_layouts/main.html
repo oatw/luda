@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{ page.title }} | Luda TDD</title>
+    <title>{{ page.title }} | Luda BDD</title>
     {% include head.html %}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     {% if jekyll.environment contains "-test" %}
@@ -15,18 +15,15 @@
     {% endif %}
   </head>
   <body>
-    <button class="toggle-baseline btn btn-primary fix-r fix-t mr-small mt-small">Toggle Baseline</button>
+    <button class="d-block toggle-baseline btn btn-primary fix-r fix-t mr-small mt-small zi-high">Toggle Baseline</button>
     <div id="container" class="container p-medium p-large-m">
       {{ content }}
     </div>
     <div id="visible-detector" class="p-tiny"></div>
     <script>
-      luda.on('click', '.toggle-baseline', function(){
-        if(document.body.classList.contains('baseline')){
-          document.body.classList.remove('baseline')
-        }else{
-          document.body.classList.add('baseline')
-        }
+      // luda.log(true)
+      luda(document).on('click', '.toggle-baseline', function(){
+        luda('body').toggleClass('baseline')
       })
     </script>
   </body>

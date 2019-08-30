@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'space', ->
+describe 'spacing', ->
 
-  test 'style', ->
-    await utility.open '/space'
+  it 'style', ->
+    await utility.open '/spacing'
     await utility.checkElement()

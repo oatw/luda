@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'avatar', ->
+describe 'avatar', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/avatar'
     await pattern.checkElement()

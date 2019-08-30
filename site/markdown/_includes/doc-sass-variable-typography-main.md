@@ -7,10 +7,10 @@ $typography-main: constant-get(typography-stacks, sans-serif) !default
 Default font family of body texts.
 
 ``` sass
-$typography-main-size-px: 14px !default
+$typography-main-size-px: 16px !default
 ```
 
-This variable is used for type scale calculation from size level 1 to 7.
+This variable is used for type scale calculation from size level 1 to 8.
 The value of this variable is treated as level 6 and a calculated `rem` value
 is used to set the `font-size` property of body.
 

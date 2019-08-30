@@ -305,22 +305,22 @@ Let's see the below example for detail.
 Prevent the dropdown from being toggled
 unless the `click` event is triggered on itself or its descendant elements.
 
-### data-dropdown-toggle-disabled
+### data-dropdownable="false"
 
 ``` html
-<div class="dropdown-items" data-dropdown-toggle-disabled>...</div>
+<div class="dropdown-items" data-dropdownable="false">...</div>
 ```
 
 Prevent the dropdown from being toggled
 when the `click` event is triggered on a specific element
 or the specific element's descendant elements.
 
-### data-dropdown-toggle
+### data-dropdownable
 
 ``` html
-<div class="dropdown-items" data-dropdown-toggle-disabled>
+<div class="dropdown-items" data-dropdownable="false">
   <div class="btns-y">
-    <button data-dropdown-toggle class="btn btn-primary">Do something</button>
+    <button data-dropdownable class="btn btn-primary">Do something</button>
     <button class="btn btn-primary">Close</button>
   </div>
 </div>
@@ -331,26 +331,26 @@ for a specific element and the element's descendant elements.
 
 ## Javascript Methods
 
-### luda.dropdown.activate(element)
+### luda.dropdown(selector).activate()
 
 ``` javascript
-luda.dropdown.activate(document.querySelector('#my-dropdown'))
+luda.dropdown('#my-dropdown').activate()
 ```
 
 Open a dropdown.
 
-### luda.dropdown.deactivate(element)
+### luda.dropdown(selector).deactivate()
 
 ``` javascript
-luda.dropdown.deactivate(document.querySelector('#my-dropdown'))
+luda.dropdown('#my-dropdown').deactivate()
 ```
 
 Close a dropdown.
 
-### luda.dropdown.toggle(element)
+### luda.dropdown(selector).toggle()
 
 ``` javascript
-luda.dropdown.toggle(document.querySelector('#my-dropdown'))
+luda.dropdown('#my-dropdown').toggle()
 ```
 
 Toggle a dropdown.
@@ -360,8 +360,8 @@ Toggle a dropdown.
 ### luda:dropdown:activate
 
 ``` javascript
-luda.on('luda:dropdown:activate', '#my-dropdown', function(event){
-  let $myDropdown = this, $activateDropdown = event.target
+luda(document).on('luda:dropdown:activate', '#my-dropdown', function(event){
+  let myDropdown = this, myDropdownMenu = event.target
   event.preventDefault() // Prevent the dropdown from being activated if necessary.
 })
 ```
@@ -371,8 +371,8 @@ Will be triggered before the `.dropdown-active` class added to a dropdown.
 ### luda:dropdown:activated
 
 ``` javascript
-luda.on('luda:dropdown:activated', '#my-dropdown', function(event){
-  let $myDropdown = this, $activatedDropdown = event.target
+luda(document).on('luda:dropdown:activated', '#my-dropdown', function(event){
+  let myDropdown = this, myDropdownMenu = event.target
 })
 ```
 
@@ -382,8 +382,8 @@ and CSS transition finished.
 ### luda:dropdown:deactivate
 
 ``` javascript
-luda.on('luda:dropdown:deactivate', '#my-dropdown', function(event){
-  let $myDropdown = this, $deactivateDropdown = event.target
+luda(document).on('luda:dropdown:deactivate', '#my-dropdown', function(event){
+  let myDropdown = this, myDropdownMenu = event.target
   event.preventDefault() // Prevent the dropdown from being deactivated if necessary.
 })
 ```
@@ -394,8 +394,8 @@ a dropdown.
 ### luda:dropdown:deactivated
 
 ``` javascript
-luda.on('luda:dropdown:deactivated', '#my-dropdown', function(event){
-  let $myDropdown = this, $deactivatedDropdown = event.target
+luda(document).on('luda:dropdown:deactivated', '#my-dropdown', function(event){
+  let myDropdown = this, myDropdownMenu = event.target
 })
 ```
 

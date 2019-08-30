@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'button group', ->
+describe 'button group', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/button-group'
     await pattern.checkDocument()

@@ -36,7 +36,7 @@ when focused and the `Enter` key pressed.
 ## Radio Examples
 
 Focus these radios by pressing the `Tab` key, then press the `Enter` key
-to see what will happen.
+to see what happens.
 
 {% capture radio %}
 <div class="fm fm-radio">
@@ -69,11 +69,11 @@ to see what will happen.
 
 ## HTML Attributes
 
-### data-enter-disabled
+### data-enter="false"
 
 ``` html
-<html data-enter-disabled>...</html>
+<html data-enter="false">...</html>
 ```
 
-Add this attribute to the `<html>` tag to disable the
+Add `data-enter="false"` to the `<html>` tag to disable the
 enhancement to the `Enter` key.

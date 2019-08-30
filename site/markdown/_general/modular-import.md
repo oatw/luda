@@ -1,12 +1,12 @@
 ---
-title: Modular Imports
+title: Modular Import
 description: Luda is modular, you can import the components which you need in asset management tools.
 order: 6
 ---
 <!-- markdownlint-disable -->
 ## In Node.js Powered Apps
 
-Theme Sass Modular Imports in Node.js
+Component Sass Entries
 
 ``` sass
 // Import your custom variable overrides.
@@ -73,10 +73,12 @@ Theme Sass Modular Imports in Node.js
 ```
 {: .mt-none}
 
-JavaScript Modular Imports in Node.js
+Component Javascript Entries
 {: .mt-medium}
 
 ``` javascript
+// Optional Kernel functions
+import 'luda/src/js/kernel'
 // Behaviors
 import 'luda/src/js/behaviors/enter'
 import 'luda/src/js/behaviors/focus'
@@ -94,106 +96,9 @@ import 'luda/src/js/patterns/tab'
 ```
 {: .mt-small}
 
-## In Ruby on Rails Apps
+## In Ruby on Rails and Other Ruby Apps
 
-Theme Sass Modular Imports in Ruby on Rails
-
-``` sass
-// Import your custom variable overrides.
-@import path_to_your_sass_variables
-// Theme functions, variables and mixins are required.
-@import luda/default/functions
-@import luda/default/variables
-@import luda/default/mixins
-// Browser styles normalization based on sanitize.css(https://github.com/csstools/sanitize.css)
-@import luda/default/base
-// Theme Behaviors
-@import luda/default/behaviors/disabled
-@import luda/default/behaviors/readonly
-@import luda/default/behaviors/focus
-@import luda/default/behaviors/toggle
-//Theme Elements
-@import luda/default/elements/badge
-@import luda/default/elements/baseline
-@import luda/default/elements/button
-@import luda/default/elements/container
-@import luda/default/elements/form
-@import luda/default/elements/grid
-@import luda/default/elements/icon
-@import luda/default/elements/media
-@import luda/default/elements/overlay
-@import luda/default/elements/progress
-@import luda/default/elements/scrollbar
-@import luda/default/elements/table
-@import luda/default/elements/turbolinks-progress-bar
-@import luda/default/elements/typography
-//Theme Patterns
-@import luda/default/patterns/alert
-@import luda/default/patterns/article
-@import luda/default/patterns/avatar
-@import luda/default/patterns/breadcrumb
-@import luda/default/patterns/button-group
-@import luda/default/patterns/button-icon
-@import luda/default/patterns/carousel
-@import luda/default/patterns/dropdown
-@import luda/default/patterns/form-dropdown
-@import luda/default/patterns/form-group
-@import luda/default/patterns/form-icon
-@import luda/default/patterns/modal
-@import luda/default/patterns/navigation
-@import luda/default/patterns/search-bar
-@import luda/default/patterns/tab
-//Theme Utilities
-@import luda/default/utilities/alignment
-@import luda/default/utilities/background
-@import luda/default/utilities/border
-@import luda/default/utilities/color
-@import luda/default/utilities/display
-@import luda/default/utilities/flex
-@import luda/default/utilities/float
-@import luda/default/utilities/opacity
-@import luda/default/utilities/overflow
-@import luda/default/utilities/position
-@import luda/default/utilities/shadow
-@import luda/default/utilities/shape
-@import luda/default/utilities/size
-@import luda/default/utilities/spacing
-@import luda/default/utilities/text
-@import luda/default/utilities/visibility
-@import luda/default/utilities/z-index
-```
-{: .mt-small}
-
-JavaScript Modular Imports in Ruby on Rails
-{: .mt-medium}
-
-``` javascript
-// Behaviors
-//= require luda/behaviors/enter
-//= require luda/behaviors/focus
-//= require luda/behaviors/readonly
-//= require luda/behaviors/tabulate
-//= require luda/behaviors/toggle
-// Elements
-//= require luda/elements/form-file
-//= require luda/elements/form-select
-// patterns
-//= require luda/patterns/carousel
-//= require luda/patterns/dropdown
-//= require luda/patterns/form-dropdown
-//= require luda/patterns/tab
-```
-{: .mt-small}
-
-## In Hanami Apps
-
-Sass modular imports in Hanami are the same as in Ruby on Rails.
-Hanami team is considering add Webpack support in v2,
-but before that you have to manually handle Javascript dependencies
-if thirdparty assets management gems not installed.
-That can be painful for large project.
-
-If you want to import Luda JavaScript modularly before Hanami v2,
-You'd better install a thirdparty asset management tool.
-Otherwise, you'll have to dive into Luda's source code
-to figure out Javascript dependencies.
+Luda doesn't support importing modules for Sprockets any more since version 0.3.0.
+If you want to import Luda components separately in Rails or other Ruby applications,
+please use Webpacker. It's similar to
+[importing Luda components separately in Node.js applications.](#in-nodejs-powered-apps)

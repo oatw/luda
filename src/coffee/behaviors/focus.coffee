@@ -1,76 +1,101 @@
-import '../install.coffee'
-import '../dom.coffee'
-import '../event.coffee'
-import '../static.coffee'
+import luda from '../kernel/base/luda.coffee'
+import Type from '../kernel/base/type.coffee'
+import Component from '../kernel/component/component.coffee'
+import matches from '../kernel/matches/helpers/matches.coffee'
+import '../kernel/class/toggle-class.coffee'
+import '../kernel/data/data.coffee'
 
 
 
-luda class extends luda.Static
+Focus = Component 'focus', document
 
-  @_SCOPE: 'focus'
+.protect
 
-  @_CSS_CLASS: 'focus'
-  # mouse focusable selectors
-  @_SELECTORS: ['select'
-                'textarea'
-                ':not(.btn-check):not(.btn-radio):not(.btn-file) >
-                 input:not([type=button]):not([type=submit]):not([type=reset])'
-              ]
-  @_TOUCHSTART_FOCUS_SELECTOR: 'input[type=range]'
-  @_PARENT_FOCUS_SELECTOR: 'select[multiple]'
-  @_PARENT_FOCUS_CHILDREN_SELECTOR: "#{@_PARENT_FOCUS_SELECTOR} *"
+  cls:
+    focus: 'focus'
 
-  @_DISABLED_ATTRIBUTE: 'data-focus-disabled'
+  data:
+    enable: 'focus'
 
-  @_$focus: document.getElementsByClassName(@_CSS_CLASS)
+  selector:
+    focused: '.focus'
+    always: [
+      'select'
+      'textarea'
+      ':not(.btn-check):not(.btn-radio):not(.btn-file) >
+      input:not([type=button]):not([type=submit]):not([type=reset])'
+      '[contenteditable]'
+      '[contenteditable=true]'
+    ]
+    nested: [
+      'select'
+      '[contenteditable]'
+      '[contenteditable=true]'
+    ]
+    touch: 'input[type=range]'
 
-  @_isActive: ->
-    not document.documentElement.hasAttribute(@_DISABLED_ATTRIBUTE)
+  disabled: -> @html.data(@data.enable) is false
 
-  @_removeFocusClassExcept: ($exception) ->
-    Array.from(@_$focus).forEach ($focus) =>
-      $focus.classList.remove @_CSS_CLASS if $focus isnt $exception
+  addClass: (node) ->
+    return if @disabled()
+    @focused.els.concat(node).forEach (el) =>
+      addable = el is node \
+      and el isnt @html.els[0] \
+      and el isnt @body.els[0]
+      luda(el).toggleClass @cls.focus, addable
 
-  @_addFocusClassExceptHtmlAndBody: ($target) ->
-    if $target isnt document.body and $target isnt document.documentElement
-      $target.classList.add @_CSS_CLASS
+  cacheEvt: (e) ->
+    return if @disabled() or e.target.disabled
+    @evtTriggeredFocus = e.type
 
-  @_changeFocusStateOnKeyEvent: (e) ->
-    if @_isActive()
-      @_removeFocusClassExcept e.target
-      @_addFocusClassExceptHtmlAndBody e.target
+  focus: (e) ->
+    return if @disabled() or (node = e.target).disabled
+    (evt = @evtTriggeredFocus) and delete @evtTriggeredFocus
+    if evt and /key/.test evt
+      target = node
+    else if matches node, @selector.always.join(',')
+      target = node
+    else if matches node, @selector.nested.join(' *,')
+      parent = @selector.nested.join(',')
+      e.eventPath().some (el) -> matches(el, parent) and target = el
+    @addClass target
 
-  @_changeFocusStateOnMouseDownEvent: (e) ->
-    if @_isActive()
-      if e.target.matches @_PARENT_FOCUS_CHILDREN_SELECTOR
-        target = luda.$parent @_PARENT_FOCUS_SELECTOR, e.target
-      else
-        target = e.target
-      if target.matches @_selector
-        @_removeFocusClassExcept target
-        @_addFocusClassExceptHtmlAndBody target
-      else
-        @_removeFocusClassExcept()
+  blur: (e) ->
+    return if @disabled()
+    luda(e.target).toggleClass @cls.focus, false
+      
+.help
 
-  @_setElementPrototype: ->
-    focus = HTMLElement.prototype.focus
-    blur = HTMLElement.prototype.blur
-    self = this
-    HTMLElement.prototype.focus = ->
-      focus.apply this, arguments
-      if self._isActive() and document.activeElement is this
-        self._removeFocusClassExcept this
-        self._addFocusClassExceptHtmlAndBody this
-    HTMLElement.prototype.blur = ->
-      blur.apply this, arguments
-      this.classList.remove self._CSS_CLASS if self._isActive()
+  find: -> focused: @selector.focused
 
-  @_init: ->
-    self = this
-    @_setElementPrototype()
-    luda.on 'keydown', @_changeFocusStateOnKeyEvent.bind this
-    luda.on 'keyup', @_changeFocusStateOnKeyEvent.bind this
-    luda.on 'mousedown', @_changeFocusStateOnMouseDownEvent.bind this
-    luda.on 'touchstart', @_TOUCHSTART_FOCUS_SELECTOR, \
-    @_changeFocusStateOnMouseDownEvent.bind this
-    luda.on 'focusin', @_changeFocusStateOnMouseDownEvent.bind this
+  listen: ->
+    [
+      ['keydown keyup touchstart mousedown', @cacheEvt]
+      ['mousedown focusin', @focus]
+      ['touchstart', @selector.touch, @focus]
+      ['focusout', @blur]
+    ]
+
+
+
+luda.include
+
+  focus: (addClass, preventScroll) ->
+    return unless el = @els[0]
+    ins = Object.values(Focus.instances)[0].instance
+    return this if ins.disabled()
+    addClass = true unless Type.isBool addClass
+    preventScroll = false unless Type.isBool preventScroll
+    addClass and ins.addClass el
+    el.focus {preventScroll: preventScroll}
+    this
+
+  blur: ->
+    ins = Object.values(Focus.instances)[0].instance
+    return this if ins.disabled()
+    @els.forEach (el) -> el.blur()
+    this
+
+
+
+export default Focus

@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'background', ->
+describe 'background', ->
 
-  test 'style', ->
+  it 'style', ->
     await utility.open '/background'
     await utility.checkElement()

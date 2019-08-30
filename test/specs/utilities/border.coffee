@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'border', ->
+describe 'border', ->
 
-  test 'style', ->
+  it 'style', ->
     await utility.open '/border'
     await utility.checkElement()

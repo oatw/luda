@@ -1,46 +1,40 @@
-import '../install.coffee'
-import '../constants.coffee'
-import '../dom.coffee'
-import '../event.coffee'
-import '../static.coffee'
+import luda from '../kernel/base/luda.coffee'
+import Component from '../kernel/component/component.coffee'
+import '../kernel/data/data.coffee'
 
 
 
-luda class extends luda.Static
+Component 'tabulate', document
 
-  @_SCOPE: 'tabulate'
+.protect
 
-  @_SELECTORS: ['input[type=radio]:not([disabled])']
+  selector: 'input[type=radio]:not([disabled])'
 
-  @_DISABLED_ATTRIBUTE: 'data-tabulate-disabled'
+  data:
+    tabulate: 'tabulate'
 
-  @_querySameName$radios: ($radio) ->
-    if $radio.name
-      selector = "#{@_selector}[name=#{$radio.name}]"
+  findSiblings: (radio) ->
+    selector = @selector
+    selector = "#{selector}[name=#{name}]" if name = radio.name
+    radios = luda(selector).els.filter (el) -> el.tabIndex >= 0
+    index = radios.indexOf radio
+    prev: radios[index - 1]
+    next: radios[index + 1]
+
+  trigger: (e) ->
+    return if @html.data(@data.tabulate) is false
+    if e.shiftKey
+      if prev = @findSiblings(e.target).prev
+        e.preventDefault()
+        prev.focus()
     else
-      selector = @_selector
-    $inputs = luda.$children selector
-    $inputs.filter ($input) -> $input.tabIndex >= 0
+      if next = @findSiblings(e.target).next
+        e.preventDefault()
+        next.focus()
 
-  @_query$prev$next: ($radio) ->
-    $sameNameRadios = @_querySameName$radios $radio
-    radioIndex = $sameNameRadios.indexOf $radio
-    $prev = $sameNameRadios[radioIndex - 1]
-    $next = $sameNameRadios[radioIndex + 1]
-    {$prev, $next}
+.help
 
-  @_init: ->
-    self = this
-    luda.on 'keydown', (e) ->
-      if not document.documentElement.hasAttribute(self._DISABLED_ATTRIBUTE) \
-      and e.keyCode is luda.KEY_TAB \
-      and e.target.nodeName.toUpperCase() is 'INPUT' \
-      and e.target.type is 'radio'
-        if e.shiftKey
-          if $prev = self._query$prev$next(e.target).$prev
-            e.preventDefault()
-            $prev.focus()
-        else
-          if $next = self._query$prev$next(e.target).$next
-            e.preventDefault()
-            $next.focus()
+  listen: ->
+    [
+      ['keydown@tab', @selector, @trigger]
+    ]

@@ -145,42 +145,46 @@ Disable the auto-loop function.
 
 ## Javascript Methods
 
-### luda.carousel.activate(element, index)
+### luda.carousel(selector).activate(index)
 
 ``` javascript
-luda.carousel.activate(document.querySelector('#my-carousel'), 1)
+@param {integer} index
 ```
 
-Activate a specfic item in the carousel by passing in the item's index number.
-
-### luda.carousel.next(element)
-
 ``` javascript
-luda.carousel.next(document.querySelector('#my-carousel'))
+luda.carousel('#my-carousel').activate(0)
 ```
 
-Activate the next item in the carousel.
+Activate a specfic item of the carousel by passing in the item's index number.
 
-### luda.carousel.prev(element)
+### luda.carousel(selector).next()
 
 ``` javascript
-luda.carousel.prev(document.querySelector('#my-carousel'))
+luda.carousel('#my-carousel').next()
 ```
 
-Activate the prev item in the carousel.
+Activate the next item of the carousel.
 
-### luda.carousel.pause(element)
+### luda.carousel(selector).prev()
 
 ``` javascript
-luda.carousel.pause(document.querySelector('#my-carousel'))
+luda.carousel('#my-carousel').prev()
+```
+
+Activate the prev item of the carousel.
+
+### luda.carousel(selector).pause()
+
+``` javascript
+luda.carousel('#my-carousel').pause()
 ```
 
 Pause an auto-play carousel.
 
-### luda.carousel.play(element)
+### luda.carousel(selector).play()
 
 ``` javascript
-luda.carousel.play(document.querySelector('#my-carousel'))
+luda.carousel('#my-carousel').play()
 ```
 
 Restart a paused carousel.
@@ -190,8 +194,8 @@ Restart a paused carousel.
 ### luda:carousel:activate
 
 ``` javascript
-luda.on('luda:carousel:activate', '#my-carousel', function(event){
-  let $myCarousel = this, $item = event.tartet, index = event.detail
+luda(document).on('luda:carousel:activate', '#my-carousel', function(event){
+  let myCarousel = this, item = event.tartet
   event.preventDefault() // Prevent the carousel item from being activated if necessary.
 })
 ```
@@ -201,8 +205,8 @@ Will be triggered before the `.carousel-item-active` class added to a carousel i
 ### luda:carousel:activated
 
 ``` javascript
-luda.on('luda:carousel:activated', '#my-carousel', function(event){
-  let $myCarousel = this, $item = event.tartet, index = event.detail
+luda(document).on('luda:carousel:activated', '#my-carousel', function(event){
+  let myCarousel = this, item = event.tartet
 })
 
 ```
@@ -213,8 +217,8 @@ to a carousel item and CSS transition finished.
 ### luda:carousel:deactivate
 
 ``` javascript
-luda.on('luda:carousel:deactivate', '#my-carousel', function(event){
-  let $myCarousel = this, $item = event.tartet, index = event.detail
+luda(document).on('luda:carousel:deactivate', '#my-carousel', function(event){
+  let myCarousel = this, item = event.tartet
   event.preventDefault() // Prevent the carousel item from being deactivated if necessary.
 })
 ```
@@ -225,8 +229,8 @@ a carousel item.
 ### luda:carousel:deactivated
 
 ``` javascript
-luda.on('luda:carousel:deactivated', '#my-carousel', function(event){
-  let $myCarousel = this, $item = event.tartet, index = event.detail
+luda(document).on('luda:carousel:deactivated', '#my-carousel', function(event){
+  let myCarousel = this, item = event.tartet
 })
 ```
 

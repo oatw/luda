@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'container', ->
+describe 'container', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/container'
     await element.checkElement()

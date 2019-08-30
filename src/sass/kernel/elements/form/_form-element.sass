@@ -1,0 +1,83 @@
++install(kernel-element-form-element)
+
+  .fm
+    display: flex
+    flex-wrap: wrap
+    font-size: typo-size($form-element-typography-size-level)
+    color: $form-element-color
+
+  .fm > *
+    flex: 0 0 auto
+
+  .fm input,
+  .fm select,
+  .fm textarea
+    -webkit-appearance: none
+    -moz-appearance: none
+    appearance: none
+    display: block
+
+  html:not([data-focus-disabled]) .fm .focus
+    outline: none
+
+  // remove webkit number input buttons
+  .fm ::-webkit-inner-spin-button,
+  .fm ::-webkit-outer-spin-button
+    display: none
+
+  // remove firefox number input buttons
+  .fm [type=number]
+    -moz-appearance: textfield
+
+  // remove firefox range input focus dotted outline
+  .fm [type=range]::-moz-focus-outer
+    border: none
+
+  // remove firefox invalid box shadow
+  .fm :invalid
+    box-shadow: none
+
+  // remove ie select icon
+  .fm select::-ms-expand
+    display: none
+
+  //remove search input cancel button
+  .fm ::-webkit-search-cancel-button
+    -webkit-appearance: none
+
+  // remove datalist icon
+  .fm ::-webkit-calendar-picker-indicator
+    display: none
+
+  // remove safari contact icon
+  .fm ::-webkit-contacts-auto-fill-button
+    display: none !important
+
+  // remove safari password icon
+  .fm ::-webkit-credentials-auto-fill-button
+    display: none !important
+
+  // remove safari caps icon
+  .fm ::-webkit-caps-lock-indicator
+    display: none !important
+
+
+
+  .fm-inline.fm
+    display: inline-flex
+    vertical-align: top
+
+  .fm-small.fm
+    font-size: typo-size($form-element-small-typography-size-level)
+
+  .fm-large.fm
+    font-size: typo-size($form-element-large-typography-size-level)
+
+  .fm-inline.fm:not(.fm-check):not(.fm-radio)
+    width: $form-element-inline-width-rem
+
+  .fm-small.fm-inline.fm:not(.fm-check):not(.fm-radio)
+    width: $form-element-small-inline-width-rem
+
+  .fm-large.fm-inline.fm:not(.fm-check):not(.fm-radio)
+    width: $form-element-large-inline-width-rem

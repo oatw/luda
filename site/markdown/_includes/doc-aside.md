@@ -8,7 +8,7 @@
   <button class="nav-open btn btn-text-light btn-ico ml-none" data-toggle-for="nav-aside-menu">
     <i class="ico ico-menu"></i>
   </button>
-  <div class="nav-menu" data-toggle-target="nav-aside-menu" data-toggle>
+  <div class="nav-menu" data-toggle-target="nav-aside-menu" data-toggleable>
     <button class="nav-close btn btn-text-light btn-ico">
       <i class="ico ico-cross"></i>
     </button>
@@ -16,6 +16,11 @@
       <p class="display px-small fw-semibold c-light">Get Started</p>
       {% assign ordered_generals = site.general | sort: "order" %}
       {% include doc-aside-item.md chapters=ordered_generals %}
+    </div>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Advanced</p>
+      {% assign ordered_advanced = site.advanced | sort: "order" %}
+      {% include doc-aside-item.md chapters=ordered_advanced %}
     </div>
     <div class="nav-items">
       <p class="display px-small fw-semibold c-light">Behaviors</p>

@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'badge', ->
+describe 'badge', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/badge'
     await element.checkElement()

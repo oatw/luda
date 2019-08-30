@@ -7,7 +7,7 @@
     <i class="ico ico-menu"></i>
   </button>
   <div class="nav-menu" data-toggle-target="header-menu">
-    <button class="nav-close btn btn-text-light btn-ico" data-toggle>
+    <button class="nav-close btn btn-text-light btn-ico" data-toggleable>
       <i class="ico ico-cross"></i>
     </button>
     <nav class="nav-items">

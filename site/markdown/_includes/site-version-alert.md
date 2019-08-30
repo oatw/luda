@@ -7,6 +7,6 @@
   </div>
   <div class="alert-action">
     <a data-turbolinks="false" href="{{ site.luda.siteBaseUrl }}" class="btn btn-light btn-small mr-small">Let's go!</a>
-    <button data-toggle class="btn btn-hollow-light btn-small">I don't care.</button>
+    <button data-toggleable class="btn btn-hollow-light btn-small">I don't care.</button>
   </div>
 </div>

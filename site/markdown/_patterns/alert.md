@@ -27,7 +27,7 @@ Let's see the below example.
 <button class="btn btn-primary" data-toggle-for="alert_example">Show the alert</button>
 <div class="alert" data-toggle-target="alert_example" data-toggle-auto-deactivate>
   <p class="alert-content">This alert will be closed automitically after 3s.</p>
-  <button class="alert-action btn btn-ico btn-dark btn-small" data-toggle>
+  <button class="alert-action btn btn-ico btn-dark btn-small" data-toggleable>
     <i class="ico ico-cross"></i>
   </button>
 </div>

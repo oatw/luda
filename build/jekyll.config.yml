@@ -41,6 +41,9 @@ includes_dir: html/_includes
 collections_dir: html
  
 collections:
+  kernel:
+    output: true
+    permalink: /:collection/:name
   behaviors:
     output: true
     permalink: /:collection/:name

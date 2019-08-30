@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'form button', ->
+describe 'form button', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/search-bar'
     await pattern.checkElement()

@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'z-index', ->
+describe 'z-index', ->
 
-  test 'style', ->
+  it 'style', ->
     await utility.open '/z-index'
     await utility.checkElement()

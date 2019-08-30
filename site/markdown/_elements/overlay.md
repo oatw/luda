@@ -16,7 +16,7 @@ Let's see the below example.
 <!-- Create a trigger to activate the overlay -->
 <button class="btn btn-primary" data-toggle-for="overlay">Click me to activate the overlay</button>
 <!-- The cover on the document viewport -->
-<div class="overlay" data-toggle-target="overlay" data-toggle>
+<div class="overlay" data-toggle-target="overlay" data-toggleable>
   <!-- The content in the overlay -->
   <div class="overlay-body bc-light">
     Content

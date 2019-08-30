@@ -1,154 +1,96 @@
-import '../install.coffee'
-import '../dom.coffee'
-import '../event.coffee'
-import '../factory.coffee'
+import luda from '../kernel/base/luda.coffee'
+import Component from '../kernel/component/component.coffee'
+import Resetable from '../mixins/resetable.coffee'
+import '../kernel/attribute/attr.coffee'
+import '../kernel/attribute/has-attr.coffee'
+import '../kernel/data/data.coffee'
+import '../kernel/data/has-data.coffee'
+import '../kernel/manipulation/insert-after.coffee'
+import '../kernel/manipulation/remove.coffee'
+import '../kernel/manipulation/text.coffee'
 
 
 
-luda class extends luda.Factory
+Component 'fmSelect'
 
-  @_SCOPE: 'fmSelect'
+.protect
 
-  @_SELECTOR: '.fm-select'
-  @_SELECT_SELECTOR: 'select'
-  @_SINGLE_SELECT_SIMULATOR_SELECTOR: 'input'
-  @_PLACEHOLDER_ATTRIBUTE: 'placeholder'
-  @_MULTIPLE_SELECT_PLACEHOLDER_CSS_CLASS: 'fm-select-multiple-placeholder'
-  @_DEFAULT_SELECTED_OPTION_ATTRIBUTE: 'data-fm-select-default-selected'
-  @_INITED_ATTRIBUTE: 'data-fm-select-inited'
+  selector:
+    select: 'select'
+    options: 'option'
+    simulator: 'input'
 
-  @_observerConfig:
-    childList: true
-    attributes: true
-    subtree: true
-    attributeFilter: ['selected']
+  data:
+    default: 'data-fm-select_default-selected'
+    defaultMarked: 'data-fm-select_default-marked'
 
-  select: (indexOrIndexArray) ->
-    if @_$select.multiple
-      if @_$multipleSelectPlaceholder
-        selectedIndexes = indexOrIndexArray
+.protect
+
+  tryEmpty: ->
+    select = @select.els[0]
+    selected = Array.from(select.options).some (o) ->
+      luda(o).hasAttr 'selected'
+    not selected and select.selectedIndex = -1
+
+  markSelected: (markDefault) ->
+    markDefault = markDefault is true
+    return if markDefault and @root.hasData @data.defaultMarked
+    @root.data @data.defaultMarked, '' if markDefault
+    Array.from(@select.els[0].options).forEach (o) =>
+      option = luda o
+      if markDefault
+        val = if option.hasAttr 'selected' then '' else null
+        option.data @data.default, val
       else
-        selectedIndexes = indexOrIndexArray.map (index) -> index + 1
-      Array.from(@_$select.options).forEach ($option, index) ->
-        $option.selected = selectedIndexes.includes index
-      @_markSelectedOption()
-    else
-      @_$select.selectedIndex = indexOrIndexArray
-      @_setSingleSelectSimulatorValue()
-      @_markSelectedOption()
+        val = if o.selected then '' else null
+        option.attr 'selected', val
 
-  _getConfig: ->
-    _$select = luda.$child @constructor._SELECT_SELECTOR, @_$component
-    _$singleSelectSimulator = luda.$child \
-    @constructor._SINGLE_SELECT_SIMULATOR_SELECTOR, @_$component
-    _$multipleSelectPlaceholder = luda.$child \
-    ".#{@constructor._MULTIPLE_SELECT_PLACEHOLDER_CSS_CLASS}", @_$component
-    _$defaultSelectedOptions = luda.$children \
-    "[#{@constructor._DEFAULT_SELECTED_OPTION_ATTRIBUTE}]", @_$component
-    _defaultSelectedOptionMarked = @_$component.hasAttribute \
-    @constructor._INITED_ATTRIBUTE
-    {
-      _$select,
-      _$singleSelectSimulator,
-      _$multipleSelectPlaceholder,
-      _$defaultSelectedOptions,
-      _defaultSelectedOptionMarked
-    }
+  initSimulator: ->
+    return @simulator.remove() if @select.els[0].multiple
+    return if @simulator.length
+    simulator = luda '<input>'
+    simulator.els[0].tabIndex = -1
+    simulator.insertAfter @select
+    @updatePlaceholder()
+    @updateValue()
 
-  _constructor: ->
-    {
-      @_$select,
-      @_$singleSelectSimulator,
-      @_$multipleSelectPlaceholder,
-      @_$defaultSelectedOptions,
-      @_defaultSelectedOptionMarked
-    } = @_getConfig()
-    if @_$select
-      if @_$select.multiple
-        @_initMultipleSelect()
-      else
-        @_initSingleSelect()
-      
-  _onMutations: ->
-    @_constructor()
+  updatePlaceholder: ->
+    return if @select.els[0].multiple
+    @simulator.attr 'placeholder', @select.attr('placeholder')
 
-  _markSelectedOption: ->
-    @_disconnect() if @_observer
-    Array.from(@_$select.options).forEach ($option) ->
-      if $option.selected
-        $option.setAttribute 'selected', 'selected'
-      else
-        $option.removeAttribute 'selected'
-    @_observe() unless @_observer
+  updateValue: ->
+    select = @select.els[0]
+    return if select.multiple
+    selected = select.options[select.selectedIndex]
+    val = if selected then luda(selected).text() else ''
+    @simulator.attr 'value', val
 
-  _markDefaultSelectedOption: ->
-    @_$component.setAttribute @constructor._INITED_ATTRIBUTE, ''
-    Array.from(@_$select.options).forEach ($option) =>
-      if $option.selected
-        $option.setAttribute @constructor._DEFAULT_SELECTED_OPTION_ATTRIBUTE, ''
+  reset: ->
+    @select.els[0].selectedIndex = -1
+    Array.from(@select.els[0].options).forEach (o) =>
+      o.selected = luda(o).hasData @data.default
+    @markSelected()
 
-  _setSingleSelectedDefaultSelectedOption: ->
-    hasSelected = Array.from(@_$select.options).some ($option) ->
-      $option.getAttribute('selected') is 'selected'
-    @_$select.selectedIndex = -1 unless hasSelected
+.help
 
-  _insertSingleSelectSimulator: ->
-    @_$singleSelectSimulator = document.createElement 'input'
-    @_$singleSelectSimulator.tabIndex = -1
-    luda.$after @_$singleSelectSimulator, @_$select
+  find: ->
+    select: @selector.select
+    simulator: @selector.simulator
 
-  _setSingleSelectPlaceholderValue: ->
-    @_$singleSelectSimulator.placeholder = @_$select.getAttribute \
-    @constructor._PLACEHOLDER_ATTRIBUTE
+  create: ->
+    @tryEmpty()
+    @markSelected true
+    @initSimulator()
 
-  _setSingleSelectSimulatorValue: ->
-    if $selectedOption = @_$select.options[@_$select.selectedIndex]
-      @_$singleSelectSimulator.value = $selectedOption.innerText
-    else
-      @_$singleSelectSimulator.value = ''
+  watch: ->
+    dom: [
+      [@selector.options, @tryEmpty, @updateValue]
+    ]
+    attr: [
+      ['selected', @selector.options, @updateValue]
+      ['multiple', @selector.select, @initSimulator]
+    ]
 
-  _initSingleSelect: ->
-    @_insertSingleSelectSimulator() unless @_$singleSelectSimulator
-    if @_$select.hasAttribute @constructor._PLACEHOLDER_ATTRIBUTE
-      @_setSingleSelectedDefaultSelectedOption()
-      @_setSingleSelectPlaceholderValue()
-    @_markDefaultSelectedOption() unless @_defaultSelectedOptionMarked
-    @_setSingleSelectSimulatorValue()
-    @_markSelectedOption()
-
-  _insertMultipleSelectBlankOption: ->
-    @_$multipleSelectPlaceholder = document.createElement 'option'
-    @_$multipleSelectPlaceholder.className = \
-    @constructor._MULTIPLE_SELECT_PLACEHOLDER_CSS_CLASS
-    @_$multipleSelectPlaceholder.disabled = true
-    luda.$prepend @_$multipleSelectPlaceholder, @_$select
-
-  _setMultipleSelectPlaceholderValue: ->
-    @_$multipleSelectPlaceholder.innerText = @_$select.getAttribute \
-    @constructor._PLACEHOLDER_ATTRIBUTE
-
-  _initMultipleSelect: ->
-    unless @_$multipleSelectPlaceholder
-      if @_$select.hasAttribute @constructor._PLACEHOLDER_ATTRIBUTE
-        @_insertMultipleSelectBlankOption()
-        @_setMultipleSelectPlaceholderValue()
-    @_markDefaultSelectedOption() unless @_defaultSelectedOptionMarked
-
-  _reset: ->
-    if @_$select
-      Array.from(@_$select.options).forEach ($option) =>
-        $option.selected = @_$defaultSelectedOptions.includes $option
-      @_setSingleSelectSimulatorValue() unless @_$select.multiple
-      @_markSelectedOption()
-
-  @select: ($select, indexOrIndexArray) ->
-    @query($select).select indexOrIndexArray
-
-  @_init: ->
-    self = this
-    luda.on 'change', "#{@_SELECTOR} #{@_SELECT_SELECTOR}", (e) ->
-      instance = self.query(luda.$parent self._SELECTOR, this)
-      instance._setSingleSelectSimulatorValue() unless this.multiple
-      instance._markSelectedOption()
-    luda.on luda._FORM_RESET, @_SELECTOR, (e) ->
-      setTimeout => self.query(this)._reset()
+  listen: ->
+    Resetable.get('listen').call this, @reset
+    [['change', @selector.select, @markSelected]]

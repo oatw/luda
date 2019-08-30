@@ -1,0 +1,33 @@
+---
+title: Component
+---
+
+<div id="component-methods" class="mb-large">
+  <h4><a href="#component-methods">#component-methods</a></h4>
+
+  <div class="singleton-dom"></div>
+  <div class="singleton-dom"></div>
+  <div class="singleton-dom"></div>
+  <button class="singleton-click"></button>
+
+
+  <div class="multiple" id="multiple-1">
+    <div class="cache" data-root-id="multiple-1">
+      <div class="multiple" id="multiple-2">
+        <div class="cache" data-root-id="multiple-2"></div>
+        <div class="cache" data-root-id="multiple-2"></div>
+      </div>
+    </div>
+    <div class="cache" data-root-id="multiple-1">
+      <div class="cache" data-root-id="multiple-1">nested cache</div>
+    </div>
+    <button class="click">click</button>
+  </div>
+
+  <div class="multiple" id="multiple-3">
+    <div class="cache" data-root-id="multiple-3">cache</div>
+    <div class="cache" data-root-id="multiple-3">cache</div>
+    <button class="click">click</button>
+  </div>
+
+</div>

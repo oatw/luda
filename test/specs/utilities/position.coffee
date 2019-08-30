@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'position', ->
+describe 'position', ->
 
-  test 'style', ->
+  it 'style', ->
     await utility.open '/position'
     await utility.checkElement()

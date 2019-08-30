@@ -12,33 +12,32 @@
 
 
   appliedTheme = ->
-    document.documentElement.getAttribute APPLIED_THEME_ATTRIBUTE
+    luda('html').data APPLIED_THEME_ATTRIBUTE
 
 
 
   loadTheme = (theme, callback) ->
-    pathPattern = document.documentElement.getAttribute \
-    THEME_PATH_PATTERN_ATTRIBUTE
-    $appliedTheme = luda.$child "[#{APPLIED_THEME_STYLE_ATTRIBUTE}]"
-    $theme = document.createElement 'link'
-    $theme.rel = 'stylesheet'
-    $theme.type = 'text/css'
-    $theme.setAttribute APPLIED_THEME_STYLE_ATTRIBUTE, theme
-    $theme.href = pathPattern.replace THEME_PATH_PLACEHOLDER, theme
-    $theme.onload = callback
-    document.head.replaceChild $theme, $appliedTheme
+    pathPattern = luda('html').data THEME_PATH_PATTERN_ATTRIBUTE
+    $appliedTheme = luda "[#{APPLIED_THEME_STYLE_ATTRIBUTE}]"
+    $theme = luda '<link>'
+    $theme.get(0).rel = 'stylesheet'
+    $theme.get(0).type = 'text/css'
+    $theme.data APPLIED_THEME_STYLE_ATTRIBUTE, theme
+    $theme.get(0).href = pathPattern.replace THEME_PATH_PLACEHOLDER, theme
+    $theme.get(0).onload = callback
+    $appliedTheme.replaceWith $theme
 
 
 
   changeTheme = (theme) ->
     unless isChanging or theme is appliedTheme()
       isChanging = true
-      document.documentElement.setAttribute APPLIED_THEME_ATTRIBUTE, theme
-      document.body.classList.add CHANGING_CLASS
+      luda('html').data APPLIED_THEME_ATTRIBUTE, theme
+      luda('body').addClass CHANGING_CLASS
       setTimeout(->
         loadTheme theme, ->
           toggleThemeElements()
-          document.body.classList.remove CHANGING_CLASS
+          luda('body').removeClass CHANGING_CLASS
           setTimeout(->
             isChanging = false
           , 500)
@@ -48,27 +47,24 @@
 
   removeOldThemes = ->
     appliedThemeName = appliedTheme()
-    luda.$children("[#{APPLIED_THEME_STYLE_ATTRIBUTE}]").forEach ($theme) ->
-      themeName = $theme.getAttribute APPLIED_THEME_STYLE_ATTRIBUTE
-      $theme.remove() unless themeName is appliedThemeName
+    luda("[#{APPLIED_THEME_STYLE_ATTRIBUTE}]").each ->
+      themeName = luda(this).data APPLIED_THEME_STYLE_ATTRIBUTE
+      luda(this).remove() unless themeName is appliedThemeName
 
 
 
   toggleThemeElements = ($range) ->
     appliedThemeName = appliedTheme()
-    luda.$children("[#{SHOW_FOR_THEME_ATTRIBUTE}]", $range).forEach ($ele) ->
-      themeName = $ele.getAttribute SHOW_FOR_THEME_ATTRIBUTE
-      if themeName is appliedThemeName
-        $ele.classList.remove HIDDEN_CLASS
-      else
-        $ele.classList.add HIDDEN_CLASS
+    luda("[#{SHOW_FOR_THEME_ATTRIBUTE}]", $range).each ->
+      themeName = luda(this).data SHOW_FOR_THEME_ATTRIBUTE
+      luda(this).toggleClass HIDDEN_CLASS, themeName is appliedThemeName
 
 
 
-  luda.on 'change', TRIGGER_SELECTOR, -> changeTheme(this.value)
-  luda.on 'turbolinks:render', -> removeOldThemes()
-  luda.on 'turbolinks:before-render', (e) ->
+  luda(document).on 'change', TRIGGER_SELECTOR, -> changeTheme(this.value)
+  luda(document).on 'turbolinks:render', -> removeOldThemes()
+  luda(document).on 'turbolinks:before-render', (e) ->
     toggleThemeElements(e.data.newBody)
-  luda.on 'turbolinks:load', (e) ->
+  luda(document).on 'turbolinks:load', (e) ->
     toggleThemeElements() unless e.data.timing.requestStart
 )()

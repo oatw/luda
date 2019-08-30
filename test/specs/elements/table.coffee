@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'table', ->
+describe 'table', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/table'
     await element.checkElement()

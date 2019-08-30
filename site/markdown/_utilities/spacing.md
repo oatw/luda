@@ -44,10 +44,10 @@ all abbreviations and value words are listed in the below tables.
       <tr><th>Word</th><th>Value</th></tr>
     </thead>
     <tbody>
-      <tr><td>tiny</td><td>0.5rem</td></tr>
-      <tr><td>small</td><td>1rem</td></tr>
-      <tr><td>medium</td><td>2rem</td></tr>
-      <tr><td>large</td><td>4rem</td></tr>
+      <tr><td>tiny</td><td>$spacing-tiny-rem</td></tr>
+      <tr><td>small</td><td>$spacing-small-rem</td></tr>
+      <tr><td>medium</td><td>$spacing-medium-rem</td></tr>
+      <tr><td>large</td><td>$spacing-large-rem</td></tr>
       <tr><td>none</td><td>0</td></tr>
       <tr><td>auto(only for margins)</td><td>auto</td></tr>
     </tbody>

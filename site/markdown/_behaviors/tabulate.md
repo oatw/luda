@@ -32,10 +32,11 @@ Press the `Tab` key alone or with the `Shift` together to focus these radios.
 
 ## HTML Attributes
 
-### data-tabulate-disabled
+### data-tabulate="false"
 
 ``` html
-<html data-tabulate-disabled>...</html>
+<html data-tabulate="false">...</html>
 ```
 
-Add this attribute to the `<html>` tag to disable the enhancement to the `Tab` key.
+Add `data-tabulate="false"` to the `<html>` tag
+to disable the enhancement to the `Tab` key.
