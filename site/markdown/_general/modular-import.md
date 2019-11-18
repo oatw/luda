@@ -80,6 +80,7 @@ Javascript Entries In Node.js
 // Kernel functions
 import 'luda/src/js/kernel/index'
 // Behaviors
+import 'luda/src/js/behaviors/disabled'
 import 'luda/src/js/behaviors/enter'
 import 'luda/src/js/behaviors/focus'
 import 'luda/src/js/behaviors/readonly'
@@ -173,6 +174,7 @@ JavaScript Entries in Ruby on Rails
 // Kernel functions
 //= require luda/kernel/index
 // Behaviors
+//= require luda/behaviors/disabled
 //= require luda/behaviors/enter
 //= require luda/behaviors/focus
 //= require luda/behaviors/readonly

@@ -1,0 +1,191 @@
++install(kernel-element-form-row)
+
+  .fm-text input,
+  .fm-search input,
+  .fm-select input,
+  .fm-file input,
+  .fm-text textarea,
+  .fm-select select
+    width: 100%
+    border: $form-element-border-style $form-element-border-width $form-element-border-color
+    border-radius: $form-element-border-radius
+    box-shadow: $form-element-box-shadow
+
+  .fm-text input,
+  .fm-search input,
+  .fm-select input,
+  .fm-file input,
+  .fm-select select:not([multiple])
+    height: $form-element-height-rem
+    line-height: normal // fix safari blinking cursor not in input center
+
+  .fm-text input,
+  .fm-select select:not([multiple])
+    padding: 0 $form-element-horizontal-padding-em
+    background: $form-element-background
+
+  // sass-lint:disable empty-args
+  .fm-search input,
+  .fm-select input,
+  .fm-file input
+    $padding-right: _form-icon-size-em() + $form-element-horizontal-padding-em * 2
+    padding: 0 $padding-right 0 $form-element-horizontal-padding-em
+  // sass-lint:enable empty-args
+
+  .fm-search input
+    +form-element-background($form-element-search-icon, $form-element-icon-color, $form-element-background)
+
+  .fm-select input
+    +form-element-background($form-element-select-icon, $form-element-icon-color, $form-element-background)
+
+  .fm-file input
+    +form-element-background($form-element-file-icon, $form-element-icon-color, $form-element-background)
+
+  .fm-text textarea,
+  .fm-select select[multiple]
+    $padding-top: typo-padding-top($form-element-typography-size-level, $typography-main-baseline-offset-ratio)
+    $padding-bottom: typo-padding-bottom($form-element-typography-size-level, $typography-main-baseline-offset-ratio)
+    height: $form-element-multiple-rows-height-rem
+    min-height: $form-element-multiple-rows-height-rem
+    padding: $padding-top $form-element-horizontal-padding-em $padding-bottom
+    line-height: typo-line-height($form-element-typography-size-level)
+    overflow: auto
+    -webkit-overflow-scrolling: touch
+    background: $form-element-background
+
+  .fm-text[data-error] input,
+  .fm-search[data-error] input,
+  .fm-select[data-error] input,
+  .fm-file[data-error] input,
+  .fm-text[data-error] textarea,
+  .fm-select[data-error] select[multiple]
+    color: $form-element-color-on-error
+    border-color: $form-element-border-color-on-error
+    box-shadow: $form-element-box-shadow-on-error
+
+  .fm-text[data-error] input,
+  .fm-text[data-error] textarea,
+  .fm-select[data-error] select[multiple]
+    background: $form-element-background-on-error
+
+  @if $form-element-background-on-error or $form-element-icon-color-on-error
+    // sass-lint:disable empty-args
+    $icon-color: form-element-icon-color-on-error()
+    $background: form-element-background-on-error()
+    // sass-lint:enable empty-args
+
+    .fm-search[data-error] input
+      +form-element-background($form-element-search-icon, $icon-color, $background)
+
+    .fm-select[data-error] input
+      +form-element-background($form-element-select-icon, $icon-color, $background)
+
+    .fm-file[data-error] input
+      +form-element-background($form-element-file-icon, $icon-color, $background)
+  +_sass-lint-fix-if-else
+
+  .fm.fm-text input.focus,
+  .fm.fm-search input.focus,
+  .fm.fm-select .focus ~ input,
+  .fm.fm-select input.focus,
+  .fm.fm-file .focus ~ input,
+  .fm.fm-text textarea.focus,
+  .fm.fm-select select[multiple].focus
+    color: $form-element-color-on-focus
+    border-color: $form-element-border-color-on-focus
+    box-shadow: $form-element-box-shadow-on-focus
+
+  .fm.fm-text input.focus,
+  .fm.fm-text textarea.focus,
+  .fm.fm-select select[multiple].focus
+    background: $form-element-background-on-focus
+
+  @if $form-element-background-on-focus or $form-element-icon-color-on-focus
+    // sass-lint:disable empty-args
+    $icon-color: form-element-icon-color-on-focus()
+    $background: form-element-background-on-focus()
+    // sass-lint:enable empty-args
+
+    .fm.fm-search input.focus
+      +form-element-background($form-element-search-icon, $icon-color, $background)
+
+    .fm.fm-select .focus ~ input,
+    .fm.fm-select input.focus
+      +form-element-background($form-element-select-icon, $icon-color, $background)
+
+    .fm.fm-file .focus ~ input
+      +form-element-background($form-element-file-icon, $icon-color, $background)
+  +_sass-lint-fix-if-else
+
+
+
+  .fm-small.fm-text input,
+  .fm-small.fm-search input,
+  .fm-small.fm-select input,
+  .fm-small.fm-file input,
+  .fm-small.fm-select select:not([multiple])
+    height: $form-element-small-height-rem
+
+  .fm-small.fm-text textarea,
+  .fm-small.fm-select select[multiple]
+    height: $form-element-multiple-rows-small-height-rem
+    min-height: $form-element-multiple-rows-small-height-rem
+    padding-top: typo-padding-top($form-element-small-typography-size-level, $typography-main-baseline-offset-ratio)
+    padding-bottom: typo-padding-bottom($form-element-small-typography-size-level, $typography-main-baseline-offset-ratio)
+    line-height: typo-line-height($form-element-small-typography-size-level)
+
+  .fm-large.fm-text input,
+  .fm-large.fm-search input,
+  .fm-large.fm-select input,
+  .fm-large.fm-file input,
+  .fm-large.fm-select select:not([multiple])
+    height: $form-element-large-height-rem
+
+  .fm-large.fm-text textarea,
+  .fm-large.fm-select select[multiple]
+    height: $form-element-multiple-rows-large-height-rem
+    min-height: $form-element-multiple-rows-large-height-rem
+    padding-top: typo-padding-top($form-element-large-typography-size-level, $typography-main-baseline-offset-ratio)
+    padding-bottom: typo-padding-bottom($form-element-large-typography-size-level, $typography-main-baseline-offset-ratio)
+    line-height: typo-line-height($form-element-large-typography-size-level)
+
+
+
+  .fm-select select:not([multiple]),
+  .fm-file input[type=file]
+    width: 100%
+    opacity: 0
+
+  .fm-select select:not([multiple]) + input,
+  .fm-file [type=file] + input
+    margin-top: - $form-element-height-rem
+
+  .fm-file [type=file]
+    overflow: hidden
+
+
+
+  .fm-small.fm-select select:not([multiple]) + input,
+  .fm-small.fm-file [type=file] + input
+    margin-top: - $form-element-small-height-rem
+
+  .fm-large.fm-select select:not([multiple]) + input,
+  .fm-large.fm-file [type=file] + input
+    margin-top: - $form-element-large-height-rem
+
+
+
+  .fm-select select[multiple] option
+    display: flex
+    align-items: center
+    height: typo-line-height($form-element-typography-size-level)
+    min-height: 0
+    padding: 0
+
+
+
+  .fm-small.fm-select select[multiple] option
+    height: if($form-element-small-typography-size-level, typo-line-height($form-element-small-typography-size-level), null)
+
+  .fm-large.fm-select select[multiple] option
+    height: if($form-element-large-typography-size-level, typo-line-height($form-element-large-typography-size-level), null)

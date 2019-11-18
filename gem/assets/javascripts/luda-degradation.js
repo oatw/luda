@@ -1,5 +1,5 @@
 /*! 
- * Luda degradation script 0.2.0 | https://oatw.github.io/luda
+ * Luda degradation script 0.3.0 | https://oatw.github.io/luda
  * Copyright 2019 Oatw | https://oatw.blog
  * MIT license | http://opensource.org/licenses/MIT
  */
@@ -13,7 +13,7 @@
 
   Degradation = {
     _URL_ATTRIBUTE: 'data-degradation-url',
-    _HTML: ['<div id="luda-degradation-html" ', 'style="padding:100px 30px;text-align:center">', '<h1>Your Browser Is Too Old!</h1>', '<p>', 'Please visit this site with a modern browser ', '<a target="_blank" href="https://www.google.com/chrome/">', '(Chrome recommended)', '</a>', '.</p>', '</div>'].join(''),
+    _HTML: ['<div id="luda-degradation-html" ', 'style="padding:100px 30px;text-align:center">', '<h1>Your Browser is Too Old!</h1>', '<p>', 'Please visit this site with a modern browser ', '<a target="_blank" href="https://www.google.com/chrome/">', '(Chrome is recommended)', '</a>', '.</p>', '</div>'].join(''),
     _CSS_PROPERTIES: [
       {
         display: 'flex',
@@ -26,7 +26,8 @@
     _JS_PROPERTIES: {
       es6Class: 'class X {}',
       es6ArrowFunction: '((x) => x)()',
-      mutationObserver: 'new MutationObserver(function(){})'
+      mutationObserver: 'new MutationObserver(function(){})',
+      proxy: 'new Proxy({},{})'
     },
     _NOTIFY_MILLSECONDS: 500,
     check: function() {
@@ -34,7 +35,12 @@
       this._checkJS(this._JS_PROPERTIES);
       return this._checkCSS(this._CSS_PROPERTIES);
     },
-    _eval: eval,
+    _eval: function(script) {
+      var geval;
+      geval = eval;
+      script = '(function(){' + script + '})()';
+      return geval(script);
+    },
     _checkEnv: function() {
       if (typeof document !== 'undefined') {
         if (typeof window !== 'undefined') {

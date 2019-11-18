@@ -1,0 +1,106 @@
++install(kernel-element-icon)
+
+  .ico
+    display: inline-block
+    vertical-align: baseline
+    position: relative
+    width: 1em
+    height: 1em
+    font-size: $icon-size-em
+    line-height: 1
+    overflow: hidden
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+    object-fit: contain
+    object-position: center
+    font-style: normal
+    background-position: center
+    background-size: contain
+
+  .ico::before,
+  .ico::after
+    display: block
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+
+
+  .ico-left::before,
+  .ico-right::before,
+  .ico-up::before,
+  .ico-down::before
+    width: 0.6em
+    height: 0.6em
+    border: $icon-stroke-width solid
+    border-right: none
+    border-bottom: none
+    content: ''
+
+  .ico-left::before
+    transform: translate(-25%, -50%) rotate(-45deg)
+
+  .ico-right::before
+    transform: translate(-75%, -50%) rotate(135deg)
+
+  .ico-up::before
+    transform: translate(-50%, -25%) rotate(45deg)
+
+  .ico-down::before
+    transform: translate(-50%, -75%) rotate(225deg)
+
+
+
+  .ico-plus::before,
+  .ico-plus::after,
+  .ico-cross::before,
+  .ico-cross::after
+    content: ''
+    background: currentColor
+
+  .ico-plus::before,
+  .ico-cross::before
+    width: 0.9em
+    height: $icon-stroke-width
+
+  .ico-plus::after,
+  .ico-cross::after
+    width: $icon-stroke-width
+    height: 0.9em
+
+  .ico-cross::before,
+  .ico-cross::after
+    transform: translate(-50%, -50%) rotate(45deg)
+
+
+
+  .ico-menu::before
+    width: 0.9em
+    height: $icon-stroke-width
+    content: ''
+    background: currentColor
+    box-shadow: 0 -0.35em, 0 0.35em
+
+
+
+  .ico-search::before
+    top: 5%
+    left: 5%
+    width: 0.75em
+    height: 0.75em
+    border: $icon-stroke-width solid
+    content: ''
+    border-radius: 50%
+    transform: translate(0, 0) rotate(45deg)
+
+  .ico-search::after
+    top: 80%
+    left: 80%
+    width: 0.4em
+    height: $icon-stroke-width
+    content: ''
+    background: currentColor
+    transform: translate(-50%, -50%) rotate(45deg)

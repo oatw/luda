@@ -1,109 +1,112 @@
-//= require ../install
-//= require ../dom
-//= require ../event
-//= require ../static
+//= require ../kernel/index
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('../install.js'), require('../dom.js'), require('../event.js'), require('../static.js')) :
-  typeof define === 'function' && define.amd ? define(['../install.js', '../dom.js', '../event.js', '../static.js'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('../kernel/index.js')) :
+  typeof define === 'function' && define.amd ? define(['../kernel/index.js'], factory) :
   (factory());
 }(this, (function () { 'use strict';
 
-  luda((function() {
-    var _Class;
+  var Focus;
 
-    _Class = class extends luda.Static {
-      static _isActive() {
-        return !document.documentElement.hasAttribute(this._DISABLED_ATTRIBUTE);
+  Focus = luda.component('focus', document).protect({
+    cls: {
+      focus: 'focus'
+    },
+    data: {
+      enable: 'focus'
+    },
+    selector: {
+      focused: '.focus',
+      always: ['select', 'textarea', ':not(.btn-check):not(.btn-radio):not(.btn-file) > input:not([type=button]):not([type=submit]):not([type=reset])', '[contenteditable]', '[contenteditable=true]'],
+      nested: ['select', '[contenteditable]', '[contenteditable=true]'],
+      touch: 'input[type=range]'
+    },
+    disabled: function() {
+      return this.html.data(this.data.enable) === false;
+    },
+    addClass: function(node) {
+      if (this.disabled()) {
+        return;
       }
-
-      static _removeFocusClassExcept($exception) {
-        return Array.from(this._$focus).forEach(($focus) => {
-          if ($focus !== $exception) {
-            return $focus.classList.remove(this._CSS_CLASS);
-          }
+      return this.focused.els.concat(node).forEach((el) => {
+        var addable;
+        addable = el === node && el !== this.html.els[0] && el !== this.body.els[0];
+        return luda(el).toggleClass(this.cls.focus, addable);
+      });
+    },
+    cacheEvt: function(e) {
+      if (this.disabled() || e.target.disabled) {
+        return;
+      }
+      return this.evtTriggeredFocus = e.type;
+    },
+    focus: function(e) {
+      var evt, node, parent, target;
+      if (this.disabled() || (node = e.target).disabled) {
+        return;
+      }
+      (evt = this.evtTriggeredFocus) && delete this.evtTriggeredFocus;
+      if (evt && /key/.test(evt)) {
+        target = node;
+      } else if (luda(node).matches(this.selector.always.join(','))) {
+        target = node;
+      } else if (luda(node).matches(this.selector.nested.join(' *,'))) {
+        parent = this.selector.nested.join(',');
+        e.eventPath().some(function(el) {
+          return luda(el).matches(parent) && (target = el);
         });
       }
-
-      static _addFocusClassExceptHtmlAndBody($target) {
-        if ($target !== document.body && $target !== document.documentElement) {
-          return $target.classList.add(this._CSS_CLASS);
-        }
+      return this.addClass(target);
+    },
+    blur: function(e) {
+      if (this.disabled()) {
+        return;
       }
+      return luda(e.target).toggleClass(this.cls.focus, false);
+    }
+  }).help({
+    find: function() {
+      return {
+        focused: this.selector.focused
+      };
+    },
+    listen: function() {
+      return [['keydown keyup touchstart mousedown', this.cacheEvt], ['mousedown focusin', this.focus], ['touchstart', this.selector.touch, this.focus], ['focusout', this.blur]];
+    }
+  });
 
-      static _changeFocusStateOnKeyEvent(e) {
-        if (this._isActive()) {
-          this._removeFocusClassExcept(e.target);
-          return this._addFocusClassExceptHtmlAndBody(e.target);
-        }
+  luda.include({
+    focus: function(addClass, preventScroll) {
+      var el, ins;
+      if (!(el = this.els[0])) {
+        return;
       }
-
-      static _changeFocusStateOnMouseDownEvent(e) {
-        var target;
-        if (this._isActive()) {
-          if (e.target.matches(this._PARENT_FOCUS_CHILDREN_SELECTOR)) {
-            target = luda.$parent(this._PARENT_FOCUS_SELECTOR, e.target);
-          } else {
-            target = e.target;
-          }
-          if (target.matches(this._selector)) {
-            this._removeFocusClassExcept(target);
-            return this._addFocusClassExceptHtmlAndBody(target);
-          } else {
-            return this._removeFocusClassExcept();
-          }
-        }
+      ins = Object.values(Focus.instances)[0].instance;
+      if (ins.disabled()) {
+        return this;
       }
-
-      static _setElementPrototype() {
-        var blur, focus, self;
-        focus = HTMLElement.prototype.focus;
-        blur = HTMLElement.prototype.blur;
-        self = this;
-        HTMLElement.prototype.focus = function() {
-          focus.apply(this, arguments);
-          if (self._isActive() && document.activeElement === this) {
-            self._removeFocusClassExcept(this);
-            return self._addFocusClassExceptHtmlAndBody(this);
-          }
-        };
-        return HTMLElement.prototype.blur = function() {
-          blur.apply(this, arguments);
-          if (self._isActive()) {
-            return this.classList.remove(self._CSS_CLASS);
-          }
-        };
+      if (!luda.isBool(addClass)) {
+        addClass = true;
       }
-
-      static _init() {
-        this._setElementPrototype();
-        luda.on('keydown', this._changeFocusStateOnKeyEvent.bind(this));
-        luda.on('keyup', this._changeFocusStateOnKeyEvent.bind(this));
-        luda.on('mousedown', this._changeFocusStateOnMouseDownEvent.bind(this));
-        luda.on('touchstart', this._TOUCHSTART_FOCUS_SELECTOR, this._changeFocusStateOnMouseDownEvent.bind(this));
-        return luda.on('focusin', this._changeFocusStateOnMouseDownEvent.bind(this));
+      if (!luda.isBool(preventScroll)) {
+        preventScroll = false;
       }
-
-    };
-
-    _Class._SCOPE = 'focus';
-
-    _Class._CSS_CLASS = 'focus';
-
-    // mouse focusable selectors
-    _Class._SELECTORS = ['select', 'textarea', ':not(.btn-check):not(.btn-radio):not(.btn-file) > input:not([type=button]):not([type=submit]):not([type=reset])'];
-
-    _Class._TOUCHSTART_FOCUS_SELECTOR = 'input[type=range]';
-
-    _Class._PARENT_FOCUS_SELECTOR = 'select[multiple]';
-
-    _Class._PARENT_FOCUS_CHILDREN_SELECTOR = `${_Class._PARENT_FOCUS_SELECTOR} *`;
-
-    _Class._DISABLED_ATTRIBUTE = 'data-focus-disabled';
-
-    _Class._$focus = document.getElementsByClassName(_Class._CSS_CLASS);
-
-    return _Class;
-
-  }).call(this));
+      addClass && ins.addClass(el);
+      el.focus({
+        preventScroll: preventScroll
+      });
+      return this;
+    },
+    blur: function() {
+      var ins;
+      ins = Object.values(Focus.instances)[0].instance;
+      if (ins.disabled()) {
+        return this;
+      }
+      this.els.forEach(function(el) {
+        return el.blur();
+      });
+      return this;
+    }
+  });
 
 })));
