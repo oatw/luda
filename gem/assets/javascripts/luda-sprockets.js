@@ -1,3 +1,5 @@
+//= require luda/kernel/index
+//= require luda/behaviors/disabled
 //= require luda/behaviors/enter
 //= require luda/behaviors/focus
 //= require luda/behaviors/readonly

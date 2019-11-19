@@ -1,0 +1,33 @@
++install(kernel-element-scrollbar)
+
+  +media-width($scrollbar-width-breakpoint)
+
+    html
+      -ms-overflow-style: $scrollbar-edge-overflow-style
+
+    *
+      // sass-lint:disable no-misspelled-properties
+      scrollbar-width: $scrollbar-firefox-width-keyword
+      scrollbar-color: $scrollbar-firefox-color
+      // sass-lint:enable no-misspelled-properties
+
+  +browser-chrome-and-opera
+
+    +media-width($scrollbar-width-breakpoint)
+
+      html
+        overflow: overlay
+
+      ::-webkit-scrollbar
+        width: $scrollbar-breakpoint-vertical-width-rem
+        height: $scrollbar-breakpoint-horizontal-height-rem
+
+      ::-webkit-scrollbar-thumb
+        background: $scrollbar-thumb-background
+        border-radius: $scrollbar-thumb-border-radius
+
+      ::-webkit-scrollbar-corner
+        display: none
+
+      ::-webkit-resizer
+        display: none

@@ -10,9 +10,6 @@
       file: 'input[type=file]',
       simulator: 'input:not([type=file])'
     },
-    data: {
-      initValue: 'data-fm-file_value'
-    },
     splitor: '  '
   }).protect({
     insertSimulator: function() {

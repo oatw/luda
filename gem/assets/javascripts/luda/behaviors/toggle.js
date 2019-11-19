@@ -1,158 +1,112 @@
-//= require ../install
-//= require ../dom
-//= require ../event
-//= require ../static
+//= require ../kernel/index
+//= require ../mixins/toggleable
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('../install.js'), require('../dom.js'), require('../event.js'), require('../static.js')) :
-  typeof define === 'function' && define.amd ? define(['../install.js', '../dom.js', '../event.js', '../static.js'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('../kernel/index.js'), require('../mixins/toggleable.js')) :
+  typeof define === 'function' && define.amd ? define(['../kernel/index.js', '../mixins/toggleable.js'], factory) :
   (factory());
 }(this, (function () { 'use strict';
 
-  luda((function() {
-    var _Class;
-
-    _Class = class extends luda.Static {
-      static activate(name$target) {
-        return this._query$targets(name$target).forEach(($target) => {
-          if ($target.classList.contains(this._ACTIVE_CSS_CLASS)) {
-            return;
-          }
-          if (this._isTransitioning($target)) {
-            return;
-          }
-          if (this._activatePrevented($target)) {
-            return;
-          }
-          $target.classList.add(this._ACTIVE_CSS_CLASS);
-          this._handleActivateEnd($target);
-          if (this._shouldAutoDeactivate($target)) {
-            return this._delayDeactivate($target);
-          }
-        });
+  luda.component('toggle', '[data-toggle-target]').protect({
+    cls: {
+      toggleable: {
+        active: 'toggle-active'
       }
-
-      static deactivate(name$target) {
-        return this._query$targets(name$target).forEach(($target) => {
-          if (!$target.classList.contains(this._ACTIVE_CSS_CLASS)) {
-            return;
-          }
-          if (this._isTransitioning($target)) {
-            return;
-          }
-          if (this._deactivatePrevented($target)) {
-            return;
-          }
-          $target.classList.remove(this._ACTIVE_CSS_CLASS);
-          return this._handleDeactivateEnd($target);
-        });
+    },
+    data: {
+      target: 'data-toggle-target',
+      for: 'data-toggle-for',
+      auto: 'data-toggle-auto-deactivate',
+      toggleable: {
+        interruption: 'data-toggle_interruption',
+        trigger: 'data-toggleable'
       }
-
-      static toggle(name$target) {
-        return this._query$targets(name$target).forEach(($target) => {
-          if ($target.classList.contains(this._ACTIVE_CSS_CLASS)) {
-            return this.deactivate($target);
-          } else {
-            return this.activate($target);
-          }
-        });
+    },
+    default: {
+      autoDuration: 3000
+    },
+    evt: {
+      toggleable: {
+        activate: 'luda:toggle:activate',
+        activated: 'luda:toggle:activated',
+        deactivate: 'luda:toggle:deactivate',
+        deactivated: 'luda:toggle:deactivated'
       }
-
-      static _onElementAdded($ele) {
-        this._handleActivateCancel($ele);
-        this._handleDeactivateCancel($ele);
-        if (this._shouldAutoDeactivate($ele)) {
-          return this._delayDeactivate($ele);
-        }
+    }
+  }).include({
+    activate: function() {
+      if (!this.toggleableActivate()) {
+        return;
       }
-
-      static _shouldAutoDeactivate($target) {
-        return $target.hasAttribute(this._AUTO_DEACTIVATE_ATTRIBUTE);
+      return this.toggleAutoState();
+    },
+    deactivate: function() {
+      if (!this.toggleableDeactivate()) {
+        return;
       }
-
-      static _delayDeactivate($target) {
-        var delay;
-        delay = parseInt($target.getAttribute(this._AUTO_DEACTIVATE_ATTRIBUTE), 10);
-        if (!delay) {
-          delay = this._AUTO_DEACTIVATE_DURATION;
-        }
-        return setTimeout(() => {
-          if ($target) {
-            return this.deactivate($target);
-          }
-        }, delay);
+      return this.toggleAutoState();
+    },
+    toggle: function(force) {
+      if (!this.toggleableToggle(force)) {
+        return;
       }
-
-      static _query$targets(name$target) {
-        if (name$target instanceof Element) {
-          return [name$target];
-        } else {
-          return luda.$children(`[${this._TOGGLE_TARGET_ATTRIBUTE}=${name$target}]`);
-        }
+      return this.toggleAutoState();
+    }
+  }).protect(luda.mixin('toggleable').all()).protect({
+    toggleAutoState: function() {
+      if (!this.root.hasData(this.data.auto)) {
+        return;
       }
-
-      static _init() {
-        var clickEventSelector, self;
-        self = this;
-        clickEventSelector = `[${this._TOGGLE_FOR_ATTRIBUTE}],[${this._TOGGLE_ATTRIBUTE}]`;
-        luda.on(luda._DOC_READY, function() {
-          return luda.$children(self._selector).forEach(function($target) {
-            if (self._shouldAutoDeactivate($target)) {
-              return self._delayDeactivate($target);
-            }
-          });
-        });
-        return luda.on('click', clickEventSelector, function(e) {
-          var toggleChecked;
-          toggleChecked = false;
-          return luda.eventPath(e).some(function($path) {
-            var $toggle, toggleName;
-            if ($path instanceof Element) {
-              if ($path.hasAttribute(self._TOGGLE_ATTRIBUTE) || $path.hasAttribute(self._TOGGLE_FOR_ATTRIBUTE)) {
-                if (toggleName = $path.getAttribute(self._TOGGLE_FOR_ATTRIBUTE)) {
-                  self.toggle(toggleName);
-                  toggleChecked = true;
-                }
-                if ($path.hasAttribute(self._TOGGLE_ATTRIBUTE)) {
-                  if ($path.hasAttribute(self._TOGGLE_TARGET_ATTRIBUTE)) {
-                    $toggle = $path;
-                  } else {
-                    $toggle = luda.$parent(`[${self._TOGGLE_TARGET_ATTRIBUTE}]`, $path);
-                  }
-                  if ($toggle) {
-                    self.toggle($toggle);
-                    return toggleChecked = true;
-                  }
-                }
-              } else if ($path.hasAttribute(self._TOGGLE_DISABLED_ATTRIBUTE)) {
-                return toggleChecked = true;
+      if (this.toggleableActive()) {
+        return this.auto = setTimeout(() => {
+          delete this.auto;
+          return this.deactivate();
+        }, this.root.data(this.data.auto) || this.default.autoDuration);
+      } else {
+        clearTimeout(this.auto);
+        return delete this.auto;
+      }
+    },
+    toggleOnEvent: function(e) {
+      if (!this.toggleableToggleOnEvent(e)) {
+        return;
+      }
+      return this.toggleAutoState();
+    }
+  }).help({
+    find: function() {
+      return this.toggleableFind();
+    },
+    create: function() {
+      this.toggleableCreate();
+      return this.toggleAutoState();
+    },
+    destroy: function() {
+      this.toggleableDestroy();
+      return 'auto' in this && clearTimeout(this.auto);
+    },
+    listen: function() {
+      var self;
+      self = this;
+      return [
+        ['click',
+        this.toggleOnEvent],
+        [
+          'click',
+          `[${this.data.for}]`,
+          function(e) {
+            var name;
+            name = luda(this).data(self.data.for);
+            return self.con.each(function(ins) {
+              if (ins.root.data(self.data.target) !== name) {
+                return;
               }
-            }
-          });
-        });
-      }
-
-    };
-
-    _Class._SCOPE = 'toggle';
-
-    _Class._TOGGLE_TARGET_ATTRIBUTE = 'data-toggle-target';
-
-    _Class._TOGGLE_ATTRIBUTE = 'data-toggle';
-
-    _Class._TOGGLE_FOR_ATTRIBUTE = 'data-toggle-for';
-
-    _Class._TOGGLE_DISABLED_ATTRIBUTE = 'data-toggle-disabled';
-
-    _Class._AUTO_DEACTIVATE_ATTRIBUTE = 'data-toggle-auto-deactivate';
-
-    _Class._AUTO_DEACTIVATE_DURATION = 3000;
-
-    _Class._ACTIVE_CSS_CLASS = 'toggle-active';
-
-    _Class._SELECTORS = [`[${_Class._TOGGLE_TARGET_ATTRIBUTE}]`];
-
-    return _Class;
-
-  }).call(this));
+              ins.toggleOnEvent(e);
+              return true;
+            });
+          }
+        ]
+      ];
+    }
+  });
 
 })));

@@ -24,6 +24,8 @@
 
 - The kernel functions are added for a better experience of writting components.
 
+- Custom firefox scrollbar styles are added.
+
 # 0.2.0 (May 30, 2019)
 
 ## Changed
