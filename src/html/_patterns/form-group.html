@@ -2,7 +2,7 @@
 title: Form group
 ---
 
-<div id="form-group" class="mb-large">
+<form id="form-group" class="mb-large">
   <h4><a href="#form-group">#form-group</a></h4>
   <div class="fm-group">
     <label class="fm-label fm-label-required">Full Name</label>
@@ -22,7 +22,7 @@ title: Form group
   <div class="fm-group">
     <label class="fm-label">Hobbit</label>
     <div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
-      <div class="fm fm-select">
+      <div class="fm fm-select" data-auto="false">
         <input placeholder="Single select form dropdown">
       </div>
       <div class="dropdown-menu">
@@ -53,11 +53,12 @@ title: Form group
       </div>
   </div>
   <input class="btn btn-primary mt-small" type="submit" value="Submit">
-</div>
+  <input class="btn btn-secondary mt-small" type="reset" value="Reset">
+</form>
 
 
 
-<div id="form-group-with-grid" class="mb-large">
+<form id="form-group-with-grid" class="mb-large">
   <h4><a href="#form-group-with-grid">#form-group-with-grid</a></h4>
   <div class="fm-group">
     <div class="grid">
@@ -82,7 +83,7 @@ title: Form group
     <div class="grid">
       <label class="fm-label fm-label-nowrap col-auto">Hobbit</label>
       <div class="fm-dropdown dropdown-fixed dropdown-absolute-m col-8 col-10-m">
-        <div class="fm fm-select">
+        <div class="fm fm-select" data-auto="false">
           <input placeholder="Single select form dropdown">
         </div>
         <div class="dropdown-menu">
@@ -116,11 +117,11 @@ title: Form group
     </div>
   </div>
   <input class="btn btn-primary mt-small" type="submit" value="Submit">
-</div>
+</form>
 
 
 
-<div id="form-group-in-grid">
+<form id="form-group-in-grid">
   <h4><a href="#form-group-in-grid">#form-group-in-grid</a></h4>
   <div class="grid">
     <div class="fm-group col-6">
@@ -147,7 +148,7 @@ title: Form group
       <div class="grid">
         <label class="fm-label fm-label-nowrap col-auto">Hobbit</label>
         <div class="fm-dropdown dropdown-fixed dropdown-absolute-m col-8 col-10-m">
-          <div class="fm fm-select">
+          <div class="fm fm-select" data-auto="false">
             <input placeholder="Single select form dropdown">
           </div>
           <div class="dropdown-menu">
@@ -184,4 +185,4 @@ title: Form group
       <input class="btn btn-primary mt-small" type="submit" value="Submit">
     </div>
   </div>
-</div>
+</form>

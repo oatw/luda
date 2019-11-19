@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'breadcrumb', ->
+describe 'breadcrumb', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/breadcrumb'
     await pattern.checkElement()

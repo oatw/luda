@@ -1,0 +1,227 @@
++install(kernel-utility-spacing)
+
+  @each $breakpoint in map-keys($breakpoint-width-pxs)
+
+    $class-fix: _responsive-class-fix($breakpoint)
+
+    +media-width($breakpoint)
+
+      .ml-auto#{$class-fix},
+      .mx-auto#{$class-fix},
+      .m-auto#{$class-fix}
+        margin-left: auto !important
+
+      .mr-auto#{$class-fix},
+      .mx-auto#{$class-fix},
+      .m-auto#{$class-fix}
+        margin-right: auto !important
+
+      .mt-auto#{$class-fix},
+      .my-auto#{$class-fix},
+      .m-auto#{$class-fix}
+        margin-top: auto !important
+
+      .mb-auto#{$class-fix},
+      .my-auto#{$class-fix},
+      .m-auto#{$class-fix}
+        margin-bottom: auto !important
+
+      .ml-none#{$class-fix},
+      .mx-none#{$class-fix},
+      .m-none#{$class-fix}
+        margin-left: 0 !important
+
+      .mr-none#{$class-fix},
+      .mx-none#{$class-fix},
+      .m-none#{$class-fix}
+        margin-right: 0 !important
+
+      .mt-none#{$class-fix},
+      .my-none#{$class-fix},
+      .m-none#{$class-fix}
+        margin-top: 0 !important
+
+      .mb-none#{$class-fix},
+      .my-none#{$class-fix},
+      .m-none#{$class-fix}
+        margin-bottom: 0 !important
+
+      .ml-tiny#{$class-fix},
+      .mx-tiny#{$class-fix},
+      .m-tiny#{$class-fix}
+        margin-left: $spacing-tiny-rem !important
+
+      .mr-tiny#{$class-fix},
+      .mx-tiny#{$class-fix},
+      .m-tiny#{$class-fix}
+        margin-right: $spacing-tiny-rem !important
+
+      .mt-tiny#{$class-fix},
+      .my-tiny#{$class-fix},
+      .m-tiny#{$class-fix}
+        margin-top: $spacing-tiny-rem !important
+
+      .mb-tiny#{$class-fix},
+      .my-tiny#{$class-fix},
+      .m-tiny#{$class-fix}
+        margin-bottom: $spacing-tiny-rem !important
+
+      .ml-small#{$class-fix},
+      .mx-small#{$class-fix},
+      .m-small#{$class-fix}
+        margin-left: $spacing-small-rem !important
+
+      .mr-small#{$class-fix},
+      .mx-small#{$class-fix},
+      .m-small#{$class-fix}
+        margin-right: $spacing-small-rem !important
+
+      .mt-small#{$class-fix},
+      .my-small#{$class-fix},
+      .m-small#{$class-fix}
+        margin-top: $spacing-small-rem !important
+
+      .mb-small#{$class-fix},
+      .my-small#{$class-fix},
+      .m-small#{$class-fix}
+        margin-bottom: $spacing-small-rem !important
+
+      .ml-medium#{$class-fix},
+      .mx-medium#{$class-fix},
+      .m-medium#{$class-fix}
+        margin-left: $spacing-medium-rem !important
+
+      .mr-medium#{$class-fix},
+      .mx-medium#{$class-fix},
+      .m-medium#{$class-fix}
+        margin-right: $spacing-medium-rem !important
+
+      .mt-medium#{$class-fix},
+      .my-medium#{$class-fix},
+      .m-medium#{$class-fix}
+        margin-top: $spacing-medium-rem !important
+
+      .mb-medium#{$class-fix},
+      .my-medium#{$class-fix},
+      .m-medium#{$class-fix}
+        margin-bottom: $spacing-medium-rem !important
+
+      .ml-large#{$class-fix},
+      .mx-large#{$class-fix},
+      .m-large#{$class-fix}
+        margin-left: $spacing-large-rem !important
+
+      .mr-large#{$class-fix},
+      .mx-large#{$class-fix},
+      .m-large#{$class-fix}
+        margin-right: $spacing-large-rem !important
+
+      .mt-large#{$class-fix},
+      .my-large#{$class-fix},
+      .m-large#{$class-fix}
+        margin-top: $spacing-large-rem !important
+
+      .mb-large#{$class-fix},
+      .my-large#{$class-fix},
+      .m-large#{$class-fix}
+        margin-bottom: $spacing-large-rem !important
+
+      .pl-none#{$class-fix},
+      .px-none#{$class-fix},
+      .p-none#{$class-fix}
+        padding-left: 0 !important
+
+      .pr-none#{$class-fix},
+      .px-none#{$class-fix},
+      .p-none#{$class-fix}
+        padding-right: 0 !important
+
+      .pt-none#{$class-fix},
+      .py-none#{$class-fix},
+      .p-none#{$class-fix}
+        padding-top: 0 !important
+
+      .pb-none#{$class-fix},
+      .py-none#{$class-fix},
+      .p-none#{$class-fix}
+        padding-bottom: 0 !important
+
+      .pl-tiny#{$class-fix},
+      .px-tiny#{$class-fix},
+      .p-tiny#{$class-fix}
+        padding-left: $spacing-tiny-rem !important
+
+      .pr-tiny#{$class-fix},
+      .px-tiny#{$class-fix},
+      .p-tiny#{$class-fix}
+        padding-right: $spacing-tiny-rem !important
+
+      .pt-tiny#{$class-fix},
+      .py-tiny#{$class-fix},
+      .p-tiny#{$class-fix}
+        padding-top: $spacing-tiny-rem !important
+
+      .pb-tiny#{$class-fix},
+      .py-tiny#{$class-fix},
+      .p-tiny#{$class-fix}
+        padding-bottom: $spacing-tiny-rem !important
+
+      .pl-small#{$class-fix},
+      .px-small#{$class-fix},
+      .p-small#{$class-fix}
+        padding-left: $spacing-small-rem !important
+
+      .pr-small#{$class-fix},
+      .px-small#{$class-fix},
+      .p-small#{$class-fix}
+        padding-right: $spacing-small-rem !important
+
+      .pt-small#{$class-fix},
+      .py-small#{$class-fix},
+      .p-small#{$class-fix}
+        padding-top: $spacing-small-rem !important
+
+      .pb-small#{$class-fix},
+      .py-small#{$class-fix},
+      .p-small#{$class-fix}
+        padding-bottom: $spacing-small-rem !important
+
+      .pl-medium#{$class-fix},
+      .px-medium#{$class-fix},
+      .p-medium#{$class-fix}
+        padding-left: $spacing-medium-rem !important
+
+      .pr-medium#{$class-fix},
+      .px-medium#{$class-fix},
+      .p-medium#{$class-fix}
+        padding-right: $spacing-medium-rem !important
+
+      .pt-medium#{$class-fix},
+      .py-medium#{$class-fix},
+      .p-medium#{$class-fix}
+        padding-top: $spacing-medium-rem !important
+
+      .pb-medium#{$class-fix},
+      .py-medium#{$class-fix},
+      .p-medium#{$class-fix}
+        padding-bottom: $spacing-medium-rem !important
+
+      .pl-large#{$class-fix},
+      .px-large#{$class-fix},
+      .p-large#{$class-fix}
+        padding-left: $spacing-large-rem !important
+
+      .pr-large#{$class-fix},
+      .px-large#{$class-fix},
+      .p-large#{$class-fix}
+        padding-right: $spacing-large-rem !important
+
+      .pt-large#{$class-fix},
+      .py-large#{$class-fix},
+      .p-large#{$class-fix}
+        padding-top: $spacing-large-rem !important
+
+      .pb-large#{$class-fix},
+      .py-large#{$class-fix},
+      .p-large#{$class-fix}
+        padding-bottom: $spacing-large-rem !important

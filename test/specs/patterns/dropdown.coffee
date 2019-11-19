@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'dropdown', ->
+describe 'dropdown', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/dropdown'
     await pattern.checkElement()

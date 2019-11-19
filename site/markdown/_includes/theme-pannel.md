@@ -14,12 +14,12 @@
       <label class="bd-none circle sd-high tt-cap">Theme {{ theme_name }}</label>
     </div>
     {% endfor %}
-    <div class="btn btn-light btn-ico circle sd-high" data-toggle data-toggle-for="change_theme_trigger">
+    <div class="btn btn-light btn-ico circle sd-high" data-toggleable data-toggle-for="change_theme_trigger">
       <i class="ico ico-cross"></i>
     </div>
   </div>
 
-  <button class="theme-pannel-trigger btn btn-ico-left btn-dark toggle-active mb-small mr-small circle sd-high" data-toggle-for="change_theme" data-toggle-target="change_theme_trigger" data-toggle>
+  <button class="theme-pannel-trigger btn btn-ico-left btn-dark toggle-active mb-small mr-small circle sd-high" data-toggle-for="change_theme" data-toggle-target="change_theme_trigger" data-toggleable>
     <i class="ico material-icons">brush</i>
     Change Theme
   </button>

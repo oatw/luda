@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'baseline', ->
+describe 'baseline', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/baseline'
     await element.checkElement()

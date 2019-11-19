@@ -1,3 +1,5 @@
+import './kernel/index.coffee'
+import './behaviors/disabled.coffee'
 import './behaviors/enter.coffee'
 import './behaviors/focus.coffee'
 import './behaviors/readonly.coffee'

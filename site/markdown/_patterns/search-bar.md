@@ -32,7 +32,7 @@ into the search bar container like the below example.
 {% capture options %}
 <div class="search-bar">
   <div class="fm-dropdown dropdown-absolute">
-    <div class="fm fm-select"><input></div>
+    <div class="fm fm-select" data-auto="false"><input></div>
     <div class="dropdown-menu">
       <div class="dropdown-items">
         <div class="btns-y">

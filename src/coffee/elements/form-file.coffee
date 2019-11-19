@@ -1,77 +1,55 @@
-import '../install.coffee'
-import '../dom.coffee'
-import '../event.coffee'
-import '../factory.coffee'
+import '../kernel/index.coffee'
+import '../mixins/resetable.coffee'
 
 
 
-luda class extends luda.Factory
+luda.component 'fmFile'
 
-  @_SCOPE: 'fmFile'
+.protect
 
-  @_VALUE_SPLITOR: '   '
-  @_SELECTOR: '.fm-file'
-  @_FILE_SELECTOR: 'input[type=file]'
-  @_SIMULATOR_SELECTOR: 'input:not([type=file])'
-  @_PLACEHOLDER_ATTRIBUTE: 'placeholder'
-  @_VALUE_ATTRIBUTE: 'value'
+  selector:
+    root: '.fm-file'
+    file: 'input[type=file]'
+    simulator: 'input:not([type=file])'
 
-  @_observerConfig:
-    childList: true
-    subtree: true
+  splitor: '  '
 
-  reset: ->
-    @_$file.value = ''
-    @_setSimulatorInitialValue()
+.protect
 
-  _getConfig: ->
-    _$file = luda.$child @constructor._FILE_SELECTOR, @_$component
-    _$simulator = luda.$child \
-    @constructor._SIMULATOR_SELECTOR, @_$component
-    {_$file, _$simulator}
+  insertSimulator: ->
+    return if @simulator.length
+    simulator = luda '<input>'
+    simulator.els[0].tabIndex = -1
+    simulator.insertAfter @file
 
-  _constructor: ->
-    {
-      @_$file,
-      @_$simulator
-    } = @_getConfig()
-    @_init()
+  updatePlaceholder: ->
+    return unless placeholder = @file.attr 'placeholder'
+    @simulator.attr 'placeholder', placeholder
 
-  _onMutations: ->
-    @_constructor()
+  updateValue: ->
+    values = Array.from(@file.els[0].files).map (f) -> f.name
+    value = values.join(@splitor) or @file.attr('value') or ''
+    @simulator.attr 'value', value
 
-  _insertSimulator: ->
-    @_$simulator = document.createElement 'input'
-    @_$simulator.tabIndex = -1
-    luda.$after @_$simulator, @_$file
+  tryReset: (target, oldVal) ->
+    return unless @file.attr('value') is ''
+    @file.els[0].value = ''
+    @file.attr 'value', oldVal
 
-  _setPlaceholderValue: ->
-    if @_$file.hasAttribute @constructor._PLACEHOLDER_ATTRIBUTE
-      @_$simulator.placeholder = \
-      @_$file.getAttribute @constructor._PLACEHOLDER_ATTRIBUTE
+.help
 
-  _setSimulatorValue: ->
-    values = []
-    Array.from(@_$file.files).map (file) -> values.push file.name
-    if values.length
-      return @_$simulator.value = values.join @constructor._VALUE_SPLITOR
-    @_setSimulatorInitialValue()
-      
-  _setSimulatorInitialValue: ->
-    if @_$file.hasAttribute(@constructor._VALUE_ATTRIBUTE)
-      @_$simulator.value = @_$file.getAttribute @constructor._VALUE_ATTRIBUTE
+  find: ->
+    file: @selector.file
+    simulator: @selector.simulator
 
-  _init: ->
-    if @_$file
-      @_insertSimulator() unless @_$simulator
-      @_setPlaceholderValue()
-      @_setSimulatorValue()
+  watch: ->
+    attr: [['value', @selector.file, @tryReset, @updateValue]]
 
-  @reset: ($file) -> @query($file).reset()
+  create: ->
+    @insertSimulator()
+    @updatePlaceholder()
+    @updateValue()
 
-  @_init: ->
-    self = this
-    luda.on 'change', "#{@_SELECTOR} #{@_FILE_SELECTOR}", (e) ->
-      self.query(luda.$parent self._SELECTOR, this)._setSimulatorValue()
-    luda.on luda._FORM_RESET, @_SELECTOR, (e) ->
-      setTimeout => self.query(this)._setSimulatorValue()
+  listen: ->
+    luda.mixin('resetable').get('listen').call this, @updateValue
+    [['change', @selector.file, @updateValue]]

@@ -20,18 +20,15 @@ then wrap tab indicators and tab panes like the below example.
 {% capture tab %}
 <div class="tab">
   <nav class="tab-indicators btns-x">
-    <div class="btn-radio btn-hollow-secondary">
-      <input type="radio" id="indicator1" name="tab_example1" value="1">
-      <label for="indicator1">Tab One</label>
-    </div>
-    <div class="btn-radio btn-hollow-secondary">
-      <input type="radio" id="indicator2" name="tab_example1" value="2">
-      <label for="indicator2">Tab Two</label>
-    </div>
-    <div class="btn-radio btn-hollow-secondary">
-      <input type="radio" id="indicator3" name="tab_example1" value="3">
-      <label for="indicator3">Tab Three</label>
-    </div>
+    <button class="btn btn-hollow-secondary">
+      Tab One
+    </button>
+    <button class="btn btn-hollow-secondary">
+      Tab Two
+    </button>
+    <button class="btn btn-hollow-secondary">
+      Tab Three
+    </button>
   </nav>
   <div class="tab-panes">
     <div class="tab-pane">
@@ -71,18 +68,15 @@ Let's see the below example for detail.
   <div class="grid">
     <div class="col-4 col-3-m">
       <nav class="tab-indicators btns-y btns-fluid">
-        <div class="btn-radio btn-hollow-secondary">
-          <input type="radio" id="indicator_1" name="tab_example2" value="1">
-          <label for="indicator_1">One</label>
-        </div>
-        <div class="btn-radio btn-hollow-secondary">
-          <input type="radio" checked id="indicator_2" name="tab_example2" value="2">
-          <label for="indicator_2">Two</label>
-        </div>
-        <div class="btn-radio btn-hollow-secondary">
-          <input type="radio" id="indicator_3" name="tab_example2" value="3">
-          <label for="indicator_3">Three</label>
-        </div>
+        <button class="btn btn-hollow-secondary">
+          Tab One
+        </button>
+        <button class="btn btn-hollow-secondary">
+          Tab Two
+        </button>
+        <button class="btn btn-hollow-secondary">
+          Tab Three
+        </button>
       </nav>
     </div>
     <div class="col-auto">
@@ -119,10 +113,14 @@ Let's see the below example for detail.
 
 ## Javascript Methods
 
-### luda.tab.activate(element, index)
+### luda.tab(selector).activate(index)
 
 ``` javascript
-luda.tab.activate(document.querySelector('#my-tab'), 0)
+@param {integer} index
+```
+
+``` javascript
+luda.tab('#my-tab').activate(0)
 ```
 
 Activate a specific tab pane by passing in its index number.
@@ -132,8 +130,8 @@ Activate a specific tab pane by passing in its index number.
 ### luda:tab:activate
 
 ``` javascript
-luda.on('luda:tab:activate', '#my-tab', function(event){
-  let $myTab = this, $pane = event.tartet, index = event.detail
+luda(document).on('luda:tab:activate', '#my-tab', function(event){
+  let myTab = this, pane = event.tartet
   event.preventDefault() // Prevent the pane from being activated if necessary.
 })
 ```
@@ -143,8 +141,8 @@ Will be triggered before the `.tab-pane-active` class added to a tab pane.
 ### luda:tab:activated
 
 ``` javascript
-luda.on('luda:tab:activated', '#my-tab', function(event){
-  let $myTab = this, $pane = event.tartet, index = event.detail
+luda(document).on('luda:tab:activated', '#my-tab', function(event){
+  let myTab = this, pane = event.tartet
 })
 ```
 
@@ -154,8 +152,8 @@ and CSS transition finished.
 ### luda:tab:deactivate
 
 ``` javascript
-luda.on('luda:tab:deactivate', '#my-tab', function(event){
-  let $myTab = this, $pane = event.tartet, index = event.detail
+luda(document).on('luda:tab:deactivate', '#my-tab', function(event){
+  let myTab = this, pane = event.tartet
   event.preventDefault() // Prevent the pane from being deactivated if necessary.
 })
 ```
@@ -165,8 +163,8 @@ Will be triggered before the `.tab-pane-active` class removed from a tab pane.
 ### luda:tab:deactivated
 
 ``` javascript
-luda.on('luda:tab:deactivated', '#my-tab', function(event){
-  let $myTab = this, $pane = event.tartet, index = event.detail
+luda(document).on('luda:tab:deactivated', '#my-tab', function(event){
+  let myTab = this, pane = event.tartet
 })
 ```
 

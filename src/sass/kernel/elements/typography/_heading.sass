@@ -1,0 +1,24 @@
++install(kernel-element-typography-heading)
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6
+    color: $typography-heading-color
+    font-family: $typography-heading
+    font-weight: $typography-heading-font-weight
+
+  @for $typo-level from 1 through 6
+
+    h#{$typo-level},
+    .h#{$typo-level}
+      +typo-level($typo-level, heading)
+      display: block

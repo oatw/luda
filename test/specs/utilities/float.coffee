@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'float', ->
+describe 'float', ->
 
-  test 'style', ->
+  it 'style', ->
     await utility.open '/float'
     await utility.checkElement()

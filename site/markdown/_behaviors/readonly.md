@@ -1,28 +1,24 @@
 ---
 title: Readonly
-description: Prevent elements from responding to user actions.
+description: Prevent form elements from responding to user actions.
 ---
 
 ## Introduction
 
-The native `readonly` attribute is for form control only,
-it makes a form element not editable.
-But still focusable, and what's worse,
-some browsers even show an editable text cursor.
+The native `readonly` attribute makes form elements not editable.
+But still focusable, and what's worse, some browsers even show an editable text cursor.
 
-The `data-readonly` attribute in Luda is for solving such problems.
-A form element has the `data-readonly` attribute is not focusable nor editable.
-And we can even use this attribute to prevent other elements from responding
-to user actions in some situations.
+The `readonly` attribute is enhanced in Luda.
+A form element has the `readonly` attribute is not focusable nor editable.
 Let's see the below examples.
 
-## Form Examples
+## Examples
 
-Use the `data-readonly` attribute to prevent the text field from being edited.
+Use the `readonly` attribute to prevent the text field from being edited.
 
 {% capture readonly %}
-<div class="fm fm-text" data-readonly>
-  <input data-readonly placeholder="E.g., a readonly text field">
+<div class="fm fm-text" readonly>
+  <input readonly placeholder="E.g., a readonly text field">
 </div>
 {% endcapture %}
 <div class="example">
@@ -30,28 +26,14 @@ Use the `data-readonly` attribute to prevent the text field from being edited.
 </div>
 ``` html{{ readonly }}```
 
-## Link Examples
-
-Use the `data-readonly` attribute to disable the link.
-{: .mb-none}
-
-{% capture link %}
-<a href="#" data-readonly>A disabled link</a>
-{% endcapture %}
-<p class="example my-none">
-  {{ link }}
-</p>
-``` html{{ link }}```
-{: .mt-small}
-
 ## Dynamic Control
 
-In Luda, we use the `[data-readonly]` selector to detect readonly elements.
+In Luda, we use the `[readonly]` selector to detect readonly elements.
 If you want to remove the readonly state dynamically in Javascript,
-don't remove the `data-readonly` attribute, set its value to `false` instead.
+just remove the `readonly` attribute.
 
 ``` javascript
-document.querySelector('#my-readonly-element').setAttribute('data-readonly', false)
+luda('#my-readonly-element').removeAttr('readonly')
 ```
 
 ## Sass Variables

@@ -1,12 +1,12 @@
 ---
-title: Modular Imports
+title: Modular Import
 description: Luda is modular, you can import the components which you need in asset management tools.
 order: 6
 ---
 <!-- markdownlint-disable -->
 ## In Node.js Powered Apps
 
-Theme Sass Modular Imports in Node.js
+Sass Entries In Node.js
 
 ``` sass
 // Import your custom variable overrides.
@@ -73,11 +73,14 @@ Theme Sass Modular Imports in Node.js
 ```
 {: .mt-none}
 
-JavaScript Modular Imports in Node.js
+Javascript Entries In Node.js
 {: .mt-medium}
 
 ``` javascript
+// Kernel functions
+import 'luda/src/js/kernel/index'
 // Behaviors
+import 'luda/src/js/behaviors/disabled'
 import 'luda/src/js/behaviors/enter'
 import 'luda/src/js/behaviors/focus'
 import 'luda/src/js/behaviors/readonly'
@@ -96,7 +99,7 @@ import 'luda/src/js/patterns/tab'
 
 ## In Ruby on Rails Apps
 
-Theme Sass Modular Imports in Ruby on Rails
+Sass Entries in Ruby on Rails
 
 ``` sass
 // Import your custom variable overrides.
@@ -164,11 +167,14 @@ Theme Sass Modular Imports in Ruby on Rails
 ```
 {: .mt-small}
 
-JavaScript Modular Imports in Ruby on Rails
+JavaScript Entries in Ruby on Rails
 {: .mt-medium}
 
 ``` javascript
+// Kernel functions
+//= require luda/kernel/index
 // Behaviors
+//= require luda/behaviors/disabled
 //= require luda/behaviors/enter
 //= require luda/behaviors/focus
 //= require luda/behaviors/readonly

@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'grid', ->
+describe 'grid', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/grid'
     await element.checkElement()

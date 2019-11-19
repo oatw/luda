@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'color', ->
+describe 'color', ->
 
-  test 'style', ->
+  it 'style', ->
     await utility.open '/color'
     await utility.checkElement()

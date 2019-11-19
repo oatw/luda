@@ -2,8 +2,8 @@ import behavior from '../../page-objects/behavior.coffee'
 
 
 
-suite 'disabled', ->
+describe 'disabled', ->
 
-  test 'style', ->
+  it 'style', ->
     await behavior.open '/disabled'
     await behavior.checkElement()

@@ -53,55 +53,62 @@ title: Form
 </div>
 
 
-
-<div id="form-select" class="mb-large">
-  <h4><a href="#form-select">#form-select</a></h4>
-  <div class="fm fm-select">
-    <select placeholder="Select a word">
-      <option value="hello">Hello!</option>
-      <option value="goodbye">Goodbye!</option>
-    </select>
+<form>
+  <div id="form-select" class="mb-large">
+    <h4><a href="#form-select">#form-select</a></h4>
+    <div class="fm fm-select">
+      <select placeholder="Select a word">
+        <option value="hello">Hello!</option>
+        <option value="goodbye">Goodbye!</option>
+      </select>
+    </div>
+    <input class="btn btn-secondary mt-small" type="reset" value="reset">
   </div>
-</div>
 
 
 
-<div id="form-select-multiple" class="mb-large">
-  <h4><a href="#form-select-multiple">#form-select-multiple</a></h4>
-  <div class="fm fm-select">
-    <select multiple placeholder="Select words">
-      <option value="hello">Hello!</option>
-      <option value="goodbye">Goodbye!</option>
-    </select>
+  <div id="form-select-multiple" class="mb-large">
+    <h4><a href="#form-select-multiple">#form-select-multiple</a></h4>
+    <div class="fm fm-select">
+      <select multiple placeholder="Select words">
+        <option value="hello">Hello!</option>
+        <option value="goodbye" selected>Goodbye!</option>
+      </select>
+    </div>
+    <input class="btn btn-secondary mt-small" type="reset" value="reset">
   </div>
-</div>
 
 
 
-<div id="form-file" class="mb-large">
-  <h4><a href="#form-file">#form-file</a></h4>
-  <div class="fm fm-file">
-    <input type="file" placeholder="Add a file">
+  <div id="form-file" class="mb-large">
+    <h4><a href="#form-file">#form-file</a></h4>
+    <div class="fm fm-file">
+      <input type="file" placeholder="Add a file">
+    </div>
+    <input class="btn btn-secondary mt-small" type="reset" value="reset">
   </div>
-</div>
 
 
 
-<div id="form-file-multiple" class="mb-large">
-  <h4><a href="#form-file-multiple">#form-file-multiple</a></h4>
-  <div class="fm fm-file">
-    <input type="file" multiple placeholder="Add files">
+  <div id="form-file-multiple" class="mb-large">
+    <h4><a href="#form-file-multiple">#form-file-multiple</a></h4>
+    <div class="fm fm-file">
+      <input type="file" multiple placeholder="Add files">
+    </div>
+    <input class="btn btn-secondary mt-small" type="reset" value="reset">
   </div>
-</div>
 
 
 
-<div id="form-file-value" class="mb-large">
-  <h4><a href="#form-file-value">#form-file-value</a></h4>
-  <div class="fm fm-file">
-    <input type="file" multiple value="application_helper.rb   application_record.rb" placeholder="Add files">
+  <div id="form-file-value" class="mb-large">
+    <h4><a href="#form-file-value">#form-file-value</a></h4>
+    <div class="fm fm-file">
+      <input type="file" multiple value="application_helper.rb   application_record.rb" placeholder="Add files">
+    </div>
+    <input class="btn btn-secondary mt-small" type="reset" value="reset">
   </div>
-</div>
+
+</form>
 
 
 
@@ -154,14 +161,14 @@ title: Form
 
 <div id="form-element-readonly" class="mb-large">
   <h4><a href="#form-element-readonly">#form-element-readonly</a></h4>
-  <div class="fm fm-text mb-small" data-readonly>
-    <input data-readonly value="A readonly form text" placeholder="Enter some text">
+  <div class="fm fm-text mb-small" readonly>
+    <input readonly value="A readonly form text" placeholder="Enter some text">
   </div>
-  <div class="fm fm-check mb-small" data-readonly>
-    <label><input data-readonly checked type="checkbox">A readonly form checkbox</label>
+  <div class="fm fm-check mb-small" readonly>
+    <label><input readonly checked type="checkbox">A readonly form checkbox</label>
   </div>
-  <div class="fm fm-select" data-readonly>
-    <select data-readonly placeholder="Select a word">
+  <div class="fm fm-select" readonly>
+    <select readonly placeholder="Select a word">
       <option selected value="hello">A readonly select with Hello selected</option>
       <option value="goodbye">Goodbye!</option>
     </select>

@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'tab', ->
+describe 'tab', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/tab'
     await pattern.checkElement()

@@ -1,0 +1,52 @@
++install(kernel-element-grid)
+
+  .grid,
+  .grid-edge
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    width: 100%
+
+  [class*=col-]
+    flex-grow: 0
+    flex-shrink: 0
+
+  .col-auto
+    flex-basis: 0
+    flex-grow: 1
+    flex-shrink: 1
+    max-width: 100%
+    min-width: 1px
+
+  .grid > [class*=col-]
+    padding-right: $grid-gutter-width-rem / 2
+    padding-left: $grid-gutter-width-rem / 2
+
+  .grid [class*=col-] .grid
+    width: auto
+    margin-right: - $grid-gutter-width-rem / 2
+    margin-left: - $grid-gutter-width-rem / 2
+
+  .grid .grid-edge > [class*=col-] > .grid
+    margin-right: 0
+    margin-left: 0
+
+
+
+  @each $breakpoint in map-keys($breakpoint-width-pxs)
+    $class-fix: _responsive-class-fix($breakpoint)
+
+    +media-width($breakpoint)
+
+      @for $count from 1 through $grid-columns
+        $column-width: $count / $grid-columns * 100%
+
+        .col-#{$count}#{$class-fix}
+          flex-basis: $column-width
+          max-width: $column-width
+
+      @for $count from 1 to $grid-columns
+        $margin-left: $count / $grid-columns * 100%
+
+        .offset-#{$count}#{$class-fix}
+          margin-left: $margin-left

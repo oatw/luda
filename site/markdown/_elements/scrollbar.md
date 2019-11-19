@@ -54,6 +54,18 @@ $scrollbar-thumb-border-radius: $scrollbar-breakpoint-vertical-width-rem !defaul
 Default scrollbar thumb border radius for webkit browsers.
 
 ``` sass
+$scrollbar-firefox-width-keyword: thin !default
+```
+
+Default scrollbar with for firefox.
+
+``` sass
+$scrollbar-firefox-color: rgba($color-muted, $opacity-more-muted) transparent !default
+```
+
+Default scrollbar background color for firefox.
+
+``` sass
 $scrollbar-edge-overflow-style: -ms-autohiding-scrollbar !default
 ```
 

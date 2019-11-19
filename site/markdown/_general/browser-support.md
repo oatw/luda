@@ -72,7 +72,15 @@ import 'luda/src/js/degeradation'
 ```
 {: .mt-small}
 
-Import in Ruby on Rails Apps
+Import in Ruby on Rails Apps With Webpacker
+{: .mt-medium}
+
+``` javascript
+import 'luda/src/js/degeradation'
+```
+{: .mt-small}
+
+Import in Ruby on Rails Apps With Sprockets
 {: .mt-medium}
 
 ``` javascript

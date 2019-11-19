@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'form', ->
+describe 'form', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/form'
     await element.checkElement()

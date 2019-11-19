@@ -79,11 +79,16 @@ import 'luda'
 
 ## Install in Ruby on Rails Apps
 
-Step 1: Download With Bundler or Gem
-{: .mb-none .fw-medium}
+[Webpacker](https://github.com/rails/webpacker) is an exciting feature since
+[Rails 6](https://weblog.rubyonrails.org/2019/8/15/Rails-6-0-final-release/),
+it's a more advanced way to manage front-end assets in Rails. So if you want to
+install Luda in Rails applications, Webpacker is the recommanded way. And the
+installation process is similar to
+[installing Luda in Node.js powered applications.](#install-in-nodejs-powered-apps)
+If you stick to Sprockets, you can follow the belowing steps to install Luda.
 
-Bundler is the recommand way to install Luda in Ruby on Rails Apps.
-{: .m-none}
+Step 1: Download With Bundler
+{: .mb-none .fw-medium}
 
 Add luda gem to your Gemfile first:
 {: .m-none}
@@ -98,14 +103,6 @@ then run bundle in command line.
 
 ``` bash
 $ bundle
-```
-{: .mt-none}
-
-You can also download Luda with gem.
-{: .mb-none}
-
-``` bash
-$ gem install luda -v {{site.luda.version}}
 ```
 {: .mt-none}
 

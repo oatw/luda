@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'form icon', ->
+describe 'form icon', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/form-icon'
     await pattern.checkElement()

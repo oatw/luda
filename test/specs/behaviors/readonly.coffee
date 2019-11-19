@@ -2,8 +2,8 @@ import behavior from '../../page-objects/behavior.coffee'
 
 
 
-suite 'readonly', ->
+describe 'readonly', ->
 
-  test 'style', ->
+  it 'style', ->
     await behavior.open '/readonly'
     await behavior.checkElement()

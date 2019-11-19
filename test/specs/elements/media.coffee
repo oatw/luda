@@ -2,8 +2,8 @@ import element from '../../page-objects/element.coffee'
 
 
 
-suite 'media', ->
+describe 'media', ->
 
-  test 'style', ->
+  it 'style', ->
     await element.open '/media'
     await element.checkElement()

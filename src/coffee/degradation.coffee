@@ -5,11 +5,11 @@ Degradation =
   _HTML: [
     '<div id="luda-degradation-html" '
     'style="padding:100px 30px;text-align:center">'
-    '<h1>Your Browser Is Too Old!</h1>'
+    '<h1>Your Browser is Too Old!</h1>'
     '<p>'
     'Please visit this site with a modern browser '
     '<a target="_blank" href="https://www.google.com/chrome/">'
-    '(Chrome recommended)'
+    '(Chrome is recommended)'
     '</a>'
     '.</p>'
     '</div>'
@@ -26,6 +26,7 @@ Degradation =
     es6Class: 'class X {}'
     es6ArrowFunction: '((x) => x)()'
     mutationObserver: 'new MutationObserver(function(){})'
+    proxy: 'new Proxy({},{})'
 
   _NOTIFY_MILLSECONDS: 500
 
@@ -34,7 +35,10 @@ Degradation =
     @_checkJS @_JS_PROPERTIES
     @_checkCSS @_CSS_PROPERTIES
 
-  _eval: eval
+  _eval: (script) ->
+    geval = eval
+    script = '(function(){' + script + '})()'
+    geval script
 
   _checkEnv: ->
     if typeof document isnt 'undefined'

@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'shadow', ->
+describe 'shadow', ->
 
-  test 'style', ->
+  it 'style', ->
     await utility.open '/shadow'
     await utility.checkElement()

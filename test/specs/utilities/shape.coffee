@@ -2,8 +2,8 @@ import utility from '../../page-objects/utility.coffee'
 
 
 
-suite 'shape', ->
+describe 'shape', ->
 
-  test 'style', ->
+  it 'style', ->
     await utility.open '/shape'
     await utility.checkElement()

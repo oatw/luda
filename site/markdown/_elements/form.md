@@ -53,8 +53,7 @@ typing texts should be wrapped inside.
 
 Add the `.fm-select` class to the `.fm` container
 to create a select field, a `<select>` tag should be wrapped inside.
-Default selected `<options>` can be set by
-seting the value of their `selected` attributes to `selected`.
+Default selected `<options>` can be set by adding the `selected` attribute.
 
 {% capture select_field %}
 <!-- A select field -->
@@ -66,8 +65,8 @@ seting the value of their `selected` attributes to `selected`.
 </div>
 <!-- A multiple select filed with a default selected option -->
 <div class="fm fm-select">
-  <select multiple name="form_example5" placeholder="E.g., Chinese">
-    <option value="en" selected="selected">English</option>
+  <select multiple name="form_example5">
+    <option value="en" selected>English</option>
     <option value="zh">Chinese</option>
   </select>
 </div>
@@ -80,18 +79,18 @@ seting the value of their `selected` attributes to `selected`.
 #### Select Options in Javascript
 
 ``` javascript
-luda.fmSelect.select(document.querySelector('#my-fm-select'), 0)
+luda('#my-select select').val('value')
 ```
 
 Select a specific option of a single select field
-by passing in the option's index number.
+by passing in the option's value.
 
 ``` javascript
-luda.fmSelect.select(document.querySelector('#my-multiple-fm-select'), [0, 1])
+luda('#my-select select').val(['valueOne', 'valueTwo'])
 ```
 
 Select specific options of a multiple select field
-by passing in an array which contains the options' index numbers.
+by passing in an array which contains the options' values.
 
 ### File Picker
 
@@ -117,7 +116,7 @@ The value attribute of the wrapped `<input>` can be used to set a default value.
 #### Reset in Javascript
 
 ``` javascript
-luda.fmFile.reset(document.querySelector('#my-fm-file'))
+luda('#my-file [type=file]').val(null)
 ```
 
 Reset a file picker.
@@ -175,24 +174,24 @@ adding state attributes.
 
 ### Readonly
 
-The `data-readonly` attribute pervents input elements
+The `readonly` attribute pervents input elements
 from responding to user actions.
-To make an input element readonly, add the `data-readonly` attribute
+To make an input element readonly, add the `readonly` attribute
 to itself and its `.fm` container.
 
 <!-- markdownlint-disable -->
 {% capture readonly %}
 <!-- A readonly text field -->
-<div class="fm fm-text" data-readonly>
-  <input data-readonly name="example11" value="I'm readonly">
+<div class="fm fm-text" readonly>
+  <input readonly name="example11" value="I'm readonly">
 </div>
 <!-- A readonly checkbox -->
-<div class="fm fm-check" data-readonly>
-  <label><input data-readonly checked type="checkbox" name="example12" value="example">A readonly checkbox</label>
+<div class="fm fm-check" readonly>
+  <label><input readonly checked type="checkbox" name="example12" value="example">A readonly checkbox</label>
 </div>
 <!-- A readonly select field -->
-<div class="fm fm-select" data-readonly>
-  <select data-readonly name="example13">
+<div class="fm fm-select" readonly>
+  <select readonly name="example13">
     <option selected="selected" value="male">Male</option>
     <option value="female">Female</option>
   </select>
@@ -285,7 +284,7 @@ adding the `.fm-large` class to its `.fm` container.
 </div>
 <!-- A large select field -->
 <div class="fm fm-select fm-large">
-  <select multiple name="example23" placeholder="E.g., English, Chinese">
+  <select multiple name="example23">
     <option value="en">English</option>
     <option value="zh">Chinese</option>
     <option value="ja">Japanese</option>
@@ -465,10 +464,6 @@ $form-element-large-inline-width-rem: baseline(26) !default
 ```
 
 ``` sass
-$form-element-horizontal-padding-em: 0.6875em !default
-```
-
-``` sass
 $form-element-height-rem: baseline(3) !default
 ```
 
@@ -493,6 +488,10 @@ $form-element-multiple-rows-small-height-rem: $form-element-small-height-rem * 3
 
 ``` sass
 $form-element-multiple-rows-large-height-rem: $form-element-large-height-rem * 3 !default
+```
+
+``` sass
+$form-element-horizontal-padding-em: rem-to-em(harmony-spacing($grid-gutter-width-rem / 2, $form-element-border-width), $form-element-typography-size-level) !default
 ```
 <!-- markdownlint-enable -->
 

@@ -47,10 +47,9 @@ Components' layouts are very stable in Luda,
 every component handles its document flow internally,
 you can position it in or out of the normal document flow without any worry.
 
-## Component Categories
+## Built-in Components
 
-Components in Luda are classified into different types,
-you can follow this architecture to extend Luda.
+Luda provides some built-in components which are classified into different types.
 
 ### Element
 

@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'navigation', ->
+describe 'navigation', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/navigation'
     await pattern.checkElement()

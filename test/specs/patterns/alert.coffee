@@ -2,8 +2,8 @@ import pattern from '../../page-objects/pattern.coffee'
 
 
 
-suite 'alert', ->
+describe 'alert', ->
 
-  test 'style', ->
+  it 'style', ->
     await pattern.open '/alert'
     await pattern.checkElement()

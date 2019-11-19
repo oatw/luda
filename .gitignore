@@ -7,6 +7,9 @@
 .site.data.yml
 .sass-cache
 .jekyll-metadata
+.ruby-version
+.ruby-gemset
+.rvmrc
 _banner.sass
 node_modules
 

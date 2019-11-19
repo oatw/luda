@@ -1,0 +1,76 @@
++install(kernel-pattern-button-group)
+
+  .btns-x,
+  .btns-y
+    display: inline-flex
+    vertical-align: top
+    max-width: 100%
+    max-height: 100%
+
+  .btns-x.btns-fluid,
+  .btns-y.btns-fluid
+    display: flex
+    width: 100%
+
+  .btns-x.btns-margin,
+  .btns-y.btns-margin
+    flex-wrap: wrap
+
+  .btns-x.btns-margin [class*=btn-],
+  .btns-y.btns-margin [class*=btn-]
+    margin: $button-group-buttons-margin-rem
+
+  .btns-x:not(.btns-margin),
+  .btns-y:not(.btns-margin)
+    box-shadow: $button-group-box-shadow
+
+
+  .btns-x:not(.btns-margin) .btn:not(:first-child),
+  .btns-x:not(.btns-margin) [class*=btn-]:not(:first-child) label
+    border-left: none
+    border-top-left-radius: 0
+    border-bottom-left-radius: 0
+
+  .btns-x:not(.btns-margin) .btn:not(:last-child),
+  .btns-x:not(.btns-margin) [class*=btn-]:not(:last-child) label
+    border-right: none
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
+
+  .btns-x:not(.btns-margin) [class*=btn-][class*=btn-],
+  .btns-x:not(.btns-margin) [class*=btn-][class*=btn-] input ~ label,
+  .btns-y:not(.btns-margin) [class*=btn-][class*=btn-],
+  .btns-y:not(.btns-margin) [class*=btn-][class*=btn-] input ~ label
+    box-shadow: none
+
+  .btns-x:not(.btns-margin).btns-fluid [class*=btn-]
+    flex: 1 1 auto
+
+
+
+  .btns-y
+    flex-direction: column
+
+  .btns-y:not(.btns-margin) .btn:not(:first-child),
+  .btns-y:not(.btns-margin) [class*=btn-]:not(:first-child) label
+    border-top: none
+    border-top-right-radius: 0
+    border-top-left-radius: 0
+
+  .btns-y:not(.btns-margin) .btn:not(:last-child),
+  .btns-y:not(.btns-margin) [class*=btn-]:not(:last-child) label
+    border-bottom: none
+    border-bottom-right-radius: 0
+    border-bottom-left-radius: 0
+
+  .btns-y .btn:not(.btn-ico):not(.btn-ico-top):not(.btn-ico-right),
+  .btns-y [class*=btn-]:not(.btn-ico):not(.btn-ico-top):not(.btn-ico-right) label
+    justify-content: flex-start
+
+  .btns-y .btn.btn-ico-right,
+  .btns-y [class*=btn-].btn-ico-right label
+    justify-content: space-between
+
+  +browser-edge
+    .btns-y input.btn:not(.btn-ico):not(.btn-ico-top):not(.btn-ico-right)
+      text-align: left

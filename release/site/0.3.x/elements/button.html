@@ -1,0 +1,1476 @@
+<!-- markdownlint-disable -->
+<!-- markdownlint-disable -->
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" data-init-theme="default" data-applied-theme="default" data-theme-path-pattern="/luda/0.3.x/.dist/css/luda-$theme$.min.css">
+  <head>
+    <title>Button | Luda - A lightweight and responsive UI framework for modern web development.</title>
+    <!-- markdownlint-disable -->
+<meta charset="UTF-8">
+<!-- viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<!-- render -->
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!-- apple app mode -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Luda">
+<!-- chrome -->
+<meta name="mobile-web-app-capable" content="yes">
+<!-- Chrome, Firefox OS and Opera -->
+<!-- <meta name="theme-color" content="#8c447c"> -->
+<!-- Windows Phone -->
+<!-- <meta name="msapplication-navbutton-color" content="#8c447c"> -->
+<meta name="application-name" content="Luda">
+<!-- apple no tel -->
+<meta content="telephone=no" name="format-detection">
+<!-- windows phone no tap color -->
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="author" content="Oatw">
+<meta name="keywords" content="luda, lightweight, responsive, modular, ui framework">
+<meta name="description" content="Luda is a lightweight and responsive UI framework for modern web development.">
+    <link rel="shortcut icon" href="/luda/0.3.x/favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/luda/0.3.x/assets/js/turbolinks.js"></script>
+    <link rel="stylesheet" type="text/css" data-theme-style="default" href="/luda/0.3.x/.dist/css/luda-default.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="/luda/0.3.x/.dist/css/site.min.css">
+    <script type="text/javascript" src="/luda/0.3.x/.dist/js/luda-degradation.min.js"></script>
+    <script type="text/javascript" src="/luda/0.3.x/.dist/js/luda.min.js"></script>
+    <script type="text/javascript" src="/luda/0.3.x/assets/js/clipboard.js"></script>
+    <script type="text/javascript" src="/luda/0.3.x/.dist/js/site.min.js"></script>
+    <script type="text/javascript" src="/luda/version.js"></script>
+    <!-- markdownlint-disable -->
+<script type="text/javascript">
+  window.site = window.site || {}
+  window.site.version = "0.3.x"
+  luda.ready(function(){
+    if(window.site.version != window.site.latestVersion){
+      luda.toggle('#site-version-alert').activate()
+    }
+  })
+</script>
+
+    
+  </head>
+  <body>
+    
+    <!-- markdownlint-disable -->
+<div id="site-version-alert" class="alert fix-t fix-l w-100 bc-danger jc-center" style="z-index:100" data-toggle-target="site-version-alert">
+  <div class="alert-content">
+    <p>
+      There is a newer version of <a class="link-light" data-turbolinks="false" href="/luda">Luda</a>.
+    </p>
+  </div>
+  <div class="alert-action">
+    <a data-turbolinks="false" href="/luda" class="btn btn-light btn-small mr-small">Let's go!</a>
+    <button data-toggleable class="btn btn-hollow-light btn-small">I don't care.</button>
+  </div>
+</div>
+
+    
+    <!-- markdownlint-disable -->
+<div id="doc" class="grid-edge">
+  <!-- markdownlint-disable -->
+
+<aside id="doc-aside" class="nav-aside col-12 col-3-m pb-medium-m">
+  <a href="/luda/0.3.x/" data-turbolinks="false" class="nav-logo">
+    <img src="/luda/0.3.x/assets/img/logo-text.svg" alt="logo">
+  </a>
+  <!-- markdownlint-disable -->
+<!-- markdownlint-disable -->
+
+
+
+<div id="theme-dropdown" data-turbolinks-permanent class="dropdown-fixed ml-auto d-none-m">
+  <button class="btn btn-ico btn-text-primary">
+    <i class="change-theme-trigger ico material-icons">brush</i>
+  </button>
+  <div class="dropdown-menu">
+    <div class="dropdown-items">
+      <div class="btns-y">
+        
+        <div class="btn-radio btn-hollow-primary">
+          
+          <input class="change-theme" checked type="radio" name="theme_dropdown_apply_theme" value="default">
+          
+          <label class="bd-none tt-cap">Theme default</label>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+  <button class="nav-open btn btn-text-light btn-ico ml-none" data-toggle-for="nav-aside-menu">
+    <i class="ico ico-menu"></i>
+  </button>
+  <div class="nav-menu" data-toggle-target="nav-aside-menu" data-toggleable>
+    <button class="nav-close btn btn-text-light btn-ico">
+      <i class="ico ico-cross"></i>
+    </button>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Get Started</p>
+      
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/general/introduction">Introduction</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/general/installation">Installation</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/general/browser-support">Browser Support</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/general/modular-import">Modular Import</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Advanced</p>
+      
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/architecture">Architecture</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/theming">Theming</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/breakpoints">Breakpoints</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/component">Write A Component</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/api">Kernel Javascript API</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Behaviors</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/behaviors/disabled">Disabled</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/behaviors/enter">Enter</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/behaviors/focus">Focus</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/behaviors/readonly">Readonly</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/behaviors/tabulate">Tabulate</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/behaviors/toggle">Toggle</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Elements</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/badge">Badge</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/baseline">Baseline</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny btn-active" href="/luda/0.3.x/elements/button">Button</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/container">Container</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/form">Form</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/grid">Grid</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/icon">Icon</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/media">Media</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/overlay">Overlay</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/progress">Progress</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/scrollbar">Scrollbar</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/table">Table</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/elements/typography">Typography</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Patterns</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/alert">Alert</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/article">Article</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/avatar">Avatar</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/breadcrumb">Breadcrumb</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/button-group">Button Group</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/button-icon">Button Icon</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/carousel">Carousel</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/dropdown">Dropdown</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/form-dropdown">Form Dropdown</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/form-group">Form Group</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/form-icon">Form Icon</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/modal">Modal</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/navigation">Navigation</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/search-bar">Search Bar</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/patterns/tab">Tab</a>
+  
+
+
+    </div>
+    <div class="nav-items">
+      <p class="display px-small fw-semibold c-light">Utilities</p>
+      <!-- markdownlint-disable -->
+
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/alignment">Alignment</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/background">Background</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/border">Border</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/color">Color</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/display">Display</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/flex">Flex</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/float">Float</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/opacity">Opacity</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/overflow">Overflow</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/position">Position</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/shadow">Shadow</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/shape">Shape</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/size">Size</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/spacing">Spacing</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/text">Text</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/visibility">Visibility</a>
+  
+
+  
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/utilities/z-index">Z-index</a>
+  
+
+
+    </div>
+  </div>
+</aside>
+
+<button class="btn btn-dark btn-ico fix-r fix-t zi-highest circle sd-high m-small d-none-m" data-toggle-for="nav-aside-menu">
+  <i class="ico ico-menu"></i>
+</button>
+
+  <main id="doc-container" class="col-auto p-medium pt-small-m px-large-m pb-large-m">
+    <article class="article max-w-100 p-none">
+      <h1 class="page-title display fw-semibold mt-large-m">Button</h1>
+      <p class="h3 page-sub-title fw-light">Buttons may be the most widely used elements in web applications. Let's have a look at how to create buttons with different styles, functions and states in Luda.</p>
+      <h2 id="button-styles">Button Styles</h2>
+
+<p>A button can be created by adding the <code class="highlighter-rouge">.btn</code> class and
+the button style classes to a <code class="highlighter-rouge">&lt;button&gt;</code> tag.
+Let’s preview the button styles in the below examples.</p>
+
+<h3 id="solid-buttons">Solid Buttons</h3>
+
+<p>Add the <code class="highlighter-rouge">.btn-*</code> style classes to create solid buttons.</p>
+
+<div class="button-example">
+  
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-dark">Dark</button>
+<button class="btn btn-light">Light</button>
+<button class="btn btn-danger">Danger</button>
+  
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Primary<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span><span class="nt">&gt;</span>Secondary<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-dark"</span><span class="nt">&gt;</span>Dark<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-light"</span><span class="nt">&gt;</span>Light<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<h3 id="hollow-buttons">Hollow Buttons</h3>
+
+<p>A hollow button shows its background when being hovered or clicked.
+Add the <code class="highlighter-rouge">.btn-hollow-*</code> style classes to create hollow buttons.</p>
+
+<div class="button-example">
+  
+<button class="btn btn-hollow-primary">Primary</button>
+<button class="btn btn-hollow-secondary">Secondary</button>
+<button class="btn btn-hollow-dark">Dark</button>
+<button class="btn btn-hollow-light">Light</button>
+<button class="btn btn-hollow-danger">Danger</button>
+
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-hollow-primary"</span><span class="nt">&gt;</span>Primary<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-hollow-secondary"</span><span class="nt">&gt;</span>Secondary<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-hollow-dark"</span><span class="nt">&gt;</span>Dark<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-hollow-light"</span><span class="nt">&gt;</span>Light<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-hollow-danger"</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<h3 id="text-buttons">Text Buttons</h3>
+
+<p>Text buttons has the same sizes as solid buttons and hollow buttons.
+They have no backgrounds and borders. To create text buttons,
+add the <code class="highlighter-rouge">.btn-text-*</code> style classes.</p>
+
+<div class="button-example">
+  
+<button class="btn btn-text-primary">Primary</button>
+<button class="btn btn-text-secondary">Secondary</button>
+<button class="btn btn-text-dark">Dark</button>
+<button class="btn btn-text-light">Light</button>
+<button class="btn btn-text-danger">Danger</button>
+
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-text-primary"</span><span class="nt">&gt;</span>Primary<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-text-secondary"</span><span class="nt">&gt;</span>Secondary<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-text-dark"</span><span class="nt">&gt;</span>Dark<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-text-light"</span><span class="nt">&gt;</span>Light<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-text-danger"</span><span class="nt">&gt;</span>Danger<span class="nt">&lt;/button&gt;</span>
+</code></pre></div></div>
+
+<h2 id="button-tags">Button Tags</h2>
+
+<p>The <code class="highlighter-rouge">.btn</code> class and the button style classes can also be added
+to other elements to make them looks like buttons.</p>
+
+<div class="button-example">
+  <a data-turbolinks="false" href="#" class="btn btn-primary">Link</a>
+  <input type="submit" value="Submit" class="btn btn-hollow-primary" />
+  <input type="reset" value="Reset" class="btn btn-primary" />
+  <input type="button" value="Button" class="btn btn-hollow-primary" />  
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"Submit"</span> <span class="na">class=</span><span class="s">"btn btn-hollow-primary"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"reset"</span> <span class="na">value=</span><span class="s">"Reset"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"Button"</span> <span class="na">class=</span><span class="s">"btn btn-hollow-primary"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<h2 id="functional-buttons">Functional Buttons</h2>
+
+<p>Luda offers some functional buttons,
+let’s have a look at what they can do.</p>
+
+<h3 id="checkbox-buttons">Checkbox Buttons</h3>
+
+<p>Checkbox buttons looks like buttons but
+behave the same as normal checkboxes.
+A checkbox button is very simple to create, add the <code class="highlighter-rouge">.btn-check</code> class
+and the button style classes to a container,
+then wrap a <code class="highlighter-rouge">&lt;input type="checkbox"&gt;</code> and a <code class="highlighter-rouge">&lt;label&gt;</code> inside.</p>
+
+<div class="button-example">
+  
+<div class="btn-check btn-hollow-primary">
+  <input type="checkbox" id="kill-bill" name="example1" value="kill_bill" />
+  <label for="kill-bill">Kill Bill</label>
+</div>
+<div class="btn-check btn-hollow-primary">
+  <input type="checkbox" id="django" name="example1" value="django" />
+  <label for="django">Django</label>
+</div>
+  
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"kill-bill"</span> <span class="na">name=</span><span class="s">"example1"</span> <span class="na">value=</span><span class="s">"kill_bill"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"kill-bill"</span><span class="nt">&gt;</span>Kill Bill<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"django"</span> <span class="na">name=</span><span class="s">"example1"</span> <span class="na">value=</span><span class="s">"django"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"django"</span><span class="nt">&gt;</span>Django<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="radio-buttons">Radio Buttons</h3>
+
+<p>Radio buttons looks like buttons but
+behave the same as normal radios.
+A radio button is very simple to create, add the <code class="highlighter-rouge">.btn-radio</code> class
+and the button style classes to a container,
+then wrap a <code class="highlighter-rouge">&lt;input type="radio"&gt;</code> and a <code class="highlighter-rouge">&lt;label&gt;</code> inside.</p>
+
+<div class="button-example">
+  
+<div class="btn-radio btn-hollow-primary">
+  <input type="radio" id="yes" name="example2" value="yes" />
+  <label for="yes">Yes, I agree.</label>
+</div>
+<div class="btn-radio btn-hollow-danger">
+  <input type="radio" id="no" name="example2" value="no" />
+  <label for="no">No, I disagree.</label>
+</div>
+  
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"yes"</span> <span class="na">name=</span><span class="s">"example2"</span> <span class="na">value=</span><span class="s">"yes"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"yes"</span><span class="nt">&gt;</span>Yes, I agree.<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-danger"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"no"</span> <span class="na">name=</span><span class="s">"example2"</span> <span class="na">value=</span><span class="s">"no"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"no"</span><span class="nt">&gt;</span>No, I disagree.<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="file-buttons">File Buttons</h3>
+
+<p>File buttons are used to pick up files.
+It’s easy to create, almost the same as creating checkbox buttons and radio buttons.
+Let’s go straight to the below examples.</p>
+
+<div class="button-example">
+  
+<div class="btn-file btn-primary">
+  <input type="file" id="example3" name="example3" />
+  <label for="example3">Upload a file</label>
+</div>
+<div class="btn-file btn-hollow-primary">
+  <input multiple="" type="file" id="example4" name="example4" />
+  <label for="example4">Upload files</label>
+</div>
+  
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-file btn-primary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"example3"</span> <span class="na">name=</span><span class="s">"example3"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example3"</span><span class="nt">&gt;</span>Upload a file<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-file btn-hollow-primary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">multiple</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"example4"</span> <span class="na">name=</span><span class="s">"example4"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example4"</span><span class="nt">&gt;</span>Upload files<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="button-states">Button States</h2>
+
+<p>Button states can be controled through state classes and attributes.</p>
+
+<h3 id="active">Active</h3>
+
+<p>The <code class="highlighter-rouge">.btn-active</code> class is used to show the active state of a button
+or a functional button, you can see the effect in the below examples.</p>
+
+<div class="button-example">
+  
+<!-- An active button -->
+<button class="btn btn-hollow-primary btn-active">Button</button>
+<!-- An active checkbox button -->
+<div class="btn-check btn-hollow-primary btn-active">
+  <input type="check" id="example5" name="example5" value="example" />
+  <label for="example5">Checkbox button</label>
+</div>
+<!-- An active radio button -->
+<div class="btn-radio btn-hollow-primary btn-active">
+  <input type="radio" id="example6" name="example6" value="example" />
+  <label for="example6">Radio button</label>
+</div>
+<!-- An active file button -->
+<div class="btn-file btn-hollow-primary btn-active">
+  <input type="file" id="example7" name="example7" />
+  <label for="example7">File button</label>
+</div>
+  
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- An active button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-hollow-primary btn-active"</span><span class="nt">&gt;</span>Button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- An active checkbox button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary btn-active"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"check"</span> <span class="na">id=</span><span class="s">"example5"</span> <span class="na">name=</span><span class="s">"example5"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example5"</span><span class="nt">&gt;</span>Checkbox button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- An active radio button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary btn-active"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"example6"</span> <span class="na">name=</span><span class="s">"example6"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example6"</span><span class="nt">&gt;</span>Radio button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- An active file button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-file btn-hollow-primary btn-active"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"example7"</span> <span class="na">name=</span><span class="s">"example7"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example7"</span><span class="nt">&gt;</span>File button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="disabled">Disabled</h3>
+
+<p>The <code class="highlighter-rouge">disabled</code> attribute can be used to
+disable a button or a functional button.
+Disabled buttons and functional buttons cannot
+be focused nor respond to user actions.</p>
+
+<p class="c-danger">If you want to disable a function button, don’t forget to add
+the <code class="highlighter-rouge">disabled</code> attribute to the nested <code class="highlighter-rouge">&lt;input&gt;</code>.</p>
+
+<div class="button-example">
+  
+<!-- A disabled button -->
+<button class="btn btn-hollow-primary" disabled="">Button</button>
+<!-- A disabled checkbox button -->
+<div class="btn-check btn-hollow-primary" disabled="">
+  <input disabled="" type="checkbox" id="example8" name="example8" value="example" />
+  <label for="example8">Checkbox button</label>
+</div>
+<!-- A disabled radio button -->
+<div class="btn-radio btn-hollow-primary" disabled="">
+  <input disabled="" type="radio" id="example9" name="example9" value="example" />
+  <label for="example9">Radio button</label>
+</div>
+<!-- A disabled file button -->
+<div class="btn-file btn-hollow-primary" disabled="">
+  <input disabled="" type="file" id="example10" name="example10" />
+  <label for="example10">File button</label>
+</div>
+
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- A disabled button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-hollow-primary"</span> <span class="na">disabled</span><span class="nt">&gt;</span>Button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- A disabled checkbox button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary"</span> <span class="na">disabled</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">disabled</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"example8"</span> <span class="na">name=</span><span class="s">"example8"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example8"</span><span class="nt">&gt;</span>Checkbox button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A disabled radio button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary"</span> <span class="na">disabled</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">disabled</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"example9"</span> <span class="na">name=</span><span class="s">"example9"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example9"</span><span class="nt">&gt;</span>Radio button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A disabled file button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-file btn-hollow-primary"</span> <span class="na">disabled</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">disabled</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"example10"</span> <span class="na">name=</span><span class="s">"example10"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example10"</span><span class="nt">&gt;</span>File button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="readonly">Readonly</h3>
+
+<p>A readonly functional button cannot be focused,
+it doesn’t respond to user actions.
+But sill can be submitted if included in a <code class="highlighter-rouge">&lt;form&gt;</code>.</p>
+
+<p class="c-danger">If you want to make a readonly functional button,
+add the <code class="highlighter-rouge">readonly</code> attribute to it and the nested <code class="highlighter-rouge">&lt;input&gt;</code>.</p>
+
+<div class="button-example">
+  
+<!-- A readonly checkbox button -->
+<div class="btn-check btn-hollow-primary" readonly="">
+  <input type="checkbox" readonly="" id="example11" name="example11" value="example" />
+  <label for="example11">Checkbox button</label>
+</div>
+<!-- A readonly radio button -->
+<div class="btn-radio btn-hollow-primary" readonly="">
+  <input type="radio" readonly="" id="example12" name="example12" value="example" />
+  <label for="example12">Radio button</label>
+</div>
+
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- A readonly checkbox button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">readonly</span> <span class="na">id=</span><span class="s">"example11"</span> <span class="na">name=</span><span class="s">"example11"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example11"</span><span class="nt">&gt;</span>Checkbox button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A readonly radio button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary"</span> <span class="na">readonly</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">readonly</span> <span class="na">id=</span><span class="s">"example12"</span> <span class="na">name=</span><span class="s">"example12"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example12"</span><span class="nt">&gt;</span>Radio button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="checked">Checked</h3>
+
+<p>The checked state is only available in checkbox buttons and radio buttons.
+To set the checked state, just add the <code class="highlighter-rouge">checked</code> attribute to
+the nested <code class="highlighter-rouge">&lt;input&gt;</code> elements.</p>
+
+<div class="button-example">
+  
+<!-- A checked checkbox button -->
+<div class="btn-check btn-hollow-primary">
+  <input checked="" type="checkbox" id="example13" name="example13" value="example" />
+  <label for="example13">Checkbox button</label>
+</div>
+<!-- A checked radio button -->
+<div class="btn-radio btn-hollow-primary">
+  <input checked="" type="radio" id="example14" name="example14" value="example" />
+  <label for="example14">Radio button</label>
+</div>
+
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- A checked checkbox button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">checked</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"example13"</span> <span class="na">name=</span><span class="s">"example13"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example13"</span><span class="nt">&gt;</span>Checkbox button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A checked radio button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">checked</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"example14"</span> <span class="na">name=</span><span class="s">"example14"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example14"</span><span class="nt">&gt;</span>Radio button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h2 id="size-modifiers">Size Modifiers</h2>
+
+<p>If you want to change the size of a button, you can use size modifier classes.</p>
+
+<h3 id="btn-smallmodifier">.btn-small<!-- markdownlint-disable --><span class="badge bc-dark fw-regular">Modifier</span></h3>
+
+<p>The <code class="highlighter-rouge">.btn-small</code> class makes a button smaller.</p>
+
+<div class="button-example">
+  
+<!-- A small button -->
+<button class="btn btn-primary btn-small">Solid button</button>
+<!-- A small hollow button -->
+<button class="btn btn-hollow-primary btn-small">Hollow button</button>
+<!-- A small text button -->
+<button class="btn btn-text-primary btn-small">Text button</button>
+<!-- A small checkbox button -->
+<div class="btn-check btn-hollow-primary btn-small">
+  <input type="checkbox" id="example15" name="example15" value="example" />
+  <label for="example15">Checkbox button</label>
+</div>
+<!-- A small radio button -->
+<div class="btn-radio btn-hollow-primary btn-small">
+  <input type="radio" id="example16" name="example16" value="example" />
+  <label for="example16">Radio button</label>
+</div>
+<!-- A small file button -->
+<div class="btn-file btn-hollow-primary btn-small">
+  <input type="file" id="example17" name="example17" />
+  <label for="example17">File button</label>
+</div>
+
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- A small button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-small"</span><span class="nt">&gt;</span>Solid button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- A small hollow button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-hollow-primary btn-small"</span><span class="nt">&gt;</span>Hollow button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- A small text button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-text-primary btn-small"</span><span class="nt">&gt;</span>Text button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- A small checkbox button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary btn-small"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"example15"</span> <span class="na">name=</span><span class="s">"example15"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example15"</span><span class="nt">&gt;</span>Checkbox button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A small radio button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary btn-small"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"example16"</span> <span class="na">name=</span><span class="s">"example16"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example16"</span><span class="nt">&gt;</span>Radio button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A small file button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-file btn-hollow-primary btn-small"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"example17"</span> <span class="na">name=</span><span class="s">"example17"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example17"</span><span class="nt">&gt;</span>File button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="btn-largemodifier">.btn-large<!-- markdownlint-disable --><span class="badge bc-dark fw-regular">Modifier</span></h3>
+
+<p>Oppsitely, the <code class="highlighter-rouge">.btn-large</code> class makes a button larger.</p>
+
+<div class="button-example">
+  
+<!-- A large button -->
+<button class="btn btn-primary btn-large">Solid button</button>
+<!-- A large hollow button -->
+<button class="btn btn-hollow-primary btn-large">Hollow button</button>
+<!-- A large text button -->
+<button class="btn btn-text-primary btn-large">Text button</button>
+<!-- A large checkbox button -->
+<div class="btn-check btn-hollow-primary btn-large">
+  <input type="checkbox" id="example18" name="example18" value="example" />
+  <label for="example18">Checkbox button</label>
+</div>
+<!-- A large radio button -->
+<div class="btn-radio btn-hollow-primary btn-large">
+  <input type="radio" id="example19" name="example19" value="example" />
+  <label for="example19">Radio button</label>
+</div>
+<!-- A large file button -->
+<div class="btn-file btn-hollow-primary btn-large">
+  <input type="file" id="example20" name="example20" />
+  <label for="example20">File button</label>
+</div>
+
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- A large button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-large"</span><span class="nt">&gt;</span>Solid button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- A large hollow button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-hollow-primary btn-large"</span><span class="nt">&gt;</span>Hollow button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- A large text button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-text-primary btn-large"</span><span class="nt">&gt;</span>Text button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- A large checkbox button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary btn-large"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"example18"</span> <span class="na">name=</span><span class="s">"example18"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example18"</span><span class="nt">&gt;</span>Checkbox button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A large radio button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary btn-large"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"example19"</span> <span class="na">name=</span><span class="s">"example19"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example19"</span><span class="nt">&gt;</span>Radio button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A large file button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-file btn-hollow-primary btn-large"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"example20"</span> <span class="na">name=</span><span class="s">"example20"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example20"</span><span class="nt">&gt;</span>File button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="btn-fluidmodifier">.btn-fluid<!-- markdownlint-disable --><span class="badge bc-dark fw-regular">Modifier</span></h3>
+
+<p>If you want a button takes all the availiable horizontal space
+in its container, you can add the <code class="highlighter-rouge">.btn-fluid</code> class to it.
+The <code class="highlighter-rouge">.btn-fluid</code> class can be mixed with other size modifier classes.</p>
+
+<div class="button-example">
+  
+<!-- A fluid button -->
+<button class="btn btn-primary btn-fluid">Solid button</button>
+<!-- A fluid hollow button -->
+<button class="btn btn-hollow-primary btn-fluid">Hollow button</button>
+<!-- A fluid text button -->
+<button class="btn btn-text-primary btn-fluid">Text button</button>
+<!-- A fluid checkbox button -->
+<div class="btn-check btn-hollow-primary btn-fluid">
+  <input type="checkbox" id="example21" name="example21" value="example" />
+  <label for="example21">Checkbox button</label>
+</div>
+<!-- A fluid radio button -->
+<div class="btn-radio btn-hollow-primary btn-fluid">
+  <input type="radio" id="example22" name="example22" value="example" />
+  <label for="example22">Radio button</label>
+</div>
+<!-- A fluid file button -->
+<div class="btn-file btn-primary btn-fluid">
+  <input type="file" id="example23" name="example23" />
+  <label for="example23">File button</label>
+</div>
+  
+</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- A fluid button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-fluid"</span><span class="nt">&gt;</span>Solid button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- A fluid hollow button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-hollow-primary btn-fluid"</span><span class="nt">&gt;</span>Hollow button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- A fluid text button --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-text-primary btn-fluid"</span><span class="nt">&gt;</span>Text button<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- A fluid checkbox button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-check btn-hollow-primary btn-fluid"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"example21"</span> <span class="na">name=</span><span class="s">"example21"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example21"</span><span class="nt">&gt;</span>Checkbox button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A fluid radio button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-radio btn-hollow-primary btn-fluid"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">id=</span><span class="s">"example22"</span> <span class="na">name=</span><span class="s">"example22"</span> <span class="na">value=</span><span class="s">"example"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example22"</span><span class="nt">&gt;</span>Radio button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- A fluid file button --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-file btn-primary btn-fluid"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">id=</span><span class="s">"example23"</span> <span class="na">name=</span><span class="s">"example23"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"example23"</span><span class="nt">&gt;</span>File button<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<!-- markdownlint-disable -->
+<h2 id="sass-mixins">Sass Mixins</h2>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">+button-solid</span><span class="p">(</span><span class="nv">$name</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$hover-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$active-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$background</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$hover-background</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$active-background</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$border-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$hover-border-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$active-border-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$box-shadow</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$hover-box-shadow</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$active-box-shadow</span><span class="o">:</span> <span class="n">null</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This mixin can be used to create more solid style classes for buttons.</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">+button-hollow</span><span class="p">(</span><span class="nv">$name</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$hover-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$active-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$hover-background</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$active-background</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$border-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$hover-border-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$active-border-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$box-shadow</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$hover-box-shadow</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$active-box-shadow</span><span class="o">:</span> <span class="n">null</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This mixin can be used to create more hollow style classes for buttons.</p>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">+button-text</span><span class="p">(</span><span class="nv">$name</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$hover-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$active-color</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$text-shadow</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$hover-text-shadow</span><span class="o">:</span> <span class="n">null</span><span class="o">,</span> <span class="nv">$active-text-shadow</span><span class="o">:</span> <span class="n">null</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This mixin can be used to create more text style classes for buttons.</p>
+
+<h2 id="sass-variables">Sass Variables</h2>
+
+<h3 id="size">Size</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-height-rem</span><span class="p">:</span> <span class="nf">baseline</span><span class="p">(</span><span class="m">3</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-small-height-rem</span><span class="p">:</span> <span class="nf">baseline</span><span class="p">(</span><span class="m">2</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-large-height-rem</span><span class="p">:</span> <span class="nf">baseline</span><span class="p">(</span><span class="m">4</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-helvertical-padding-em</span><span class="p">:</span> <span class="nf">rem-to-em</span><span class="p">(</span><span class="nf">harmony-spacing</span><span class="p">(</span><span class="nv">$grid-gutter-width-rem</span> <span class="o">/</span> <span class="m">2</span><span class="o">,</span> <span class="nv">$button-border-width</span><span class="p">)</span><span class="o">,</span> <span class="nv">$button-typography-size-level</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="typography">Typography</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-typography-size-level</span><span class="p">:</span> <span class="m">6</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-small-typography-size-level</span><span class="p">:</span> <span class="m">7</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-large-typography-size-level</span><span class="p">:</span> <span class="m">5</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="border">Border</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-border-width</span><span class="p">:</span> <span class="nv">$line-width-main</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-border-style</span><span class="p">:</span> <span class="nb">solid</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-border-radius</span><span class="p">:</span> <span class="nv">$border-radius-main</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="primary-solid-button">Primary Solid Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-color</span><span class="p">:</span> <span class="nv">$color-inverse-main</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-hover-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-active-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-background</span><span class="p">:</span> <span class="nv">$background-color-primary</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-hover-background</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$background-color-primary</span><span class="o">,</span> <span class="m">2%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-active-background</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$background-color-primary</span><span class="o">,</span> <span class="m">4%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-hover-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-active-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-hover-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-primary-active-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="secondary-solid-button">Secondary Solid Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-color</span><span class="p">:</span> <span class="nv">$color-main</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-hover-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-active-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-background</span><span class="p">:</span> <span class="nv">$background-color-secondary</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-hover-background</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$background-color-secondary</span><span class="o">,</span> <span class="m">2%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-active-background</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$background-color-secondary</span><span class="o">,</span> <span class="m">4%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-hover-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-active-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-hover-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-secondary-active-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="danger-solid-button">Danger Solid Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-color</span><span class="p">:</span> <span class="nv">$color-inverse-main</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-hover-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-active-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-background</span><span class="p">:</span> <span class="nv">$background-color-danger</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-hover-background</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$background-color-danger</span><span class="o">,</span> <span class="m">2%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-active-background</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$background-color-danger</span><span class="o">,</span> <span class="m">4%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-hover-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-active-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-hover-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-danger-active-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="dark-solid-button">Dark Solid Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-color</span><span class="p">:</span> <span class="nv">$color-inverse-main</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-hover-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-active-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-background</span><span class="p">:</span> <span class="nv">$background-color-dark</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-hover-background</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$background-color-dark</span><span class="o">,</span> <span class="m">2%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-active-background</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$background-color-dark</span><span class="o">,</span> <span class="m">4%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-hover-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-active-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-hover-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-dark-active-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="light-solid-button">Light Solid Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-color</span><span class="p">:</span> <span class="nv">$color-dark</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-hover-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-active-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-background</span><span class="p">:</span> <span class="nv">$background-color-light</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-hover-background</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$background-color-light</span><span class="o">,</span> <span class="m">2%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-active-background</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$background-color-light</span><span class="o">,</span> <span class="m">4%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-hover-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-active-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-hover-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-light-active-box-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="primary-hollow-button">Primary Hollow Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-color</span><span class="p">:</span> <span class="nv">$color-primary</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-hover-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-active-color</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-primary-active-color</span><span class="o">,</span> <span class="nv">$button-primary-hover-color</span><span class="o">,</span> <span class="nv">$button-primary-color</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-hover-background</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$background-color-primary</span><span class="o">,</span> <span class="nv">$opacity-most-muted</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-active-background</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-primary-active-background</span><span class="o">,</span> <span class="nv">$button-primary-hover-background</span><span class="o">,</span> <span class="nv">$button-primary-background</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-hover-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-active-border-color</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-primary-active-border-color</span><span class="o">,</span> <span class="nv">$button-primary-hover-border-color</span><span class="o">,</span> <span class="nv">$button-primary-border-color</span><span class="o">,</span> <span class="nb">transparent</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-box-shadow</span><span class="p">:</span> <span class="nv">$button-primary-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-hover-box-shadow</span><span class="p">:</span> <span class="nv">$button-primary-hover-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-primary-active-box-shadow</span><span class="p">:</span> <span class="nv">$button-primary-active-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="secondary-hollow-button">Secondary Hollow Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-color</span><span class="p">:</span> <span class="nv">$color-main</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-hover-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-active-color</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-secondary-active-color</span><span class="o">,</span> <span class="nv">$button-secondary-hover-color</span><span class="o">,</span> <span class="nv">$button-secondary-color</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-hover-background</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$background-color-secondary</span><span class="o">,</span> <span class="nv">$opacity-more-muted</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-active-background</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-secondary-active-background</span><span class="o">,</span> <span class="nv">$button-secondary-hover-background</span><span class="o">,</span> <span class="nv">$button-secondary-background</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-border-color</span><span class="p">:</span> <span class="nv">$line-color-secondary</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-hover-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-active-border-color</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-secondary-active-border-color</span><span class="o">,</span> <span class="nv">$button-secondary-hover-border-color</span><span class="o">,</span> <span class="nv">$button-secondary-border-color</span><span class="o">,</span> <span class="nb">transparent</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-box-shadow</span><span class="p">:</span> <span class="nv">$button-secondary-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-hover-box-shadow</span><span class="p">:</span> <span class="nv">$button-secondary-hover-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-secondary-active-box-shadow</span><span class="p">:</span> <span class="nv">$button-secondary-active-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="danger-hollow-button">Danger Hollow Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-color</span><span class="p">:</span> <span class="nv">$color-danger</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-hover-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-active-color</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-danger-active-color</span><span class="o">,</span> <span class="nv">$button-danger-hover-color</span><span class="o">,</span> <span class="nv">$button-danger-color</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-hover-background</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$background-color-danger</span><span class="o">,</span> <span class="nv">$opacity-most-muted</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-active-background</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-danger-active-background</span><span class="o">,</span> <span class="nv">$button-danger-hover-background</span><span class="o">,</span> <span class="nv">$button-danger-background</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-hover-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-active-border-color</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-danger-active-border-color</span><span class="o">,</span> <span class="nv">$button-danger-hover-border-color</span><span class="o">,</span> <span class="nv">$button-danger-border-color</span><span class="o">,</span> <span class="nb">transparent</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-box-shadow</span><span class="p">:</span> <span class="nv">$button-danger-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-hover-box-shadow</span><span class="p">:</span> <span class="nv">$button-danger-hover-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-danger-active-box-shadow</span><span class="p">:</span> <span class="nv">$button-danger-active-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="dark-hollow-button">Dark Hollow Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-color</span><span class="p">:</span> <span class="nv">$color-dark</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-hover-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-active-color</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-dark-active-color</span><span class="o">,</span> <span class="nv">$button-dark-hover-color</span><span class="o">,</span> <span class="nv">$button-dark-color</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-hover-background</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$background-color-dark</span><span class="o">,</span> <span class="nv">$opacity-most-muted</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-active-background</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-dark-active-background</span><span class="o">,</span> <span class="nv">$button-dark-hover-background</span><span class="o">,</span> <span class="nv">$button-dark-background</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-hover-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-active-border-color</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-dark-active-border-color</span><span class="o">,</span> <span class="nv">$button-dark-hover-border-color</span><span class="o">,</span> <span class="nv">$button-dark-border-color</span><span class="o">,</span> <span class="nb">transparent</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-box-shadow</span><span class="p">:</span> <span class="nv">$button-dark-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-hover-box-shadow</span><span class="p">:</span> <span class="nv">$button-dark-hover-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-dark-active-box-shadow</span><span class="p">:</span> <span class="nv">$button-dark-active-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="light-hollow-button">Light Hollow Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-color</span><span class="p">:</span> <span class="nv">$color-light</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-hover-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-active-color</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-light-active-color</span><span class="o">,</span> <span class="nv">$button-light-hover-color</span><span class="o">,</span> <span class="nv">$button-light-color</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-hover-background</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$background-color-light</span><span class="o">,</span> <span class="nv">$opacity-most-muted</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-active-background</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-light-active-background</span><span class="o">,</span> <span class="nv">$button-light-hover-background</span><span class="o">,</span> <span class="nv">$button-light-background</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-hover-border-color</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-active-border-color</span><span class="p">:</span> <span class="nf">existing</span><span class="p">(</span><span class="nv">$button-light-active-border-color</span><span class="o">,</span> <span class="nv">$button-light-hover-border-color</span><span class="o">,</span> <span class="nv">$button-light-border-color</span><span class="o">,</span> <span class="nb">transparent</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-box-shadow</span><span class="p">:</span> <span class="nv">$button-light-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-hover-box-shadow</span><span class="p">:</span> <span class="nv">$button-light-hover-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-hollow-light-active-box-shadow</span><span class="p">:</span> <span class="nv">$button-light-active-box-shadow</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="primary-text-button">Primary Text Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-primary-color</span><span class="p">:</span> <span class="nv">$color-primary</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-primary-hover-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$color-primary</span><span class="o">,</span> <span class="m">10%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-primary-active-color</span><span class="p">:</span> <span class="nv">$button-text-primary-hover-color</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-primary-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-primary-hover-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-primary-active-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="secondary-text-button">Secondary Text Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-secondary-color</span><span class="p">:</span> <span class="nv">$color-secondary</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-secondary-hover-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$color-secondary</span><span class="o">,</span> <span class="m">10%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-secondary-active-color</span><span class="p">:</span> <span class="nv">$button-text-secondary-hover-color</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-secondary-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-secondary-hover-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-secondary-active-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="danger-text-button">Danger Text Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-danger-color</span><span class="p">:</span> <span class="nv">$color-danger</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-danger-hover-color</span><span class="p">:</span> <span class="nf">darken</span><span class="p">(</span><span class="nv">$color-danger</span><span class="o">,</span> <span class="m">5%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-danger-active-color</span><span class="p">:</span> <span class="nv">$button-text-danger-hover-color</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-danger-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-danger-hover-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-danger-active-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="dark-text-button">Dark Text Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-dark-color</span><span class="p">:</span> <span class="nf">lighten</span><span class="p">(</span><span class="nv">$color-dark</span><span class="o">,</span> <span class="m">10%</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-dark-hover-color</span><span class="p">:</span> <span class="nv">$color-dark</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-dark-active-color</span><span class="p">:</span> <span class="nv">$button-text-dark-hover-color</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-dark-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-dark-hover-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-dark-active-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<h3 id="light-text-button">Light Text Button</h3>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-light-color</span><span class="p">:</span> <span class="nf">rgba</span><span class="p">(</span><span class="nv">$color-light</span><span class="o">,</span> <span class="nv">$opacity-muted</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-light-hover-color</span><span class="p">:</span> <span class="nv">$color-light</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-light-active-color</span><span class="p">:</span> <span class="nv">$button-text-light-hover-color</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-light-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-light-hover-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+<div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$button-text-light-active-text-shadow</span><span class="p">:</span> <span class="n">null</span> <span class="o">!</span><span class="nb">default</span>
+</code></pre></div></div>
+
+    </article>
+  </main>
+  <nav id="doc-sub-nav" class="nav-aside col-auto zi-normal d-none d-block-l pr-large pl-medium pb-medium bc-none bi-none">
+    <div class="nav-items m-none">
+    </div>
+  </nav>
+  <!-- markdownlint-disable -->
+<!-- markdownlint-disable -->
+
+
+
+
+<div id="theme-pannel" data-turbolinks-permanent class="d-none d-block-m fix-r fix-b zi-high mr-large mb-large">
+
+  <div class="btns-x btns-margin jc-end" data-toggle-target="change_theme">
+    
+    <div class="theme-pannel-option btn-radio btn-hollow-dark bc-main circle">
+      
+      <input class="change-theme" checked type="radio" name="theme_pannel_apply_theme" value="default">
+      
+      <label class="bd-none circle sd-high tt-cap">Theme default</label>
+    </div>
+    
+    <div class="btn btn-light btn-ico circle sd-high" data-toggleable data-toggle-for="change_theme_trigger">
+      <i class="ico ico-cross"></i>
+    </div>
+  </div>
+
+  <button class="theme-pannel-trigger btn btn-ico-left btn-dark toggle-active mb-small mr-small circle sd-high" data-toggle-for="change_theme" data-toggle-target="change_theme_trigger" data-toggleable>
+    <i class="ico material-icons">brush</i>
+    Change Theme
+  </button>
+
+</div>
+</div>
+  </body>
+</html>

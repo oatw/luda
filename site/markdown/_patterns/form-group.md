@@ -32,7 +32,7 @@ inside to create a form group.
   <fieldset class="fm-group">
     <legend class="fm-label">Hobby</legend>
     <div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
-      <div class="fm fm-select">
+      <div class="fm fm-select" data-auto="false">
         <input placeholder="E.g., Basketball">
       </div>
       <div class="dropdown-menu">
@@ -99,7 +99,7 @@ can be added to `.fm-group`s to create a responsive form layout.
   <fieldset class="fm-group col-12 col-6-m">
     <legend class="fm-label">Country</legend>
     <div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
-      <div class="fm fm-select">
+      <div class="fm fm-select" data-auto="false">
         <input placeholder="E.g., America">
       </div>
       <div class="dropdown-menu">
@@ -176,7 +176,7 @@ Let's see the below example for clarification.
     <div class="grid">
       <legend class="fm-label fm-label-nowrap col-auto">Hobby</legend>
       <div class="fm-dropdown dropdown-fixed dropdown-absolute-m col-8 col-10-m">
-        <div class="fm fm-select">
+        <div class="fm fm-select" data-auto="false">
           <input placeholder="E.g., Basketball">
         </div>
         <div class="dropdown-menu">
