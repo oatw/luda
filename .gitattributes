@@ -2,3 +2,7 @@ package.json      binary
 dist/**           binary
 src/js/**         binary
 release/site/**   binary
+
+* linguist-vendored
+*.coffee linguist-vendored=false
+*.sass linguist-vendored=false

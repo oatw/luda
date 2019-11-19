@@ -40,11 +40,11 @@ class Base
       if definedWatch = C.helpers.watch
         C.helpers.watch = ->
           watches = definedWatch.call this
-          watches.dom ||= []
-          watches.dom.unshift [proto.cleanTraversal]
+          watches.node ||= []
+          watches.node.unshift [proto.cleanTraversal]
           watches
       else
-        C.helpers.watch = -> {dom: [[proto.cleanTraversal]]}
+        C.helpers.watch = -> {node: [[proto.cleanTraversal]]}
     watcher = watch C, this if C.helpers.watch
     inses[@id] = {instance: this, traversal: traversal, watcher: watcher}
     _access rootEl, C.id, inses[@id]

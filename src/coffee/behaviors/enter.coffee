@@ -6,18 +6,21 @@ luda.component 'enter', document
 
 .protect
 
-  data:
-    enable: 'enter'
-
   selectors: [
     'input[type=checkbox]'
     'input[type=radio]'
     '[tabindex]'
   ]
 
+.protect
+
+  disabled: -> @html.data('enter') is false
+
+.protect
+
   trigger: (e) ->
-    return if @html.data(@data.enable) is false
-    return unless luda(e.target).matches @selectors.join(',')
+    return if @disabled()
+    return unless luda(e.target).is @selectors.join(',')
     e.preventDefault()
     setTimeout -> e.target.click()
 

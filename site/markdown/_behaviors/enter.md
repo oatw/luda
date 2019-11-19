@@ -72,8 +72,9 @@ to see what happens.
 ### data-enter="false"
 
 ``` html
+<!-- @example
+Add data-enter="false" to the <html> tag to disable the
+enhancement to the Enter key.
+-->
 <html data-enter="false">...</html>
 ```
-
-Add `data-enter="false"` to the `<html>` tag to disable the
-enhancement to the `Enter` key.

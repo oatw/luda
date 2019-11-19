@@ -27,7 +27,7 @@ then wrap necessary elements like the below example.
 <!-- markdownlint-disable -->
 <header class="nav-header sti my-small zi-highest">
   <a class="nav-logo" data-turbolinks="false" href="#header-navigation">
-    <img src="{{ '/assets/img/logo-text.svg' | relative_url }}" alt="logo">
+    <img src="{{ '/assets/img/logo-text-light.svg' | relative_url }}" alt="logo">
   </a>
   <button class="nav-open btn btn-ico btn-text-light" data-toggle-for="header-menu">
     <i class="ico ico-menu"></i>
@@ -162,7 +162,7 @@ then wrap necessary elements like the below example.
 <div class="d-block d-flex-m my-small">
   <aside class="nav-aside">
     <a class="nav-logo" data-turbolinks="false" href="#aside-navigation">
-      <img src="{{ '/assets/img/logo-text.svg' | relative_url }}" alt="logo">
+      <img src="{{ '/assets/img/logo-text-light.svg' | relative_url }}" alt="logo">
     </a>
     <button class="nav-open btn btn-ico btn-text-light" data-toggle-for="aside-menu">
       <i class="ico ico-menu"></i>

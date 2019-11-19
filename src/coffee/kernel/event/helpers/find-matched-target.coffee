@@ -1,4 +1,4 @@
-import matches from '../../matches/helpers/matches.coffee'
+import matches from '../../base/matches.coffee'
 
 
 

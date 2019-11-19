@@ -9,9 +9,6 @@ Focus = luda.component 'focus', document
   cls:
     focus: 'focus'
 
-  data:
-    enable: 'focus'
-
   selector:
     focused: '.focus'
     always: [
@@ -29,7 +26,11 @@ Focus = luda.component 'focus', document
     ]
     touch: 'input[type=range]'
 
-  disabled: -> @html.data(@data.enable) is false
+.protect
+
+  disabled: -> @html.data('focus') is false
+
+.protect
 
   addClass: (node) ->
     return if @disabled()
@@ -48,11 +49,11 @@ Focus = luda.component 'focus', document
     (evt = @evtTriggeredFocus) and delete @evtTriggeredFocus
     if evt and /key/.test evt
       target = node
-    else if luda(node).matches @selector.always.join(',')
+    else if luda(node).is @selector.always.join(',')
       target = node
-    else if luda(node).matches @selector.nested.join(' *,')
+    else if luda(node).is @selector.nested.join(' *,')
       parent = @selector.nested.join(',')
-      e.eventPath().some (el) -> luda(el).matches(parent) and target = el
+      e.eventPath().some (el) -> luda(el).is(parent) and target = el
     @addClass target
 
   blur: (e) ->

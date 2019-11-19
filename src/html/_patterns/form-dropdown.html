@@ -1,76 +1,100 @@
 ---
 title: Form dropdown
 ---
+<form>
 
-<div id="form-dropdown-single-select" class="mb-large">
-  <h4><a href="#form-dropdown-single-select">#form-dropdown-single-select</a></h4>
-  <div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
-    <div class="fm fm-select" data-auto="false">
-      <input placeholder="Single select form dropdown">
-    </div>
-    <div class="dropdown-menu">
-      <div class="dropdown-items">
-        <div class="btns-y">
-          <div class="btn-radio btn-hollow-primary">
-            <input type="radio" name="single_fm_dropdown" value="one">
-            <label>Item one</label>
-          </div>
-          <div class="btn-radio btn-hollow-primary">
-            <input type="radio" name="single_fm_dropdown" value="two">
-            <label>Item two</label>
+  <div id="form-dropdown-single-select" class="mb-large">
+    <h4><a href="#form-dropdown-single-select">#form-dropdown-single-select</a></h4>
+    <div class="fm-dropdown dropdown-fixed dropdown-absolute-m" id="single-fm-dropdown">
+      <div class="fm fm-select" data-auto="false">
+        <input placeholder="Single select form dropdown">
+      </div>
+      <div class="dropdown-menu">
+        <div class="dropdown-items">
+          <div class="btns-y">
+            <div class="btn-radio btn-hollow-primary">
+              <input type="radio" name="single_fm_dropdown" value="one">
+              <label>Item one</label>
+            </div>
+            <div class="btn-radio btn-hollow-primary">
+              <input type="radio" name="single_fm_dropdown" value="two">
+              <label>Item two</label>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      luda(document).on('luda:fmDropdown:changed', '#single-fm-dropdown', function(e, data){
+        console.log('single fm dropdown changed')
+        console.log(data)
+      })
+    </script>
   </div>
-</div>
 
 
 
-<div id="form-dropdown-multiple-select" class="mb-large">
-  <h4><a href="#form-dropdown-multiple-select">#form-dropdown-multiple-select</a></h4>
-  <div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
-    <div class="fm fm-select" data-auto="false">
-      <input placeholder="Multiple select form dropdown">
-    </div>
-    <div class="dropdown-menu">
-      <div class="dropdown-items" data-dropdownable="false">
-        <div class="btns-y">
-          <div class="btn-check btn-hollow-primary">
-            <input type="checkbox" name="multiple_fm_dropdown" value="one">
-            <label>Item One</label>
-          </div>
-          <div class="btn-check btn-hollow-primary">
-            <input type="checkbox" name="multiple_fm_dropdown" value="two">
-            <label>Item Two</label>
+  <div id="form-dropdown-multiple-select" class="mb-large">
+    <h4><a href="#form-dropdown-multiple-select">#form-dropdown-multiple-select</a></h4>
+    <div class="fm-dropdown dropdown-fixed dropdown-absolute-m" id="multiple-fm-dropdown">
+      <div class="fm fm-select" data-auto="false">
+        <input placeholder="Multiple select form dropdown">
+      </div>
+      <div class="dropdown-menu">
+        <div class="dropdown-items" data-dropdownable="false">
+          <div class="btns-y">
+            <div class="btn-check btn-hollow-primary">
+              <input type="checkbox" name="multiple_fm_dropdown" value="one">
+              <label>Item One</label>
+            </div>
+            <div class="btn-check btn-hollow-primary">
+              <input type="checkbox" name="multiple_fm_dropdown" value="two">
+              <label>Item Two</label>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      luda(document).on('luda:fmDropdown:changed', '#multiple-fm-dropdown', function(e, data){
+        console.log('single fm dropdown changed')
+        console.log(data)
+      })
+    </script>
   </div>
-</div>
 
 
 
-<div id="form-dropdown-customized">
-  <h4><a href="#form-dropdown-customized">#form-dropdown-customized</a></h4>
-  <div class="fm-dropdown dropdown-fixed dropdown-absolute-m">
-    <div class="fm fm-select" data-auto="false">
-      <input placeholder="Form dropdown with customized value">
-    </div>
-    <div class="dropdown-menu">
-      <div class="dropdown-items" data-dropdownable="false">
-        <div class="btns-y">
-          <div class="btn-check btn-hollow-primary btn-ico-left">
-            <input checked type="checkbox" name="custom_fm_dropdown" value="one">
-            <label data-fm-dropdown-label="One">Item one<i class="ico material-icons">face</i></label>
-          </div>
-          <div class="btn-check btn-hollow-primary btn-ico-left">
-            <input type="checkbox" name="custom_fm_dropdown" value="two">
-            <label data-fm-dropdown-label="Two">Item two<i class="ico material-icons">face</i></label>
+  <div id="form-dropdown-customized">
+    <h4><a href="#form-dropdown-customized">#form-dropdown-customized</a></h4>
+    <div class="fm-dropdown dropdown-fixed dropdown-absolute-m" id="multiple-fm-dropdown-2">
+      <div class="fm fm-select" data-auto="false">
+        <input placeholder="Form dropdown with customized value">
+      </div>
+      <div class="dropdown-menu">
+        <div class="dropdown-items" data-dropdownable="false">
+          <div class="btns-y">
+            <div class="btn-check btn-hollow-primary btn-ico-left">
+              <input checked type="checkbox" name="custom_fm_dropdown" value="one">
+              <label data-fm-dropdown-label="One">Item one<i class="ico material-icons">face</i></label>
+            </div>
+            <div class="btn-check btn-hollow-primary btn-ico-left">
+              <input type="checkbox" name="custom_fm_dropdown" value="two">
+              <label data-fm-dropdown-label="Two">Item two<i class="ico material-icons">face</i></label>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      luda(document).on('luda:fmDropdown:changed', '#multiple-fm-dropdown-2', function(e, data){
+        console.log('single fm dropdown changed')
+        console.log(data)
+      })
+    </script>
+
   </div>
-</div>
+
+  <input type="reset" class="btn btn-secondary mt-small" value="Reset">
+
+</form>

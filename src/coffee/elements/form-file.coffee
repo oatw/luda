@@ -12,29 +12,45 @@ luda.component 'fmFile'
     file: 'input[type=file]'
     simulator: 'input:not([type=file])'
 
+  evt:
+    changed: 'luda:fmFile:changed'
+
   splitor: '  '
 
 .protect
 
+  placeholder: -> @file.attr 'placeholder'
+
+  value: -> @file.attr 'value'
+
+  multiple: -> @file.prop 'multiple'
+
+.protect
+
+  files: -> Array.from @file.prop('files')
+
   insertSimulator: ->
     return if @simulator.length
-    simulator = luda '<input>'
-    simulator.els[0].tabIndex = -1
-    simulator.insertAfter @file
+    luda('<input>').prop('tabIndex', -1)
+    .attr('placeholder', @placeholder())
+    .insertAfter(@file)
 
-  updatePlaceholder: ->
-    return unless placeholder = @file.attr 'placeholder'
-    @simulator.attr 'placeholder', placeholder
-
-  updateValue: ->
-    values = Array.from(@file.els[0].files).map (f) -> f.name
-    value = values.join(@splitor) or @file.attr('value') or ''
+  updateSimulatorValue: ->
+    values = @files().map (f) -> f.name
+    value = values.join(@splitor) or @value() or ''
     @simulator.attr 'value', value
 
+  updateValue: ->
+    @updateSimulatorValue()
+    oldFile = @selectedFile
+    @selectedFile = @files()
+    return if not oldFile or luda.arrayEqual(@selectedFile, oldFile)
+    val = if @multiple() then @selectedFile else @selectedFile[0]
+    @file.trigger @evt.changed, val
+
   tryReset: (target, oldVal) ->
-    return unless @file.attr('value') is ''
-    @file.els[0].value = ''
-    @file.attr 'value', oldVal
+    return unless @value() is ''
+    @file.prop('value', '').attr('value', oldVal)
 
 .help
 
@@ -47,7 +63,6 @@ luda.component 'fmFile'
 
   create: ->
     @insertSimulator()
-    @updatePlaceholder()
     @updateValue()
 
   listen: ->

@@ -1,8 +1,8 @@
 import expando from '../../base/expando.coffee'
 import findAll from '../../base/find-all.coffee'
+import matches from '../../base/matches.coffee'
 import unique from '../../base/unique.coffee'
 import {_access} from '../../cache/helpers/access.coffee'
-import matches from '../../matches/helpers/matches.coffee'
 
 
 

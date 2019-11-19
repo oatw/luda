@@ -1,6 +1,6 @@
 import luda from '../../base/luda.coffee'
+import matches from '../../base/matches.coffee'
 import {_access} from '../../cache/helpers/access.coffee'
-import matches from '../../matches/helpers/matches.coffee'
 import eventPath from './event-path.coffee'
 import ludaEvent from './luda-event.coffee'
 import nMatches from './namespace-matches.coffee'

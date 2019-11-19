@@ -1,6 +1,6 @@
 ---
 title: Breakpoints
-order: 3
+order: 2
 description: Luda provides width breakpoints, aspect ratio breakpoints
              and resolution breakpoints by default, lean how to configure
              and use them in your projects. 

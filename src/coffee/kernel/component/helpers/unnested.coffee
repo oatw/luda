@@ -1,5 +1,5 @@
 import luda from '../../base/luda.coffee'
-import matches from '../../matches/helpers/matches.coffee'
+import matches from '../../base/matches.coffee'
 import '../../traversal/parents.coffee'
 
 

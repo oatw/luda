@@ -40,6 +40,13 @@ luda.component 'carousel'
       prevCtrl: '.carousel-prev'
       nextCtrl: '.carousel-next'
 
+.protect
+
+  interval: ->
+    duration = @root.data @data.interval
+    return false if duration is false
+    Math.abs(parseInt duration, 10) or @default.interval
+
 .include luda.mixin('tabable').alias(
   activate: 'tabableActivate'
   next: 'tabableNext'
@@ -72,12 +79,17 @@ luda.component 'carousel'
 
 .protect
 
-  interval: ->
-    duration = @root.data @data.interval
-    return false if duration is false
-    Math.abs(parseInt duration, 10) or @default.interval
+  togglePath: (path, action) ->
+    targets = path.filter (el) => @con.contains el
+    @con.create(targets).forEach (ins) -> ins[action]()
 
-  touchendPlay: -> setTimeout => @play()
+  pauseOnEvt: (e) -> @togglePath e.eventPath(), 'pause'
+
+  playOnEvt: (e) -> @togglePath e.eventPath(), 'play'
+
+  playOnTouchend: (e) ->
+    path = e.eventPath()
+    setTimeout => @togglePath path, 'play'
 
 .help
 
@@ -100,7 +112,7 @@ luda.component 'carousel'
     @tabableListen().concat [
       ['swipeleft', @tabableNextOnEvent]
       ['swiperight', @tabablePrevOnEvent]
-      ['touchstart mouseover', @pause]
-      ['mouseout', @play]
-      ['touchend', @touchendPlay]
+      ['touchstart mouseover', @pauseOnEvt]
+      ['mouseout', @playOnEvt]
+      ['touchend', @playOnTouchend]
     ]

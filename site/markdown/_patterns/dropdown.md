@@ -299,25 +299,26 @@ Let's see the below example for detail.
 ### data-dropdown-standalone
 
 ``` html
+<!-- @example
+Prevent a dropdown from being toggled unless
+the click event is triggered on itself or its descendant elements.
+-->
 <div class="dropdown-absolute" data-dropdown-standalone>...</div>
 ```
-
-Prevent the dropdown from being toggled
-unless the `click` event is triggered on itself or its descendant elements.
-
-### data-dropdownable="false"
-
-``` html
-<div class="dropdown-items" data-dropdownable="false">...</div>
-```
-
-Prevent the dropdown from being toggled
-when the `click` event is triggered on a specific element
-or the specific element's descendant elements.
 
 ### data-dropdownable
 
 ``` html
+<!-- @example
+Prevent a dropdown from being toggled when
+the click event is triggered on a specific element
+or the specific element's descendant elements.
+-->
+<div class="dropdown-items" data-dropdownable="false">...</div>
+<!-- @example
+Recover the ability of toggling the dropdown
+for a specific element and the element's descendant elements.
+-->
 <div class="dropdown-items" data-dropdownable="false">
   <div class="btns-y">
     <button data-dropdownable class="btn btn-primary">Do something</button>
@@ -326,81 +327,97 @@ or the specific element's descendant elements.
 </div>
 ```
 
-Recover the ability of toggling the dropdown
-for a specific element and the element's descendant elements.
-
 ## Javascript Methods
 
 ### luda.dropdown(selector).activate()
 
+```bash
+@param {LudaSelector} selector
+@returns {LudaComponentProxy}
+```
+
 ``` javascript
+// @example Open a dropdown.
 luda.dropdown('#my-dropdown').activate()
 ```
 
-Open a dropdown.
-
 ### luda.dropdown(selector).deactivate()
 
+```bash
+@param {LudaSelector} selector
+@returns {LudaComponentProxy}
+```
+
 ``` javascript
+// @example Close a dropdown.
 luda.dropdown('#my-dropdown').deactivate()
 ```
 
-Close a dropdown.
+### luda.dropdown(selector).toggle(force)
 
-### luda.dropdown(selector).toggle()
-
-``` javascript
-luda.dropdown('#my-dropdown').toggle()
+```bash
+@param {LudaSelector} selector
+@param {boolean} [force]
+@returns {LudaComponentProxy}
 ```
 
-Toggle a dropdown.
+``` javascript
+// @example Open or Close a dropdown depending on its state
+// by passing in a selector.
+luda.dropdown('#my-dropdown').toggle()
+// @example Forcely open a dropdown.
+luda.dropdown('#my-dropdown').toggle(true)
+// @example Forcely close a dropdown.
+luda.dropdown('#my-dropdown').toggle(false)
+```
 
 ## DOM Events
 
 ### luda:dropdown:activate
 
 ``` javascript
+// @example This event will be triggered before
+// the .dropdown-active class added to a dropdown.
 luda(document).on('luda:dropdown:activate', '#my-dropdown', function(event){
   let myDropdown = this, myDropdownMenu = event.target
-  event.preventDefault() // Prevent the dropdown from being activated if necessary.
+  // Prevent the dropdown from being activated if necessary.
+  event.preventDefault()
 })
 ```
-
-Will be triggered before the `.dropdown-active` class added to a dropdown.
 
 ### luda:dropdown:activated
 
 ``` javascript
+// @example This event will be triggered after
+// the .dropdown-active class added to a dropdown and
+// CSS transition finished.
 luda(document).on('luda:dropdown:activated', '#my-dropdown', function(event){
   let myDropdown = this, myDropdownMenu = event.target
 })
 ```
 
-Will be triggered after the `.dropdown-active` class added to a dropdown
-and CSS transition finished.
-
 ### luda:dropdown:deactivate
 
 ``` javascript
+// @example This event will be triggered before
+// the .dropdown-active class removed from a dropdown.
 luda(document).on('luda:dropdown:deactivate', '#my-dropdown', function(event){
   let myDropdown = this, myDropdownMenu = event.target
-  event.preventDefault() // Prevent the dropdown from being deactivated if necessary.
+  // Prevent the dropdown from being deactivated if necessary.
+  event.preventDefault()
 })
 ```
-
-Will be triggered before the `.dropdown-active` class removed from
-a dropdown.
 
 ### luda:dropdown:deactivated
 
 ``` javascript
+// @example This event will be triggered after
+// the .dropdown-active class removed from a dropdown and
+// CSS transition finished.
 luda(document).on('luda:dropdown:deactivated', '#my-dropdown', function(event){
   let myDropdown = this, myDropdownMenu = event.target
 })
 ```
-
-Will be triggered after the `.dropdown-active` class removed from
-a dropdown and CSS transition finished.
 
 ## Sass Variables
 

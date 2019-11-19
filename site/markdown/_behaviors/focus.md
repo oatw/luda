@@ -58,31 +58,37 @@ no matter how the text field is focused.
 ### data-focus="false"
 
 ``` html
+<!-- @example
+Add data-focus="false" to the <html> tag to disable
+the enhancement to browser's native focus behavior.
+-->
 <html data-focus="false">...</html>
 ```
-
-Add `data-focus="false"` to the `<html>` tag to disable the enhancement
-to browser's native focus behavior.
 
 ## Javascript Methods
 
 ### luda(selector).focus(addClass, preventScroll)
 
-``` javascript
+``` bash
+@param {LudaSelector} selector
 @param {boolean} [addClass=true]
 @param {boolean} [preventScroll=false]
+@returns {LudaInstance}
 ```
 
 ``` javascript
+// @example Focus a target by passing in a selector.
 luda('#my-focusable').focus()
 ```
 
-Focus a target by passing in a selector.
-
 ### luda(selector).blur()
 
-``` javascript
-luda('#my-focusable').blur()
+```bash
+@param {LudaSelector} selector
+@returns {LudaInstance}
 ```
 
-Blur a target by passing in a selector.
+``` javascript
+// @example Blur a target by passing in a selector.
+luda('#my-focusable').blur()
+```
