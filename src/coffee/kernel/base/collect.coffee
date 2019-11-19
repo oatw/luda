@@ -1,5 +1,5 @@
 import {Luda} from './luda.coffee'
-import matches from '../matches/helpers/matches.coffee'
+import matches from './matches.coffee'
 import Type from './type.coffee'
 
 

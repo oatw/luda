@@ -19,12 +19,17 @@ luda.include
           val = []
         else
           val = [value]
-        [].forEach.call el.options, (option) ->
-          selected = val.includes readValue(option.value)
-          luda(option).attr 'selected', if selected then '' else null
-          option.selected = selected
+        hasSelected = false
+        options = Array.from el.options
+        options.forEach (o) ->
+          selected = val.includes readValue(o.value)
+          o.selected = selected
+          hasSelected ||= selected
+        el.selectedIndex = -1 unless hasSelected
+        options.forEach (o) ->
+          luda(o).attr 'selected', if o.selected then '' else null
       else
         val = if value is null then '' else parseValue value
-        luda(el).attr 'value', val
         el.value = val
+        luda(el).attr 'value', val
     this

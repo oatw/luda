@@ -9,7 +9,7 @@ luda.include
     self = this
     argReverse = [].reverse.apply(arguments)
     handler = (selector) ->
-      els = luda(selector).els.slice().reverse()
+      els = luda(selector).els.reverse()
       luda(els).insertAfter self
     [].forEach.call argReverse, handler
     this

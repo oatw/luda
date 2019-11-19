@@ -35,6 +35,21 @@ luda.mixin 'tabable',
   #     prevCtrl: string    # optional
   #     nextCtrl: string    # optional
 
+  tabableActiveIndex: ->
+    index = @default?.tabable?.activeIndex or 0
+    @tabableTargets.els.some (it, i) =>
+      return false unless luda(it).hasClass @cls.tabable.active
+      index = i
+      true
+    index
+
+  tabableWrapable: ->
+    wrapAttr = @data.tabable.wrap
+    return false unless wrapAttr
+    wrapable = @root.data wrapAttr
+    return false if wrapable is false
+    @default?.tabable?.wrap
+
   tabableActivate: (index) ->
     return unless luda.isNumeric index
     direction = if index < @tabableActiveIndex() then 'prev' else 'next'
@@ -102,21 +117,6 @@ luda.mixin 'tabable',
     @tabableSetIndicatorsState()
     @tabableSetDirectionCtrlsState()
     true
-
-  tabableActiveIndex: ->
-    index = @default?.tabable?.activeIndex or 0
-    @tabableTargets.els.some (it, i) =>
-      return false unless luda(it).hasClass @cls.tabable.active
-      index = i
-      true
-    index
-
-  tabableWrapable: ->
-    wrapAttr = @data.tabable.wrap
-    return false unless wrapAttr
-    wrapable = @root.data wrapAttr
-    return false if wrapable is false
-    @default?.tabable?.wrap
 
   tabableTransitioning: ->
     'tabableActivating' of this or 'tabableDeactivating' of this
@@ -188,7 +188,7 @@ luda.mixin 'tabable',
     wrapAttr = @data.tabable.wrap
     wrapAttr and attr.push [wrapAttr, @tabableSetDirectionControlState]
     attr: attr
-    dom: [
+    node: [
       [@selector.tabable.targets, @tabableLayout]
       [@selector.tabable.indicators, @tabableSetIndicatorsState]
     ]

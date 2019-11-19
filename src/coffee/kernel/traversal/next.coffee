@@ -7,5 +7,7 @@ import unique from '../base/unique.coffee'
 
 luda.include
 
-  next: (comparator, _all) ->
-    luda collect(unique(pluck(@els, 'nextElementSibling', _all)), comparator)
+  next: (comparator) ->
+    if comparator
+      filter = (n) -> collect([n], comparator).length
+    luda unique(pluck @els, 'nextElementSibling', false, filter)

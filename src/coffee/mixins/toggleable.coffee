@@ -28,6 +28,24 @@ luda.mixin 'toggleable',
   #   toggleable:
   #     target: string  # optional
 
+  toggleableActive: -> @root.hasClass @cls.toggleable.active
+
+  toggleableTriggerable: (e) ->
+    return if @toggleableTransitioning()
+    return true if /key/.test e.type
+    return true unless @root.els[0].contains e.target
+    trigger = @default?.toggleable?.trigger
+    toggleAttr = @data.toggleable.trigger
+    return trigger unless toggleAttr
+    evtPath = e.eventPath()
+    index = evtPath.indexOf(@root.els[0]) + 1
+    evtPath.slice(0, index).some (el) ->
+      ins = luda el
+      return unless ins.hasData toggleAttr
+      trigger = ins.data(toggleAttr) isnt false
+      true
+    trigger
+
   toggleableActivate: ->
     return if @toggleableActive()
     evt = @toggleableTarget.trigger(@evt.toggleable.activate, null, true)[0]
@@ -62,26 +80,8 @@ luda.mixin 'toggleable',
     else
       @toggleableActivate()
 
-  toggleableActive: -> @root.hasClass @cls.toggleable.active
-
   toggleableTransitioning: ->
     'toggleableActivating' of this or 'toggleableDeactivating' of this
-
-  toggleableTriggerable: (e) ->
-    return if @toggleableTransitioning()
-    return true if /key/.test e.type
-    return true unless @root.els[0].contains e.target
-    trigger = @default?.toggleable?.trigger
-    toggleAttr = @data.toggleable.trigger
-    return trigger unless toggleAttr
-    evtPath = e.eventPath()
-    index = evtPath.indexOf(@root.els[0]) + 1
-    evtPath.slice(0, index).some (el) ->
-      ins = luda el
-      return unless ins.hasData toggleAttr
-      trigger = ins.data(toggleAttr) isnt false
-      true
-    trigger
   
   toggleableFocusOpener: (e) ->
     if @toggleableActive()

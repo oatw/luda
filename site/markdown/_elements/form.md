@@ -79,18 +79,30 @@ Default selected `<options>` can be set by adding the `selected` attribute.
 #### Select Options in Javascript
 
 ``` javascript
+// @example Select a specific option of a single select field
+// by passing in the option's value.
 luda('#my-select select').val('value')
-```
-
-Select a specific option of a single select field
-by passing in the option's value.
-
-``` javascript
+// @example Select specific options of a multiple select field
+// by passing in an array which contains the options' values.
 luda('#my-select select').val(['valueOne', 'valueTwo'])
 ```
 
-Select specific options of a multiple select field
-by passing in an array which contains the options' values.
+#### Listen Selected Changes
+
+```javascript
+// @example Do something after a single select fileld selected
+// option chagned.
+luda(document).on('luda:fmSelect:changed', '#my-select', function(event, data){
+  console.log(data.value) // The selected value.
+  console.log(data.selected) // The selected option element.
+})
+// @example Do something after a multiple select filed selected
+// options chagned.
+luda(document).on('luda:fmSelect:changed', '#my-select', function(event, data){
+  console.log(data.value) // The selected values in an array.
+  console.log(data.selected) // The selected option elements in an array.
+})
+```
 
 ### File Picker
 
@@ -116,10 +128,22 @@ The value attribute of the wrapped `<input>` can be used to set a default value.
 #### Reset in Javascript
 
 ``` javascript
+// @example Reset a file picker.
 luda('#my-file [type=file]').val(null)
 ```
 
-Reset a file picker.
+#### Listen File Changes
+
+```javascript
+// @example Do something after a single file fileld file changed.
+luda(document).on('luda:fmFile:changed', '#my-file', function(event, file){
+  console.log(file) // The selected file.
+})
+// @example Do something after a multiple file filed files changed.
+luda(document).on('luda:fmFile:changed', '#my-file', function(event, files){
+  console.log(files) // The selected files in an array.
+})
+```
 
 ### Checkbox
 

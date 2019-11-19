@@ -51,130 +51,142 @@ in the target, so when the disabled area clicked, the target will not be hided.
 ### data-toggle-target
 
 ``` html
+<!-- @example
+Define a target.
+-->
 <div data-toggle-target="demo"></div>
 ```
-
-Define a target.
 
 ### data-toggle-for
 
 ``` html
+<!-- @example
+Define a trigger, the value must be the same as
+the value of its target's data-toggle-target attribute.
+-->
 <div data-toggle-for="demo"></div>
 ```
-
-Define a trigger,
-the value must be the same as the value of its target's `data-toggle-target` attribute.
 
 ### data-toggleable
 
 ``` html
-<div data-toggle-for="demo" data-toggleable></div>
-```
-
+<!-- @example
 Define an anonymous trigger wrapped
 in the target or make the target an anonymous trigger fot itself.
+-->
+<div data-toggle-for="demo" data-toggleable></div>
+```
 
 ### data-toggleable="false"
 
 ``` html
+<!-- @example
+Disable the behavior partially in an anonymous trigger.
+-->
 <div data-toggle-for="demo" data-toggleable>
   <div data-toggleable="false"></div>
 </div>
 ```
 
-Disable the behavior partially in an anonymous trigger.
-
 ### data-toggle-auto-deactivate
 
 ``` html
+<!-- @example
+Make a target automatically deactivated after activated.
+The default value is 3000, which means the target will be deactivated
+automatically after 3000 milliseconds whenever it's activated.
+-->
 <div data-toggle-target="demo" data-toggle-auto-deactivate="4000">...</div>
 ```
-
-Make a target automatically deactivated after activated.
-The default value is `3000`, which means the target will be deactivated
-automatically after 3000 milliseconds whenever it's activated.
 
 ## Javascript Methods
 
 ### luda.toggle(selector).activate()
 
+```bash
+@param {LudaSelector} selector
+@returns {LudaComponentProxy}
+```
+
 ``` javascript
+// @example Activate a target by passing in a selector.
 luda.toggle('#my-toggle').activate()
 ```
 
-Activate a target by passing in a selector.
-
 ### luda.toggle(selector).deactivate()
 
+```bash
+@param {LudaSelector} selector
+@returns {LudaComponentProxy}
+```
+
 ``` javascript
+// @example Deactivate a target by passing in a selector.
 luda.toggle('#my-toggle').deactivate()
 ```
 
-Deactivate a target by passing in a selector.
+### luda.toggle(selector).toggle(force)
 
-### luda.toggle(selector).toggle()
+```bash
+@param {LudaSelector} selector
+@param {boolean} [force]
+@returns {LudaComponentProxy}
+```
 
 ``` javascript
+// @example Activate or deactivate a target depending on its state
+// by passing in a selector.
 luda.toggle('#my-toggle').toggle()
-```
-
-Activate or deactivate a target depending on its state
-by passing in a selector.
-
-``` javascript
+// @example Forcely activate a target.
 luda.toggle('#my-toggle').toggle(true)
-```
-
-Activate a target by passing true.
-
-``` javascript
+// @example Forcely deactivate a target.
 luda.toggle('#my-toggle').toggle(false)
 ```
-
-Deactivate a target by passing true.
 
 ## Dom Events
 
 ### luda:toggle:activate
 
 ``` javascript
+// @example This event will be triggered before
+// the .toggle-active class added to the target.
 luda(document).on('luda:toggle:activate', '#my-toggle', function(event){
   let myToggle = this
-  event.preventDefault() // Prevent the target from being activated if necessary.
+  // Prevent the target from being activated if necessary.
+  event.preventDefault()
 })
 ```
-
-Will be triggered before the `.toggle-active` class added to the target.
 
 ### luda:toggle:activated
 
 ``` javascript
+// @example This event be triggered after
+// the .toggle-active class added to the target and
+// CSS transition finished.
 luda(document).on('luda:toggle:activated', '#my-toggle', function(event){
   let myToggle = this
 })
 ```
 
-Will be triggered after the `.toggle-active` class added to the target
-and CSS transition finished.
-
 ### luda:toggle:deactivate
 
 ``` javascript
+// @example This event will be triggered before
+// the .toggle-active class removed from the target.
 luda(document).on('luda:toggle:deactivate', '#my-toggle', function(event){
   let myToggle = this
-  event.preventDefault() // Prevent the target from being deactivated if necessary.
+  // Prevent the target from being deactivated if necessary.
+  event.preventDefault()
 })
 ```
-
-Will be triggered before the `.toggle-active` class removed from the target.
 
 ### luda:toggle:deactivated
 
 ``` javascript
+// @example This event will be triggered after
+// the .toggle-active class removed from the target and
+// CSS transition finished.
 luda(document).on('luda:toggle:deactivated', '#my-toggle', function(event){
   let myToggle = this
 })
 ```
-
-Will be triggered after the `.toggle-active` class removed from the target
-and CSS transition finished.

@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en" data-init-theme="{{ theme }}" data-applied-theme="{{ theme }}" data-theme-path-pattern="{{ theme_path_pattern }}">
   <head>
-    <title>{{ page.title }} | Luda - A lightweight and responsive UI framework for modern web development.</title>
+    <title>{{ page.title }} | Luda - A library helps to build cross-framework UI components.</title>
     {% include head.md %}
     <link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}">
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>

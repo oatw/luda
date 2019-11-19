@@ -89,6 +89,10 @@ luda.component 'dropdown', '.dropdown-absolute,
           parentMenu.els[0] is menu.els[0]
         )
 
+  create: -> @toggleableCreate()
+
+  destroy: -> @toggleableDestroy()
+
   listen: ->
     self = this
     [

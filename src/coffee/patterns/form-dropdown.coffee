@@ -18,21 +18,32 @@ luda.component 'fmDropdown'
   data:
     label: 'fm-dropdown-label'
 
+  evt:
+    changed: 'luda:fmDropdown:changed'
+
   splitor: '   '
 
 .protect
 
-  disableSimulator: ->
+  initSimulator: ->
     @simulator.data('auto', false).attr('readonly', '')
 
-  updateValue: ->
+  updateSimulatorValue: ->
     values = []
     @options.els.forEach (input, index) =>
       return unless input.checked
-      label = luda @labels.els[index]
+      label = @labels.eq index
       value = label.data(@data.label) or label.text()
       values.push value if value and not values.includes value
     @simulator.attr 'value', values.join(@splitor)
+
+  updateValue: ->
+    @updateSimulatorValue()
+    oldVal = @selectedVal
+    checked = @options.els.filter (input) -> input.checked
+    @selectedVal = checked.map (input) -> luda(input).val()
+    return if not oldVal or luda.arrayEqual(@selectedVal, oldVal)
+    @root.trigger @evt.changed, {value: @selectedVal, selected: checked}
 
   triggerClick: -> @simulator.trigger 'click'
 
@@ -44,15 +55,16 @@ luda.component 'fmDropdown'
     simulator: @selector.simulator
 
   create: ->
-    @disableSimulator()
+    @initSimulator()
     @updateValue()
 
   watch: ->
-    dom: [
+    node: [
       [@selector.options, @updateValue]
     ]
     attr: [
       ['checked', @selector.options, @updateValue]
+      ['type', @selector.options, @updateValue]
     ]
 
   listen: ->

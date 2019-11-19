@@ -35,8 +35,9 @@ Press the `Tab` key alone or with the `Shift` together to focus these radios.
 ### data-tabulate="false"
 
 ``` html
+<!-- @example
+Add data-tabulate="false" to the <html> tag
+to disable the enhancement to the Tab key.
+-->
 <html data-tabulate="false">...</html>
 ```
-
-Add `data-tabulate="false"` to the `<html>` tag
-to disable the enhancement to the `Tab` key.

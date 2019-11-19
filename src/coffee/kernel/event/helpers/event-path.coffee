@@ -8,4 +8,7 @@ export default (event) ->
   else if event.path
     event.path
   else
-    [event.target].concat(pluck [event.target], 'parentNode', true)
+    path = [event.target]
+    path = path.concat(pluck path, 'parentNode', true)
+    path.push window if document.contains event.target
+    path

@@ -1,6 +1,6 @@
 import luda from '../../base/luda.coffee'
 import Type from '../../base/type.coffee'
-import matches from '../../matches/helpers/matches.coffee'
+import matches from '../../base/matches.coffee'
 import '../../event/on.coffee'
 import '../../event/off.coffee'
 import '../../traversal/parent.coffee'
