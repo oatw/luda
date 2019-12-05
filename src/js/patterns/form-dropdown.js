@@ -13,12 +13,15 @@
     data: {
       label: 'fm-dropdown-label'
     },
+    evt: {
+      changed: 'luda:fmDropdown:changed'
+    },
     splitor: '   '
   }).protect({
-    disableSimulator: function() {
+    initSimulator: function() {
       return this.simulator.data('auto', false).attr('readonly', '');
     },
-    updateValue: function() {
+    updateSimulatorValue: function() {
       var values;
       values = [];
       this.options.els.forEach((input, index) => {
@@ -26,13 +29,31 @@
         if (!input.checked) {
           return;
         }
-        label = luda(this.labels.els[index]);
+        label = this.labels.eq(index);
         value = label.data(this.data.label) || label.text();
         if (value && !values.includes(value)) {
           return values.push(value);
         }
       });
       return this.simulator.attr('value', values.join(this.splitor));
+    },
+    updateValue: function() {
+      var checked, oldVal;
+      this.updateSimulatorValue();
+      oldVal = this.selectedVal;
+      checked = this.options.els.filter(function(input) {
+        return input.checked;
+      });
+      this.selectedVal = checked.map(function(input) {
+        return luda(input).val();
+      });
+      if (!oldVal || luda.arrayEqual(this.selectedVal, oldVal)) {
+        return;
+      }
+      return this.root.trigger(this.evt.changed, {
+        value: this.selectedVal,
+        selected: checked
+      });
     },
     triggerClick: function() {
       return this.simulator.trigger('click');
@@ -46,13 +67,13 @@
       };
     },
     create: function() {
-      this.disableSimulator();
+      this.initSimulator();
       return this.updateValue();
     },
     watch: function() {
       return {
-        dom: [[this.selector.options, this.updateValue]],
-        attr: [['checked', this.selector.options, this.updateValue]]
+        node: [[this.selector.options, this.updateValue]],
+        attr: [['checked', this.selector.options, this.updateValue], ['type', this.selector.options, this.updateValue]]
       };
     },
     listen: function() {

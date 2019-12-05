@@ -1,5 +1,5 @@
 /*! 
-   * Luda 0.3.0 | https://oatw.github.io/luda
+   * Luda 0.3.1 | https://oatw.github.io/luda
    * Copyright 2019 Oatw | https://oatw.blog
    * MIT license | http://opensource.org/licenses/MIT
    */
@@ -343,6 +343,30 @@
     return `${str[0].toLowerCase()}${str.slice(1).replace(pattern$1, replacer$1)}`;
   }
 
+  function arrayEqual(a, b, compareOrder) {
+    if (!(a && b)) {
+      return false;
+    }
+    if (a === b) {
+      return true;
+    }
+    if (a.length !== b.length) {
+      return false;
+    }
+    if (a.length === 0) {
+      return true;
+    }
+    if (compareOrder) {
+      return a.every(function(it, index) {
+        return it === b[index];
+      });
+    } else {
+      return !a.some(function(it) {
+        return !b.includes(it);
+      });
+    }
+  }
+
   var guid;
 
   guid = 0;
@@ -351,17 +375,29 @@
     return guid += 1;
   }
 
-  function pluck(arr, prop, deep) {
+  function pluck(arr, prop, deep, filter) {
     var plucked;
     plucked = [];
+    if (!Type.isArray(arr)) {
+      arr = [arr];
+    }
     arr.forEach(function(item) {
       var results, val;
       val = item[prop];
       results = [];
-      while (val !== null) {
-        plucked.push(val);
-        if (!deep) {
-          break;
+      while (val != null) {
+        if (filter) {
+          if (filter(val)) {
+            plucked.push(val);
+            if (!deep) {
+              break;
+            }
+          }
+        } else {
+          plucked.push(val);
+          if (!deep) {
+            break;
+          }
         }
         results.push(val = val[prop]);
       }
@@ -379,11 +415,12 @@
     });
   }
 
-  ['isString', 'isFunction', 'isArray', 'isObject', 'isBool', 'isNumeric', 'isDecimalism', 'isElement'].forEach(function(key) {
+  ['isString', 'isFunction', 'isArray', 'isObject', 'isBool', 'isNumeric', 'isElement'].forEach(function(key) {
     return luda$1.extend(key, Type[key]);
   });
 
   luda$1.extend({
+    arrayEqual: arrayEqual,
     camelCase: camelCase,
     dashCase: dashCase,
     guid: guid$1,
@@ -704,22 +741,15 @@
 
   luda$1.include({
     parent: function(comparator) {
-      var parents;
-      if (!comparator) {
-        return luda$1(unique(pluck(this.els, 'parentNode')));
+      var plucked;
+      if (comparator) {
+        plucked = pluck(this.els, 'parentElement', false, function(p) {
+          return collect([p], comparator).length;
+        });
+      } else {
+        plucked = pluck(this.els, 'parentNode');
       }
-      parents = [];
-      this.els.forEach(function(el) {
-        var matched, parent;
-        while (parent = el.parentNode) {
-          matched = collect([parent], comparator)[0];
-          if (matched) {
-            return parents.push(matched);
-          }
-          el = parent;
-        }
-      });
-      return luda$1(unique(parents));
+      return luda$1(unique(plucked));
     }
   });
 
@@ -928,12 +958,18 @@
   }, 'LUDA ');
 
   function eventPath(event) {
+    var path;
     if (event.composedPath) {
       return event.composedPath();
     } else if (event.path) {
       return event.path;
     } else {
-      return [event.target].concat(pluck([event.target], 'parentNode', true));
+      path = [event.target];
+      path = path.concat(pluck(path, 'parentNode', true));
+      if (document.contains(event.target)) {
+        path.push(window);
+      }
+      return path;
     }
   }
 
@@ -1535,7 +1571,7 @@
     });
   };
 
-  var config$1, createObserver, cur, executeMutations, findSameMutation, nodesEqual, runAttrCallbacks, runDomCallbacks, stopWatch, watch;
+  var config$1, createObserver, cur, executeMutations, findSameMutation, nodesEqual, runAttrCallbacks, runNodeCallbacks, stopWatch, watch;
 
   config$1 = {
     childList: true,
@@ -1555,23 +1591,23 @@
     }
   };
 
-  runDomCallbacks = function(type, mutation, watches, nestable) {
+  runNodeCallbacks = function(type, mutation, watches, nestable) {
     var C, ins, mu, nodes;
     ins = mutation.ins;
     C = ins.constructor;
     mu = mutation.mu;
     nodes = Array.from(mu[`${type}Nodes`]);
-    return watches.dom.forEach(function(dom) {
+    return watches.node.forEach(function(node) {
       var els;
       els = [];
       nodes.forEach(function(n) {
-        return els = els.concat(findAll(dom.selector, n));
+        return els = els.concat(findAll(node.selector, n));
       });
       if (!els.length) {
         return;
       }
       !nestable && (els = unnested(ins, unique(els)));
-      return els.length && dom.callbacks.forEach(function(callback) {
+      return els.length && node.callbacks.forEach(function(callback) {
         var ctx;
         ctx = cur(ins, callback, els);
         if (callback !== C.prototype.cleanTraversal) {
@@ -1591,7 +1627,7 @@
     target = mu.target;
     oldVal = mu.oldValue;
     return name && watches.attr.forEach(function(attr) {
-      if (name !== attr.name) {
+      if (!attr.name.includes(name)) {
         return;
       }
       if (!matches(target, attr.selector)) {
@@ -1611,25 +1647,14 @@
 
   executeMutations = function(C, mutations, nestable) {
     return mutations.forEach(function(mutation) {
-      runDomCallbacks('added', mutation, C.watches, nestable);
-      runDomCallbacks('removed', mutation, C.watches, nestable);
+      runNodeCallbacks('added', mutation, C.watches, nestable);
+      runNodeCallbacks('removed', mutation, C.watches, nestable);
       return runAttrCallbacks(mutation, C.watches, nestable);
     });
   };
 
   nodesEqual = function(nodesOne, nodesTwo) {
-    var itemsOne, itemsTwo;
-    if (nodesOne.length !== nodesTwo.length) {
-      return false;
-    }
-    if (nodesOne.length === 0 && nodesTwo.length === 0) {
-      return true;
-    }
-    itemsOne = Array.from(nodesOne);
-    itemsTwo = Array.from(nodesTwo);
-    return !itemsOne.some(function(node, index) {
-      return node !== itemsTwo[index];
-    });
+    return arrayEqual(Array.from(nodesOne), Array.from(nodesTwo), true);
   };
 
   findSameMutation = function(mutations, mu) {
@@ -1705,7 +1730,7 @@
     if (!C.watches) {
       conf = C.helpers.watch.call(C.prototype);
       C.watches = {
-        dom: (conf.dom || []).map(function(d) {
+        node: (conf.node || []).map(function(d) {
           return {
             selector: Type.isFunction(d[0]) ? '*' : d[0],
             callbacks: Type.isFunction(d[0]) ? d : d.slice(1)
@@ -1713,7 +1738,7 @@
         }),
         attr: (conf.attr || []).map(function(a) {
           return {
-            name: a[0],
+            name: splitValues(a[0]),
             selector: Type.isFunction(a[1]) ? '*' : a[1],
             callbacks: Type.isFunction(a[1]) ? a.slice(1) : a.slice(2)
           };
@@ -1772,14 +1797,14 @@
             C.helpers.watch = function() {
               var watches;
               watches = definedWatch.call(this);
-              watches.dom || (watches.dom = []);
-              watches.dom.unshift([proto.cleanTraversal]);
+              watches.node || (watches.node = []);
+              watches.node.unshift([proto.cleanTraversal]);
               return watches;
             };
           } else {
             C.helpers.watch = function() {
               return {
-                dom: [[proto.cleanTraversal]]
+                node: [[proto.cleanTraversal]]
               };
             };
           }
@@ -2004,7 +2029,7 @@
   var factory$1;
 
   luda$1.extend('component', factory$1 = function(name, root) {
-    var Component;
+    var Component, occupied;
     Component = (function() {
       class Component extends Base$1 {}
       Component.id = camelCase(`Component${(name ? '-' + name : '_' + guid$1())}`);
@@ -2030,10 +2055,11 @@
       return Component;
 
     }).call(this);
+    occupied = name && name in luda$1;
     if (name) {
       luda$1.extend(name, createProxy(Component));
     }
-    luda$1.ready(function() {
+    !occupied && luda$1.ready(function() {
       if (Type.isDocument(Component.root)) {
         Component.create(Component.root);
       }
@@ -2363,7 +2389,7 @@
         return this.els[0] && getValue(this.els[0]);
       }
       this.els.forEach(function(el) {
-        var val;
+        var hasSelected, options, val;
         if (el.tagName === 'SELECT') {
           if (Type.isArray(value)) {
             val = value;
@@ -2372,16 +2398,24 @@
           } else {
             val = [value];
           }
-          return [].forEach.call(el.options, function(option) {
+          hasSelected = false;
+          options = Array.from(el.options);
+          options.forEach(function(o) {
             var selected;
-            selected = val.includes(readValue(option.value));
-            luda$1(option).attr('selected', selected ? '' : null);
-            return option.selected = selected;
+            selected = val.includes(readValue(o.value));
+            o.selected = selected;
+            return hasSelected || (hasSelected = selected);
+          });
+          if (!hasSelected) {
+            el.selectedIndex = -1;
+          }
+          return options.forEach(function(o) {
+            return luda$1(o).attr('selected', o.selected ? '' : null);
           });
         } else {
           val = value === null ? '' : parseValue(value);
-          luda$1(el).attr('value', val);
-          return el.value = val;
+          el.value = val;
+          return luda$1(el).attr('value', val);
         }
       });
       return this;
@@ -2526,7 +2560,7 @@
       argReverse = [].reverse.apply(arguments);
       handler = function(selector) {
         var els;
-        els = luda$1(selector).els.slice().reverse();
+        els = luda$1(selector).els.reverse();
         return luda$1(els).insertAfter(self);
       };
       [].forEach.call(argReverse, handler);
@@ -2795,20 +2829,6 @@
     }
   });
 
-  luda$1.include({
-    matches: function(selector) {
-      if (!this.els.length) {
-        return false;
-      }
-      if (!selector) {
-        return false;
-      }
-      return this.els.some(function(el) {
-        return matches(el, selector);
-      });
-    }
-  });
-
   var Mixin;
 
   var Mixin$1 = Mixin = class Mixin {
@@ -3054,26 +3074,42 @@
   });
 
   luda$1.include({
-    next: function(comparator, _all) {
-      return luda$1(collect(unique(pluck(this.els, 'nextElementSibling', _all)), comparator));
-    }
-  });
-
-  luda$1.include({
     nextAll: function(comparator) {
-      return this.next(comparator, true);
+      var plucked;
+      plucked = pluck(this.els, 'nextElementSibling', true);
+      return luda$1(collect(unique(plucked), comparator));
     }
   });
 
   luda$1.include({
-    prev: function(comparator, _al) {
-      return luda$1(collect(unique(pluck(this.els, 'previousElementSibling', _al)), comparator));
+    next: function(comparator) {
+      var filter;
+      if (comparator) {
+        filter = function(n) {
+          return collect([n], comparator).length;
+        };
+      }
+      return luda$1(unique(pluck(this.els, 'nextElementSibling', false, filter)));
     }
   });
 
   luda$1.include({
     prevAll: function(comparator) {
-      return this.prev(comparator, true);
+      var plucked;
+      plucked = pluck(this.els, 'previousElementSibling', true);
+      return luda$1(collect(unique(plucked), comparator));
+    }
+  });
+
+  luda$1.include({
+    prev: function(comparator) {
+      var filter;
+      if (comparator) {
+        filter = function(p) {
+          return collect([p], comparator).length;
+        };
+      }
+      return luda$1(unique(pluck(this.els, 'previousElementSibling', false, filter)));
     }
   });
 
@@ -3099,22 +3135,23 @@
     // data:
     //   disable:
     //     tabIndex: string  # required
+    disableTargetProp: function() {
+      var ref;
+      return ((ref = this.attr) != null ? ref.disable : void 0) || 'disabled';
+    },
     disableCreate: function() {
-      var dataAttr, ref, rootEl, tabIndex;
-      rootEl = this.root.els[0];
-      tabIndex = rootEl.tabIndex;
+      var dataAttr, tabIndex;
+      tabIndex = this.root.prop('tabIndex');
       dataAttr = this.data.disable.tabIndex;
       if (!this.root.hasData(dataAttr)) {
         this.root.data(dataAttr, tabIndex);
       }
-      rootEl.tabIndex = -1;
-      return rootEl[((ref = this.attr) != null ? ref.disable : void 0) || 'disabled'] = true;
+      return this.root.prop('tabIndex', -1).prop(this.disableTargetProp(), true);
     },
     disableDestroy: function() {
-      var ref, rootEl;
-      rootEl = this.root.els[0];
-      rootEl.tabIndex = this.root.data(this.data.disable.tabIndex);
-      return rootEl[((ref = this.attr) != null ? ref.disable : void 0) || 'disabled'] = false;
+      var tabIndex;
+      tabIndex = this.root.data(this.data.disable.tabIndex);
+      return this.root.prop('tabIndex', tabIndex).prop(this.disableTargetProp(), false);
     }
   });
 
@@ -3134,15 +3171,17 @@
   });
 
   luda.component('enter', document).protect({
-    data: {
-      enable: 'enter'
-    },
-    selectors: ['input[type=checkbox]', 'input[type=radio]', '[tabindex]'],
+    selectors: ['input[type=checkbox]', 'input[type=radio]', '[tabindex]']
+  }).protect({
+    disabled: function() {
+      return this.html.data('enter') === false;
+    }
+  }).protect({
     trigger: function(e) {
-      if (this.html.data(this.data.enable) === false) {
+      if (this.disabled()) {
         return;
       }
-      if (!luda(e.target).matches(this.selectors.join(','))) {
+      if (!luda(e.target).is(this.selectors.join(','))) {
         return;
       }
       e.preventDefault();
@@ -3162,18 +3201,17 @@
     cls: {
       focus: 'focus'
     },
-    data: {
-      enable: 'focus'
-    },
     selector: {
       focused: '.focus',
       always: ['select', 'textarea', ':not(.btn-check):not(.btn-radio):not(.btn-file) > input:not([type=button]):not([type=submit]):not([type=reset])', '[contenteditable]', '[contenteditable=true]'],
       nested: ['select', '[contenteditable]', '[contenteditable=true]'],
       touch: 'input[type=range]'
-    },
+    }
+  }).protect({
     disabled: function() {
-      return this.html.data(this.data.enable) === false;
-    },
+      return this.html.data('focus') === false;
+    }
+  }).protect({
     addClass: function(node) {
       if (this.disabled()) {
         return;
@@ -3198,12 +3236,12 @@
       (evt = this.evtTriggeredFocus) && delete this.evtTriggeredFocus;
       if (evt && /key/.test(evt)) {
         target = node;
-      } else if (luda(node).matches(this.selector.always.join(','))) {
+      } else if (luda(node).is(this.selector.always.join(','))) {
         target = node;
-      } else if (luda(node).matches(this.selector.nested.join(' *,'))) {
+      } else if (luda(node).is(this.selector.nested.join(' *,'))) {
         parent = this.selector.nested.join(',');
         e.eventPath().some(function(el) {
-          return luda(el).matches(parent) && (target = el);
+          return luda(el).is(parent) && (target = el);
         });
       }
       return this.addClass(target);
@@ -3279,10 +3317,12 @@
   });
 
   luda.component('tabulate', document).protect({
-    selector: 'input[type=radio]:not([disabled])',
-    data: {
-      tabulate: 'tabulate'
-    },
+    selector: 'input[type=radio]:not([disabled])'
+  }).protect({
+    disabled: function() {
+      return this.html.data('tabulate') === false;
+    }
+  }).protect({
     findSiblings: function(radio) {
       var index, name, radios, selector;
       selector = this.selector;
@@ -3300,7 +3340,7 @@
     },
     trigger: function(e) {
       var next, prev;
-      if (this.html.data(this.data.tabulate) === false) {
+      if (this.disabled()) {
         return;
       }
       if (e.shiftKey) {
@@ -3345,6 +3385,38 @@
     // selector:
     //   toggleable:
     //     target: string  # optional
+    toggleableActive: function() {
+      return this.root.hasClass(this.cls.toggleable.active);
+    },
+    toggleableTriggerable: function(e) {
+      var evtPath, index, ref, ref1, toggleAttr, trigger;
+      if (this.toggleableTransitioning()) {
+        return;
+      }
+      if (/key/.test(e.type)) {
+        return true;
+      }
+      if (!this.root.els[0].contains(e.target)) {
+        return true;
+      }
+      trigger = (ref = this.default) != null ? (ref1 = ref.toggleable) != null ? ref1.trigger : void 0 : void 0;
+      toggleAttr = this.data.toggleable.trigger;
+      if (!toggleAttr) {
+        return trigger;
+      }
+      evtPath = e.eventPath();
+      index = evtPath.indexOf(this.root.els[0]) + 1;
+      evtPath.slice(0, index).some(function(el) {
+        var ins;
+        ins = luda(el);
+        if (!ins.hasData(toggleAttr)) {
+          return;
+        }
+        trigger = ins.data(toggleAttr) !== false;
+        return true;
+      });
+      return trigger;
+    },
     toggleableActivate: function() {
       var evt;
       if (this.toggleableActive()) {
@@ -3394,40 +3466,8 @@
         return this.toggleableActivate();
       }
     },
-    toggleableActive: function() {
-      return this.root.hasClass(this.cls.toggleable.active);
-    },
     toggleableTransitioning: function() {
       return 'toggleableActivating' in this || 'toggleableDeactivating' in this;
-    },
-    toggleableTriggerable: function(e) {
-      var evtPath, index, ref, ref1, toggleAttr, trigger;
-      if (this.toggleableTransitioning()) {
-        return;
-      }
-      if (/key/.test(e.type)) {
-        return true;
-      }
-      if (!this.root.els[0].contains(e.target)) {
-        return true;
-      }
-      trigger = (ref = this.default) != null ? (ref1 = ref.toggleable) != null ? ref1.trigger : void 0 : void 0;
-      toggleAttr = this.data.toggleable.trigger;
-      if (!toggleAttr) {
-        return trigger;
-      }
-      evtPath = e.eventPath();
-      index = evtPath.indexOf(this.root.els[0]) + 1;
-      evtPath.slice(0, index).some(function(el) {
-        var ins;
-        ins = luda(el);
-        if (!ins.hasData(toggleAttr)) {
-          return;
-        }
-        trigger = ins.data(toggleAttr) !== false;
-        return true;
-      });
-      return trigger;
     },
     toggleableFocusOpener: function(e) {
       var ins;
@@ -3645,38 +3685,54 @@
       file: 'input[type=file]',
       simulator: 'input:not([type=file])'
     },
+    evt: {
+      changed: 'luda:fmFile:changed'
+    },
     splitor: '  '
   }).protect({
+    placeholder: function() {
+      return this.file.attr('placeholder');
+    },
+    value: function() {
+      return this.file.attr('value');
+    },
+    multiple: function() {
+      return this.file.prop('multiple');
+    }
+  }).protect({
+    files: function() {
+      return Array.from(this.file.prop('files'));
+    },
     insertSimulator: function() {
-      var simulator;
       if (this.simulator.length) {
         return;
       }
-      simulator = luda('<input>');
-      simulator.els[0].tabIndex = -1;
-      return simulator.insertAfter(this.file);
+      return luda('<input>').prop('tabIndex', -1).attr('placeholder', this.placeholder()).insertAfter(this.file);
     },
-    updatePlaceholder: function() {
-      var placeholder;
-      if (!(placeholder = this.file.attr('placeholder'))) {
-        return;
-      }
-      return this.simulator.attr('placeholder', placeholder);
-    },
-    updateValue: function() {
+    updateSimulatorValue: function() {
       var value, values;
-      values = Array.from(this.file.els[0].files).map(function(f) {
+      values = this.files().map(function(f) {
         return f.name;
       });
-      value = values.join(this.splitor) || this.file.attr('value') || '';
+      value = values.join(this.splitor) || this.value() || '';
       return this.simulator.attr('value', value);
     },
-    tryReset: function(target, oldVal) {
-      if (this.file.attr('value') !== '') {
+    updateValue: function() {
+      var oldFile, val;
+      this.updateSimulatorValue();
+      oldFile = this.selectedFile;
+      this.selectedFile = this.files();
+      if (!oldFile || luda.arrayEqual(this.selectedFile, oldFile)) {
         return;
       }
-      this.file.els[0].value = '';
-      return this.file.attr('value', oldVal);
+      val = this.multiple() ? this.selectedFile : this.selectedFile[0];
+      return this.file.trigger(this.evt.changed, val);
+    },
+    tryReset: function(target, oldVal) {
+      if (this.value() !== '') {
+        return;
+      }
+      return this.file.prop('value', '').attr('value', oldVal);
     }
   }).help({
     find: function() {
@@ -3692,7 +3748,6 @@
     },
     create: function() {
       this.insertSimulator();
-      this.updatePlaceholder();
       return this.updateValue();
     },
     listen: function() {
@@ -3710,15 +3765,27 @@
     data: {
       default: 'data-fm-select_default-selected',
       defaultMarked: 'data-fm-select_default-marked'
+    },
+    evt: {
+      changed: 'luda:fmSelect:changed'
+    }
+  }).protect({
+    placeholder: function() {
+      return this.select.attr('placeholder');
+    },
+    multiple: function() {
+      return this.select.prop('multiple');
+    },
+    options: function() {
+      return Array.from(this.select.prop('options'));
     }
   }).protect({
     tryEmpty: function() {
-      var select, selected;
-      select = this.select.els[0];
-      selected = Array.from(select.options).some(function(o) {
+      var selected;
+      selected = this.options().some(function(o) {
         return luda(o).hasAttr('selected');
       });
-      return !selected && (select.selectedIndex = -1);
+      return !selected && this.select.prop('selectedIndex', -1);
     },
     markSelected: function(markDefault) {
       markDefault = markDefault === true;
@@ -3728,7 +3795,7 @@
       if (markDefault) {
         this.root.data(this.data.defaultMarked, '');
       }
-      return Array.from(this.select.els[0].options).forEach((o) => {
+      return this.options().forEach((o) => {
         var option, val;
         option = luda(o);
         if (markDefault) {
@@ -3740,39 +3807,48 @@
         }
       });
     },
-    initSimulator: function() {
-      var simulator;
-      if (this.select.els[0].multiple) {
+    toggleSimulator: function() {
+      if (this.multiple()) {
         return this.simulator.remove();
       }
       if (this.simulator.length) {
         return;
       }
-      simulator = luda('<input>');
-      simulator.els[0].tabIndex = -1;
-      simulator.insertAfter(this.select);
-      this.updatePlaceholder();
-      return this.updateValue();
+      return luda('<input>').prop('tabIndex', -1).attr('placeholder', this.placeholder()).insertAfter(this.select);
     },
-    updatePlaceholder: function() {
-      if (this.select.els[0].multiple) {
+    updateSimulatorValue: function() {
+      var selected, val;
+      if (this.multiple()) {
         return;
       }
-      return this.simulator.attr('placeholder', this.select.attr('placeholder'));
-    },
-    updateValue: function() {
-      var select, selected, val;
-      select = this.select.els[0];
-      if (select.multiple) {
-        return;
-      }
-      selected = select.options[select.selectedIndex];
+      selected = this.options()[this.select.prop('selectedIndex')];
       val = selected ? luda(selected).text() : '';
       return this.simulator.attr('value', val);
     },
+    updateValue: function() {
+      var oldVal, selected, val;
+      this.updateSimulatorValue();
+      oldVal = this.selectedVal;
+      val = this.select.val();
+      this.selectedVal = luda.isArray(val) ? val : [val];
+      if (!oldVal || luda.arrayEqual(this.selectedVal, oldVal)) {
+        return;
+      }
+      if (this.multiple()) {
+        selected = this.options().filter(function(o) {
+          return o.selected;
+        });
+      } else {
+        selected = this.options()[this.select.prop('selectedIndex')];
+      }
+      return this.select.trigger(this.evt.changed, {
+        value: val,
+        selected: selected
+      });
+    },
     reset: function() {
-      this.select.els[0].selectedIndex = -1;
-      Array.from(this.select.els[0].options).forEach((o) => {
+      this.select.prop('selectedIndex', -1);
+      this.options().forEach((o) => {
         return o.selected = luda(o).hasData(this.data.default);
       });
       return this.markSelected();
@@ -3787,12 +3863,13 @@
     create: function() {
       this.tryEmpty();
       this.markSelected(true);
-      return this.initSimulator();
+      this.toggleSimulator();
+      return this.updateValue();
     },
     watch: function() {
       return {
-        dom: [[this.selector.options, this.tryEmpty, this.updateValue]],
-        attr: [['selected', this.selector.options, this.updateValue], ['multiple', this.selector.select, this.initSimulator]]
+        node: [[this.selector.options, this.tryEmpty, this.updateValue]],
+        attr: [['selected', this.selector.options, this.tryEmpty, this.updateValue], ['multiple', this.selector.select, this.toggleSimulator, this.updateValue]]
       };
     },
     listen: function() {
@@ -3832,6 +3909,30 @@
     //     indicators: string  # required
     //     prevCtrl: string    # optional
     //     nextCtrl: string    # optional
+    tabableActiveIndex: function() {
+      var index, ref, ref1;
+      index = ((ref = this.default) != null ? (ref1 = ref.tabable) != null ? ref1.activeIndex : void 0 : void 0) || 0;
+      this.tabableTargets.els.some((it, i) => {
+        if (!luda(it).hasClass(this.cls.tabable.active)) {
+          return false;
+        }
+        index = i;
+        return true;
+      });
+      return index;
+    },
+    tabableWrapable: function() {
+      var ref, ref1, wrapAttr, wrapable;
+      wrapAttr = this.data.tabable.wrap;
+      if (!wrapAttr) {
+        return false;
+      }
+      wrapable = this.root.data(wrapAttr);
+      if (wrapable === false) {
+        return false;
+      }
+      return (ref = this.default) != null ? (ref1 = ref.tabable) != null ? ref1.wrap : void 0 : void 0;
+    },
     tabableActivate: function(index) {
       var direction;
       if (!luda.isNumeric(index)) {
@@ -3922,30 +4023,6 @@
       this.tabableSetIndicatorsState();
       this.tabableSetDirectionCtrlsState();
       return true;
-    },
-    tabableActiveIndex: function() {
-      var index, ref, ref1;
-      index = ((ref = this.default) != null ? (ref1 = ref.tabable) != null ? ref1.activeIndex : void 0 : void 0) || 0;
-      this.tabableTargets.els.some((it, i) => {
-        if (!luda(it).hasClass(this.cls.tabable.active)) {
-          return false;
-        }
-        index = i;
-        return true;
-      });
-      return index;
-    },
-    tabableWrapable: function() {
-      var ref, ref1, wrapAttr, wrapable;
-      wrapAttr = this.data.tabable.wrap;
-      if (!wrapAttr) {
-        return false;
-      }
-      wrapable = this.root.data(wrapAttr);
-      if (wrapable === false) {
-        return false;
-      }
-      return (ref = this.default) != null ? (ref1 = ref.tabable) != null ? ref1.wrap : void 0 : void 0;
     },
     tabableTransitioning: function() {
       return 'tabableActivating' in this || 'tabableDeactivating' in this;
@@ -4051,7 +4128,7 @@
       wrapAttr && attr.push([wrapAttr, this.tabableSetDirectionControlState]);
       return {
         attr: attr,
-        dom: [[this.selector.tabable.targets, this.tabableLayout], [this.selector.tabable.indicators, this.tabableSetIndicatorsState]]
+        node: [[this.selector.tabable.targets, this.tabableLayout], [this.selector.tabable.indicators, this.tabableSetIndicatorsState]]
       };
     },
     tabableListen: function() {
@@ -4106,6 +4183,15 @@
         nextCtrl: '.carousel-next'
       }
     }
+  }).protect({
+    interval: function() {
+      var duration;
+      duration = this.root.data(this.data.interval);
+      if (duration === false) {
+        return false;
+      }
+      return Math.abs(parseInt(duration, 10)) || this.default.interval;
+    }
   }).include(luda.mixin('tabable').alias({
     activate: 'tabableActivate',
     next: 'tabableNext',
@@ -4144,17 +4230,26 @@
       return this.intervaling = setTimeout(handler, this.nextInterval);
     }
   }).protect(luda.mixin('tabable').all()).protect({
-    interval: function() {
-      var duration;
-      duration = this.root.data(this.data.interval);
-      if (duration === false) {
-        return false;
-      }
-      return Math.abs(parseInt(duration, 10)) || this.default.interval;
+    togglePath: function(path, action) {
+      var targets;
+      targets = path.filter((el) => {
+        return this.con.contains(el);
+      });
+      return this.con.create(targets).forEach(function(ins) {
+        return ins[action]();
+      });
     },
-    touchendPlay: function() {
+    pauseOnEvt: function(e) {
+      return this.togglePath(e.eventPath(), 'pause');
+    },
+    playOnEvt: function(e) {
+      return this.togglePath(e.eventPath(), 'play');
+    },
+    playOnTouchend: function(e) {
+      var path;
+      path = e.eventPath();
       return setTimeout(() => {
-        return this.play();
+        return this.togglePath(path, 'play');
       });
     }
   }).help({
@@ -4176,7 +4271,7 @@
       return watches;
     },
     listen: function() {
-      return this.tabableListen().concat([['swipeleft', this.tabableNextOnEvent], ['swiperight', this.tabablePrevOnEvent], ['touchstart mouseover', this.pause], ['mouseout', this.play], ['touchend', this.touchendPlay]]);
+      return this.tabableListen().concat([['swipeleft', this.tabableNextOnEvent], ['swiperight', this.tabablePrevOnEvent], ['touchstart mouseover', this.pauseOnEvt], ['mouseout', this.playOnEvt], ['touchend', this.playOnTouchend]]);
     }
   });
 
@@ -4282,6 +4377,12 @@
         }
       });
     },
+    create: function() {
+      return this.toggleableCreate();
+    },
+    destroy: function() {
+      return this.toggleableDestroy();
+    },
     listen: function() {
       var self;
       self = this;
@@ -4328,12 +4429,15 @@
     data: {
       label: 'fm-dropdown-label'
     },
+    evt: {
+      changed: 'luda:fmDropdown:changed'
+    },
     splitor: '   '
   }).protect({
-    disableSimulator: function() {
+    initSimulator: function() {
       return this.simulator.data('auto', false).attr('readonly', '');
     },
-    updateValue: function() {
+    updateSimulatorValue: function() {
       var values;
       values = [];
       this.options.els.forEach((input, index) => {
@@ -4341,13 +4445,31 @@
         if (!input.checked) {
           return;
         }
-        label = luda(this.labels.els[index]);
+        label = this.labels.eq(index);
         value = label.data(this.data.label) || label.text();
         if (value && !values.includes(value)) {
           return values.push(value);
         }
       });
       return this.simulator.attr('value', values.join(this.splitor));
+    },
+    updateValue: function() {
+      var checked, oldVal;
+      this.updateSimulatorValue();
+      oldVal = this.selectedVal;
+      checked = this.options.els.filter(function(input) {
+        return input.checked;
+      });
+      this.selectedVal = checked.map(function(input) {
+        return luda(input).val();
+      });
+      if (!oldVal || luda.arrayEqual(this.selectedVal, oldVal)) {
+        return;
+      }
+      return this.root.trigger(this.evt.changed, {
+        value: this.selectedVal,
+        selected: checked
+      });
     },
     triggerClick: function() {
       return this.simulator.trigger('click');
@@ -4361,13 +4483,13 @@
       };
     },
     create: function() {
-      this.disableSimulator();
+      this.initSimulator();
       return this.updateValue();
     },
     watch: function() {
       return {
-        dom: [[this.selector.options, this.updateValue]],
-        attr: [['checked', this.selector.options, this.updateValue]]
+        node: [[this.selector.options, this.updateValue]],
+        attr: [['checked', this.selector.options, this.updateValue], ['type', this.selector.options, this.updateValue]]
       };
     },
     listen: function() {

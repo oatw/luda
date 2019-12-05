@@ -6,15 +6,17 @@
 }(this, (function () { 'use strict';
 
   luda.component('enter', document).protect({
-    data: {
-      enable: 'enter'
-    },
-    selectors: ['input[type=checkbox]', 'input[type=radio]', '[tabindex]'],
+    selectors: ['input[type=checkbox]', 'input[type=radio]', '[tabindex]']
+  }).protect({
+    disabled: function() {
+      return this.html.data('enter') === false;
+    }
+  }).protect({
     trigger: function(e) {
-      if (this.html.data(this.data.enable) === false) {
+      if (this.disabled()) {
         return;
       }
-      if (!luda(e.target).matches(this.selectors.join(','))) {
+      if (!luda(e.target).is(this.selectors.join(','))) {
         return;
       }
       e.preventDefault();

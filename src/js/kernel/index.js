@@ -1,5 +1,5 @@
 /*! 
-   * Luda 0.3.0 | https://oatw.github.io/luda
+   * Luda 0.3.1 | https://oatw.github.io/luda
    * Copyright 2019 Oatw | https://oatw.blog
    * MIT license | http://opensource.org/licenses/MIT
    */
@@ -343,6 +343,30 @@
     return `${str[0].toLowerCase()}${str.slice(1).replace(pattern$1, replacer$1)}`;
   }
 
+  function arrayEqual(a, b, compareOrder) {
+    if (!(a && b)) {
+      return false;
+    }
+    if (a === b) {
+      return true;
+    }
+    if (a.length !== b.length) {
+      return false;
+    }
+    if (a.length === 0) {
+      return true;
+    }
+    if (compareOrder) {
+      return a.every(function(it, index) {
+        return it === b[index];
+      });
+    } else {
+      return !a.some(function(it) {
+        return !b.includes(it);
+      });
+    }
+  }
+
   var guid;
 
   guid = 0;
@@ -351,17 +375,29 @@
     return guid += 1;
   }
 
-  function pluck(arr, prop, deep) {
+  function pluck(arr, prop, deep, filter) {
     var plucked;
     plucked = [];
+    if (!Type.isArray(arr)) {
+      arr = [arr];
+    }
     arr.forEach(function(item) {
       var results, val;
       val = item[prop];
       results = [];
-      while (val !== null) {
-        plucked.push(val);
-        if (!deep) {
-          break;
+      while (val != null) {
+        if (filter) {
+          if (filter(val)) {
+            plucked.push(val);
+            if (!deep) {
+              break;
+            }
+          }
+        } else {
+          plucked.push(val);
+          if (!deep) {
+            break;
+          }
         }
         results.push(val = val[prop]);
       }
@@ -379,11 +415,12 @@
     });
   }
 
-  ['isString', 'isFunction', 'isArray', 'isObject', 'isBool', 'isNumeric', 'isDecimalism', 'isElement'].forEach(function(key) {
+  ['isString', 'isFunction', 'isArray', 'isObject', 'isBool', 'isNumeric', 'isElement'].forEach(function(key) {
     return luda.extend(key, Type[key]);
   });
 
   luda.extend({
+    arrayEqual: arrayEqual,
     camelCase: camelCase,
     dashCase: dashCase,
     guid: guid$1,
@@ -704,22 +741,15 @@
 
   luda.include({
     parent: function(comparator) {
-      var parents;
-      if (!comparator) {
-        return luda(unique(pluck(this.els, 'parentNode')));
+      var plucked;
+      if (comparator) {
+        plucked = pluck(this.els, 'parentElement', false, function(p) {
+          return collect([p], comparator).length;
+        });
+      } else {
+        plucked = pluck(this.els, 'parentNode');
       }
-      parents = [];
-      this.els.forEach(function(el) {
-        var matched, parent;
-        while (parent = el.parentNode) {
-          matched = collect([parent], comparator)[0];
-          if (matched) {
-            return parents.push(matched);
-          }
-          el = parent;
-        }
-      });
-      return luda(unique(parents));
+      return luda(unique(plucked));
     }
   });
 
@@ -928,12 +958,18 @@
   }, 'LUDA ');
 
   function eventPath(event) {
+    var path;
     if (event.composedPath) {
       return event.composedPath();
     } else if (event.path) {
       return event.path;
     } else {
-      return [event.target].concat(pluck([event.target], 'parentNode', true));
+      path = [event.target];
+      path = path.concat(pluck(path, 'parentNode', true));
+      if (document.contains(event.target)) {
+        path.push(window);
+      }
+      return path;
     }
   }
 
@@ -1535,7 +1571,7 @@
     });
   };
 
-  var config$1, createObserver, cur, executeMutations, findSameMutation, nodesEqual, runAttrCallbacks, runDomCallbacks, stopWatch, watch;
+  var config$1, createObserver, cur, executeMutations, findSameMutation, nodesEqual, runAttrCallbacks, runNodeCallbacks, stopWatch, watch;
 
   config$1 = {
     childList: true,
@@ -1555,23 +1591,23 @@
     }
   };
 
-  runDomCallbacks = function(type, mutation, watches, nestable) {
+  runNodeCallbacks = function(type, mutation, watches, nestable) {
     var C, ins, mu, nodes;
     ins = mutation.ins;
     C = ins.constructor;
     mu = mutation.mu;
     nodes = Array.from(mu[`${type}Nodes`]);
-    return watches.dom.forEach(function(dom) {
+    return watches.node.forEach(function(node) {
       var els;
       els = [];
       nodes.forEach(function(n) {
-        return els = els.concat(findAll(dom.selector, n));
+        return els = els.concat(findAll(node.selector, n));
       });
       if (!els.length) {
         return;
       }
       !nestable && (els = unnested(ins, unique(els)));
-      return els.length && dom.callbacks.forEach(function(callback) {
+      return els.length && node.callbacks.forEach(function(callback) {
         var ctx;
         ctx = cur(ins, callback, els);
         if (callback !== C.prototype.cleanTraversal) {
@@ -1591,7 +1627,7 @@
     target = mu.target;
     oldVal = mu.oldValue;
     return name && watches.attr.forEach(function(attr) {
-      if (name !== attr.name) {
+      if (!attr.name.includes(name)) {
         return;
       }
       if (!matches(target, attr.selector)) {
@@ -1611,25 +1647,14 @@
 
   executeMutations = function(C, mutations, nestable) {
     return mutations.forEach(function(mutation) {
-      runDomCallbacks('added', mutation, C.watches, nestable);
-      runDomCallbacks('removed', mutation, C.watches, nestable);
+      runNodeCallbacks('added', mutation, C.watches, nestable);
+      runNodeCallbacks('removed', mutation, C.watches, nestable);
       return runAttrCallbacks(mutation, C.watches, nestable);
     });
   };
 
   nodesEqual = function(nodesOne, nodesTwo) {
-    var itemsOne, itemsTwo;
-    if (nodesOne.length !== nodesTwo.length) {
-      return false;
-    }
-    if (nodesOne.length === 0 && nodesTwo.length === 0) {
-      return true;
-    }
-    itemsOne = Array.from(nodesOne);
-    itemsTwo = Array.from(nodesTwo);
-    return !itemsOne.some(function(node, index) {
-      return node !== itemsTwo[index];
-    });
+    return arrayEqual(Array.from(nodesOne), Array.from(nodesTwo), true);
   };
 
   findSameMutation = function(mutations, mu) {
@@ -1705,7 +1730,7 @@
     if (!C.watches) {
       conf = C.helpers.watch.call(C.prototype);
       C.watches = {
-        dom: (conf.dom || []).map(function(d) {
+        node: (conf.node || []).map(function(d) {
           return {
             selector: Type.isFunction(d[0]) ? '*' : d[0],
             callbacks: Type.isFunction(d[0]) ? d : d.slice(1)
@@ -1713,7 +1738,7 @@
         }),
         attr: (conf.attr || []).map(function(a) {
           return {
-            name: a[0],
+            name: splitValues(a[0]),
             selector: Type.isFunction(a[1]) ? '*' : a[1],
             callbacks: Type.isFunction(a[1]) ? a.slice(1) : a.slice(2)
           };
@@ -1772,14 +1797,14 @@
             C.helpers.watch = function() {
               var watches;
               watches = definedWatch.call(this);
-              watches.dom || (watches.dom = []);
-              watches.dom.unshift([proto.cleanTraversal]);
+              watches.node || (watches.node = []);
+              watches.node.unshift([proto.cleanTraversal]);
               return watches;
             };
           } else {
             C.helpers.watch = function() {
               return {
-                dom: [[proto.cleanTraversal]]
+                node: [[proto.cleanTraversal]]
               };
             };
           }
@@ -2004,7 +2029,7 @@
   var factory$1;
 
   luda.extend('component', factory$1 = function(name, root) {
-    var Component;
+    var Component, occupied;
     Component = (function() {
       class Component extends Base$1 {}
       Component.id = camelCase(`Component${(name ? '-' + name : '_' + guid$1())}`);
@@ -2030,10 +2055,11 @@
       return Component;
 
     }).call(this);
+    occupied = name && name in luda;
     if (name) {
       luda.extend(name, createProxy(Component));
     }
-    luda.ready(function() {
+    !occupied && luda.ready(function() {
       if (Type.isDocument(Component.root)) {
         Component.create(Component.root);
       }
@@ -2363,7 +2389,7 @@
         return this.els[0] && getValue(this.els[0]);
       }
       this.els.forEach(function(el) {
-        var val;
+        var hasSelected, options, val;
         if (el.tagName === 'SELECT') {
           if (Type.isArray(value)) {
             val = value;
@@ -2372,16 +2398,24 @@
           } else {
             val = [value];
           }
-          return [].forEach.call(el.options, function(option) {
+          hasSelected = false;
+          options = Array.from(el.options);
+          options.forEach(function(o) {
             var selected;
-            selected = val.includes(readValue(option.value));
-            luda(option).attr('selected', selected ? '' : null);
-            return option.selected = selected;
+            selected = val.includes(readValue(o.value));
+            o.selected = selected;
+            return hasSelected || (hasSelected = selected);
+          });
+          if (!hasSelected) {
+            el.selectedIndex = -1;
+          }
+          return options.forEach(function(o) {
+            return luda(o).attr('selected', o.selected ? '' : null);
           });
         } else {
           val = value === null ? '' : parseValue(value);
-          luda(el).attr('value', val);
-          return el.value = val;
+          el.value = val;
+          return luda(el).attr('value', val);
         }
       });
       return this;
@@ -2526,7 +2560,7 @@
       argReverse = [].reverse.apply(arguments);
       handler = function(selector) {
         var els;
-        els = luda(selector).els.slice().reverse();
+        els = luda(selector).els.reverse();
         return luda(els).insertAfter(self);
       };
       [].forEach.call(argReverse, handler);
@@ -2795,20 +2829,6 @@
     }
   });
 
-  luda.include({
-    matches: function(selector) {
-      if (!this.els.length) {
-        return false;
-      }
-      if (!selector) {
-        return false;
-      }
-      return this.els.some(function(el) {
-        return matches(el, selector);
-      });
-    }
-  });
-
   var Mixin;
 
   var Mixin$1 = Mixin = class Mixin {
@@ -3054,26 +3074,42 @@
   });
 
   luda.include({
-    next: function(comparator, _all) {
-      return luda(collect(unique(pluck(this.els, 'nextElementSibling', _all)), comparator));
-    }
-  });
-
-  luda.include({
     nextAll: function(comparator) {
-      return this.next(comparator, true);
+      var plucked;
+      plucked = pluck(this.els, 'nextElementSibling', true);
+      return luda(collect(unique(plucked), comparator));
     }
   });
 
   luda.include({
-    prev: function(comparator, _al) {
-      return luda(collect(unique(pluck(this.els, 'previousElementSibling', _al)), comparator));
+    next: function(comparator) {
+      var filter;
+      if (comparator) {
+        filter = function(n) {
+          return collect([n], comparator).length;
+        };
+      }
+      return luda(unique(pluck(this.els, 'nextElementSibling', false, filter)));
     }
   });
 
   luda.include({
     prevAll: function(comparator) {
-      return this.prev(comparator, true);
+      var plucked;
+      plucked = pluck(this.els, 'previousElementSibling', true);
+      return luda(collect(unique(plucked), comparator));
+    }
+  });
+
+  luda.include({
+    prev: function(comparator) {
+      var filter;
+      if (comparator) {
+        filter = function(p) {
+          return collect([p], comparator).length;
+        };
+      }
+      return luda(unique(pluck(this.els, 'previousElementSibling', false, filter)));
     }
   });
 

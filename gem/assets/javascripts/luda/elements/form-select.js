@@ -15,15 +15,27 @@
     data: {
       default: 'data-fm-select_default-selected',
       defaultMarked: 'data-fm-select_default-marked'
+    },
+    evt: {
+      changed: 'luda:fmSelect:changed'
+    }
+  }).protect({
+    placeholder: function() {
+      return this.select.attr('placeholder');
+    },
+    multiple: function() {
+      return this.select.prop('multiple');
+    },
+    options: function() {
+      return Array.from(this.select.prop('options'));
     }
   }).protect({
     tryEmpty: function() {
-      var select, selected;
-      select = this.select.els[0];
-      selected = Array.from(select.options).some(function(o) {
+      var selected;
+      selected = this.options().some(function(o) {
         return luda(o).hasAttr('selected');
       });
-      return !selected && (select.selectedIndex = -1);
+      return !selected && this.select.prop('selectedIndex', -1);
     },
     markSelected: function(markDefault) {
       markDefault = markDefault === true;
@@ -33,7 +45,7 @@
       if (markDefault) {
         this.root.data(this.data.defaultMarked, '');
       }
-      return Array.from(this.select.els[0].options).forEach((o) => {
+      return this.options().forEach((o) => {
         var option, val;
         option = luda(o);
         if (markDefault) {
@@ -45,39 +57,48 @@
         }
       });
     },
-    initSimulator: function() {
-      var simulator;
-      if (this.select.els[0].multiple) {
+    toggleSimulator: function() {
+      if (this.multiple()) {
         return this.simulator.remove();
       }
       if (this.simulator.length) {
         return;
       }
-      simulator = luda('<input>');
-      simulator.els[0].tabIndex = -1;
-      simulator.insertAfter(this.select);
-      this.updatePlaceholder();
-      return this.updateValue();
+      return luda('<input>').prop('tabIndex', -1).attr('placeholder', this.placeholder()).insertAfter(this.select);
     },
-    updatePlaceholder: function() {
-      if (this.select.els[0].multiple) {
+    updateSimulatorValue: function() {
+      var selected, val;
+      if (this.multiple()) {
         return;
       }
-      return this.simulator.attr('placeholder', this.select.attr('placeholder'));
-    },
-    updateValue: function() {
-      var select, selected, val;
-      select = this.select.els[0];
-      if (select.multiple) {
-        return;
-      }
-      selected = select.options[select.selectedIndex];
+      selected = this.options()[this.select.prop('selectedIndex')];
       val = selected ? luda(selected).text() : '';
       return this.simulator.attr('value', val);
     },
+    updateValue: function() {
+      var oldVal, selected, val;
+      this.updateSimulatorValue();
+      oldVal = this.selectedVal;
+      val = this.select.val();
+      this.selectedVal = luda.isArray(val) ? val : [val];
+      if (!oldVal || luda.arrayEqual(this.selectedVal, oldVal)) {
+        return;
+      }
+      if (this.multiple()) {
+        selected = this.options().filter(function(o) {
+          return o.selected;
+        });
+      } else {
+        selected = this.options()[this.select.prop('selectedIndex')];
+      }
+      return this.select.trigger(this.evt.changed, {
+        value: val,
+        selected: selected
+      });
+    },
     reset: function() {
-      this.select.els[0].selectedIndex = -1;
-      Array.from(this.select.els[0].options).forEach((o) => {
+      this.select.prop('selectedIndex', -1);
+      this.options().forEach((o) => {
         return o.selected = luda(o).hasData(this.data.default);
       });
       return this.markSelected();
@@ -92,12 +113,13 @@
     create: function() {
       this.tryEmpty();
       this.markSelected(true);
-      return this.initSimulator();
+      this.toggleSimulator();
+      return this.updateValue();
     },
     watch: function() {
       return {
-        dom: [[this.selector.options, this.tryEmpty, this.updateValue]],
-        attr: [['selected', this.selector.options, this.updateValue], ['multiple', this.selector.select, this.initSimulator]]
+        node: [[this.selector.options, this.tryEmpty, this.updateValue]],
+        attr: [['selected', this.selector.options, this.tryEmpty, this.updateValue], ['multiple', this.selector.select, this.toggleSimulator, this.updateValue]]
       };
     },
     listen: function() {

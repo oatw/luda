@@ -12,38 +12,54 @@
       file: 'input[type=file]',
       simulator: 'input:not([type=file])'
     },
+    evt: {
+      changed: 'luda:fmFile:changed'
+    },
     splitor: '  '
   }).protect({
+    placeholder: function() {
+      return this.file.attr('placeholder');
+    },
+    value: function() {
+      return this.file.attr('value');
+    },
+    multiple: function() {
+      return this.file.prop('multiple');
+    }
+  }).protect({
+    files: function() {
+      return Array.from(this.file.prop('files'));
+    },
     insertSimulator: function() {
-      var simulator;
       if (this.simulator.length) {
         return;
       }
-      simulator = luda('<input>');
-      simulator.els[0].tabIndex = -1;
-      return simulator.insertAfter(this.file);
+      return luda('<input>').prop('tabIndex', -1).attr('placeholder', this.placeholder()).insertAfter(this.file);
     },
-    updatePlaceholder: function() {
-      var placeholder;
-      if (!(placeholder = this.file.attr('placeholder'))) {
-        return;
-      }
-      return this.simulator.attr('placeholder', placeholder);
-    },
-    updateValue: function() {
+    updateSimulatorValue: function() {
       var value, values;
-      values = Array.from(this.file.els[0].files).map(function(f) {
+      values = this.files().map(function(f) {
         return f.name;
       });
-      value = values.join(this.splitor) || this.file.attr('value') || '';
+      value = values.join(this.splitor) || this.value() || '';
       return this.simulator.attr('value', value);
     },
-    tryReset: function(target, oldVal) {
-      if (this.file.attr('value') !== '') {
+    updateValue: function() {
+      var oldFile, val;
+      this.updateSimulatorValue();
+      oldFile = this.selectedFile;
+      this.selectedFile = this.files();
+      if (!oldFile || luda.arrayEqual(this.selectedFile, oldFile)) {
         return;
       }
-      this.file.els[0].value = '';
-      return this.file.attr('value', oldVal);
+      val = this.multiple() ? this.selectedFile : this.selectedFile[0];
+      return this.file.trigger(this.evt.changed, val);
+    },
+    tryReset: function(target, oldVal) {
+      if (this.value() !== '') {
+        return;
+      }
+      return this.file.prop('value', '').attr('value', oldVal);
     }
   }).help({
     find: function() {
@@ -59,7 +75,6 @@
     },
     create: function() {
       this.insertSimulator();
-      this.updatePlaceholder();
       return this.updateValue();
     },
     listen: function() {
