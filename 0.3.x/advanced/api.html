@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en" data-init-theme="default" data-applied-theme="default" data-theme-path-pattern="/luda/0.3.x/.dist/css/luda-$theme$.min.css">
   <head>
-    <title>Kernel Javascript API | Luda - A lightweight and responsive UI framework for modern web development.</title>
+    <title>Kernel Engine API | Luda - A library helps to build cross-framework UI components.</title>
     <!-- markdownlint-disable -->
 <meta charset="UTF-8">
 <!-- viewport -->
@@ -81,7 +81,7 @@
 
 <aside id="doc-aside" class="nav-aside col-12 col-3-m pb-medium-m">
   <a href="/luda/0.3.x/" data-turbolinks="false" class="nav-logo">
-    <img src="/luda/0.3.x/assets/img/logo-text.svg" alt="logo">
+    <img src="/luda/0.3.x/assets/img/logo-text-light.svg" alt="logo">
   </a>
   <!-- markdownlint-disable -->
 <!-- markdownlint-disable -->
@@ -145,10 +145,6 @@
 
 
   
-  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/architecture">Architecture</a>
-  
-
-  
   <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/theming">Theming</a>
   
 
@@ -157,11 +153,11 @@
   
 
   
-  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/component">Write A Component</a>
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/component">Build A Component</a>
   
 
   
-  <a class="btn btn-small btn-text-light mt-tiny btn-active" href="/luda/0.3.x/advanced/api">Kernel Javascript API</a>
+  <a class="btn btn-small btn-text-light mt-tiny btn-active" href="/luda/0.3.x/advanced/api">Kernel Engine API</a>
   
 
 
@@ -407,12 +403,1842 @@
 
   <main id="doc-container" class="col-auto p-medium pt-small-m px-large-m pb-large-m">
     <article class="article max-w-100 p-none">
-      <h1 class="page-title display fw-semibold mt-large-m">Kernel Javascript API</h1>
-      <p class="h3 page-sub-title fw-light">The reference of Luda kernel javascript API.</p>
-      <div class="working p-medium sd-normal">
-  <i class="d-block m-auto ico material-icons">palette</i>
-  <p class="ta-center">Work in process.</p>  
-</div>
+      <h1 class="page-title display fw-semibold mt-large-m">Kernel Engine API</h1>
+      <p class="h3 page-sub-title fw-light">The reference of Luda kernel engine API.</p>
+      <h2 id="custom-types">Custom Types</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@typedef <span class="o">{</span>Object<span class="o">}</span> Luda
+
+@typedef <span class="o">{</span>Object<span class="o">}</span> LudaInstance
+
+@typedef <span class="o">{</span>document | Element | LudaInstance<span class="o">}</span> LudaContext
+
+@typedef <span class="o">{</span>string | document | window | Element
+         | NodeList | HTMLCollection | LudaInstance<span class="o">}</span> LudaSelector
+
+@typedef <span class="o">{</span>string | document | window | Element
+         | Function | LudaInstance<span class="o">}</span> LudaComparator
+
+@typedef <span class="o">{</span>Object<span class="o">}</span> LudaComponent
+- Component class objects.
+
+@typedef <span class="o">{</span>Object<span class="o">}</span> LudaComponentProperty
+- Property and method definitions of LudaComponentInstances.
+
+@typedef <span class="o">{</span>Object<span class="o">}</span> LudaComponentHelper
+- Method definitions <span class="nb">help </span>to handle lifecycles of LudaComponentInstances,
+  <span class="nb">bind </span>event listeners to instances and watch instance dom changes.
+
+@typedef <span class="o">{</span>Object<span class="o">}</span> LudaComponentInstance
+- Instances created by LudaComponents.
+
+@typedef <span class="o">{</span>Proxy<span class="o">}</span>  LudaComponentProxy
+- Proxy objects <span class="nb">help </span>to access public properties and methods of
+  LudaComponents and LudaComponentInstances.
+
+@typedef <span class="o">{</span>Object<span class="o">}</span> LudaMixin
+- Reusable code snippets across multiple LudaComponents.
+
+@typedef <span class="o">{</span>Object<span class="o">}</span> LudaMixinConfig
+- Property and method definitions of LudaMixinInstances.
+
+@typedef <span class="o">{</span>Object<span class="o">}</span> LudaMixinInstance
+- Instances created by LudaMixin.
+</code></pre></div></div>
+
+<h2 id="luda-static-methods">Luda Static Methods</h2>
+
+<h3 id="loger">Loger</h3>
+
+<h4 id="log-arg1-arg2-">.log (arg1, arg2, …)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> <span class="o">[</span>arg1, arg2, ...]
+@returns <span class="o">{</span>boolean | undefined<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if luda log is opened.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">log</span><span class="p">()</span>
+<span class="c1">// @example Toggle luda log according to an environment variable.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">===</span> <span class="s1">'development'</span><span class="p">)</span>
+<span class="c1">// @example Print logs to dev tool console if luda log is opened.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Ready to do something using data:'</span><span class="p">,</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="s1">'Luda'</span><span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="mounter">Mounter</h3>
+
+<h4 id="extend-name-value">.extend (name, value)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Object | string<span class="o">}</span> name
+@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> <span class="o">[</span>value]
+@returns <span class="o">{</span>Luda<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Add a static method to Luda.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="s1">'sayHi'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="k">this</span>
+<span class="p">})</span>
+<span class="c1">// @example Add multiple static properties to Luda</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+  <span class="na">CONSTANT</span><span class="p">:</span> <span class="s1">'Hello Luda!'</span><span class="p">,</span>
+  <span class="na">sayHi</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="k">this</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="include-name-value">.include (name, value)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Object | string<span class="o">}</span> name
+@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> <span class="o">[</span>value]
+@returns <span class="o">{</span>Luda<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Add a instance method to Luda.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">include</span><span class="p">(</span><span class="s1">'reverse'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">els</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">els</span><span class="p">.</span><span class="nx">reverse</span><span class="p">()</span>
+  <span class="k">return</span> <span class="k">this</span>
+<span class="p">})</span>
+<span class="c1">// @example Add multiple instance properties to Luda</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">include</span><span class="p">({</span>
+  <span class="na">CONSTANT</span><span class="p">:</span> <span class="s1">'Hello Luda!'</span><span class="p">,</span>
+  <span class="na">reverse</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">els</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">els</span><span class="p">.</span><span class="nx">reverse</span><span class="p">()</span>
+    <span class="k">return</span> <span class="k">this</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="ready">Ready</h3>
+
+<h4 id="ready-callback">.ready (callback)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Function<span class="o">}</span> callback
+@returns <span class="o">{</span>Luda<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Do something immediately after DomContentLoaded.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'document ready'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="others">Others</h3>
+
+<h4 id="arrayequal-arrone-arrtwo-compareorder">.arrayEqual (arrOne, arrTwo, compareOrder)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Array<span class="o">}</span> arrOne
+@param <span class="o">{</span>Array<span class="o">}</span> arrTwo
+@param <span class="o">{</span>boolean<span class="o">}</span> compareOrder
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Compare if two array have the same members.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">arrayEqual</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="c1">// @example Compare if two array have the same members</span>
+<span class="c1">// and the members' orders are the same.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">arrayEqual</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="kc">true</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="camelcase-string">.camelCase (string)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> string
+@returns <span class="o">{</span>string<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Convert a dash case string into camel case.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">camelCase</span><span class="p">(</span><span class="s1">'hello-luda'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="dashcase-string">.dashCase (string)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> string
+@returns <span class="o">{</span>string<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Convert a camel case string into dash case.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">dashCase</span><span class="p">(</span><span class="s1">'helloLuda'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="guid-">.guid ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>integer<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get a global unique id number.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">guid</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="isarray-arg">.isArray (arg)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> arg
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if the input argument is an array.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">isArray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h4 id="isbool-arg">.isBool (arg)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> arg
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if the input argument is a boolean.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">isBool</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="iselement-arg">.isElement (arg)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> arg
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if the input argument is a html element.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">isElement</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="isfunction-arg">.isFunction (arg)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> arg
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if the input argument is a function.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">isFunction</span><span class="p">(</span><span class="kd">function</span><span class="p">(){})</span>
+</code></pre></div></div>
+
+<h4 id="isobject-arg">.isObject (arg)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> arg
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if the input argument is an object.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">isObject</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="s1">'Luda'</span><span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="isnumeric-arg">.isNumeric (arg)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> arg
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if the input argument is a number.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">isNumberic</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="isstring-arg">.isString (arg)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> arg
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if the input argument is a string.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">isString</span><span class="p">(</span><span class="s1">'Luda'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="pluck-source-property-deep-filter">.pluck (source, property, deep, filter)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Object | Array<span class="o">}</span> <span class="nb">source</span>
+@param <span class="o">{</span>string<span class="o">}</span> property
+@param <span class="o">{</span>boolean<span class="o">}</span> <span class="o">[</span>deep <span class="o">=</span> <span class="nb">false</span><span class="o">]</span>
+@param <span class="o">{</span>Function<span class="o">}</span> <span class="o">[</span>filter]
+@returns <span class="o">{</span>Array<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Pluck objects deeply in an object.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">pluck</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Jim'</span><span class="p">,</span>
+  <span class="na">son</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'Jacky'</span><span class="p">,</span>
+    <span class="na">son</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s1">'Jerry'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">},</span> <span class="s1">'son'</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="c1">// @example Pluck objects deeply in an object with a filter.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">pluck</span><span class="p">({</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Jim'</span><span class="p">,</span>
+  <span class="na">son</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'Tim'</span><span class="p">,</span>
+    <span class="na">son</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">name</span><span class="p">:</span> <span class="s1">'Lucus'</span><span class="p">,</span>
+      <span class="na">son</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s1">'Thomas'</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>  
+<span class="p">},</span> <span class="s1">'son'</span><span class="p">,</span> <span class="kc">true</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">son</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">son</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">3</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="unique-arr">.unique (arr)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Array<span class="o">}</span> arr
+@returns <span class="o">{</span>Array<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get an array not contains duplicated memebers.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">unique</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h2 id="luda-constructor">Luda Constructor</h2>
+
+<h3 id="luda-selector-context">luda (selector, context)</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@param <span class="o">{</span>LudaContext<span class="o">}</span> <span class="o">[</span>context <span class="o">=</span> document]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Use a css selector to create a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+<span class="c1">// @example Use html strings to create a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'&lt;p class="example"&gt;example&lt;/p&gt;'</span><span class="p">)</span>
+<span class="c1">// @example Use a LudaInstance to create a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">))</span>
+<span class="c1">// @example Use window to create a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">window</span><span class="p">)</span>
+<span class="c1">// @example Use document to create a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">document</span><span class="p">)</span>
+<span class="c1">// @example Use an element to create a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+<span class="c1">// @example Use an element collection to create a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'p'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h2 id="luda-instance-properties">Luda Instance Properties</h2>
+
+<h3 id="els">.els</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@prop <span class="o">{</span>Array<span class="o">}</span> els
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get all the collected elements in an array.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">els</span>
+</code></pre></div></div>
+
+<h3 id="length">.length</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@prop <span class="o">{</span>integer<span class="o">}</span> length
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the length of collected elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">length</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">length</span> <span class="o">===</span> <span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">els</span><span class="p">.</span><span class="nx">length</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<h2 id="luda-instance-methods">Luda Instance Methods</h2>
+
+<h3 id="attribute">Attribute</h3>
+
+<h4 id="attr-attribute-value">.attr (attribute, value)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Object | string<span class="o">}</span> attribute
+@param <span class="o">{</span>Object | string | number | boolean | null<span class="o">}</span> <span class="o">[</span>value]
+@returns <span class="o">{</span>LudaInstance | Object | string | number | boolean | undefined<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get an element's attribute.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'name'</span><span class="p">)</span>
+<span class="c1">// @example Set elements' attribute.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'luda'</span><span class="p">)</span>
+<span class="c1">// @example Set elements' attributes.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">attr</span><span class="p">({</span><span class="na">name</span><span class="p">:</span> <span class="s1">'luda'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="c1">// @example Remove elements' attribute.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'name'</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="hasattr-attribute">.hasAttr (attribute)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> attribute
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if an element has a specific attribute.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">hasAttr</span><span class="p">(</span><span class="s1">'name'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="removeattr-attribute">.removeAttr (attribute)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> attribute
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Remove elements' attribute.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="s1">'name'</span><span class="p">)</span>
+<span class="c1">// @example Remove elements' attributes.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">removeAttr</span><span class="p">(</span><span class="s1">'name age'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="cache">Cache</h3>
+
+<h4 id="cache-name-value">.cache (name, value)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Object | string<span class="o">}</span> <span class="o">[</span>name]
+@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> <span class="o">[</span>value]
+@returns <span class="o">{</span>LudaInstance | <span class="k">*</span><span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get an element's cached data.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">cache</span><span class="p">(</span><span class="s1">'pathes'</span><span class="p">)</span>
+<span class="c1">// @example Get all the cached data of an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">cache</span><span class="p">()</span>
+<span class="c1">// @example Cache data for an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">cache</span><span class="p">(</span><span class="s1">'pathes'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'/home'</span><span class="p">,</span> <span class="s1">'/about'</span><span class="p">])</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">cache</span><span class="p">({</span><span class="na">pathes</span><span class="p">:</span> <span class="p">[</span><span class="s1">'/home'</span><span class="p">,</span> <span class="s1">'/about'</span><span class="p">],</span> <span class="na">availiable</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+<span class="c1">// @example Remove cached data.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">cache</span><span class="p">(</span><span class="s1">'pathes'</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="removecache-name">.removeCache (name)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> <span class="o">[</span>name]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Remove cached data by passing in a name.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">removeCache</span><span class="p">(</span><span class="s1">'pathes'</span><span class="p">)</span>
+<span class="c1">// @example Remove all cached data.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">removeCache</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="class">Class</h3>
+
+<h4 id="addclass-name">.addClass (name)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> name
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Add element's css class.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">'class-one'</span><span class="p">)</span>
+<span class="c1">// @example Add element's css classes.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">'class-one class-two'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="hasclass-name">.hasClass (name)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> name
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if an element has a specific css class.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">hasClass</span><span class="p">(</span><span class="s1">'class-one'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="removeclass-name">.removeClass (name)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> <span class="o">[</span>name]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Remove elements' css class.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">'class-one'</span><span class="p">)</span>
+<span class="c1">// @example Remove elements' css classes.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">'class-one class-two'</span><span class="p">)</span>
+<span class="c1">// @example Remove elements' all css classes.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="toggleclass-name-force">.toggleClass (name, force)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> name
+@param <span class="o">{</span>boolean<span class="o">}</span> <span class="o">[</span>force]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Toggle element's css class.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">'class-one'</span><span class="p">)</span>
+<span class="c1">// @example Toggle elements' css classes.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">'class-one class-two'</span><span class="p">)</span>
+<span class="c1">// @example Add element's css class.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">'class-one'</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="c1">// @example Add element's css classes.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">'class-one class-two'</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="c1">// @example Remove element's css class.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">'class-one'</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+<span class="c1">// @example Remove element's css classes.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">'class-one class-two'</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="collection">Collection</h3>
+
+<h4 id="add-selector-context">.add (selector, context)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@param <span class="o">{</span>LudaContext<span class="o">}</span> <span class="o">[</span>context <span class="o">=</span> document]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Add elements to a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">add</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="each-func">.each (func)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Function<span class="o">}</span> func
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Do something to each element of a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+<span class="p">})</span>
+<span class="c1">// @example Stop looping when return false.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="k">if</span><span class="p">(</span><span class="nx">index</span> <span class="o">===</span> <span class="mi">2</span><span class="p">){</span>
+    <span class="k">return</span> <span class="kc">false</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="eq-index">.eq (index)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>integer<span class="o">}</span> <span class="o">[</span>index]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Create a LudaInstance</span>
+<span class="c1">// which contains the first element of an existed LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1">// @example Create a LudaInstance</span>
+<span class="c1">// which contains all the elements of an existed LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">eq</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="filter-comparator">.filter (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> comparator
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect the .appended elements in the LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="s1">'.appended'</span><span class="p">)</span>
+<span class="c1">// @example Collect the elements contained in both instances.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">luda</span><span class="p">(</span><span class="s1">'.appended'</span><span class="p">))</span>
+<span class="c1">// @example Collect elements which make the function return true.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">index</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="first-">.first ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Create a new LudaInstance</span>
+<span class="c1">// which contains the first element of an existed LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">first</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="get-index">.get (index)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>integer<span class="o">}</span> <span class="o">[</span>index]
+@returns <span class="o">{</span>Element | Array<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the first element of a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="kd">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1">// @example Get the last element of a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="kd">get</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">// @example Get all the elements of a LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="kd">get</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="has-selector">.has (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string | Element<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Create a new LudaInstance contains elements</span>
+<span class="c1">// which have .descendant descendants.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">has</span><span class="p">(</span><span class="s1">'.descendant'</span><span class="p">)</span>
+<span class="c1">// @example Create a new LudaInstance contains elements</span>
+<span class="c1">// which have a specific descendant.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">has</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'descendant'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h4 id="index-selector">.index (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> <span class="o">[</span>selector]
+@returns <span class="o">{</span>integer<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the index of an element in its parent node's children.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">index</span><span class="p">()</span>
+<span class="c1">// @example Get the index of an element in a LudaInstance's elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">index</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="is-comparator">.is (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> comparator
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if any elements of a LudaInstance match a selector.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+<span class="c1">// @example Check if a LudaInstance contains a specific element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'example'</span><span class="p">))</span>
+<span class="c1">// @example Check if a LudaInstance contains any elements of another LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">))</span>
+<span class="c1">// @example Check if any elements of a LudaInstance match a specifc rule.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nx">el</span><span class="p">.</span><span class="nx">value</span> <span class="o">===</span> <span class="s1">'value'</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="last-">.last ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Create a new LudaInstance</span>
+<span class="c1">// which contains the last element of an existed LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">last</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="map-func">.map (func)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Function<span class="o">}</span> func
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Create a new LudaInstance by</span>
+<span class="c1">// mapping an existed LudaInstance under a rule.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">el</span><span class="p">.</span><span class="nx">parentNode</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="not-comparator">.not (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> comparator
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect the elements not match the .appended selector.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">not</span><span class="p">(</span><span class="s1">'.appended'</span><span class="p">)</span>
+<span class="c1">// @example Collect the elements not contained in the latter instance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">not</span><span class="p">(</span><span class="nx">luda</span><span class="p">(</span><span class="s1">'.appended'</span><span class="p">))</span>
+<span class="c1">// @example Collect elements which make the function return false.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">not</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">index</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="slice-beginindex-endindex">.slice (beginIndex, endIndex)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>integer<span class="o">}</span> <span class="o">[</span>beginIndex]
+@param <span class="o">{</span>integer<span class="o">}</span> <span class="o">[</span>endIndex]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect the elements whose index is equal to or greater than 0</span>
+<span class="c1">// and less than 2.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="c1">// @example Collect the elements whose index is equal to or greater than 1.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">// @example Collect all the elements of an existed LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">slice</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="css">CSS</h3>
+
+<h4 id="css-property-value">.css (property, value)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Object | string<span class="o">}</span> property
+@param <span class="o">{</span>string<span class="o">}</span> <span class="o">[</span>value]
+@returns <span class="o">{</span>LudaInstance | string | undefined<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the computed font-size of an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">'font-size'</span><span class="p">)</span>
+<span class="c1">// @example Set the font-size of an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">css</span><span class="p">(</span><span class="s1">'font-size'</span><span class="p">,</span> <span class="s1">'2rem'</span><span class="p">)</span>
+<span class="c1">// @example Set css properties of an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="na">fontSize</span><span class="p">:</span> <span class="s1">'2rem'</span><span class="p">,</span> <span class="na">color</span><span class="p">:</span> <span class="s1">'black'</span><span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="removecss-property">.removeCss (property)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> property
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Remove setted font-size style of an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">removeCss</span><span class="p">(</span><span class="s1">'font-size'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="data">Data</h3>
+
+<h4 id="data-name-value">.data (name, value)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Object | string<span class="o">}</span> <span class="o">[</span>name]
+@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> <span class="o">[</span>value]
+@returns <span class="o">{</span>LudaInstance | <span class="k">*</span><span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the value of an element's data-inited-routes attribute.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'inited-routes'</span><span class="p">)</span>
+<span class="c1">// @example Collect all the data attributes of an element in an object.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">data</span><span class="p">()</span>
+<span class="c1">// @example Set the data-inited-routes attribute of an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s1">'inited-routes'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'/home'</span><span class="p">,</span> <span class="s1">'/about'</span><span class="p">])</span>
+<span class="c1">// @example Set an element's data attributes with an object.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">data</span><span class="p">({</span><span class="na">initedRoutes</span><span class="p">:</span> <span class="p">[</span><span class="s1">'/home'</span><span class="p">,</span> <span class="s1">'/about'</span><span class="p">],</span> <span class="na">availiable</span><span class="p">:</span> <span class="kc">true</span><span class="p">})</span>
+<span class="c1">// @example Remove an element's data-inited-routes attribute.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">cache</span><span class="p">(</span><span class="s1">'inited-routes'</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="hasdata-name">.hasData (name)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> name
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if an element has a specific data attribute.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">hasData</span><span class="p">(</span><span class="s1">'inited-routes'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="removedata-name">.removeData (name)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> name
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Remove a specific data attribute from an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">removeData</span><span class="p">(</span><span class="s1">'inited-routes'</span><span class="p">)</span>
+<span class="c1">// @example Remove specific data attributes from an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">removeData</span><span class="p">(</span><span class="s1">'inited-routes availiable'</span><span class="p">)</span>
+<span class="c1">// @example Remove all the data attributes from an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">removeData</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="dimension">Dimension</h3>
+
+<h4 id="innerheight-">.innerHeight ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>number<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get an element's clientHeight(content + paddings) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">innerHeight</span><span class="p">()</span>
+<span class="c1">// @example Get window's innerHeight(browser viewport height) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">innerHeight</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="innerwidth-">.innerWidth ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>number<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get an element's clientWidth(content + paddings) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">innerWidth</span><span class="p">()</span>
+<span class="c1">// @example Get window's innerWidth(browser viewport width) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">innerWidth</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="outerheight-includemargin">.outerHeight (includeMargin)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>boolean<span class="o">}</span> <span class="o">[</span>includeMargin]
+@returns <span class="o">{</span>number<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get an element's offsetHeight(content + paddings + borders) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">outerHeight</span><span class="p">()</span>
+<span class="c1">// @example Get an element's offsetHeight plus marginTop and marginBottom in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">outerHeight</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="c1">// @example Get window's outerHeight(the whole height of browser window,</span>
+<span class="c1">// including scrollbar, resizing handles...) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">outerHeight</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="outerwidth-includemargin">.outerWidth (includeMargin)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>boolean<span class="o">}</span> <span class="o">[</span>includeMargin]
+@returns <span class="o">{</span>number<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get an element's offsetWidth(content + paddings + borders) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">()</span>
+<span class="c1">// @example Get an element's offsetWidth plus marginLeft and marginRight in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="c1">// @example Get window's outerWidth(the whole width of browser window,</span>
+<span class="c1">// including scrollbar, resizing handles...) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">outerWidth</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="height-value">.height (value)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>number<span class="o">}</span> <span class="o">[</span>value]
+@returns <span class="o">{</span>LudaInstance | number<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get an element's content height in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">height</span><span class="p">()</span>
+<span class="c1">// @example Get window's outerHeight(the whole height of browser window,</span>
+<span class="c1">// including scrollbar, resizing handles...) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">height</span><span class="p">()</span>
+<span class="c1">// @example Set an element's content height or offsetHeight(border-box) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">height</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="width-value">.width (value)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>number<span class="o">}</span> <span class="o">[</span>value]
+@returns <span class="o">{</span>LudaInstance | number<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get an element's content width in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">width</span><span class="p">()</span>
+<span class="c1">// @example Get window's outerWidth(the whole width of browser window,</span>
+<span class="c1">// including scrollbar, resizing handles...) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">window</span><span class="p">).</span><span class="nx">width</span><span class="p">()</span>
+<span class="c1">// @example Set an element's content width or offsetWidth(border-box) in px.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">width</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="event">Event</h3>
+
+<h4 id="off-name-selector-callback">.off (name, selector, callback)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> <span class="o">[</span>name]
+@param <span class="o">{</span>string | Function<span class="o">}</span> <span class="o">[</span>selector]
+@param <span class="o">{</span>Function<span class="o">}</span> <span class="o">[</span>callback]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Remove all event listeners.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">off</span><span class="p">()</span>
+<span class="c1">// @example Remove event listeners</span>
+<span class="c1">// which has any matched types.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">'click keydown'</span><span class="p">)</span>
+<span class="c1">// @example Remove event listeners</span>
+<span class="c1">// which has any matched namespaces.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">'.ns1.ns2'</span><span class="p">)</span>
+<span class="c1">// @example Remove event listeners</span>
+<span class="c1">// which has any matched namespaces and types.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">'click.ns1 keydown.ns2'</span><span class="p">)</span>
+<span class="c1">// @example Remove delegate event listeners</span>
+<span class="c1">// which has any matched types.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'.appended'</span><span class="p">)</span>
+<span class="c1">// @example Remove deletage event listeners</span>
+<span class="c1">// which has any matched namespaces.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">'.ns1.ns2'</span><span class="p">,</span> <span class="s1">'.appended'</span><span class="p">)</span>
+<span class="c1">// @example Remove delegate event listeners</span>
+<span class="c1">// which has any matched namespaces and types.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">off</span><span class="p">(</span><span class="s1">'click.ns1 keydown.ns2'</span><span class="p">,</span> <span class="s1">'.appended'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="on-name-selector-callback">.on (name, selector, callback)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> name
+@param <span class="o">{</span>string | Function<span class="o">}</span> selector
+@param <span class="o">{</span>Function<span class="o">}</span> <span class="o">[</span>callback]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Add event listeners to an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click keydown'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">event</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">luda</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">))</span> <span class="c1">// true</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="nx">event</span><span class="p">.</span><span class="nx">detail</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">isDefaultPrevented</span><span class="p">())</span> <span class="c1">// false</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">isPropagationStopped</span><span class="p">())</span> <span class="c1">// false</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">isImmediatePropagationStopped</span><span class="p">())</span> <span class="c1">// false</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">eventPath</span><span class="p">())</span> <span class="c1">// Event propagation path array.</span>
+<span class="p">})</span>
+<span class="c1">// @example Add named event listeners to an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click.ns1 keydown.ns2'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">()</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">stopImmediatePropagation</span><span class="p">()</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">isDefaultPrevented</span><span class="p">())</span> <span class="c1">// true</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">isPropagationStopped</span><span class="p">())</span> <span class="c1">// true</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">isImmediatePropagationStopped</span><span class="p">())</span> <span class="c1">// true  </span>
+<span class="p">})</span>
+<span class="c1">// @example Add delegate event listeners to an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click keydown'</span><span class="p">,</span> <span class="s1">'.example, .appended'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">event</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">luda</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'.example, .appended'</span><span class="p">))</span> <span class="c1">// true</span>
+<span class="p">})</span>
+<span class="c1">// @example Add named delegate event listeners to an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click.ns1 keydown.ns2'</span><span class="p">,</span> <span class="s1">'.example'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+  <span class="c1">// Means event.preventDefault() and event.stopPropagation().</span>
+  <span class="k">return</span> <span class="kc">false</span>
+<span class="p">})</span>
+<span class="c1">// @example Add event listeners and prevent default behavior when events triggered.</span>
+<span class="c1">// &amp;prevent is short for event.preventDefault()</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click&amp;prevent keydown&amp;prevent'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){})</span>
+<span class="c1">// @example Add event listeners and stop propagation when events triggered.</span>
+<span class="c1">// &amp;stop is short for event.stopPropagation()</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click&amp;stop keydown&amp;stop'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){})</span>
+<span class="c1">// @example Add key event listeners for specfic keys.</span>
+<span class="c1">// Availiable key shortcuts: enter, tab, ctrl, alt, shift, esc, back, space,</span>
+<span class="c1">// cap, up, down, left, right, del, end, home, ins, pgUp, pgDown</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'keydown@esc'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){})</span>
+<span class="c1">// @example Add swipe event listeners for touchable screens.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'swipeleft swiperight swipeup swipedown'</span><span class="p">,</span> <span class="s1">'.example'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){})</span>
+</code></pre></div></div>
+
+<h4 id="one-name-selector-callback">.one (name, selector, callback)</h4>
+
+<p>This method is similar to <a href="#on-name-selector-callback">.one</a> method,
+but binded event listeners will be removed after triggered once.</p>
+
+<h4 id="trigger-name-data-callback">.trigger (name, data, callback)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string | CustomEvent<span class="o">}</span> name
+@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> <span class="o">[</span>data]
+@param <span class="o">{</span>boolean | Function<span class="o">}</span> <span class="o">[</span>callback]
+@returns <span class="o">{</span>LudaInstance | Array<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Trigger event hanlders which have any matched types.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">'click keydown'</span><span class="p">)</span>
+<span class="c1">// @example Trigger event handlers which have any matched types and namespaces.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">'click.ns1 keydown.ns2'</span><span class="p">)</span>
+<span class="c1">// @example Trigger event handlers with data.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'msg'</span><span class="p">)</span>
+<span class="c1">// @example Trigger event handlers by passing in a custom event.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="k">new</span> <span class="nx">CustomEvent</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,{</span>
+  <span class="na">bubbles</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">cancelable</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">composed</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">detail</span><span class="p">:</span> <span class="s1">'msg'</span>  
+<span class="p">})</span>
+<span class="c1">// @example Trigger event listeners and</span>
+<span class="c1">// get handled event object after each listener triggered.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){})</span>
+<span class="c1">// @example Trigger event listeners and</span>
+<span class="c1">// get all handled event objects in an array after all listeners triggered.</span>
+<span class="nx">events</span> <span class="o">=</span> <span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">trigger</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="form">Form</h3>
+
+<h4 id="val-value">.val (value)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> <span class="o">[</span>value]
+@returns <span class="o">{</span>LudaInstance | <span class="k">*</span><span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get an input element's value.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'input#example'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+<span class="c1">// @example Get an multiple select element's selected values in an array.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'select[multiple]'</span><span class="p">).</span><span class="nx">val</span><span class="p">()</span>
+<span class="c1">// @example Set an input element's value.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'input#example'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s1">'value'</span><span class="p">)</span>
+<span class="c1">// @example Select multiple options in multiple select elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'select[multiple]'</span><span class="p">).</span><span class="nx">val</span><span class="p">([</span><span class="s1">'one'</span><span class="p">,</span> <span class="s1">'two'</span><span class="p">])</span>
+<span class="c1">// @example Unselect selected options in select elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'select'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+<span class="c1">// @example Remove files in file inputs.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'input[type=file]'</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="manipulation">Manipulation</h3>
+
+<h4 id="after-selector">.after (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Insert dom strings after each .example element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">after</span><span class="p">(</span><span class="s1">'&lt;p class="source"&gt;'</span><span class="p">)</span>
+<span class="c1">// @example Insert the #source element after the first .example element,</span>
+<span class="c1">// and cloned #source elements after the other .example elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">after</span><span class="p">(</span><span class="s1">'#source'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="append-selector">.append (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Append dom strings into each .example element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">'&lt;p class="source"&gt;&lt;/p&gt;'</span><span class="p">)</span>
+<span class="c1">// @example Append the #source element into the first .example element,</span>
+<span class="c1">// and cloned #source elements into the other .example elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s1">'#source'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="appendto-selector">.appendTo (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Append dom strings into each .example element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'&lt;p class="source"&gt;&lt;/p&gt;'</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+<span class="c1">// @example Append the #source element into the first .example element,</span>
+<span class="c1">// and cloned #source elements into the other .example elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#source'</span><span class="p">).</span><span class="nx">appendTo</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="before-selector">.before (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Insert dom strings before each .example element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">before</span><span class="p">(</span><span class="s1">'&lt;p class="source"&gt;'</span><span class="p">)</span>
+<span class="c1">// @example Insert the #source element before the first .example element,</span>
+<span class="c1">// and cloned #source elements before the other .example elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">before</span><span class="p">(</span><span class="s1">'#source'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="clone-clonecacheandevents-clonedescendants">.clone (cloneCacheAndEvents, cloneDescendants)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>boolean<span class="o">}</span> <span class="o">[</span>cloneCacheAndEvents]
+@param <span class="o">{</span>boolean<span class="o">}</span> <span class="o">[</span>cloneDescendants <span class="o">=</span> cloneCacheAndEvents]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Clone elements without cached data and binded event listeners.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">clone</span><span class="p">()</span>
+<span class="c1">// @example Clone elements with cached data and binded event listeners,</span>
+<span class="c1">// but not clone the elements' descendants.</span>
+<span class="c1">// The cloned data is not a deep copy</span>
+<span class="c1">// which means data types like object and array are shared</span>
+<span class="c1">// among the original elements and the cloned elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">clone</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+<span class="c1">// @example Clone elements with cached data and binded event listeners,</span>
+<span class="c1">// the elements' descendants are also cloned</span>
+<span class="c1">// including their cached data and binded event listeners.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">clone</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="detach-">.detach ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Remove elements from document,</span>
+<span class="c1">// but keep the elements' cached data and binded event listeners.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">detach</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="empty-">.empty ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Remove elements' descendants from document,</span>
+<span class="c1">// also clean the descendants' cached data and binded event listeners.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">empty</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="html-html">.html (html)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> <span class="o">[</span>html]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the innerHTML of an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">html</span><span class="p">()</span>
+<span class="c1">// @example Clean cached data and remove binded event listeners</span>
+<span class="c1">// of an element's descendants, then set the innerHTML of the element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s1">'&lt;p&gt;html&lt;/p&gt;'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="insertafter-selector">.insertAfter (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Insert dom strings after each .example element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'&lt;p class="source"&gt;'</span><span class="p">).</span><span class="nx">insertAfter</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+<span class="c1">// @example Insert the #source element after the first .example element,</span>
+<span class="c1">// and cloned #source elements after the other .example elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#source'</span><span class="p">).</span><span class="nx">insertAfter</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="insertbefore-selector">.insertBefore (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Insert dom strings before each .example element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'&lt;p class="source"&gt;'</span><span class="p">).</span><span class="nx">insertBefore</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+<span class="c1">// @example Insert the #source element before the first .example element,</span>
+<span class="c1">// and cloned #source elements before the other .example elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#source'</span><span class="p">).</span><span class="nx">insertBefore</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="prepend-selector">.prepend (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Prepend dom strings into each .example element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">prepend</span><span class="p">(</span><span class="s1">'&lt;p class="source"&gt;&lt;/p&gt;'</span><span class="p">)</span>
+<span class="c1">// @example Prepend the #source element into the first .example element,</span>
+<span class="c1">// and cloned #source elements into the other .example elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">prepend</span><span class="p">(</span><span class="s1">'#source'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="prependto-selector">.prependTo (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Prepend dom strings into each .example element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'&lt;p class="source"&gt;&lt;/p&gt;'</span><span class="p">).</span><span class="nx">prependTo</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+<span class="c1">// @example Prepend the #source element into the first .example element,</span>
+<span class="c1">// and cloned #source elements into the other .example elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#source'</span><span class="p">).</span><span class="nx">prependTo</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="remove-">.remove ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Remove elements from document,</span>
+<span class="c1">// also clean the elements' cached data and remove binded event listeners.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">remove</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="replaceall-selector">.replaceAll (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Replace each .example element with dom strings.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'&lt;p class="replacer&gt;'</span><span class="p">).</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+<span class="c1">// @example Replace the first .example element with the #replacer element,</span>
+<span class="c1">// and the other .example elements with cloned #replacer elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#replacer'</span><span class="p">).</span><span class="nx">replaceAll</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="replacewith-selector">.replaceWith (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Replace each .example element with dom strings.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">replaceWith</span><span class="p">(</span><span class="s1">'&lt;p class="replacer&gt;'</span><span class="p">)</span>
+<span class="c1">// @example Replace the first .example element with the #replacer element,</span>
+<span class="c1">// and the other .example elements with cloned #replacer elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">replaceWith</span><span class="p">(</span><span class="s1">'#replacer'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="text-">.text ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> <span class="o">[</span>text]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the textContent of an element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">text</span><span class="p">()</span>
+<span class="c1">// @example Clean cached data and remove binded event listeners</span>
+<span class="c1">// of an element's descendants, then set the textContent of the element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="s1">'text'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="unwrap-">.unwrap ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Replace the parentNodes of .example elements</span>
+<span class="c1">// with the elements themselves.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">unwrap</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="wrapall-selector">.wrapAll (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Wrap all the .example elements into a div.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">wrapAll</span><span class="p">(</span><span class="s1">'&lt;div id="wrapper"&gt;'</span><span class="p">)</span>
+<span class="c1">// @example Insert the #wrapper element before the first .example element,</span>
+<span class="c1">// and use the #wrapper to wrap all the .example elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">wrapAll</span><span class="p">(</span><span class="s1">'#wrapper'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="wrapinner-selector">.wrapInner (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Wrap all the descendants of #example into a div.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">wrapInner</span><span class="p">(</span><span class="s1">'&lt;div id="wrapper"&gt;'</span><span class="p">)</span>
+<span class="c1">// @example Append the #wrapper element into the #example element,</span>
+<span class="c1">// and use the #wrapper to wrap all the descendants of the #example element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">wrapInner</span><span class="p">(</span><span class="s1">'#wrapper'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="wrap-selector">.wrap (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Wrap each .example element into a single div.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">'&lt;div id="wrapper"&gt;'</span><span class="p">)</span>
+<span class="c1">// @example Insert the #wrapper before the first .example element,</span>
+<span class="c1">// and wrap the first .example element into the #wrapper</span>
+<span class="c1">// and the other .example elements into cloned #wrappers.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">wrap</span><span class="p">(</span><span class="s1">'#wrapper'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="offset">Offset</h3>
+
+<h4 id="offset-">.offset ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>Object<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the distance in px</span>
+<span class="c1">// from the top of the element to the top of document.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">offset</span><span class="p">().</span><span class="nx">top</span>
+<span class="c1">// @example Get the distance in px</span>
+<span class="c1">// from the left of the element to the left of document.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">offset</span><span class="p">().</span><span class="nx">left</span>
+</code></pre></div></div>
+
+<h4 id="offsetparent-">.offsetParent ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Create a LudaInstance which contains the element's offsetParent.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">offsetParent</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="position-">.position ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>Object<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the distance in px</span>
+<span class="c1">// from the top of the element to the top of the element's offsetParent.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">position</span><span class="p">().</span><span class="nx">top</span>
+<span class="c1">// @example Get the distance in px</span>
+<span class="c1">// from the left of the element to the left of the element's offsetParent.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">position</span><span class="p">().</span><span class="nx">left</span>
+</code></pre></div></div>
+
+<h3 id="prop">Prop</h3>
+
+<h4 id="prop-property-value">.prop (property, value)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Object | string<span class="o">}</span> property
+@param <span class="o">{</span><span class="k">*</span><span class="o">}</span> <span class="o">[</span>value]
+@returns <span class="o">{</span>LudaInstance | <span class="k">*</span><span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get a property value from the element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'input[type=checkbox]'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">'checked'</span><span class="p">)</span>
+<span class="c1">// @example Set elements' property value.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'input[type=checkbox]'</span><span class="p">).</span><span class="nx">prop</span><span class="p">(</span><span class="s1">'checked'</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="c1">// @example Set elements' property value with an object.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'input[type=checkbox]'</span><span class="p">).</span><span class="nx">prop</span><span class="p">({</span><span class="na">checked</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'example'</span><span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="removeprop-property">.removeProp (property)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> property
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Remove property value from elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'input[type=checkbox]'</span><span class="p">).</span><span class="nx">removeProp</span><span class="p">(</span><span class="s1">'checked name'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="reflow">Reflow</h3>
+
+<h4 id="reflow-">.reflow ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Trigger dom reflow forcely.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">reflow</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="transition">Transition</h3>
+
+<h4 id="transitionduration-">.transitionDuration ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>number | undefined<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the transition duration of an element in milliseconds.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">transitionDuration</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="traversal">Traversal</h3>
+
+<h4 id="children-comparator">.children (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> <span class="o">[</span>comparator]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect all the child elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">children</span><span class="p">()</span>
+<span class="c1">// @example Collect the .child child elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">children</span><span class="p">(</span><span class="s1">'.child'</span><span class="p">)</span>
+<span class="c1">// @example Collect the child elements which make the function return true.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">children</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">index</span> <span class="o">&gt;</span> <span class="mi">2</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="closest-comparator">.closest (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> comparator
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect the closest .closest elements according to</span>
+<span class="c1">// the elements contained in the LudaInstance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">'.closest'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="contents-">.contents ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect the contents of the elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'.example'</span><span class="p">).</span><span class="nx">contents</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="find-selector">.find (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> selector
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect the #example element's descendant elements</span>
+<span class="c1">// which match the .target selector.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">'.target'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="next-comparator">.next (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> <span class="o">[</span>comparator]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the first next sibling element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">next</span><span class="p">()</span>
+<span class="c1">// @example Search the next sibling elements and get</span>
+<span class="c1">// the first which matches the .next selector.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">next</span><span class="p">(</span><span class="s1">'.next'</span><span class="p">)</span>
+<span class="c1">// @example Search the next sibling elements and get</span>
+<span class="c1">// the first which makes the function return true.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">next</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">luda</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'.next'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="nextall-comparator">.nextAll (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> <span class="o">[</span>comparator]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect all the next sibling elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">nextAll</span><span class="p">()</span>
+<span class="c1">// @example Collect all the next sibling elements</span>
+<span class="c1">// which match the .next selector</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">nextAll</span><span class="p">(</span><span class="s1">'.next'</span><span class="p">)</span>
+<span class="c1">// @example Collect all the next sibling elements</span>
+<span class="c1">// which make the function return true,</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">nextAll</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">luda</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'.next'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="parent-comparator">.parent (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> <span class="o">[</span>comparator]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the element's parentNode.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">parent</span><span class="p">()</span>
+<span class="c1">// @example Get the closest .ancestor ancestor element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">parent</span><span class="p">(</span><span class="s1">'.ancestor'</span><span class="p">)</span>
+<span class="c1">// @example Get the closest ancestor element</span>
+<span class="c1">// which make the function return true</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">luda</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'.prev'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="parents-comparator">.parents (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> <span class="o">[</span>comparator]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect all the ancestor elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">parents</span><span class="p">()</span>
+<span class="c1">// @example Collect the ancestor elements</span>
+<span class="c1">// which match the .ancestor selector</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="s1">'.ancestor'</span><span class="p">)</span>
+<span class="c1">// @example Collect the ancestor elements</span>
+<span class="c1">// which make the function return true</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">luda</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'.prev'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="prev-comparator">.prev (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> <span class="o">[</span>comparator]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect the first previous sibling element.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">prev</span><span class="p">()</span>
+<span class="c1">// @example Search previous sibling elements and get</span>
+<span class="c1">// the first which matches the .prev selector</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">prev</span><span class="p">(</span><span class="s1">'.prev'</span><span class="p">)</span>
+<span class="c1">// @example Search previous sibling elements and get</span>
+<span class="c1">// the first which makes the function return true.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">prev</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">luda</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'.prev'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="prevall-comparator">.prevAll (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> <span class="o">[</span>comparator]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect all the previous sibling elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">prevAll</span><span class="p">()</span>
+<span class="c1">// @example Collect all the previous sibling elements</span>
+<span class="c1">// which match the .prev selector.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">prevAll</span><span class="p">(</span><span class="s1">'.prev'</span><span class="p">)</span>
+<span class="c1">// @example Collect all the previous sibling elements</span>
+<span class="c1">// which make the function return true,</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">prevAll</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">luda</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'.prev'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="siblings-comparator">.siblings (comparator)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComparator<span class="o">}</span> <span class="o">[</span>comparator]
+@returns <span class="o">{</span>LudaInstance<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Collect all the sibling elements.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">siblings</span><span class="p">()</span>
+<span class="c1">// @example Collect all the sibling elements</span>
+<span class="c1">// which match the .prev selector</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">siblings</span><span class="p">(</span><span class="s1">'.sibling'</span><span class="p">)</span>
+<span class="c1">// @example Collect all the sibling elements</span>
+<span class="c1">// which make the function return true</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">siblings</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">,</span> <span class="nx">index</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">el</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="k">return</span> <span class="nx">luda</span><span class="p">(</span><span class="nx">el</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'.sibling'</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="luda-component">Luda Component</h2>
+
+<h3 id="component-class-factory">Component Class Factory</h3>
+
+<h4 id="ludacomponent-name-rootselector">luda.component (name, rootSelector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string | undefined<span class="o">}</span> name
+@param <span class="o">{</span>string | document<span class="o">}</span> rootSelector
+@returns <span class="o">{</span>LudaComponent<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Create a component class object which can auto create</span>
+<span class="c1">// and destroy component instances for the elements which match</span>
+<span class="c1">// the css selector.</span>
+<span class="c1">// At the same time, a LudaComponentProxy is created since</span>
+<span class="c1">// the name param is presented. The proxy can be accessed by calling</span>
+<span class="c1">// luda.multiple (camel case name).</span>
+<span class="kd">let</span> <span class="nx">Multiple</span> <span class="o">=</span> <span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'multiple'</span><span class="p">,</span> <span class="s1">'.multiple'</span><span class="p">)</span>
+<span class="c1">// @example Create a component class object which can auto create a</span>
+<span class="c1">// single component instance for document.</span>
+<span class="c1">// Since the name param is undefined, no proxy is created for this</span>
+<span class="c1">// component class.</span>
+<span class="kd">let</span> <span class="nx">Singleton</span> <span class="o">=</span> <span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="nb">document</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="component-static-methods">Component Static Methods</h3>
+
+<h4 id="contains-selector">.contains (selector)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaSelector<span class="o">}</span> selector
+@returns <span class="o">{</span>boolean<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Check if any component instance is created</span>
+<span class="c1">// by a specific component class for the element.</span>
+<span class="nx">Multiple</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">luda</span><span class="p">(</span><span class="s1">'#multiple'</span><span class="p">))</span>
+<span class="nx">Singleton</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nb">document</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="each-callback">.each (callback)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Function<span class="o">}</span> callback
+@returns <span class="o">{</span>LudaComponent<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Loop the component instances created by</span>
+<span class="c1">// a specific component class.</span>
+<span class="nx">Multiple</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">rootEl</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instance</span><span class="p">)</span> <span class="c1">// LudaInstance</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rootEl</span><span class="p">)</span> <span class="c1">// Element</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">===</span> <span class="nx">rootEl</span><span class="p">)</span> <span class="c1">// true</span>
+<span class="p">})</span>
+<span class="nx">Singleton</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="nx">rootEl</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instance</span><span class="p">)</span> <span class="c1">// LudaInstance</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rootEl</span><span class="p">)</span> <span class="c1">// document</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">instance</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">===</span> <span class="nx">rootEl</span><span class="p">)</span> <span class="c1">// true</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="help-definition">.help (definition)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComponentHelper<span class="o">}</span> definition
+@param <span class="o">{</span>Function<span class="o">}</span> <span class="o">[</span>definition.find]
+@param <span class="o">{</span>Function<span class="o">}</span> <span class="o">[</span>definition.listen]
+@param <span class="o">{</span>Function<span class="o">}</span> <span class="o">[</span>definition.watch]
+@param <span class="o">{</span>Function<span class="o">}</span> <span class="o">[</span>definition.create]
+@param <span class="o">{</span>Function<span class="o">}</span> <span class="o">[</span>definition.destroy]
+@returns <span class="o">{</span>LudaComponent<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Create a component class object and define helpers.</span>
+<span class="kd">let</span> <span class="nx">Multiple</span> <span class="o">=</span> <span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'multiple'</span><span class="p">,</span> <span class="s1">'.multiple'</span><span class="p">).</span><span class="nx">help</span><span class="p">({</span>
+
+  <span class="na">find</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">Multiple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span> <span class="c1">// true</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">descendants</span><span class="p">:</span> <span class="s1">'.descendant'</span><span class="p">,</span>  <span class="c1">// Access by calling this.descendants</span>
+      <span class="na">outOfRoot</span><span class="p">:</span> <span class="nx">luda</span><span class="p">(</span><span class="s1">'#out-of-root'</span><span class="p">)</span> <span class="c1">// Access by calling this.outOfRoot</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="na">listen</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">Multiple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span> <span class="c1">// true</span>
+    <span class="k">return</span> <span class="p">[</span>
+      <span class="p">[</span><span class="s1">'click keydown@enter'</span><span class="p">,</span> <span class="s1">'.descendant'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">doSomething</span><span class="p">],</span>
+      <span class="p">[</span><span class="s1">'click'</span><span class="p">,</span> <span class="s1">'#out-of-root'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">Multiple</span><span class="p">)</span> <span class="c1">// false</span>
+      <span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">data</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">luda</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'#out-of-root'</span><span class="p">))</span> <span class="c1">// true</span>
+      <span class="p">}]</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+
+  <span class="na">watch</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">Multiple</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span> <span class="c1">// true</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">node</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">'.descendant'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">doSomething</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">doSomethingElse</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">'.descendant'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">changed</span><span class="p">,</span> <span class="nx">type</span><span class="p">){</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">Multiple</span><span class="p">)</span> <span class="c1">// false</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">changed</span><span class="p">)</span> <span class="c1">// true</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">luda</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">changed</span><span class="p">))</span> <span class="c1">// true</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">changed</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// true</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">type</span> <span class="o">===</span> <span class="s1">'added'</span> <span class="nx">or</span> <span class="nx">type</span> <span class="o">===</span> <span class="s1">'removed'</span><span class="p">)</span> <span class="c1">// true</span>
+        <span class="p">}]</span>
+      <span class="p">],</span>
+      <span class="na">attr</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'.descendant'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">doSomething</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'.descendant'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">changed</span><span class="p">,</span> <span class="nx">oldVal</span><span class="p">){</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">Multiple</span><span class="p">)</span> <span class="c1">// false</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="o">===</span> <span class="nx">changed</span><span class="p">)</span> <span class="c1">// true</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">changed</span> <span class="k">instanceof</span> <span class="nx">Element</span><span class="p">)</span> <span class="c1">// true</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">luda</span><span class="p">(</span><span class="nx">changed</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'name'</span><span class="p">)</span> <span class="o">===</span> <span class="nx">oldVal</span><span class="p">)</span> <span class="c1">// false</span>
+        <span class="p">}]</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="na">create</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">Multiple</span><span class="p">)</span> <span class="c1">// true</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">descendants</span><span class="p">)</span> <span class="c1">// LudaInstance</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">outOfRoot</span><span class="p">)</span> <span class="c1">// LudaInstance</span>
+  <span class="p">},</span>
+
+  <span class="na">destroy</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span> <span class="k">instanceof</span> <span class="nx">Multiple</span><span class="p">)</span> <span class="c1">// true</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">descendants</span><span class="p">)</span> <span class="c1">// LudaInstance</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">outOfRoot</span><span class="p">)</span> <span class="c1">// LudaInstance</span>
+  <span class="p">}</span>
+
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="include-definition">.include (definition)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComponentProperty<span class="o">}</span> definition
+@returns <span class="o">{</span>LudaComponent<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Define public properties can be accessed through a component proxy.</span>
+<span class="nx">Multiple</span><span class="p">.</span><span class="nx">include</span><span class="p">({</span>
+  <span class="na">cls</span><span class="p">:</span> <span class="p">{</span><span class="na">active</span><span class="p">:</span> <span class="s1">'active'</span><span class="p">},</span>
+  <span class="na">toggle</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">toggleClass</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">cls</span><span class="p">.</span><span class="nx">active</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="c1">// @example Access defined public properties through a component proxy.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'#multiple'</span><span class="p">).</span><span class="nx">toggle</span><span class="p">().</span><span class="nx">cls</span><span class="p">.</span><span class="nx">active</span>
+</code></pre></div></div>
+
+<h4 id="protect-definition">.protect (definition)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>LudaComponentProperty<span class="o">}</span> definition
+@returns <span class="o">{</span>LudaComponent<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Define private properties can only be accessed</span>
+<span class="c1">// through a component instance.</span>
+<span class="nx">Multiple</span><span class="p">.</span><span class="nx">protect</span><span class="p">({</span>
+  <span class="na">evt</span><span class="p">:</span> <span class="p">{</span><span class="na">toggle</span><span class="p">:</span> <span class="s1">'myComponent:toggle'</span><span class="p">},</span>
+  <span class="na">triggerToggleEvt</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">trigger</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">evt</span><span class="p">.</span><span class="nx">toggle</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="component-instance-properties">Component Instance Properties</h3>
+
+<h4 id="id">.id</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@prop <span class="o">{</span>integer<span class="o">}</span> <span class="nb">id</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get the global unique id of a component instance.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'multiple'</span><span class="p">,</span> <span class="s1">'.multiple'</span><span class="p">).</span><span class="nx">help</span><span class="p">({</span>
+  <span class="na">create</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="con">.con</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@prop <span class="o">{</span>LudaComponent<span class="o">}</span> con
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get current component instance's component class.</span>
+<span class="kd">let</span> <span class="nx">Multiple</span> <span class="o">=</span> <span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'multiple'</span><span class="p">,</span> <span class="s1">'.multiple'</span><span class="p">).</span><span class="nx">protect</span><span class="p">({</span>
+  <span class="na">doSomething</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">con</span> <span class="o">===</span> <span class="nx">Multiple</span><span class="p">)</span> <span class="c1">// true</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">con</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="kd">constructor</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="root">.root</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@prop <span class="o">{</span>LudaInstance<span class="o">}</span> root
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get current component instance's root element.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'multiple'</span><span class="p">,</span> <span class="s1">'.multiple'</span><span class="p">).</span><span class="nx">protect</span><span class="p">({</span>
+  <span class="na">doSomething</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="c1">// 1</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="c1">// Element</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="win">.win</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@prop <span class="o">{</span>LudaInstance<span class="o">}</span> win
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get window object in a component instance.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="nb">document</span><span class="p">).</span><span class="nx">protect</span><span class="p">({</span>
+  <span class="na">doSomething</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">win</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="c1">// 1</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">win</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">===</span> <span class="nb">window</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="doc">.doc</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@prop <span class="o">{</span>LudaInstance<span class="o">}</span> doc
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get document object in a component instance.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="nb">document</span><span class="p">).</span><span class="nx">protect</span><span class="p">({</span>
+  <span class="na">doSomething</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">doc</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="c1">// 1</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">doc</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">===</span> <span class="nb">document</span><span class="p">)</span> <span class="c1">// true</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">doc</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">))</span> <span class="c1">// true</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="html">.html</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@prop <span class="o">{</span>LudaInstance<span class="o">}</span> html
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get document.documentElement in a component instance.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="nb">document</span><span class="p">).</span><span class="nx">protect</span><span class="p">({</span>
+  <span class="na">doSomething</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">html</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="c1">// 1</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">html</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">===</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="body">.body</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@prop <span class="o">{</span>LudaInstance<span class="o">}</span> body
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get document.body in a component instance.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="nb">document</span><span class="p">).</span><span class="nx">protect</span><span class="p">({</span>
+  <span class="na">doSomething</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="c1">// 1</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">===</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span> <span class="c1">// true</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="luda-mixin">Luda Mixin</h2>
+
+<h3 id="mixin-constructor">Mixin Constructor</h3>
+
+<h4 id="ludamixinname-conf">luda.mixin(name, conf)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string | undefined<span class="o">}</span> name
+@param <span class="o">{</span>Object<span class="o">}</span> <span class="o">[</span>conf]
+@returns <span class="o">{</span>LudaMixinInstance | Luda<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Create a mixin instance and cache it in memory</span>
+<span class="c1">// with an unique name.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">toggleableCreate</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'creating a instance.'</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="na">toggleableActivate</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'activate a instance.'</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+<span class="c1">// @example Get a named mixin instance.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">)</span>
+<span class="c1">// @example Remove a named mixin from memory.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">,</span> <span class="kc">null</span><span class="p">)</span>
+<span class="c1">// @example Create a anonymous mixin instance.</span>
+<span class="kd">let</span> <span class="nx">toggleable</span> <span class="o">=</span> <span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">({</span>
+  <span class="na">toggleableCreate</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'creating a instance.'</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="na">toggleableActivate</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'activate a instance.'</span><span class="p">)</span>
+  <span class="p">}</span>  
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h3 id="mixin-instance-methods">Mixin Instance Methods</h3>
+
+<h4 id="all-">.all ()</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@returns <span class="o">{</span>Object<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get all defined properties in a mixin instance.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">).</span><span class="nx">all</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="alias-options">.alias (options)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>Object<span class="o">}</span> options
+@returns <span class="o">{</span>Object<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get specific properties in a mixin instance</span>
+<span class="c1">// and rename the properties in returned object.</span>
+<span class="nx">luda</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">).</span><span class="nx">alias</span><span class="p">({</span>
+  <span class="na">create</span><span class="p">:</span> <span class="s1">'toggleableCreate'</span><span class="p">,</span>
+  <span class="na">activate</span><span class="p">:</span> <span class="s1">'toggleableActivate'</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="except-arg1-arg2-">.except (arg1, arg2, …)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string | Array<span class="o">}</span> arg1[, arg2, ...]
+@returns <span class="o">{</span>Object<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Filter mixin instance properties and collect</span>
+<span class="c1">// left properties in an object.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">).</span><span class="nx">except</span><span class="p">(</span><span class="s1">'toggleableCreate'</span><span class="p">)</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">).</span><span class="nx">except</span><span class="p">(</span><span class="s1">'toggleableCreate'</span><span class="p">,</span> <span class="s1">'toggleableActivate'</span><span class="p">)</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">).</span><span class="nx">except</span><span class="p">([</span><span class="s1">'toggleableCreate'</span><span class="p">,</span> <span class="s1">'toggleableActivate'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h4 id="get-name">.get (name)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string<span class="o">}</span> name
+@returns <span class="o">{</span><span class="k">*</span><span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Get a specific property in a mixin instance.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">).</span><span class="kd">get</span><span class="p">(</span><span class="s1">'toggleableCreate'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="only-arg1-arg2-">.only (arg1, arg2, …)</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@param <span class="o">{</span>string | Array<span class="o">}</span> arg1[, arg2, ...]
+@returns <span class="o">{</span>Object<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Filter mixin instance properties and collect</span>
+<span class="c1">// specific properties in an object.</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">).</span><span class="nx">only</span><span class="p">(</span><span class="s1">'toggleableCreate'</span><span class="p">)</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">).</span><span class="nx">only</span><span class="p">(</span><span class="s1">'toggleableCreate'</span><span class="p">,</span> <span class="s1">'toggleableActivate'</span><span class="p">)</span>
+<span class="nx">luda</span><span class="p">.</span><span class="nx">mixin</span><span class="p">(</span><span class="s1">'toggleable'</span><span class="p">).</span><span class="nx">only</span><span class="p">([</span><span class="s1">'toggleableCreate'</span><span class="p">,</span> <span class="s1">'toggleableActivate'</span><span class="p">])</span>
+</code></pre></div></div>
 
     </article>
   </main>
