@@ -48,10 +48,11 @@ runAttrCallbacks = (mutation, watches, nestable) ->
   name = mu.attributeName
   target = mu.target
   oldVal = mu.oldValue
-  name and watches.attr.forEach (attr) ->
+  return unless name and Type.isElement target
+  return if not nestable and not unnested(ins, [target]).length
+  watches.attr.forEach (attr) ->
     return unless attr.name.includes name
     return unless matches target, attr.selector
-    return if not nestable and not unnested(ins, [target]).length
     attr.callbacks.forEach (callback) ->
       ctx = cur(ins, callback, target)
       log "#{C.id} ID: #{ins.id} executes #{name} changed callback.",

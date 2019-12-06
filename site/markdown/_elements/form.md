@@ -85,6 +85,8 @@ luda('#my-select select').val('value')
 // @example Select specific options of a multiple select field
 // by passing in an array which contains the options' values.
 luda('#my-select select').val(['valueOne', 'valueTwo'])
+// @example Select no options.
+luda('#my-select select').val(null)
 ```
 
 #### Listen Selected Changes

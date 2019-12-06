@@ -2,6 +2,8 @@
 title: Form
 ---
 
+
+
 <div id="form-label" class="mb-large">
   <h4><a href="#form-label">#form-label</a></h4>
   <label class="fm-label">Name label</label>
@@ -62,11 +64,42 @@ title: Form
         <option value="goodbye">Goodbye!</option>
       </select>
     </div>
+    <div id="select-container" class="mt-small">
+      select container text node
+    </div>
+    <div id="select-container2" class="mt-small">
+      select container text node
+    </div>
     <input class="btn btn-secondary mt-small" type="reset" value="reset">
+    <button id="single-fm-select-val-null" type="button" class="btn btn-dark mt-small">Val null</button>
+    <button id="select-append" type="button" class="btn btn-primary mt-small">Append select</button>
+    <button id="select-replace" type="button" class="btn btn-primary mt-small">Replace text node</button>
+    <button id="select-empty" type="button" class="btn btn-primary mt-small">Empty Select</button>
+    <template id="appended-select-template">
+    <div class="fm fm-select">
+      <select placeholder="Select a word">
+        <option value="hello">Hello!</option>
+        <option value="goodbye" selected>Goodbye!</option>
+      </select>
+    </div>
+    </template>
     <script type="text/javascript">
+      luda.log(true)
       luda(document).on('luda:fmSelect:changed', '#single-fm-select', function(e, data){
         console.log('single fm select changed')
         console.log(data)
+      }).on('click', '#single-fm-select-val-null', function(){
+        luda('#single-fm-select select').val(null)
+      }).on('click', '#select-append', function(){
+        luda('#select-container').get(0).innerHTML = luda('#appended-select-template').html()
+      }).on('click', '#select-replace', function(){
+        var selectHTML = luda('#appended-select-template').html()
+        var select = luda(selectHTML).get(1)
+        var textNode = luda('#select-container2').contents().get(0)
+        luda('#select-container2').get(0).replaceChild(select, textNode)
+      }).on('click', '#select-empty', function(){
+        luda('#select-container').get(0).innerText= 'hello world'
+        luda('#select-container2').get(0).textContent = 'hello world'
       })
     </script>
   </div>
@@ -82,10 +115,13 @@ title: Form
       </select>
     </div>
     <input class="btn btn-secondary mt-small" type="reset" value="reset">
+    <button id="multiple-fm-select-val-null" type="button" class="btn btn-dark mt-small">Val null</button>
     <script type="text/javascript">
       luda(document).on('luda:fmSelect:changed', '#multiple-fm-select', function(e, data){
         console.log('multiple fm select changed')
         console.log(data)
+      }).on('click', '#multiple-fm-select-val-null', function(){
+        luda('#multiple-fm-select select').val(null)
       })
     </script>
   </div>
@@ -98,10 +134,13 @@ title: Form
       <input type="file" placeholder="Add a file">
     </div>
     <input class="btn btn-secondary mt-small" type="reset" value="reset">
+    <button id="single-fm-file-val-null" type="button" class="btn btn-dark mt-small">Val null</button>
     <script type="text/javascript">
       luda(document).on('luda:fmFile:changed', '#single-fm-file', function(e, data){
         console.log('single fm file changed')
         console.log(data)
+      }).on('click', '#single-fm-file-val-null', function(){
+        luda('#single-fm-file [type=file]').val(null)
       })
     </script>
   </div>
@@ -114,10 +153,13 @@ title: Form
       <input type="file" multiple placeholder="Add files">
     </div>
     <input class="btn btn-secondary mt-small" type="reset" value="reset">
+    <button id="multiple-fm-file-val-null" type="button" class="btn btn-dark mt-small">Val null</button>
     <script type="text/javascript">
       luda(document).on('luda:fmFile:changed', '#multiple-fm-file', function(e, data){
         console.log('multiple fm file changed')
         console.log(data)
+      }).on('click', '#multiple-fm-file-val-null', function(){
+        luda('#multiple-fm-file [type=file]').val(null)
       })
     </script>
   </div>
@@ -130,10 +172,13 @@ title: Form
       <input type="file" multiple value="application_helper.rb   application_record.rb" placeholder="Add files">
     </div>
     <input class="btn btn-secondary mt-small" type="reset" value="reset">
+    <button id="multiple-fm-file2-val-null" type="button" class="btn btn-dark mt-small">Val null</button>
     <script type="text/javascript">
       luda(document).on('luda:fmFile:changed', '#multiple-fm-file-2', function(e, data){
         console.log('multiple fm file 2 changed')
         console.log(data)
+      }).on('click', '#multiple-fm-file2-val-null', function(){
+        luda('#multiple-fm-file2 [type=file]').val(null)
       })
     </script>
   </div>

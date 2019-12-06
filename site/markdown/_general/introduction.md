@@ -47,7 +47,7 @@ just define component helpers and everything else is taken care by Luda.
 
 Dom elements and event listeners maintained in component helpers are cached
 by the kernel engine when necessary. Caches are updated or removed automatically
-when component dom tree changed.
+when component dom tree mutated.
 
 #### Automatic Proxy Creating For Accessing Components Safely
 

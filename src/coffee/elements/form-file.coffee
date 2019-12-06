@@ -38,7 +38,7 @@ luda.component 'fmFile'
   updateSimulatorValue: ->
     values = @files().map (f) -> f.name
     value = values.join(@splitor) or @value() or ''
-    @simulator.attr 'value', value
+    @simulator.val value
 
   updateValue: ->
     @updateSimulatorValue()
@@ -50,7 +50,8 @@ luda.component 'fmFile'
 
   tryReset: (target, oldVal) ->
     return unless @value() is ''
-    @file.prop('value', '').attr('value', oldVal)
+    return if oldVal is ''
+    @file.prop('value', '').attr('value', oldVal or '')
 
 .help
 

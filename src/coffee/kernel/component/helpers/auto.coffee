@@ -1,6 +1,7 @@
 import expando from '../../base/expando.coffee'
 import findAll from '../../base/find-all.coffee'
 import matches from '../../base/matches.coffee'
+import Type from '../../base/type.coffee'
 import unique from '../../base/unique.coffee'
 import {_access} from '../../cache/helpers/access.coffee'
 
@@ -33,12 +34,12 @@ autoCreateAndDestroy = (Component) ->
     attrNodes = unique attrNodes
     Components.forEach (C) ->
       els = []
-      nodes.forEach (node) ->
-        els = els.concat(findAll C.root, node)
+      nodes.forEach (node) -> els = els.concat(findAll C.root, node)
       unique(els).forEach (el) ->
         return if matches el, disAutoSelector
         if document.contains el then C.create el else C.destroy el
       attrNodes.forEach (el) ->
+        return unless Type.isElement el
         return if matches el, disAutoSelector
         if matches el, C.root
           C.create el
