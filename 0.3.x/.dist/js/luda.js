@@ -881,6 +881,9 @@
           }
         });
         return attrNodes.forEach(function(el) {
+          if (!Type.isElement(el)) {
+            return;
+          }
           if (matches(el, disAutoSelector)) {
             return;
           }
@@ -1626,14 +1629,17 @@
     name = mu.attributeName;
     target = mu.target;
     oldVal = mu.oldValue;
-    return name && watches.attr.forEach(function(attr) {
+    if (!(name && Type.isElement(target))) {
+      return;
+    }
+    if (!nestable && !unnested(ins, [target]).length) {
+      return;
+    }
+    return watches.attr.forEach(function(attr) {
       if (!attr.name.includes(name)) {
         return;
       }
       if (!matches(target, attr.selector)) {
-        return;
-      }
-      if (!nestable && !unnested(ins, [target]).length) {
         return;
       }
       return attr.callbacks.forEach(function(callback) {
@@ -3715,7 +3721,7 @@
         return f.name;
       });
       value = values.join(this.splitor) || this.value() || '';
-      return this.simulator.attr('value', value);
+      return this.simulator.val(value);
     },
     updateValue: function() {
       var oldFile, val;
@@ -3732,7 +3738,10 @@
       if (this.value() !== '') {
         return;
       }
-      return this.file.prop('value', '').attr('value', oldVal);
+      if (oldVal === '') {
+        return;
+      }
+      return this.file.prop('value', '').attr('value', oldVal || '');
     }
   }).help({
     find: function() {
@@ -3823,7 +3832,7 @@
       }
       selected = this.options()[this.select.prop('selectedIndex')];
       val = selected ? luda(selected).text() : '';
-      return this.simulator.attr('value', val);
+      return this.simulator.val(val);
     },
     updateValue: function() {
       var oldVal, selected, val;
@@ -4451,7 +4460,7 @@
           return values.push(value);
         }
       });
-      return this.simulator.attr('value', values.join(this.splitor));
+      return this.simulator.val(values.join(this.splitor));
     },
     updateValue: function() {
       var checked, oldVal;
