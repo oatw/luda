@@ -118,3 +118,13 @@ attribute will show in the wrapped text field.
 </div>
 ``` html{{ customized_option_text }}```
 <!-- markdownlint-enable -->
+
+## Listen Selected Changes
+
+```javascript
+// @example Do something after selected options changed.
+luda(document).on('luda:fmDropdown:changed', '#my-fm-dropdown', function(event, data){
+  console.log(data.value) // Selected values in an array.
+  console.log(data.selected) // Checked input elements in an array.
+})
+```

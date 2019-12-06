@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en" data-init-theme="default" data-applied-theme="default" data-theme-path-pattern="/luda/0.3.x/.dist/css/luda-$theme$.min.css">
   <head>
-    <title>Introduction | Luda - A lightweight and responsive UI framework for modern web development.</title>
+    <title>Introduction | Luda - A library helps to build cross-framework UI components.</title>
     <!-- markdownlint-disable -->
 <meta charset="UTF-8">
 <!-- viewport -->
@@ -81,7 +81,7 @@
 
 <aside id="doc-aside" class="nav-aside col-12 col-3-m pb-medium-m">
   <a href="/luda/0.3.x/" data-turbolinks="false" class="nav-logo">
-    <img src="/luda/0.3.x/assets/img/logo-text.svg" alt="logo">
+    <img src="/luda/0.3.x/assets/img/logo-text-light.svg" alt="logo">
   </a>
   <!-- markdownlint-disable -->
 <!-- markdownlint-disable -->
@@ -145,10 +145,6 @@
 
 
   
-  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/architecture">Architecture</a>
-  
-
-  
   <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/theming">Theming</a>
   
 
@@ -157,11 +153,11 @@
   
 
   
-  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/component">Write A Component</a>
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/component">Build A Component</a>
   
 
   
-  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/api">Kernel Javascript API</a>
+  <a class="btn btn-small btn-text-light mt-tiny" href="/luda/0.3.x/advanced/api">Kernel Engine API</a>
   
 
 
@@ -408,79 +404,161 @@
   <main id="doc-container" class="col-auto p-medium pt-small-m px-large-m pb-large-m">
     <article class="article max-w-100 p-none">
       <h1 class="page-title display fw-semibold mt-large-m">Introduction</h1>
-      <p class="h3 page-sub-title fw-light">Before we start, here is a short introduction for you to better understand the features and theories of Luda.</p>
-      <h2 id="why-luda">Why Luda</h2>
+      <p class="h3 page-sub-title fw-light">Before we start, here is a short introduction for you to better understand the concepts and features of Luda.</p>
+      <h2 id="what-is-luda">What is Luda</h2>
 
-<p>Think about if Luda is for you through the core feature explanations.</p>
+<p><strong>Luda is a library helps to build cross-framework UI components.</strong></p>
 
-<h3 id="luda-is-lightweight">Luda is Lightweight</h3>
+<p>As the time of writting, 2020 is coming. There’re already awosome frameworks
+great for UI and application development in front-end community. Why something
+called Luda jumped out? Because this is the front-end community.
+(Don’t be serious, just a joke :)</p>
 
-<p>With internal components reusing and zero external dependencies,
-Luda is much more lightweight than many other UI frameworks,
-but still includes many components and keeps growing. Themes can
-be changed by including different theme CSS files.
-The shared Javascript and each theme’s CSS are only about 25KB
-after gzipd.</p>
+<p>If you stick to a specific framework or UI library, please just close the
+page, I don’t want to waste your time. But If you’re looking for something
+helps to create reusable components cross framewoks speaking different
+languages, you could give Luda a try.</p>
+
+<p>Luda takes part in the process after templates parsed and leaves the parsing work
+like data binding and custom tag packaging to your faviroute frameworks.
+In this way, you can package reusable Luda components with utmost flexibility,
+no matter in a front-end framework or a back-end framework.</p>
+
+<h2 id="features">Features</h2>
+
+<h3 id="kernel-engine">Kernel Engine</h3>
+
+<p>Inspired by
+<a href="https://github.com/kenwheeler/cash">Cash</a>(A library like jQuery),
+the javascript part of Luda was rewritten in version 0.3.0.
+Most commonly used functions and classes for creating UI components were bundled
+together, I call them the kernel engine. You’ll learn Luda fast if you’re already
+familiar with jQuery.</p>
+
+<h4 id="automatic-component-lifecycle-handling">Automatic Component Lifecycle Handling</h4>
+
+<p>Luda handles component lifecycle automatically based on
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/readystatechange_event">Document Ready State</a>
+and <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">Mutation Observer</a>.
+You don’t have to watch component changes manually,
+just define component helpers and everything else is taken care by Luda.</p>
+
+<h4 id="automatic-component-dom-searching-and-cache-management">Automatic Component Dom Searching And Cache Management</h4>
+
+<p>Dom elements and event listeners maintained in component helpers are cached
+by the kernel engine when necessary. Caches are updated or removed automatically
+when component dom tree mutated.</p>
+
+<h4 id="automatic-proxy-creating-for-accessing-components-safely">Automatic Proxy Creating For Accessing Components Safely</h4>
+
+<p>Proxies which protect private properties are automitically created for named
+components. If a component user tries to access protected properties or methods of
+your components, warning messages will be printed on the dev console pannel.</p>
+
+<h4 id="native-attributes-and-events-for-component-communication">Native Attributes And Events For Component Communication</h4>
+
+<p>Luda uses native html attributes as component props and native
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent">CustomEvents</a>
+to dispatch messages and transfer data among components. No matter
+what framework you use, these native features work well.</p>
+
+<h4 id="mixins-for-component-code-reusing">Mixins For Component Code Reusing</h4>
+
+<p>The kernel engine includes a mixin module for sharing code snippets. You can
+package component properties and methods in a named or an anonymous mixin instance,
+and use it cross different components.</p>
+
+<h3 id="built-in-components">Built-in Components</h3>
+
+<p>Luda provides a set of built-in components which are created under a multiple
+theme architecture. These components are lightweight and modular, internal
+dependencies are carefully handled, even for sass dependencies. The implemented
+baseline grid is the most proud part of the built-in components. You can choose
+these components as a start.</p>
 
 <p><em>Before version 1.0.0, only the default theme is released,
 new themes will be released after version 1.0.0.</em></p>
 
-<h3 id="luda-is-modular">Luda is Modular</h3>
-
-<p>Luda supports modular imports, internal dependencies are carefully handled,
-even for sass dependencies.
-You can import the components you need in asset management tools
-like Webpack, Rollup, Sprokets and many others.</p>
-
-<h3 id="designed-for-creative-designers">Designed for Creative Designers</h3>
-
-<p>There’re some design concepts which professional designers
-like to apply in their designs, like column grid, baseline grid,
-modular type scale and more.
-During the development process of Luda, these concepts are always in mind.
-What’s more, the Sass codes in Luda are idempotent,
-all styles can be easily customized by overriding sass variables
-and definations.</p>
-
-<h3 id="designed-for-lazy-developers">Designed for Lazy Developers</h3>
-
-<p>Based on <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">Mutation Observer API</a>,
-Luda handles components’ lifecycles and behaviors automitaclly.
-In most cases, you don’t need write Javascript to control the components.
-Components’ layouts are very stable in Luda,
-every component handles its document flow internally,
-you can position it in or out of the normal document flow without any worry.</p>
-
-<h2 id="built-in-components">Built-in Components</h2>
-
-<p>Luda provides some built-in components which are classified into different types.</p>
-
-<h3 id="element">Element</h3>
+<h4 id="element">Element</h4>
 
 <p>Elements are basic visible units to create user interfaces.
 Each element has a specfic function, they don’t rely on other elements.
 They can be used alone or combined together to create UI patterns.
 For example, <code class="highlighter-rouge">button</code>s can exist alone or combined to create a <code class="highlighter-rouge">button group</code>.</p>
 
-<h3 id="pattern">Pattern</h3>
+<h4 id="pattern">Pattern</h4>
 
 <p>Patterns are implementations of generally used UI design patterns.
 They can be combinations or extensions based on elements or other collections.
 For example, <code class="highlighter-rouge">search bar</code> is the combination of a <code class="highlighter-rouge">form text field</code> element
 and a <code class="highlighter-rouge">button</code> element.</p>
 
-<h3 id="utility">Utility</h3>
+<h4 id="utility">Utility</h4>
 
 <p>Most utilities include a single css rule with an <code class="highlighter-rouge">!important</code> flag at the end,
 they are used to define universal patterns or override built-in styles quickly.
 For example, the utility <code class="highlighter-rouge">.rel</code> contains a single css rule <code class="highlighter-rouge">positon: relative !important</code>.</p>
 
-<h3 id="behavior">Behavior</h3>
+<h4 id="behavior">Behavior</h4>
 
 <p>Behaviors are pure javascript components or functional CSS definations,
 they are used to control or enhance interaction actions.
 For example, <code class="highlighter-rouge">toggle</code> is a commonly used behavior to show or hide an
 element without writting javascript.</p>
+
+<h2 id="faq">FAQ</h2>
+
+<h3 id="why-no-template-parsing">Why No Template Parsing</h3>
+
+<p>Luda is not such a “cool” thing totally counts on client-side rendering.
+Using server-side rendering or client-side rendering should be decided by developers,
+but not Luda. As an UI library, Luda just fits in both situations. No matter
+what kind of techs you use, you can create component based applications
+with Luda.</p>
+
+<p>On the other hand, no matter you’re using a front-end framework or a back-end framework,
+the template part of it has already been mature enough and I believe you are already
+familiar with it. Packaging component html tags in one template language is easier
+than mixing different template languages together, right? It’s unnecessary to embed
+another template language to confuse you when to use which one.</p>
+
+<h3 id="why-not-web-components">Why Not Web Components</h3>
+
+<p>Web components seem like the future of component based applications, and some great
+tools like <a href="https://stenciljs.com/">Stencil</a> has already taken this approach to build
+cross-framework components. If you need a web components based tool, Stencil is
+highly recommended.</p>
+
+<p>Luda doesn’t aim to be another web components based library. The more things
+packaged in a component the less flexible the component is. As a flexible library,
+Luda repects your ways of packaging components. You can package a Luda component
+in any way you like, a custom element, a custom tag, or just a partial template.
+Not everybody is a big fun of web components, and every framework has its own way
+of packaging custom elements, but the choice is yours.</p>
+
+<h3 id="why-not-vanillajs">Why Not VanillaJs</h3>
+
+<p>In earlier versions, the javascript part of Luda was written in vanilla js.
+It was painful and inefficient to build components if without additional helpers.
+After a lot helpers builded, it seemed developers could build components more efficiently.
+But actually, it was not, developers had to take time to get familiar with the unkown
+helper functions.</p>
+
+<p>So in version 0.3.0, the javascript part of Luda was totally rewritten,
+provided a familiar experience like using jQuery, and a better experience of
+building components. Luda takes developing experience higher priority over following
+the trends.</p>
+
+<h3 id="is-luda-a-library-or-a-framework">Is Luda A Library Or A Framework</h3>
+
+<p>As mentioned, Luda is a library. If you noticed alpha versions of Luda, you may
+saw <em>“Luda is a lightweight and responsive UI framework for modern web development.”</em>
+at the home page. That’s because at the begining of creating Luda, I planned
+to make it a framework, but soon I realized building a new framework was overkill
+for sovling the problems Luda focued on.
+So I changed my mind, just a library is enough.</p>
+
+<p>Sorry for confusing you.</p>
 
     </article>
   </main>

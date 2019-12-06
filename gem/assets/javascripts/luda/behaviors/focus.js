@@ -11,18 +11,17 @@
     cls: {
       focus: 'focus'
     },
-    data: {
-      enable: 'focus'
-    },
     selector: {
       focused: '.focus',
       always: ['select', 'textarea', ':not(.btn-check):not(.btn-radio):not(.btn-file) > input:not([type=button]):not([type=submit]):not([type=reset])', '[contenteditable]', '[contenteditable=true]'],
       nested: ['select', '[contenteditable]', '[contenteditable=true]'],
       touch: 'input[type=range]'
-    },
+    }
+  }).protect({
     disabled: function() {
-      return this.html.data(this.data.enable) === false;
-    },
+      return this.html.data('focus') === false;
+    }
+  }).protect({
     addClass: function(node) {
       if (this.disabled()) {
         return;
@@ -47,12 +46,12 @@
       (evt = this.evtTriggeredFocus) && delete this.evtTriggeredFocus;
       if (evt && /key/.test(evt)) {
         target = node;
-      } else if (luda(node).matches(this.selector.always.join(','))) {
+      } else if (luda(node).is(this.selector.always.join(','))) {
         target = node;
-      } else if (luda(node).matches(this.selector.nested.join(' *,'))) {
+      } else if (luda(node).is(this.selector.nested.join(' *,'))) {
         parent = this.selector.nested.join(',');
         e.eventPath().some(function(el) {
-          return luda(el).matches(parent) && (target = el);
+          return luda(el).is(parent) && (target = el);
         });
       }
       return this.addClass(target);

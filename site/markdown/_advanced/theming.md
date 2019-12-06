@@ -1,6 +1,6 @@
 ---
 title: Theming
-order: 2
+order: 1
 description: With the power of Sass, you can extend Luda themes just as you wish.
 ---
 

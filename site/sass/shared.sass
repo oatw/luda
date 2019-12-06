@@ -5,3 +5,31 @@ html
 .display
   font-family: $typography-display
   font-weight: 900
+
+#main-content,
+.main-content-min-height
+  min-height: calc(100vh - 7rem)
+
+#main-content .container
+  max-width: baseline(38)
+
+#main-footer
+  box-shadow: 0 -1px rgba(0, 0, 0, 0.1)
+
++media-width(s, true)
+  .nav-logo img,
+  .nav-logo svg
+    height: baseline(1.8)
+
++media-width(m)
+  #main-header .nav-logo
+    margin-top: - baseline(0.5)
+
+  #site-versions
+    background: $background-color-muted
+    box-shadow: $box-shadow-low
+
+  #main-header .container,
+  #main-content .container,
+  #main-footer .container
+    max-width: baseline(100)

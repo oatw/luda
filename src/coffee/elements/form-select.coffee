@@ -16,19 +16,28 @@ luda.component 'fmSelect'
     default: 'data-fm-select_default-selected'
     defaultMarked: 'data-fm-select_default-marked'
 
+  evt:
+    changed: 'luda:fmSelect:changed'
+
+.protect
+
+  placeholder: -> @select.attr 'placeholder'
+
+  multiple: -> @select.prop 'multiple'
+
+  options: -> Array.from @select.prop('options')
+
 .protect
 
   tryEmpty: ->
-    select = @select.els[0]
-    selected = Array.from(select.options).some (o) ->
-      luda(o).hasAttr 'selected'
-    not selected and select.selectedIndex = -1
+    selected = @options().some (o) -> luda(o).hasAttr 'selected'
+    not selected and @select.prop('selectedIndex', -1)
 
   markSelected: (markDefault) ->
     markDefault = markDefault is true
     return if markDefault and @root.hasData @data.defaultMarked
     @root.data @data.defaultMarked, '' if markDefault
-    Array.from(@select.els[0].options).forEach (o) =>
+    @options().forEach (o) =>
       option = luda o
       if markDefault
         val = if option.hasAttr 'selected' then '' else null
@@ -37,29 +46,34 @@ luda.component 'fmSelect'
         val = if o.selected then '' else null
         option.attr 'selected', val
 
-  initSimulator: ->
-    return @simulator.remove() if @select.els[0].multiple
+  toggleSimulator: ->
+    return @simulator.remove() if @multiple()
     return if @simulator.length
-    simulator = luda '<input>'
-    simulator.els[0].tabIndex = -1
-    simulator.insertAfter @select
-    @updatePlaceholder()
-    @updateValue()
+    luda('<input>').prop('tabIndex', -1)
+    .attr('placeholder', @placeholder())
+    .insertAfter(@select)
 
-  updatePlaceholder: ->
-    return if @select.els[0].multiple
-    @simulator.attr 'placeholder', @select.attr('placeholder')
+  updateSimulatorValue: ->
+    return if @multiple()
+    selected = @options()[@select.prop('selectedIndex')]
+    val = if selected then luda(selected).text() else ''
+    @simulator.val val
 
   updateValue: ->
-    select = @select.els[0]
-    return if select.multiple
-    selected = select.options[select.selectedIndex]
-    val = if selected then luda(selected).text() else ''
-    @simulator.attr 'value', val
+    @updateSimulatorValue()
+    oldVal = @selectedVal
+    val = @select.val()
+    @selectedVal = if luda.isArray(val) then val else [val]
+    return if not oldVal or luda.arrayEqual(@selectedVal, oldVal)
+    if @multiple()
+      selected = @options().filter (o) -> o.selected
+    else
+      selected = @options()[@select.prop('selectedIndex')]
+    @select.trigger @evt.changed, {value: val, selected: selected}
 
   reset: ->
-    @select.els[0].selectedIndex = -1
-    Array.from(@select.els[0].options).forEach (o) =>
+    @select.prop 'selectedIndex', -1
+    @options().forEach (o) =>
       o.selected = luda(o).hasData @data.default
     @markSelected()
 
@@ -72,15 +86,16 @@ luda.component 'fmSelect'
   create: ->
     @tryEmpty()
     @markSelected true
-    @initSimulator()
+    @toggleSimulator()
+    @updateValue()
 
   watch: ->
-    dom: [
+    node: [
       [@selector.options, @tryEmpty, @updateValue]
     ]
     attr: [
-      ['selected', @selector.options, @updateValue]
-      ['multiple', @selector.select, @initSimulator]
+      ['selected', @selector.options, @tryEmpty, @updateValue]
+      ['multiple', @selector.select, @toggleSimulator, @updateValue]
     ]
 
   listen: ->

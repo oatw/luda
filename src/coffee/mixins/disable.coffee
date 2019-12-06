@@ -11,15 +11,14 @@ luda.mixin 'disable',
   #   disable:
   #     tabIndex: string  # required
 
+  disableTargetProp: -> @attr?.disable or 'disabled'
+
   disableCreate: ->
-    rootEl = @root.els[0]
-    tabIndex = rootEl.tabIndex
+    tabIndex = @root.prop 'tabIndex'
     dataAttr = @data.disable.tabIndex
     @root.data dataAttr, tabIndex unless @root.hasData dataAttr
-    rootEl.tabIndex = -1
-    rootEl[@attr?.disable or 'disabled'] = true
+    @root.prop('tabIndex', -1).prop @disableTargetProp(), true
 
   disableDestroy: ->
-    rootEl = @root.els[0]
-    rootEl.tabIndex = @root.data @data.disable.tabIndex
-    rootEl[@attr?.disable or 'disabled'] = false
+    tabIndex = @root.data @data.disable.tabIndex
+    @root.prop('tabIndex', tabIndex).prop @disableTargetProp(), false

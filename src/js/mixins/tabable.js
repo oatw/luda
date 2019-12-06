@@ -35,6 +35,30 @@
     //     indicators: string  # required
     //     prevCtrl: string    # optional
     //     nextCtrl: string    # optional
+    tabableActiveIndex: function() {
+      var index, ref, ref1;
+      index = ((ref = this.default) != null ? (ref1 = ref.tabable) != null ? ref1.activeIndex : void 0 : void 0) || 0;
+      this.tabableTargets.els.some((it, i) => {
+        if (!luda(it).hasClass(this.cls.tabable.active)) {
+          return false;
+        }
+        index = i;
+        return true;
+      });
+      return index;
+    },
+    tabableWrapable: function() {
+      var ref, ref1, wrapAttr, wrapable;
+      wrapAttr = this.data.tabable.wrap;
+      if (!wrapAttr) {
+        return false;
+      }
+      wrapable = this.root.data(wrapAttr);
+      if (wrapable === false) {
+        return false;
+      }
+      return (ref = this.default) != null ? (ref1 = ref.tabable) != null ? ref1.wrap : void 0 : void 0;
+    },
     tabableActivate: function(index) {
       var direction;
       if (!luda.isNumeric(index)) {
@@ -125,30 +149,6 @@
       this.tabableSetIndicatorsState();
       this.tabableSetDirectionCtrlsState();
       return true;
-    },
-    tabableActiveIndex: function() {
-      var index, ref, ref1;
-      index = ((ref = this.default) != null ? (ref1 = ref.tabable) != null ? ref1.activeIndex : void 0 : void 0) || 0;
-      this.tabableTargets.els.some((it, i) => {
-        if (!luda(it).hasClass(this.cls.tabable.active)) {
-          return false;
-        }
-        index = i;
-        return true;
-      });
-      return index;
-    },
-    tabableWrapable: function() {
-      var ref, ref1, wrapAttr, wrapable;
-      wrapAttr = this.data.tabable.wrap;
-      if (!wrapAttr) {
-        return false;
-      }
-      wrapable = this.root.data(wrapAttr);
-      if (wrapable === false) {
-        return false;
-      }
-      return (ref = this.default) != null ? (ref1 = ref.tabable) != null ? ref1.wrap : void 0 : void 0;
     },
     tabableTransitioning: function() {
       return 'tabableActivating' in this || 'tabableDeactivating' in this;
@@ -254,7 +254,7 @@
       wrapAttr && attr.push([wrapAttr, this.tabableSetDirectionControlState]);
       return {
         attr: attr,
-        dom: [[this.selector.tabable.targets, this.tabableLayout], [this.selector.tabable.indicators, this.tabableSetIndicatorsState]]
+        node: [[this.selector.tabable.targets, this.tabableLayout], [this.selector.tabable.indicators, this.tabableSetIndicatorsState]]
       };
     },
     tabableListen: function() {

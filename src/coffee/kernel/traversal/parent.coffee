@@ -8,11 +8,9 @@ import unique from '../base/unique.coffee'
 luda.include
   
   parent: (comparator) ->
-    return luda unique(pluck @els, 'parentNode') unless comparator
-    parents = []
-    @els.forEach (el) ->
-      while parent = el.parentNode
-        matched = collect([parent], comparator)[0]
-        return parents.push matched if matched
-        el = parent
-    luda unique(parents)
+    if comparator
+      plucked = pluck @els, 'parentElement', false, (p) ->
+        collect([p], comparator).length
+    else
+      plucked = pluck @els, 'parentNode'
+    luda unique(plucked)

@@ -1,18 +1,33 @@
-<img src="https://github.com/oatw/luda/blob/master/site/assets/img/logo-horizontal-full.svg" alt="logo" width="300" height="134"/>
+# Luda
 
-__A lightweight and responsive UI framework for modern web development.__
+**Luda is a library helps to build cross-framework UI components.**
 
-Know more about Luda at the [official site](https://oatw.github.io/luda).
-Communicate with Luda's contributers in the [gitter chatroom](https://gitter.im/oatw/luda).
+Luda takes part in the process after templates parsed and leaves the parsing
+work like data binding and custom tag packaging to your faviroute frameworks.
+In this way, you can package reusable Luda components with utmost flexibility,
+no matter in a front-end framework or a back-end framework.
+
+Know more about Luda at the **[official site](https://oatw.github.io/luda)**.
+Play with the **[live demos](https://codepen.io/collection/nmBYVv)** at codepen.
 
 ## Key Features
 
-- Lightweight - No dependency. Includes multiple themes, each theme is only ~25KB after gziped.
-- Modular - Supports modular imports in asset management tools.
-- Rhythmical - Built-in baseline grid, column grid, modular type scale and more...
-- Automatic - Based on Mutation Observer API, components' lifecycles are handled automatically.
+- Automatic component lifecycle handling.
+- Automatic component dom searching and cache management.
+- Automatic proxy creating for accessing components safely.
+- Native attributes and events for component communication.
+- Mixins for component code reusing.
+- Built-in UI components for saving your time.
 
-_Before version 1.0.0, only the default theme is released, more themes will be released after version 1.0.0._
+## How Luda Component Works
+
+### Component Class Execution Process
+
+![component class execution process](https://raw.githubusercontent.com/oatw/luda/master/site/assets/img/execution.png)
+
+### Component Instance Lifecycle
+
+![component instance lifecycle](https://raw.githubusercontent.com/oatw/luda/master/site/assets/img/lifecycle.png)
 
 ## Getting Started
 

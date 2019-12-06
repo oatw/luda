@@ -1,10 +1,12 @@
+import arrayEqual from '../../base/array-equal.coffee'
 import expando from '../../base/expando.coffee'
 import find from '../../base/find.coffee'
 import findAll from '../../base/find-all.coffee'
+import matches from '../../base/matches.coffee'
+import splitValues from '../../base/split-values.coffee'
 import Type from '../../base/type.coffee'
 import unique from '../../base/unique.coffee'
 import log from '../../log/log.coffee'
-import matches from '../../matches/helpers/matches.coffee'
 import unnested from './unnested.coffee'
 
 
@@ -20,17 +22,17 @@ cur = (ins, callback, target) ->
   isInProto = Object.values(proto).includes callback
   if isInProto then ins else target
 
-runDomCallbacks = (type, mutation, watches, nestable) ->
+runNodeCallbacks = (type, mutation, watches, nestable) ->
   ins = mutation.ins
   C = ins.constructor
   mu = mutation.mu
   nodes = Array.from mu["#{type}Nodes"]
-  watches.dom.forEach (dom) ->
+  watches.node.forEach (node) ->
     els = []
-    nodes.forEach (n) -> els = els.concat(findAll dom.selector, n)
+    nodes.forEach (n) -> els = els.concat(findAll node.selector, n)
     return unless els.length
     not nestable and els = unnested ins, unique(els)
-    els.length and dom.callbacks.forEach (callback) ->
+    els.length and node.callbacks.forEach (callback) ->
       ctx = cur ins, callback, els
       unless callback is C.prototype.cleanTraversal
         log "#{C.id} ID: #{ins.id} executes nodes #{type} callback.",
@@ -46,10 +48,11 @@ runAttrCallbacks = (mutation, watches, nestable) ->
   name = mu.attributeName
   target = mu.target
   oldVal = mu.oldValue
-  name and watches.attr.forEach (attr) ->
-    return unless name is attr.name
+  return unless name and Type.isElement target
+  return if not nestable and not unnested(ins, [target]).length
+  watches.attr.forEach (attr) ->
+    return unless attr.name.includes name
     return unless matches target, attr.selector
-    return if not nestable and not unnested(ins, [target]).length
     attr.callbacks.forEach (callback) ->
       ctx = cur(ins, callback, target)
       log "#{C.id} ID: #{ins.id} executes #{name} changed callback.",
@@ -60,16 +63,12 @@ runAttrCallbacks = (mutation, watches, nestable) ->
 
 executeMutations = (C, mutations, nestable) ->
   mutations.forEach (mutation) ->
-    runDomCallbacks 'added', mutation, C.watches, nestable
-    runDomCallbacks 'removed', mutation, C.watches, nestable
+    runNodeCallbacks 'added', mutation, C.watches, nestable
+    runNodeCallbacks 'removed', mutation, C.watches, nestable
     runAttrCallbacks mutation, C.watches, nestable
 
 nodesEqual = (nodesOne, nodesTwo) ->
-  return false unless nodesOne.length is nodesTwo.length
-  return true if nodesOne.length is 0 and nodesTwo.length is 0
-  itemsOne = Array.from nodesOne
-  itemsTwo = Array.from nodesTwo
-  not itemsOne.some (node, index) -> node isnt itemsTwo[index]
+  arrayEqual Array.from(nodesOne), Array.from(nodesTwo), true
 
 findSameMutation = (mutations, mu) ->
   theSameMutation = null
@@ -105,11 +104,11 @@ watch = (C, ins) ->
   unless C.watches
     conf = C.helpers.watch.call C.prototype
     C.watches =
-      dom: (conf.dom or []).map (d) ->
+      node: (conf.node or []).map (d) ->
         selector: if Type.isFunction d[0] then '*' else d[0]
         callbacks: if Type.isFunction d[0] then d else d.slice 1
       attr: (conf.attr or []).map (a) ->
-        name: a[0]
+        name: splitValues a[0]
         selector: if Type.isFunction a[1] then '*' else a[1]
         callbacks: if Type.isFunction a[1] then a.slice 1 else a.slice 2
   createObserver C, ins

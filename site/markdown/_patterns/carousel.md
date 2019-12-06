@@ -123,119 +123,137 @@ you can preview the effects in the below example.
 ### data-carousel-interval
 
 ``` html
-<div class="carousel" data-carousel-interval="10000">...</div>
-```
-
+<!-- @example
 Set the interval time to 10000 milliseconds.
 The interval time is 5000 milliseconds by default.
-
-``` html
+-->
+<div class="carousel" data-carousel-interval="10000">...</div>
+<!-- @example
+Disable the auto-play function.
+-->
 <div class="carousel" data-carousel-interval="false">...</div>
 ```
-
-Disable the auto-play function.
 
 ### data-carousel-wrap
 
 ``` html
+<!-- @example
+Disable the auto-loop function.
+-->
 <div class="carousel" data-carousel-wrap="false">...</div>
 ```
-
-Disable the auto-loop function.
 
 ## Javascript Methods
 
 ### luda.carousel(selector).activate(index)
 
-``` javascript
+```bash
+@param {LudaSelector} selector
 @param {integer} index
+@returns {LudaComponentProxy}
 ```
 
 ``` javascript
+// @example Activate a specfic item of a carousel by
+// passing in the item's index number.
 luda.carousel('#my-carousel').activate(0)
 ```
 
-Activate a specfic item of the carousel by passing in the item's index number.
-
 ### luda.carousel(selector).next()
 
+```bash
+@param {LudaSelector} selector
+@returns {LudaComponentProxy}
+```
+
 ``` javascript
+// @example Activate the next item of a carousel.
 luda.carousel('#my-carousel').next()
 ```
 
-Activate the next item of the carousel.
-
 ### luda.carousel(selector).prev()
 
+```bash
+@param {LudaSelector} selector
+@returns {LudaComponentProxy}
+```
+
 ``` javascript
+// @example Activate the prev item of a carousel.
 luda.carousel('#my-carousel').prev()
 ```
 
-Activate the prev item of the carousel.
-
 ### luda.carousel(selector).pause()
 
+```bash
+@param {LudaSelector} selector
+@returns {LudaComponentProxy}
+```
+
 ``` javascript
+// @example Pause an auto-play carousel.
 luda.carousel('#my-carousel').pause()
 ```
 
-Pause an auto-play carousel.
-
 ### luda.carousel(selector).play()
 
-``` javascript
-luda.carousel('#my-carousel').play()
+```bash
+@param {LudaSelector} selector
+@returns {LudaComponentProxy}
 ```
 
-Restart a paused carousel.
+``` javascript
+// @example Restart a paused carousel.
+luda.carousel('#my-carousel').play()
+```
 
 ## DOM Events
 
 ### luda:carousel:activate
 
 ``` javascript
+// @example This event will be triggered before
+// the .carousel-item-active class added to a carousel item.
 luda(document).on('luda:carousel:activate', '#my-carousel', function(event){
   let myCarousel = this, item = event.tartet
-  event.preventDefault() // Prevent the carousel item from being activated if necessary.
+  // Prevent the carousel item from being activated if necessary.
+  event.preventDefault()
 })
 ```
-
-Will be triggered before the `.carousel-item-active` class added to a carousel item.
 
 ### luda:carousel:activated
 
 ``` javascript
+// @example This event will be triggered after
+// the .carousel-item-active class added to a carousel item and
+// CSS transition finished.
 luda(document).on('luda:carousel:activated', '#my-carousel', function(event){
   let myCarousel = this, item = event.tartet
 })
-
 ```
-
-Will be triggered after the `.carousel-item-active` class added
-to a carousel item and CSS transition finished.
 
 ### luda:carousel:deactivate
 
 ``` javascript
+// @example This event will be triggered before
+// the .carousel-item-active class removed from a carousel item.
 luda(document).on('luda:carousel:deactivate', '#my-carousel', function(event){
   let myCarousel = this, item = event.tartet
-  event.preventDefault() // Prevent the carousel item from being deactivated if necessary.
+  // Prevent the carousel item from being deactivated if necessary.
+  event.preventDefault()
 })
 ```
-
-Will be triggered before the `.carousel-item-active` class removed from
-a carousel item.
 
 ### luda:carousel:deactivated
 
 ``` javascript
+// @example This event will be triggered after
+// the .carousel-item-active class removed from a carousel item and
+// CSS transition finished.
 luda(document).on('luda:carousel:deactivated', '#my-carousel', function(event){
   let myCarousel = this, item = event.tartet
 })
 ```
-
-Will be triggered after the `.carousel-item-active` class removed from
-a carousel item and CSS transition finished.
 
 ## Sass Variables
 

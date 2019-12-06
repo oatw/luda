@@ -8,8 +8,11 @@ luda.component 'tabulate', document
 
   selector: 'input[type=radio]:not([disabled])'
 
-  data:
-    tabulate: 'tabulate'
+.protect
+
+  disabled: -> @html.data('tabulate') is false
+
+.protect
 
   findSiblings: (radio) ->
     selector = @selector
@@ -20,7 +23,7 @@ luda.component 'tabulate', document
     next: radios[index + 1]
 
   trigger: (e) ->
-    return if @html.data(@data.tabulate) is false
+    return if @disabled()
     if e.shiftKey
       if prev = @findSiblings(e.target).prev
         e.preventDefault()

@@ -1,5 +1,5 @@
 import find from './find.coffee'
-import matches from '../matches/helpers/matches.coffee'
+import matches from './matches.coffee'
 
 
 

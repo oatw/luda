@@ -77,7 +77,7 @@ Javascript Entries In Node.js
 {: .mt-medium}
 
 ``` javascript
-// Kernel functions
+// Kernel engine
 import 'luda/src/js/kernel/index'
 // Behaviors
 import 'luda/src/js/behaviors/disabled'
@@ -171,7 +171,7 @@ JavaScript Entries in Ruby on Rails
 {: .mt-medium}
 
 ``` javascript
-// Kernel functions
+// Kernel engine
 //= require luda/kernel/index
 // Behaviors
 //= require luda/behaviors/disabled

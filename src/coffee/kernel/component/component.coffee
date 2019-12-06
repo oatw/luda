@@ -27,8 +27,9 @@ luda.extend 'component', factory = (name, root) ->
 
 
 
+  occupied = name and name of luda
   luda.extend name, createProxy Component if name
-  luda.ready ->
+  not occupied and luda.ready ->
     Component.create Component.root if Type.isDocument Component.root
     return unless Type.isString Component.root
     Component.create autoable(Component.root)
