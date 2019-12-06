@@ -71,6 +71,7 @@ title: Form
       select container text node
     </div>
     <input class="btn btn-secondary mt-small" type="reset" value="reset">
+    <button id="single-fm-select-append-option" type="button" class="btn btn-dark mt-small">Append Option</button>
     <button id="single-fm-select-val-null" type="button" class="btn btn-dark mt-small">Val null</button>
     <button id="select-append" type="button" class="btn btn-primary mt-small">Append select</button>
     <button id="select-replace" type="button" class="btn btn-primary mt-small">Replace text node</button>
@@ -83,11 +84,16 @@ title: Form
       </select>
     </div>
     </template>
+    <template id="option-template">
+      <option selected value="selected">selected</option>
+    </template>
     <script type="text/javascript">
       luda.log(true)
       luda(document).on('luda:fmSelect:changed', '#single-fm-select', function(e, data){
         console.log('single fm select changed')
         console.log(data)
+      }).on('click', '#single-fm-select-append-option', function(){
+        luda('#single-fm-select select').append(luda('#option-template').html())
       }).on('click', '#single-fm-select-val-null', function(){
         luda('#single-fm-select select').val(null)
       }).on('click', '#select-append', function(){
@@ -178,7 +184,7 @@ title: Form
         console.log('multiple fm file 2 changed')
         console.log(data)
       }).on('click', '#multiple-fm-file2-val-null', function(){
-        luda('#multiple-fm-file2 [type=file]').val(null)
+        luda('#multiple-fm-file-2 [type=file]').val(null)
       })
     </script>
   </div>

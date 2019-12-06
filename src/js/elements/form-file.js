@@ -40,7 +40,7 @@
         return f.name;
       });
       value = values.join(this.splitor) || this.value() || '';
-      return this.simulator.attr('value', value);
+      return this.simulator.val(value);
     },
     updateValue: function() {
       var oldFile, val;
@@ -57,7 +57,10 @@
       if (this.value() !== '') {
         return;
       }
-      return this.file.prop('value', '').attr('value', oldVal);
+      if (oldVal === '') {
+        return;
+      }
+      return this.file.prop('value', '').attr('value', oldVal || '');
     }
   }).help({
     find: function() {

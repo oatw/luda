@@ -552,7 +552,7 @@ you can define them with the <code class="highlighter-rouge">.include</code> met
 
 <h2 id="define-component-helpers">Define Component Helpers</h2>
 
-<p>Component helpers are functions used to bind event listeners, watch dom changes,
+<p>Component helpers are functions used to bind event listeners, watch dom mutations,
 and collect dom elements for components. The create helper and destroy helper’s
 execution context is the current component instance, and the execution context
 of the other helpers is the component class’s prototype.</p>
@@ -619,7 +619,7 @@ document will be captured. It’s just like define event listeners by calling
 
 <h3 id="the-watch-helper">The Watch Helper</h3>
 
-<p>The watch helper is used to watch node and attribute changes on component dom trees.
+<p>The watch helper is used to watch node and attribute mutations on component dom trees.
 An mutation observer will be created for each component instance according to the
 definitions. The syntax of defining observers is similiar to binding event listeners
 in the listen helper.</p>

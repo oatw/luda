@@ -881,6 +881,9 @@
           }
         });
         return attrNodes.forEach(function(el) {
+          if (!Type.isElement(el)) {
+            return;
+          }
           if (matches(el, disAutoSelector)) {
             return;
           }
@@ -1626,14 +1629,17 @@
     name = mu.attributeName;
     target = mu.target;
     oldVal = mu.oldValue;
-    return name && watches.attr.forEach(function(attr) {
+    if (!(name && Type.isElement(target))) {
+      return;
+    }
+    if (!nestable && !unnested(ins, [target]).length) {
+      return;
+    }
+    return watches.attr.forEach(function(attr) {
       if (!attr.name.includes(name)) {
         return;
       }
       if (!matches(target, attr.selector)) {
-        return;
-      }
-      if (!nestable && !unnested(ins, [target]).length) {
         return;
       }
       return attr.callbacks.forEach(function(callback) {

@@ -38,7 +38,7 @@
           return values.push(value);
         }
       });
-      return this.simulator.attr('value', values.join(this.splitor));
+      return this.simulator.val(values.join(this.splitor));
     },
     updateValue: function() {
       var checked, oldVal;

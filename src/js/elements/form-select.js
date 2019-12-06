@@ -71,7 +71,7 @@
       }
       selected = this.options()[this.select.prop('selectedIndex')];
       val = selected ? luda(selected).text() : '';
-      return this.simulator.attr('value', val);
+      return this.simulator.val(val);
     },
     updateValue: function() {
       var oldVal, selected, val;
