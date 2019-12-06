@@ -29,6 +29,38 @@
     // selector:
     //   toggleable:
     //     target: string  # optional
+    toggleableActive: function() {
+      return this.root.hasClass(this.cls.toggleable.active);
+    },
+    toggleableTriggerable: function(e) {
+      var evtPath, index, ref, ref1, toggleAttr, trigger;
+      if (this.toggleableTransitioning()) {
+        return;
+      }
+      if (/key/.test(e.type)) {
+        return true;
+      }
+      if (!this.root.els[0].contains(e.target)) {
+        return true;
+      }
+      trigger = (ref = this.default) != null ? (ref1 = ref.toggleable) != null ? ref1.trigger : void 0 : void 0;
+      toggleAttr = this.data.toggleable.trigger;
+      if (!toggleAttr) {
+        return trigger;
+      }
+      evtPath = e.eventPath();
+      index = evtPath.indexOf(this.root.els[0]) + 1;
+      evtPath.slice(0, index).some(function(el) {
+        var ins;
+        ins = luda(el);
+        if (!ins.hasData(toggleAttr)) {
+          return;
+        }
+        trigger = ins.data(toggleAttr) !== false;
+        return true;
+      });
+      return trigger;
+    },
     toggleableActivate: function() {
       var evt;
       if (this.toggleableActive()) {
@@ -78,40 +110,8 @@
         return this.toggleableActivate();
       }
     },
-    toggleableActive: function() {
-      return this.root.hasClass(this.cls.toggleable.active);
-    },
     toggleableTransitioning: function() {
       return 'toggleableActivating' in this || 'toggleableDeactivating' in this;
-    },
-    toggleableTriggerable: function(e) {
-      var evtPath, index, ref, ref1, toggleAttr, trigger;
-      if (this.toggleableTransitioning()) {
-        return;
-      }
-      if (/key/.test(e.type)) {
-        return true;
-      }
-      if (!this.root.els[0].contains(e.target)) {
-        return true;
-      }
-      trigger = (ref = this.default) != null ? (ref1 = ref.toggleable) != null ? ref1.trigger : void 0 : void 0;
-      toggleAttr = this.data.toggleable.trigger;
-      if (!toggleAttr) {
-        return trigger;
-      }
-      evtPath = e.eventPath();
-      index = evtPath.indexOf(this.root.els[0]) + 1;
-      evtPath.slice(0, index).some(function(el) {
-        var ins;
-        ins = luda(el);
-        if (!ins.hasData(toggleAttr)) {
-          return;
-        }
-        trigger = ins.data(toggleAttr) !== false;
-        return true;
-      });
-      return trigger;
     },
     toggleableFocusOpener: function(e) {
       var ins;

@@ -12,22 +12,23 @@
     // data:
     //   disable:
     //     tabIndex: string  # required
+    disableTargetProp: function() {
+      var ref;
+      return ((ref = this.attr) != null ? ref.disable : void 0) || 'disabled';
+    },
     disableCreate: function() {
-      var dataAttr, ref, rootEl, tabIndex;
-      rootEl = this.root.els[0];
-      tabIndex = rootEl.tabIndex;
+      var dataAttr, tabIndex;
+      tabIndex = this.root.prop('tabIndex');
       dataAttr = this.data.disable.tabIndex;
       if (!this.root.hasData(dataAttr)) {
         this.root.data(dataAttr, tabIndex);
       }
-      rootEl.tabIndex = -1;
-      return rootEl[((ref = this.attr) != null ? ref.disable : void 0) || 'disabled'] = true;
+      return this.root.prop('tabIndex', -1).prop(this.disableTargetProp(), true);
     },
     disableDestroy: function() {
-      var ref, rootEl;
-      rootEl = this.root.els[0];
-      rootEl.tabIndex = this.root.data(this.data.disable.tabIndex);
-      return rootEl[((ref = this.attr) != null ? ref.disable : void 0) || 'disabled'] = false;
+      var tabIndex;
+      tabIndex = this.root.data(this.data.disable.tabIndex);
+      return this.root.prop('tabIndex', tabIndex).prop(this.disableTargetProp(), false);
     }
   });
 

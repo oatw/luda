@@ -106,6 +106,12 @@
         }
       });
     },
+    create: function() {
+      return this.toggleableCreate();
+    },
+    destroy: function() {
+      return this.toggleableDestroy();
+    },
     listen: function() {
       var self;
       self = this;

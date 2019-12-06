@@ -5,10 +5,12 @@
 }(this, (function () { 'use strict';
 
   luda.component('tabulate', document).protect({
-    selector: 'input[type=radio]:not([disabled])',
-    data: {
-      tabulate: 'tabulate'
-    },
+    selector: 'input[type=radio]:not([disabled])'
+  }).protect({
+    disabled: function() {
+      return this.html.data('tabulate') === false;
+    }
+  }).protect({
     findSiblings: function(radio) {
       var index, name, radios, selector;
       selector = this.selector;
@@ -26,7 +28,7 @@
     },
     trigger: function(e) {
       var next, prev;
-      if (this.html.data(this.data.tabulate) === false) {
+      if (this.disabled()) {
         return;
       }
       if (e.shiftKey) {

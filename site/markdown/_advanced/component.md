@@ -161,7 +161,7 @@ luda.component('myComponent', '.my-component')
 
 ## Define Component Helpers
 
-Component helpers are functions used to bind event listeners, watch dom changes,
+Component helpers are functions used to bind event listeners, watch dom mutations,
 and collect dom elements for components. The create helper and destroy helper's
 execution context is the current component instance, and the execution context
 of the other helpers is the component class's prototype.
@@ -230,7 +230,7 @@ luda.component('myComponent', '.my-component')
 
 ### The Watch Helper
 
-The watch helper is used to watch node and attribute changes on component dom trees.
+The watch helper is used to watch node and attribute mutations on component dom trees.
 An mutation observer will be created for each component instance according to the
 definitions. The syntax of defining observers is similiar to binding event listeners
 in the listen helper.

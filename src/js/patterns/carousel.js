@@ -43,6 +43,15 @@
         nextCtrl: '.carousel-next'
       }
     }
+  }).protect({
+    interval: function() {
+      var duration;
+      duration = this.root.data(this.data.interval);
+      if (duration === false) {
+        return false;
+      }
+      return Math.abs(parseInt(duration, 10)) || this.default.interval;
+    }
   }).include(luda.mixin('tabable').alias({
     activate: 'tabableActivate',
     next: 'tabableNext',
@@ -81,17 +90,26 @@
       return this.intervaling = setTimeout(handler, this.nextInterval);
     }
   }).protect(luda.mixin('tabable').all()).protect({
-    interval: function() {
-      var duration;
-      duration = this.root.data(this.data.interval);
-      if (duration === false) {
-        return false;
-      }
-      return Math.abs(parseInt(duration, 10)) || this.default.interval;
+    togglePath: function(path, action) {
+      var targets;
+      targets = path.filter((el) => {
+        return this.con.contains(el);
+      });
+      return this.con.create(targets).forEach(function(ins) {
+        return ins[action]();
+      });
     },
-    touchendPlay: function() {
+    pauseOnEvt: function(e) {
+      return this.togglePath(e.eventPath(), 'pause');
+    },
+    playOnEvt: function(e) {
+      return this.togglePath(e.eventPath(), 'play');
+    },
+    playOnTouchend: function(e) {
+      var path;
+      path = e.eventPath();
       return setTimeout(() => {
-        return this.play();
+        return this.togglePath(path, 'play');
       });
     }
   }).help({
@@ -113,7 +131,7 @@
       return watches;
     },
     listen: function() {
-      return this.tabableListen().concat([['swipeleft', this.tabableNextOnEvent], ['swiperight', this.tabablePrevOnEvent], ['touchstart mouseover', this.pause], ['mouseout', this.play], ['touchend', this.touchendPlay]]);
+      return this.tabableListen().concat([['swipeleft', this.tabableNextOnEvent], ['swiperight', this.tabablePrevOnEvent], ['touchstart mouseover', this.pauseOnEvt], ['mouseout', this.playOnEvt], ['touchend', this.playOnTouchend]]);
     }
   });
 

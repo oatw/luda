@@ -35,7 +35,7 @@ luda.component 'fmDropdown'
       label = @labels.eq index
       value = label.data(@data.label) or label.text()
       values.push value if value and not values.includes value
-    @simulator.attr 'value', values.join(@splitor)
+    @simulator.val values.join(@splitor)
 
   updateValue: ->
     @updateSimulatorValue()

@@ -57,7 +57,7 @@ luda.component 'fmSelect'
     return if @multiple()
     selected = @options()[@select.prop('selectedIndex')]
     val = if selected then luda(selected).text() else ''
-    @simulator.attr 'value', val
+    @simulator.val val
 
   updateValue: ->
     @updateSimulatorValue()
