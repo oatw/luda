@@ -21,5 +21,5 @@
 <!-- windows phone no tap color -->
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="author" content="Oatw">
-<meta name="keywords" content="luda, lightweight, responsive, modular, ui framework">
-<meta name="description" content="Luda is a lightweight and responsive UI framework for modern web development.">
+<meta name="keywords" content="luda, cross-framework, component-based, ui-library">
+<meta name="description" content="Luda is a library helps to build cross-framework UI components.">

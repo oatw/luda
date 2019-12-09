@@ -1,7 +1,7 @@
 {
   "name": "luda",
   "version": "0.3.1",
-  "description": "A responsive and lightweight UI framework for modern web development",
+  "description": "A library helps to build cross-framework UI components.",
   "keywords": [
     "front-end",
     "responsive",
