@@ -1,5 +1,5 @@
 /*! 
- * Luda degradation script 0.3.1 | https://oatw.github.io/luda
+ * Luda degradation script 0.3.2 | https://oatw.github.io/luda
  * Copyright 2019 Oatw | https://oatw.blog
  * MIT license | http://opensource.org/licenses/MIT
  */
@@ -27,7 +27,8 @@
       es6Class: 'class X {}',
       es6ArrowFunction: '((x) => x)()',
       mutationObserver: 'new MutationObserver(function(){})',
-      proxy: 'new Proxy({},{})'
+      proxy: 'new Proxy({},{})',
+      performance: 'performance.clearMarks()'
     },
     _NOTIFY_MILLSECONDS: 500,
     check: function() {

@@ -1,5 +1,5 @@
 /*! 
-* * Luda 0.3.1 | Theme default | https://oatw.github.io/luda
+* * Luda 0.3.2 | Theme default | https://oatw.github.io/luda
 * * Copyright 2019 Oatw | https://oatw.blog
 * * MIT license | http://opensource.org/licenses/MIT
 * */
@@ -1098,6 +1098,10 @@ html:not([data-focus-disabled]) .fm .focus {
 }
 
 .fm select::-ms-expand {
+  display: none;
+}
+
+.fm ::-ms-clear {
   display: none;
 }
 

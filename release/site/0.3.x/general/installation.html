@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en" data-init-theme="default" data-applied-theme="default" data-theme-path-pattern="/luda/0.3.x/.dist/css/luda-$theme$.min.css">
   <head>
-    <title>Installation | Luda - A library helps to build cross-framework UI components.</title>
+    <title>Installation | Luda is a library helps to build cross-framework UI components.</title>
     <!-- markdownlint-disable -->
 <meta charset="UTF-8">
 <!-- viewport -->
@@ -32,8 +32,8 @@
 <!-- windows phone no tap color -->
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="author" content="Oatw">
-<meta name="keywords" content="luda, lightweight, responsive, modular, ui framework">
-<meta name="description" content="Luda is a lightweight and responsive UI framework for modern web development.">
+<meta name="keywords" content="luda, cross-framework, component-based, ui-library">
+<meta name="description" content="Luda is a library helps to build cross-framework UI components.">
     <link rel="shortcut icon" href="/luda/0.3.x/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
@@ -410,7 +410,7 @@
 
 <p class="fw-medium">Step 1: Download Pre-built Files</p>
 
-<p class="m-none p-none"><a href="https://github.com/oatw/luda/raw/v0.3.1/release/dist/luda-0.3.1.zip" class="btn btn-primary">Download v0.3.1</a></p>
+<p class="m-none p-none"><a href="https://github.com/oatw/luda/raw/v0.3.2/release/dist/luda-0.3.2.zip" class="btn btn-primary">Download v0.3.2</a></p>
 
 <p class="mt-medium fw-medium">Step 2: Include Them in Your Template</p>
 
@@ -421,11 +421,11 @@
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width,initial-scale=1,maximum-scale=1"</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- Use default theme for example. The CSS of each theme is built seperately, don't include multiple themes toghther. --&gt;</span>
-    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/luda@0.3.1/dist/css/luda-default.min.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://unpkg.com/luda@0.3.2/dist/css/luda-default.min.css"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;/head&gt;</span>
   <span class="nt">&lt;body&gt;</span>
     <span class="nt">&lt;h1&gt;</span>Hi Luda!<span class="nt">&lt;/h1&gt;</span>
-    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/luda@0.3.1/dist/js/luda.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/luda@0.3.2/dist/js/luda.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
@@ -438,12 +438,12 @@
 
 <p class="my-none">Yarn</p>
 
-<div class="language-bash mt-none highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yarn add luda@0.3.1
+<div class="language-bash mt-none highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yarn add luda@0.3.2
 </code></pre></div></div>
 
 <p class="mb-none">Npm</p>
 
-<div class="language-bash mt-none highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install </span>luda@0.3.1 <span class="nt">--save</span>
+<div class="language-bash mt-none highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install </span>luda@0.3.2 <span class="nt">--save</span>
 </code></pre></div></div>
 
 <p class="mt-medium fw-medium">Step 2: Choose a Theme and Import It</p>
@@ -475,7 +475,7 @@ If you stick to Sprockets, you can follow the belowing steps to install Luda.</p
 
 <p class="m-none">Add luda gem to your Gemfile first:</p>
 
-<div class="language-ruby mt-none mb-small highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'luda'</span><span class="p">,</span> <span class="s1">'0.3.1'</span>
+<div class="language-ruby mt-none mb-small highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'luda'</span><span class="p">,</span> <span class="s1">'0.3.2'</span>
 </code></pre></div></div>
 
 <p class="m-none">then run bundle in command line.</p>
@@ -509,7 +509,7 @@ or <a href="https://hanamirb.org">Hanami</a>,
 Luda assets will be added to load path automatically,
 you just need require the assets in your project.
 Otherwise, you need manually register Luda assets, you can check
-<a href="https://github.com/oatw/luda/tree/v0.3.1/gem">Luda gem source code</a>
+<a href="https://github.com/oatw/luda/tree/v0.3.2/gem">Luda gem source code</a>
 and your framework documentation to do that.</p>
 
     </article>

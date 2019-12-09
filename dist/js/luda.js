@@ -1,5 +1,5 @@
 /*! 
-   * Luda 0.3.1 | https://oatw.github.io/luda
+   * Luda 0.3.2 | https://oatw.github.io/luda
    * Copyright 2019 Oatw | https://oatw.blog
    * MIT license | http://opensource.org/licenses/MIT
    */
@@ -2191,7 +2191,7 @@
         });
         this.els.forEach(function(el) {
           return names.forEach(function(n) {
-            return delete el.dataset[n];
+            return n in el.dataset && delete el.dataset[n];
           });
         });
       } else {
@@ -2201,7 +2201,7 @@
           results = [];
           for (n in ref) {
             val = ref[n];
-            results.push(delete el.dataset[n]);
+            results.push(n in el.dataset && delete el.dataset[n]);
           }
           return results;
         });
