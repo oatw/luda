@@ -7,8 +7,6 @@ description: Scrollbar styles are rewritten in CSS for a better appearance.
 
 The scrollbar styles are written in pure CSS in Luda,
 the customized styles only shows for screens larger than the `m` width breakpoint.
-The styles only work for Webkit browsers and Edge browsers
-since Firefox doesn't support customizing scrollbar appearances in CSS.
 
 ## Examples
 
