@@ -11,7 +11,10 @@ luda.include
       names = splitValues name
       return this unless names.length
       names = names.map (n) -> parseName n
-      @els.forEach (el) -> names.forEach (n) -> delete el.dataset[n]
+      @els.forEach (el) -> names.forEach (n) ->
+        n of el.dataset and delete el.dataset[n]
     else
-      @els.forEach (el) -> delete el.dataset[n] for n, val of el.dataset
+      @els.forEach (el) ->
+        for n, val of el.dataset
+          n of el.dataset and delete el.dataset[n]
     this

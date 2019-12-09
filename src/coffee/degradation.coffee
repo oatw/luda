@@ -17,6 +17,7 @@ Degradation =
 
   _CSS_PROPERTIES: [
     display: 'flex'
+    writingMode: 'horizontal-tb'
     position: ['sticky||-webkit-sticky', 'fixed']
     'transition'
     'animation'
@@ -27,6 +28,7 @@ Degradation =
     es6ArrowFunction: '((x) => x)()'
     mutationObserver: 'new MutationObserver(function(){})'
     proxy: 'new Proxy({},{})'
+    performance: 'performance.clearMarks()'
 
   _NOTIFY_MILLSECONDS: 500
 
