@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors     = ["oatw"]
   spec.email       = ["oatwoatw@gmail.com"]
   spec.homepage    = "https://oatw.github.io/luda"
-  spec.summary     = "A lightweight and responsive UI framework for modern web development."
+  spec.summary     = "A library helps to build cross-framework UI components."
   spec.license     = "MIT"
 
   spec.files = Dir["{assets,lib}/**/*", "LICENSE", "Rakefile", "README.md"]

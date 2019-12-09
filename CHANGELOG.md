@@ -1,3 +1,15 @@
+# 0.3.2 (December 9, 2019)
+
+## Fixed
+
+- Fixed [#20](https://github.com/oatw/luda/issues/20).
+
+- Fixed [#21](https://github.com/oatw/luda/issues/21).
+
+## Deprecated
+
+- Dropped support for safari 10.
+
 # 0.3.1 (December 6, 2019)
 
 ## Changed

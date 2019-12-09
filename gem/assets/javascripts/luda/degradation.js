@@ -22,7 +22,8 @@
       es6Class: 'class X {}',
       es6ArrowFunction: '((x) => x)()',
       mutationObserver: 'new MutationObserver(function(){})',
-      proxy: 'new Proxy({},{})'
+      proxy: 'new Proxy({},{})',
+      performance: 'performance.clearMarks()'
     },
     _NOTIFY_MILLSECONDS: 500,
     check: function() {
