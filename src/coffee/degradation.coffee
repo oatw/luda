@@ -17,7 +17,6 @@ Degradation =
 
   _CSS_PROPERTIES: [
     display: 'flex'
-    writingMode: 'horizontal-tb'
     position: ['sticky||-webkit-sticky', 'fixed']
     'transition'
     'animation'
