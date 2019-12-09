@@ -3,14 +3,14 @@
   "version": "0.3.1",
   "description": "A library helps to build cross-framework UI components.",
   "keywords": [
-    "front-end",
-    "responsive",
-    "UI framework",
-    "grid system",
+    "luda",
+    "cross-framework",
+    "component-based",
+    "ui-library",
     "baseline grid",
     "sass",
     "coffeescript2",
-    "jacascript"
+    "javascript"
   ],
   "homepage": "https://oatw.github.io/luda",
   "repository": {
