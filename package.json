@@ -1,6 +1,6 @@
 {
   "name": "luda",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A library helps to build cross-framework UI components.",
   "keywords": [
     "luda",
@@ -21,12 +21,11 @@
   "license": "MIT",
   "author": {
     "name": "Oatw",
-    "blog": "https://oatw.blog",
     "email": "https://oatwoatw@gmail.com",
     "github": "https://github.com/oatw"
   },
   "config": {
-    "version": "0.3.2",
+    "version": "0.3.3",
     "theme": "default",
     "themes": [
       "default"
@@ -105,7 +104,7 @@
     "site-copy-luda": "shx cp -rf src/.dist/. site/.dist",
     "site-serve": "cross-conf-env bundle exec jekyll serve --config \"build/site.jekyll.config.yml,build/.site.data.yml\" --port npm_package_config_sitePort --livereload",
     "site": "npm-run-all --parallel site-clean luda-clean site-lint luda-lint-sass luda-lint-coffee --parallel site-make-data luda-themes-build luda-js-build-dist site-css-compile site-js-compile --sequential site-copy-luda --parallel site-watch site-serve",
-    "site-page-build": "cross-conf-env cross-env JEKYLL_ENV=production jekyll build --config \"build/site.jekyll.config.yml,build/.site.data.yml\" --destination site/.jekyllnpm_package_config_siteBaseUrl/npm_package_config_siteVersion --baseurl npm_package_config_siteBaseUrl/npm_package_config_siteVersion",
+    "site-page-build": "cross-conf-env cross-env JEKYLL_ENV=production bundle exec jekyll build --config \"build/site.jekyll.config.yml,build/.site.data.yml\" --destination site/.jekyllnpm_package_config_siteBaseUrl/npm_package_config_siteVersion --baseurl npm_package_config_siteBaseUrl/npm_package_config_siteVersion",
     "site-copy-root": "cross-conf-env shx cp site/.jekyllnpm_package_config_siteBaseUrl/npm_package_config_siteVersion/index.html site/.jekyllnpm_package_config_siteBaseUrl/npm_package_config_siteVersion/404.html site/.jekyllnpm_package_config_siteBaseUrl/npm_package_config_siteVersion/favicon.ico site/.jekyllnpm_package_config_siteBaseUrl",
     "site-make-version": "node build/make-site-version.js",
     "site-generate": "npm-run-all --sequential site-make-data site-page-build --parallel site-copy-root site-make-version",

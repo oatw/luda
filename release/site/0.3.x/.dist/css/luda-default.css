@@ -1,6 +1,6 @@
 /*! 
-* * Luda 0.3.2 | Theme default | https://oatw.github.io/luda
-* * Copyright 2019 Oatw | https://oatw.blog
+* * Luda 0.3.3 | Theme default | https://oatw.github.io/luda
+* * Copyright 2019 - 2020 Oatw
 * * MIT license | http://opensource.org/licenses/MIT
 * */
 :root {
@@ -2532,7 +2532,8 @@ sup {
 }
 
 .article > ul,
-.article > li {
+.article > ol,
+.article > dl {
   margin: 1rem 0;
 }
 

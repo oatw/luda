@@ -1,3 +1,15 @@
+# 0.3.3 (January 6, 2020)
+
+## Fixed
+
+- Fixed [#22](https://github.com/oatw/luda/issues/22).
+
+- Fixed [#24](https://github.com/oatw/luda/issues/24).
+
+- Fixed [#25](https://github.com/oatw/luda/issues/25).
+
+- Fixed [#26](https://github.com/oatw/luda/issues/26).
+
 # 0.3.2 (December 9, 2019)
 
 ## Fixed
