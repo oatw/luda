@@ -18,7 +18,7 @@ var createPackageStr = function(packageName){
 var createBanner = function(type, packageName){
   var banner = `/*! 
    * Luda ${info.version} | ${createThemeStr(type)}${createPackageStr(packageName)}${info.homepage}
-   * Copyright ${bannerDate} ${info.author.name} | ${info.author.blog}
+   * Copyright ${bannerDate} ${info.author.name}
    * MIT license | http://opensource.org/licenses/MIT
    */`
   return banner  

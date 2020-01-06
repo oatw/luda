@@ -4,7 +4,7 @@ var bannerDate = require('./banner-date')
 
 var banner = `/*! 
  * Luda degradation script ${info.version} | ${info.homepage}
- * Copyright ${bannerDate} ${info.author.name} | ${info.author.blog}
+ * Copyright ${bannerDate} ${info.author.name}
  * MIT license | http://opensource.org/licenses/MIT
  */`
 
