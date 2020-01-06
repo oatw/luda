@@ -1,6 +1,6 @@
 {
   "name": "luda",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "A library helps to build cross-framework UI components.",
   "keywords": [
     "luda",
@@ -25,7 +25,7 @@
     "github": "https://github.com/oatw"
   },
   "config": {
-    "version": "0.3.2",
+    "version": "0.3.3",
     "theme": "default",
     "themes": [
       "default"
