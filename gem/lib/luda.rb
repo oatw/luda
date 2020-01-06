@@ -12,9 +12,15 @@ module Luda
         register_hanami
       elsif sprockets?
         register_sprockets
+      elsif defined?(::SassC) && ::SassC.respond_to?(:load_paths)
+        ::SassC.load_paths << stylesheets_path
       elsif defined?(::Sass) && ::Sass.respond_to?(:load_paths)
         # The deprecated `sass` gem:
         ::Sass.load_paths << stylesheets_path
+      end
+
+      if defined?(::SassC::Script::Value::Number)
+        ::SassC::Script::Value::Number.precision = [Luda::SASS_PRECISION, ::SassC::Script::Value::Number.precision].max
       end
 
       if defined?(::Sass::Script::Value::Number)
