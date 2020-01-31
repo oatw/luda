@@ -28,6 +28,8 @@ CHANGELOG.md
 .tmproj
 .ruby-version
 .ruby-gemset
+.node-version
+.nvmrc
 *.esproj
 *.sublime-project
 *.sublime-workspace
