@@ -71,8 +71,8 @@ when you're going to fix a bug or add a new feature.
 
 ## Development Setup
 
-You will need install [Node.js](https://nodejs.org) version ~10,
-[Yarn](https://yarnpkg.com) version 1.10+, [Ruby](https://www.ruby-lang.org) version 2.5+
+You will need install [Node.js](https://nodejs.org) version ~ 10,
+[Yarn](https://yarnpkg.com) version 1.10+, [Ruby](https://www.ruby-lang.org) version ~> 2.6
 and [Bundler](https://bundler.io/) version 2+.
 
 Then, under the root of your local repo, run:

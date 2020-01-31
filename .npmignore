@@ -28,6 +28,7 @@ CHANGELOG.md
 .tmproj
 .ruby-version
 .ruby-gemset
+.rvmrc
 .node-version
 .nvmrc
 *.esproj
