@@ -16,7 +16,7 @@ called Luda jumped out? Because this is the front-end community.
 
 If you stick to a specific framework or UI library, please just close the
 page, I don't want to waste your time. But If you're looking for something
-helps to create reusable components cross framewoks speaking different
+helps to create reusable components across framewoks speaking different
 languages, you could give Luda a try.
 
 Luda takes part in the process after templates parsed and leaves the parsing work
@@ -66,7 +66,7 @@ what framework you use, these native features work well.
 
 The kernel engine includes a mixin module for sharing code snippets. You can
 package component properties and methods in a named or an anonymous mixin instance,
-and use it cross different components.
+and use it among different components.
 
 ### Built-in Components
 
@@ -134,7 +134,7 @@ packaged in a component the less flexible the component is. As a flexible librar
 Luda repects your ways of packaging components. You can package a Luda component
 in any way you like, a custom element, a custom tag, or just a partial template.
 Not everybody is a big fun of web components, and every framework has its own way
-of packaging custom elements, but the choice is yours.  
+of packaging custom elements, but the choice is yours.
 
 ### Why Not VanillaJs
 
