@@ -179,7 +179,7 @@
     "sass": "^1.13.1",
     "sass-lint": "^1.12.1",
     "shx": "^0.3.2",
-    "terser": "^3.8.2",
+    "terser": "^4.8.1",
     "wait-on": "^2.1.0",
     "wdio-browserstack-service": "^0.1.16",
     "wdio-mocha-framework": "^0.6.3",
