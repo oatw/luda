@@ -5,11 +5,10 @@ description: Progress is designed to show in-progress data.
 
 ## Usage
 
-A progress bar is offen used to show in-progress data
-like loading progress. They can be created by wrapping `.progress-bar`s
-inside a `.progress` container.
+A progress bar is often used to indicate progress, such as loading.
+They can be created by wrapping `.progress-bar`s inside a `.progress` container.
 
-In the below example, a single progress bar is wrapped in a `.progress`
+In the following example, a single progress bar is wrapped in a `.progress`
 container, its width is controlled with the size utility class `.w-25`.
 
 {% capture usage %}

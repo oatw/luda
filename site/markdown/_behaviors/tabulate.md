@@ -13,7 +13,7 @@ When a radio is focused, the next radio has the same `name`
 can be focused when the `Tab` key pressed and the prev radio has
 the same `name` can be focused when the `Tab` key
 and the `Shift` key pressed together.
-Let's see the below examples.
+Let's see the following examples.
 
 ## Examples
 

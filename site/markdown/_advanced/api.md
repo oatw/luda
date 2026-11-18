@@ -48,7 +48,7 @@ description: The reference of Luda kernel engine API.
 
 ## Luda Static Methods
 
-### Loger
+### Logger
 
 #### .log (arg1, arg2, ...)
 
@@ -1005,7 +1005,7 @@ luda(document).on('swipeleft swiperight swipeup swipedown', '.example', function
 #### .one (name, selector, callback)
 
 This method is similar to [.one](#on-name-selector-callback) method,
-but binded event listeners will be removed after triggered once.
+but bound event listeners will be removed after triggered once.
 
 #### .trigger (name, data, callback)
 

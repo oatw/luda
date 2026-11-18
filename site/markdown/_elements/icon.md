@@ -8,7 +8,7 @@ description: Icons have become inseparable part of visual interfaces for their p
 ## Include External Icon Libraries
 
 If you want to include an external icon library,
-make sure the librarys' CSS are included before Luda's CSS.
+make sure the library's CSS are included before Luda's CSS.
 Don't forget to add the `.ico` class together with
 the library's icon classes, so the icon styles can be consistent.
 
@@ -18,7 +18,7 @@ Luda includes some most widely used icons by default,
 they're written in pure CSS and super easy to use,
 just add the `.ico.ico-*` classes to an inline element.
 
-All built-in CSS icons are listed in the below gallery.
+All built-in CSS icons are listed in the following gallery.
 
 <!-- markdownlint-disable -->
 <p class="example my-none">
@@ -74,7 +74,7 @@ All built-in CSS icons are listed in the below gallery.
 If you want to use icon fonts, you need include them by yourself,
 Luda doesn't provide any built-in icon fonts. There's no big
 difference between using external font icons and using built-in
-CSS icons. Let's see the below example for clarification.
+CSS icons. Let's see the below example for clarity.
 
 <!-- markdownlint-disable -->
 <p class="example mt-none">

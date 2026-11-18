@@ -10,7 +10,7 @@ adding the `.article` class to a `<article>` element.
 By default vertical margins are added to elements
 match the `.article > *` selector.
 For specific elements like headings, paragraphs, tables and medias,
-margins can be setted by changing sass variables or overriding the default margins.
+margins can be set by changing sass variables or overriding the default margins.
 You can preview the default layout effect in the below sample article.
 
 {% capture article %}

@@ -9,8 +9,8 @@ Shadow utilities are classes for setting the value of the
 [`box-shadow`](https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow) property.
 They are usually used to add layer effects to elements.
 
-There're three built-in shadow classes: `.sd-low`, `.sd-normal` and `.sd-high`.
-You can preview their effects in the below example.
+There are three built-in shadow classes: `.sd-low`, `.sd-normal` and `.sd-high`.
+You can preview their effects in the following example.
 
 If you want to remove the shadow effects of an element,
 add the `.sd-none` class to it.

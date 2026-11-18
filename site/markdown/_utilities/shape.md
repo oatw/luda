@@ -10,7 +10,7 @@ Shape utilities are classes for setting the value of the
 property. They are named using the format: `.{shape}-{direction}`.
 Like some other utility classes,
 we use the first letter of each direction for short.
-All direction abbreviations are listed in the below table.
+All direction abbreviations are listed in the following table.
 
 <div class="table table-border">
   <table>
@@ -29,7 +29,7 @@ All direction abbreviations are listed in the below table.
 ## Rounded
 
 Rounded shape utilities set a small `border-radius` value(2px by default) to elements.
-Let's see the effects in the below gallery.
+Let's see the effects in the following gallery.
 
 <!-- markdownlint-disable -->
 <div class="d-flex example mb-none">
@@ -68,7 +68,7 @@ Let's see the effects in the below gallery.
 
 Circle utilities add a very large `border-radius` to elements
 to make them more rounded.
-Let's preview the effects in the below gallery.
+Let's preview the effects in the following gallery.
 
 <div class="d-flex example mb-none">
   <div class="mr-small mb-small">

@@ -1,6 +1,6 @@
 ---
 title: Tab
-description: Create horizontal tab navigations and vertical nativations easily.
+description: Create horizontal tab navigations and vertical navigations easily.
 ---
 
 ## Introduction

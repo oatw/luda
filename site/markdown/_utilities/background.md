@@ -1,14 +1,14 @@
 ---
 title: Background
 description: Use background utilities to change the background color,
-             background size and background pisition of an element.
+             background size and background position of an element.
 ---
 
 ## Background Color
 
 Background color utilities are classes for setting the value of the
 [`background-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color)
-property. You can preview the colors in the below gallery.
+property. You can preview the colors in the following gallery.
 When you pick up a background color class, consider the meaning in your context
 but not only the appearance, since in different themes background colors may be
 changed but the meanings are the same.
@@ -91,7 +91,7 @@ please read
 at first.
 
 You can preview how background size utilities
-affect the size of an element's background in the below gallery.
+affect the size of an element's background in the following gallery.
 
 <!-- markdownlint-disable -->
 <div class="background-example">
@@ -133,7 +133,7 @@ Background position utilities are classes for setting the value of the
 property. They are named using the format: `.bp-{horizontal position}{vertical position}`.
 
 We use the first letter of each position word for short,
-all position abbreviations are listed in the below table.
+all position abbreviations are listed in the following table.
 
 <!-- markdownlint-disable -->
 <div class="table table-border">
@@ -153,7 +153,7 @@ all position abbreviations are listed in the below table.
 <!-- markdownlint-enable -->
 
 You can preview how they affect the position of an element's background images
-in the below gallery.
+in the following gallery.
 
 <!-- markdownlint-disable -->
 <div class="background-example">

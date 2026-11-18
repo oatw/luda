@@ -22,4 +22,4 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="author" content="Oatw">
 <meta name="keywords" content="luda, cross-framework, component-based, ui-library">
-<meta name="description" content="Luda is a library helps to build cross-framework UI components.">
+<meta name="description" content="Luda is a library that helps build cross-framework UI components.">

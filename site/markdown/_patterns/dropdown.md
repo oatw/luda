@@ -14,7 +14,7 @@ The dropdown component can be controlled with the `Tab` key, the `Enter` key,
 the `Esc` key, and the arrow keys.
 
 Let's have a look at how to create different type
-dropdowns through the below examples.
+dropdowns through the following examples.
 
 ## Absolute Dropdown
 

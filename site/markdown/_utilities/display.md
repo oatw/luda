@@ -19,12 +19,12 @@ They are named using the format: `.d-{value}-{postfix}`.
 The value can be one of `none`, `inline`, `inline-block`, `block`,
 `inline-flex`, `flex`, `table`, `table-cell` and `table-row`.
 
-There is also a `.d-none-print` class for hidding elements when print.
+There is also a `.d-none-print` class to hide elements when printing.
 
 ## Example
 
-In the below example, we hide the `div` on small screens and large screens,
-and show it only on middle size screens.
+In the following example, we hide the `div` on small screens and large screens,
+and show it only on medium-sized screens.
 
 {% capture example %}
 <div class="d-none d-block-m d-none-l p-medium bc-primary"></div>

@@ -17,7 +17,7 @@ the other parts in a navigation component can be optional.
 A navigation component can be created with these classes:
 `.nav-header`, `.nav-aside`, `.nav-logo`, `.nav-open`,
 `.nav-menu`, `.nav-close`, `.nav-items` and `.nav-sub-items`.
-Let's see the below examples for clarification.
+Let's see the following examples for clarity.
 
 ## Header Navigation
 

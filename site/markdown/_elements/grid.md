@@ -8,10 +8,10 @@ description: With Luda grid system, you can create mobile-first responsive layou
 ## Column Widths
 
 Luda provides a 12 columns grid by default,
-column widths can be spefic or auto-adjusted.
+column widths can be specific or auto-adjusted.
 Each column has `1rem` padding in the left and right,
 and they must be wrapped in a container with the `.grid` class.
-You can preview grid layouts in the below examples.
+You can preview grid layouts in the following examples.
 
 ### Specific Column Widths
 
@@ -66,9 +66,9 @@ the screen width is larger than or equal to the `m` breakpoint.
 ### Auto-Adjusted Column Width
 
 The class `.col-auto` is used to make a column's width auto adjusted.
-The width of an auto-adjusted column depends on the availiable
+The width of an auto-adjusted column depends on the available
 horizontal space of its `.grid` container,
-all the availiable space will be occupied.
+all the available space will be occupied.
 
 <!-- markdownlint-disable -->
 <div class="grid grid-example">
@@ -93,7 +93,7 @@ with offset utilities and margin utilities.
 ### Specific Column Offsets
 
 The specific offset distances are from 1 column with to 11 columns width.
-You can add the offset utiltiy classes from `.offset-1` to `.offset-11`
+You can add the offset utility classes from `.offset-1` to `.offset-11`
 to control a column's offset distance.
 
 <!-- markdownlint-disable -->
@@ -146,7 +146,7 @@ in the left or right of its `.grid` container.
 
 Like responsive column widths,
 the offset utilities and the margin utilities are both responsive.
-Let's see the below examples.
+Let's see the following examples.
 
 <!-- markdownlint-disable -->
 <div class="grid grid-example">
@@ -445,9 +445,9 @@ in the blow examples.
 
 Columns will not be aligned in new rows unless the `.grid`'s
 horizontal space is not enough.
-But if you want to break a column in a new row forcely,
+But if you want to break a column in a new row forcibly,
 you can insert a `hr` tag before the column.
-Let's see the below example for clarification.
+Let's see the below example for clarity.
 
 <!-- markdownlint-disable -->
 <div class="grid grid-example">
@@ -472,7 +472,7 @@ Let's see the below example for clarification.
 
 ## Grid Without Gutters
 
-As metioned at the begining, there're `1rem` paddings in the
+As mentioned at the beginning, There are `1rem` paddings in the
 left and the right of columns. If you don't need the paddings,
 you can replace the container's `.grid` class by the `.grid-edge` class.
 
@@ -495,7 +495,7 @@ you can replace the container's `.grid` class by the `.grid-edge` class.
 ## Nested Grids
 
 Grids can be nested, nested grids should be wrapped in one
-of its parent grid's columns. Please see the below examples for detail.
+of its parent grid's columns. Please see the following examples for details.
 
 <!-- markdownlint-disable -->
 <div class="grid grid-example">

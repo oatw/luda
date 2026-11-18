@@ -9,8 +9,8 @@ The native `readonly` attribute makes form elements not editable.
 But still focusable, and what's worse, some browsers even show an editable text cursor.
 
 The `readonly` attribute is enhanced in Luda.
-A form element has the `readonly` attribute is not focusable nor editable.
-Let's see the below examples.
+A form element with the `readonly` attribute is neither focusable nor editable.
+Let's see the following examples.
 
 ## Examples
 

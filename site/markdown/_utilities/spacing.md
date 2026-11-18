@@ -1,6 +1,6 @@
 ---
 title: Spacing
-description: Use spacing utilities to control elments' margins and paddings responsively.
+description: Use spacing utilities to control elements' margins and paddings responsively.
 ---
 
 {% include variables.md %}
@@ -56,7 +56,7 @@ all abbreviations and value words are listed in the below tables.
 
 ## Examples
 
-In the below example, we control the elements' margins and paddings
+In the following example, we control the elements' margins and paddings
  responsively according to screen widths.
 
 {% capture space %}

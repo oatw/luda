@@ -10,8 +10,8 @@ the customized styles only shows for screens larger than the `m` width breakpoin
 
 ## Examples
 
-In the below example, customized scrollbar styles shows
-on middle size screens and large screens.
+In the following example, customized scrollbar styles shows
+on medium-sized screens and large screens.
 
 <div style="height:10rem" class="example bc-dark of-auto">
   <div style="width:100vw;height:20rem"></div>

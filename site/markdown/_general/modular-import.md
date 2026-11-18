@@ -196,10 +196,10 @@ JavaScript Entries in Ruby on Rails
 Sass modular imports in Hanami are the same as in Ruby on Rails.
 Hanami team is considering add Webpack support in v2,
 but before that you have to manually handle Javascript dependencies
-if thirdparty assets management gems not installed.
+if third-party assets management gems not installed.
 That can be painful for large project.
 
 If you want to import Luda JavaScript modularly before Hanami v2,
-You'd better install a thirdparty asset management tool.
+You'd better install a third-party asset management tool.
 Otherwise, you'll have to dive into Luda's source code
 to figure out Javascript dependencies.

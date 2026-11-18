@@ -82,10 +82,10 @@ import 'luda'
 [Webpacker](https://github.com/rails/webpacker) is an exciting feature since
 [Rails 6](https://weblog.rubyonrails.org/2019/8/15/Rails-6-0-final-release/),
 it's a more advanced way to manage front-end assets in Rails. So if you want to
-install Luda in Rails applications, Webpacker is the recommanded way. And the
+install Luda in Rails applications, Webpacker is the recommended way. And the
 installation process is similar to
 [installing Luda in Node.js powered applications.](#install-in-nodejs-powered-apps)
-If you stick to Sprockets, you can follow the belowing steps to install Luda.
+If you stick to Sprockets, you can follow these steps to install Luda.
 
 Step 1: Download With Bundler
 {: .mb-none .fw-medium}
@@ -134,7 +134,7 @@ Step 3: Import JavaScript in application.js
 
 ## Install in Other Ruby Apps
 
-If your project is based on [Sprokets](https://github.com/rails/sprockets)
+If your project is based on [Sprockets](https://github.com/rails/sprockets)
 or [Hanami](https://hanamirb.org),
 Luda assets will be added to load path automatically,
 you just need require the assets in your project.

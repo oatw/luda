@@ -5,7 +5,7 @@ description: Use the overlay classes to cover the document viewport and show dia
 
 ## Usage
 
-If you need show some contents with a cover on the document viewport,
+If you need to show some contents with a cover on the document viewport,
 you can use the `.overlay` class to create the cover,
 and wrap the `.overlay-body` container which contains the contents
 in the cover.

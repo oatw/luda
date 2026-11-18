@@ -9,7 +9,7 @@ Z-index utilities are classes for setting the value of the
 [`z-index`](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index) property.
 They are named using the format `zi-{value}`.
 We use meaningful value words in the class names,
-all value words are listed in the below table.
+all value words are listed in the following table.
 
 <div class="table table-border">
   <table>

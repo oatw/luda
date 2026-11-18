@@ -1,6 +1,6 @@
 ---
 title: Toggle
-description: Quickly show or hide elements without writting any Javascript code. 
+description: Quickly show or hide elements without writing any Javascript code. 
 ---
 
 ## Introduction
@@ -8,7 +8,7 @@ description: Quickly show or hide elements without writting any Javascript code.
 It's a very common situation to show or hide an element dynamically
 in front-end development. Toggle behavior helps you to do this
 without having to write Javascript codes.
-Let's see the below examples for clarification.
+Let's see the following examples for clarity.
 
 ## Examples
 

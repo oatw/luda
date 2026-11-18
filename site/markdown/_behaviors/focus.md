@@ -5,7 +5,7 @@ description: Get a better focus effect in all browsers.
 
 ## Introduction
 
-The native focus behavior of browsers are wired and different.
+Native focus behavior varies across browsers.
 For better focus effect control, we use the `.focus` class
 instead of the `:focus` selector in Luda.
 

@@ -12,7 +12,7 @@ The source code is idempotent, that means you focus on selector priorities
 but not orders when overriding.
 In this way, your styles are more stable and maintainable.
 
-For convinence, there are some built-in modifier classes
+For convenience, there are some built-in modifier classes
 to change the appearances of components.
 Each modifier class is marked as
 <span class="badge bc-dark">Modifier</span> in this documentation.
@@ -22,14 +22,14 @@ If they're not enough for you, you can create your own modifiers.
 
 Theme Sass variables are defined with the `!default` flag.
 You should define your variables before importing Luda theme variables,
-so built-in variables with the same names will be overriten.
+so built-in variables with the same names will be overwritten.
 
 There are two types of theme variables, global variables and component variables.
-Component variables targets spefic components,
+Component variables targets specific components,
 they can be referenced in each component's document.
 Global variables are used to define global style rules across components.
 If a global variable is changed, any component references to it
-will inherit its style defination.
+will inherit its style definition.
 You can find all global variables in the list below.
 
 ## Global Sass Variables
@@ -48,7 +48,7 @@ You can find all global variables in the list below.
 $baseline-height-px: 12px !default
 ```
 
-Default baseline height. For calculation convinence,
+Default baseline height. For calculation convenience,
 the font size of `<html>` is set at the value of this variable,
 except when the value is less than 12px.
 

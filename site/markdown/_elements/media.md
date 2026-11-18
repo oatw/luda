@@ -11,14 +11,14 @@ breaking out of the container.
 A light background color will show
 when the inside media element is being loaded,
 so users can know there is something not ready.
-The aspect radio of the inside media element depends on
+The aspect ratio of the inside media element depends on
 its original size and its `width` and `height` attributes,
 but we can change it with the `.media-content` class.
-Let's see the below examples for detail.
+Let's see the following examples for details.
 
 ## Image
 
-In the below example, the image is wrapped in a `.media` container.
+In the following example, the image is wrapped in a `.media` container.
 It won't break out of the container, even though its original size is
 larger than the container's size.
 

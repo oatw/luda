@@ -1,6 +1,6 @@
 ---
 title: Button Group
-description: Button group is designed to group buttons have similiar functions together.
+description: Button group is designed to group buttons that have similar functions together.
 ---
 
 ## Horizontal Button Group

@@ -81,7 +81,7 @@ By passing in a valid css selector as the root selector parameter, you get
 a component class which can create multiple instances.
 Any element matches the selector will be treated as a component root element.
 An instance will be created for each root element, after document ready or a root
-element appended to document. A created instance will be destroied after its root
+element appended to document. A created instance will be destroyed after its root
 element removed from document or attributes changed which makes it don't match the
 root selector anymore.
 
@@ -95,8 +95,8 @@ luda.component('myComponent', '.my-component')
 You won't need a singleton component except you want to handle global behaviors.
 A singleton component class can be defined by passing in
 `document` as the root selector. Only one instance will be created after document
-ready and it will never be destroied since the document object is always there,
-except current web page is destroied or redirected.
+ready and it will never be destroyed since the document object is always there,
+except current web page is destroyed or redirected.
 
 ```javascript
 // @example Create a singleton component class.
@@ -104,7 +104,7 @@ luda.component('mySingletonComponent', document)
 ```
 
 You may wonder why a singleton component class cannot be created by passing in
-a specfic html element but only the `document` object? That's because in single
+a specific html element but only the `document` object? That's because in single
 page applications, you can not ensure the element picked is the same object
 after page redirections. That may lead to instance lifecycles not able to be
 tracked.
@@ -121,7 +121,7 @@ execution context.
 All properties of a component instance are treated private by default.
 Additionally, you can define private properties with the `.protect` method for
 a clear meaning. If a component user tries to access private properties of
-components, warning messages will be shown on the console pannel.
+components, warning messages will be shown on the console panel.
 
 ```javascript
 // @example Define private properties and methods.
@@ -177,7 +177,7 @@ If a rule is defined as css selectors, the searching range is inside the
 current instance's root element. Matched elements will be collected and cached
 when necessary. After matched elements added to or removed from the root element
 dom tree, cached results of the getters will be updated automatically.
-(For nested components, only elements directly warpped in current instance's
+(For nested components, only elements directly wrapped in current instance's
 root element but not nested in descendant root elements will be collected.)
 
 If a rule is not defined as css selectors, the searching range, return
@@ -199,8 +199,8 @@ luda.component('myComponent', '.my-component')
 ### The Listen Helper
 
 The listen helper should return event listener definitions in an array for
-binding component event listeners. All listeners will be binded to document
-only once and triggered under delegation mode. The binding syntax is similiar
+binding component event listeners. All listeners will be bound to document
+only once and triggered under delegation mode. The binding syntax is similar
 to the [`luda(selector).on`](./api#on-name-selector-callback) method but allows
 multiple callbacks.
 
@@ -232,7 +232,7 @@ luda.component('myComponent', '.my-component')
 
 The watch helper is used to watch node and attribute mutations on component dom trees.
 An mutation observer will be created for each component instance according to the
-definitions. The syntax of defining observers is similiar to binding event listeners
+definitions. The syntax of defining observers is similar to binding event listeners
 in the listen helper.
 
 If a callback is defined on the current component's prototype, the callback's
@@ -279,7 +279,7 @@ luda.component('myComponent', '.my-component')
 ### The Destroy Helper
 
 The destroy helper executes whenever a created component instance is going to
-be destroied.
+be destroyed.
 
 ```javascript
 luda.component('myComponent', '.my-component')
@@ -447,7 +447,7 @@ luda.component('myComponent', '.my-component')
   root element.
 
 - If a component user calls instance methods through a component proxy, the return
-  value will be the proxy itself. This provides a chain api experience for convinence.
+  value will be the proxy itself. This provides a chain api experience for convenience.
   If the methods' return values are needed, an additional option parameter can be
   passed into the methods to break the chain, and the method's return values will
   be collected in an array.

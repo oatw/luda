@@ -10,7 +10,7 @@ description: Use text utilities to control text alignment, font weight, font sty
 Text alignment utilities are extended with the
 [screen width breakpoint postfixes]({{ width_breakpoints }}).
 They are named using the format: `.ta-{direction}-{postfix}`.
-Let's preview their effects through the below examples.
+Let's preview their effects through the following examples.
 
 {% capture left %}
 <p class="ta-left">
@@ -72,7 +72,7 @@ Let's preview their effects through the below examples.
 
 Font weight utility classes are named using the format: `.fw-{value}`.
 We use meaningful value words in the class names,
-all the value words are listed in the below table.
+all the value words are listed in the following table.
 
 <div class="table table-border">
   <table>
@@ -97,7 +97,7 @@ When you use font weight utilities,
 make sure the value words you pick up are supported by the fonts you embedded
 in your projects. Otherwise, the font weight effects will not be visible.
 
-Let's preview the effects through the below examples.
+Let's preview the effects through the following examples.
 
 {% capture lightest %}
 <p class="fw-lightest">
@@ -227,7 +227,7 @@ Let's preview the effects through the below examples.
 
 ## Font Style
 
-There're two font style utility classes, `.fs-italic` which sets the
+There are two font style utility classes, `.fs-italic` which sets the
 value of the `font-style` property to `italic` and `.fs-normal` which
 sets the value of the `font-style` property to `normal`.
 
@@ -319,10 +319,10 @@ The value can be one of `stroke`, `underline` and `none`.
 
 ## Word Break
 
-There're two utility classes for breaking words.
+There are two utility classes for breaking words.
 The `.wb-all` class breaks a long word into newlines
 and the `.text-ellipsis` class cuts a long word with ellipsis into a single line.
-Let's preview the effects in the below examples.
+Let's preview the effects in the following examples.
 
 {% capture break_all %}
 <p class="wb-all">LoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitametLoremipsumdolorsitamet</p>

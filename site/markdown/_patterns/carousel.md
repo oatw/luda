@@ -9,7 +9,7 @@ description: Learn how to create a carousel includes images, texts,
 
 The carousel component in Luda mainly includes three parts:
 content items, control buttons(optional) and indicators(optional).
-The control buttons only shows on middle size screens and
+The control buttons only shows on medium-sized screens and
 large screens.
 
 The carousel responds to events triggered by

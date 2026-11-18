@@ -9,7 +9,7 @@ description: A table represents tabular data — that is, information presented
 
 A striped table makes the data in rows easy to read, tables are striped
 by default in Luda.
-To create a striped table, add the `.table` calss to a block element
+To create a striped table, add the `.table` class to a block element
 like `<div>`, then wrap a `<table>` element inside.
 
 <div class="example">
@@ -68,7 +68,7 @@ like `<div>`, then wrap a `<table>` element inside.
 
 ## Table Borders
 
-If you want to add surrounding borders and row deviders to a table,
+If you want to add surrounding borders and row dividers to a table,
 replace the container's `.table` class with the `.table-border` class.
 
 <div class="example">
@@ -266,7 +266,7 @@ to the `.table` container.
 ### .table-hover{% include modifier.md %}
 
 The `.table-hover` class enhances hovering styles of table rows.
-Hover the rows in the below table to preview the effects.
+Hover the rows in the following table to preview the effects.
 
 <!-- markdownlint-disable -->
 <div class="example">

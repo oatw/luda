@@ -26,7 +26,7 @@ Flex direction utilities are classes for setting the value of the
 property, they are named using the format: `.fd-{value}-{postfix}`.
 The value can be one of `row`, `row-reverse`, `column`
 and `column-reverse`.
-See how they change flex items' directions in the below examples.
+See how they change flex items' directions in the following examples.
 
 {% capture direction_row %}
 <div class="d-flex fd-row bc-dark">
@@ -78,7 +78,7 @@ Flex wrap utilities are classes for setting the value of the
 [`flex-wrap`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap) property,
 they are named using the format: `.fw-{value}-{postfix}`.
 The value can be one of `nowrap`, `wrap` and `wrap-reverse`.
-Let's see the below examples for detail.
+Let's see the following examples for details.
 
 {% capture nowrap %}
 <div class="d-flex fw-nowrap">
@@ -314,7 +314,7 @@ The value can be one of `start`, `center`, `end`, `baseline` and `stretch`.
 
 Align self utilities are classes for setting the value of the
 [`align-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self) propery,
-they are like the align items utilities, but only affect specfic flex items.
+they are like the align items utilities, but only affect specific flex items.
 
 Align self utilities are named using the format: `.as-{value}-{postfix}`.
 The value can be one of `start`, `center`, `end`, `baseline` and `stretch`.
@@ -378,7 +378,7 @@ The value can be one of `start`, `center`, `end`, `baseline` and `stretch`.
 
 Flex order utilities are classes for setting the value of the
 [`order`](https://developer.mozilla.org/en-US/docs/Web/CSS/order) property
-to sort flex items. There're two kinds of order utilities in Luda,
+to sort flex items. There are two kinds of order utilities in Luda,
 positive order utilities and negative order utilities.
 Positive order utilities are used to move flex items backward to
 unsorted items, and negative order utilities are used to
@@ -388,7 +388,7 @@ Positive order utilities are named using the format:
 `.od-{value}-{postfix}`, and negative order utilities are
 named using the format: `.on-{value}-{postfix}`.
 The value can be from `1` to `6`.
-Let's preview how they change flex items' orders in the below example.
+Let's preview how they change flex items' orders in the following example.
 
 {% capture flex_order %}
 <div class="d-flex fw-wrap bc-dark">
@@ -432,7 +432,7 @@ used to make a flex item not able to shrink.
 The `.flex-auto-{postfix}` classes are used to make a flex item able to
 grow and shrink.
 
-Let's see the below examples for detail.
+Let's see the following examples for details.
 
 {% capture fg %}
 <div class="d-flex bc-dark">

@@ -9,7 +9,7 @@ description: Buttons may be the most widely used elements in web applications.
 
 A button can be created by adding the `.btn` class and
 the button style classes to a `<button>` tag.
-Let's preview the button styles in the below examples.
+Let's preview the button styles in the following examples.
 
 ### Solid Buttons
 

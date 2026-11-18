@@ -7,11 +7,11 @@ description: Enhance the behavior of the enter key for a better interaction expe
 
 In native HTML, the `click` event is triggered on limited elements
 when the `Enter` key pressed. In Luda, checkboxes, radios and elements
-have a none negative `tabindex` attribute are enhanced.
+have a non-negative `tabindex` attribute are enhanced.
 The `click` event will be triggered on them when they're focused
 and the `Enter` key pressed. In some situations,
 this helps to improve interaction experience.
-Let's see the below examples for clarification.
+Let's see the following examples for clarity.
 
 ## Checkbox Examples
 

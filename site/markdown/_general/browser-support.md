@@ -2,7 +2,7 @@
 title: Browser Support
 order: 5
 description: Luda supports most modern browsers, for browsers not supported,
-             you can use Luda degeradation script as a fallback.
+             you can use Luda degradation script as a fallback.
 ---
 
 ## Supported Browsers
@@ -41,18 +41,18 @@ you can add extra polyfills and prefixers by yourself
 with tools like [Babel](https://babeljs.io/)
 and [Autoprefixer](https://github.com/postcss/autoprefixer).
 
-## The Degeradation Script
+## The Degradation Script
 
-Luda degeradation script is a tiny Javascript file which
+Luda degradation script is a tiny Javascript file which
 can detect if the APIs used in Luda are supported in browsers.
-If any API not supported, the degeradation script will try to
+If any API not supported, the degradation script will try to
 redirect to a degradation url. The url can be defined by adding
 the `data-degradation-url` attribute to the `<html>` tag
 or the `<script>` tag which includes the degradation script.
 If this attribute is not defined, the content of body will be
 replaced by _"Please visit this site with a modern browser."_.
 
-The degeradation script is simple to use,
+The degradation script is simple to use,
 include the script before any other scripts in your template
 and set a degradation url like below.
 
@@ -60,7 +60,7 @@ and set a degradation url like below.
 <script data-degradation-url="your_degradation_url" src="https://unpkg.com/luda@{{site.luda.version}}/dist/js/luda-degradation.min.js"></script>
 ```
 
-If you use assets bundlers to import the degeradation script,
+If you use assets bundlers to import the degradation script,
 make sure it's bundled as a standalone file.
 {: .c-danger}
 

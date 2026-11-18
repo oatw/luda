@@ -7,7 +7,7 @@ description: Learn how to use headings, paragraphs and other kinds of texts in L
 
 Luda uses native font stacks by default, type sizes are calculated
 in a modular scale way through `$typography-main-size-px` and
-`$typography-size-scale-ratio`. There're 8 level type sizes,
+`$typography-size-scale-ratio`. There are 8 level type sizes,
 size level from 1 to 6 are available for heading texts and
 size level from 5 to 8 are available for body texts.
 `<body>` font size is set at level 6 which is the
@@ -225,7 +225,7 @@ Global styles are added to the `<a>` tag.
 
 ### Light Link
 
-For using links in dark backgrounds, add the `.link-light` calss to the
+For using links in dark backgrounds, add the `.link-light` class to the
 `<a>` tag.
 
 <p class="typography-example baseline bc-dark mb-medium">

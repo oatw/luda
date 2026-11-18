@@ -11,10 +11,10 @@ description: Luda provides width breakpoints, aspect ratio breakpoints
 Luda provides 3 screen width breakpoints by default:
 small, medium and large. The first letters of these breakpoints are
 used as classname postfixes to make components responsive.
-Luda is a mobile first framework, the postfixes are only necessary for
-middle size screens and large screens.
+Luda is a mobile-first framework, the postfixes are only necessary for
+medium-sized screens and large screens.
 
-The width breakpoints and classname postfixes are listed in the below table.
+The width breakpoints and classname postfixes are listed in the following table.
 
 <div class="table table-nowrap table-border">
   <table>
@@ -72,7 +72,8 @@ not extended with these breakpoints.
 We use the abbreviations of these breakpoints as sass mixin parameters
 for responsive control.
 
-The aspect ratio breakpoints and their abbreviations are listed in the below table.
+The aspect ratio breakpoints and their abbreviations are listed in the following
+table.
 
 <div class="table table-nowrap table-border">
   <table>
@@ -122,7 +123,7 @@ are not extended with these breakpoints.
 We use the abbreviations of these breakpoints as sass mixin parameters
 for responsive control.
 
-The resolution breakpoints and their abbreviations are listed in the below table.
+The resolution breakpoints and their abbreviations are listed in the following table.
 
 <div class="table table-nowrap table-border">
   <table>

@@ -11,7 +11,7 @@ If a form element is disabled, it will not be submitted.
 
 In Luda, we enhanced the `disabled` attribute, it can be added to any elements to
 prevent responding to user actions.
-Please see the examples below for clarification.
+Please see the examples below for clarity.
 
 ## Disabled Buttons
 

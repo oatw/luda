@@ -14,11 +14,11 @@ If you want perfect baseline alignment in layouts
 which contain elements without a certain height, you need
 manually set these elements' vertical sizes
 at integer multiples of baseline height `rem`s.
-There're two recommended ways to get baseline height,
+There are two recommended ways to get baseline height,
 use the sass function `baseline($count: 1)` or the CSS variable
 `var(--baseline)`.
 
-For calculation convinence, the font size of `<html>` is set
+For calculation convenience, the font size of `<html>` is set
 at the value of `$baseline-height-px`, except when the value of
 `$baseline-height-px` is less than `12px`(minimal font size in
 most browsers). If you don't need set the value of `$baseline-height-px`
@@ -27,7 +27,7 @@ to a value less than `12px`, you can use `1rem` instead of
 
 You can add the `.baseline` class to the elements' container
 to show the baselines, this helps you to check the layouts.
-Let's see the below examples.
+Let's see the following examples.
 
 <!-- markdownlint-disable -->
 ## Examples

@@ -11,9 +11,9 @@ or table-cell box, if you're not familiar with this property, please read
 [this tutorial](https://developer.mozilla.org/en-US/docs/Web/CSS/vertical-align)
 at first.
 
-Availiable classes include: `.va-top`, `.va-middle`, `.va-bottom`, `.va-baseline`,
+Available classes include: `.va-top`, `.va-middle`, `.va-bottom`, `.va-baseline`,
 `.va-text-top` and `.va-text-bottom`.
-Let's see how they affect the alignment of elements in the below example.
+Let's see how they affect the alignment of elements in the following example.
 
 ## Examples
 

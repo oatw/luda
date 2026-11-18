@@ -7,7 +7,7 @@ description: Badge is designed to show short text in notifications.
 
 Badge is simple to create,
 just add the `.badge` class to an inline element.
-Let's see the below examples.
+Let's see the following examples.
 
 {% capture badge %}
 <p>

@@ -7,20 +7,20 @@ order: 1
 
 ## What is Luda
 
-**Luda is a library helps to build cross-framework UI components.**
+**Luda is a library that helps build cross-framework UI components.**
 
-As the time of writting, 2020 is coming. There're already awosome frameworks
+At the time of writing, 2020 is coming. There are already awesome frameworks
 great for UI and application development in front-end community. Why something
 called Luda jumped out? Because this is the front-end community.
 (Don't be serious, just a joke :)
 
 If you stick to a specific framework or UI library, please just close the
 page, I don't want to waste your time. But If you're looking for something
-helps to create reusable components cross framewoks speaking different
+helps to create reusable components cross frameworks speaking different
 languages, you could give Luda a try.
 
 Luda takes part in the process after templates parsed and leaves the parsing work
-like data binding and custom tag packaging to your faviroute frameworks.
+like data binding and custom tag packaging to your favorite frameworks.
 In this way, you can package reusable Luda components with utmost flexibility,
 no matter in a front-end framework or a back-end framework.
 
@@ -51,9 +51,9 @@ when component dom tree mutated.
 
 #### Automatic Proxy Creating For Accessing Components Safely
 
-Proxies which protect private properties are automitically created for named
+Proxies which protect private properties are automatically created for named
 components. If a component user tries to access protected properties or methods of
-your components, warning messages will be printed on the dev console pannel.
+your components, warning messages will be printed on the dev console panel.
 
 #### Native Attributes And Events For Component Communication
 
@@ -82,7 +82,7 @@ new themes will be released after version 1.0.0._
 #### Element
 
 Elements are basic visible units to create user interfaces.
-Each element has a specfic function, they don't rely on other elements.
+Each element has a specific function, they don't rely on other elements.
 They can be used alone or combined together to create UI patterns.
 For example, `button`s can exist alone or combined to create a `button group`.
 
@@ -101,10 +101,10 @@ For example, the utility `.rel` contains a single css rule `positon: relative !i
 
 #### Behavior
 
-Behaviors are pure javascript components or functional CSS definations,
+Behaviors are pure javascript components or functional CSS definitions,
 they are used to control or enhance interaction actions.
 For example, `toggle` is a commonly used behavior to show or hide an
-element without writting javascript.
+element without writing javascript.
 
 ## FAQ
 
@@ -131,31 +131,32 @@ highly recommended.
 
 Luda doesn't aim to be another web components based library. The more things
 packaged in a component the less flexible the component is. As a flexible library,
-Luda repects your ways of packaging components. You can package a Luda component
+Luda respects your ways of packaging components. You can package a Luda component
 in any way you like, a custom element, a custom tag, or just a partial template.
-Not everybody is a big fun of web components, and every framework has its own way
+Not everybody is a big fan of web components, and every framework has its own way
 of packaging custom elements, but the choice is yours.  
 
 ### Why Not VanillaJs
 
 In earlier versions, the javascript part of Luda was written in vanilla js.
 It was painful and inefficient to build components if without additional helpers.
-After a lot helpers builded, it seemed developers could build components more efficiently.
-But actually, it was not, developers had to take time to get familiar with the unkown
-helper functions.
+After many helper functions had been built, it seemed that developers could
+build components more efficiently.
+But actually, it was not, developers had to take time to get familiar with
+the unknown helper functions.
 
 So in version 0.3.0, the javascript part of Luda was totally rewritten,
 provided a familiar experience like using jQuery, and a better experience of
-building components. Luda takes developing experience higher priority over following
-the trends.
+building components. Luda takes developing experience higher priority over
+following the trends.
 
 ### Is Luda A Library Or A Framework
 
 As mentioned, Luda is a library. If you noticed alpha versions of Luda, you may
 saw _"Luda is a lightweight and responsive UI framework for modern web development."_
-at the home page. That's because at the begining of creating Luda, I planned
-to make it a framework, but soon I realized building a new framework was overkill
-for sovling the problems Luda focued on.
+at the home page. That's because at the beginning of creating Luda, I planned
+to make it a framework, but soon I realized building a new framework was
+overkill for solving the problems Luda focused on.
 So I changed my mind, just a library is enough.
 
 Sorry for confusing you.

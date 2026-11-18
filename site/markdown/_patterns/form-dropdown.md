@@ -10,7 +10,7 @@ it's an alternative to the form select field.
 When create a form dropdown, the `.fm-dropdown` class need be
 added to the dropdown container.
 Let's see how to create single select form dropdowns and multiple
-select form dropdowns through the below examples.
+select form dropdowns through the following examples.
 
 ## Single Select Form Dropdown
 

@@ -7,7 +7,7 @@ description: Use color utilities to change the color of texts.
 
 Color utilities are classes for setting the value of the
 [`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color) property.
-You can preview the colors in the below gallery.
+You can preview the colors in the following gallery.
 When you pick up a color class, consider the meaning in your context
 but not only the appearance, since in different themes colors may be
 changed but the meanings are the same.

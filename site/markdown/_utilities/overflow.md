@@ -7,8 +7,8 @@ description: Use overflow utilities to control how content overflows a container
 
 Overflow utilities are classes for setting the value of the
 [`overflow`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow) property.
-There're three overflow classes: `.of-hidden`, `.of-auto` and `.of-visible`.
-Let's see the below examples for detail.
+There are three overflow classes: `.of-hidden`, `.of-auto` and `.of-visible`.
+Let's see the following examples for details.
 
 ## Examples
 

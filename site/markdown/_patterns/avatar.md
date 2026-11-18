@@ -10,7 +10,7 @@ and some texts like user name in the bottom.
 To create a vertical avatar, add the `.avatar-y` class to a container,
 then wrap an user photo with the `.media` class, wrap user information
 with the `.avatar-info` class.
-Let's see the below example for clarification.
+Let's see the below example for clarity.
 
 {% capture avatar_y %}
 <div class="avatar-y">

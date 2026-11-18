@@ -13,7 +13,7 @@ permalink: /
       </picture>
       <div class="mx-auto ta-center">
         <h1 id="luda-title" class="display my-small mb-medium-m">
-          Luda is a library helps to build
+          Luda is a library that helps build
           <br class="d-none d-block-m">
           cross-framework UI components
         </h1>

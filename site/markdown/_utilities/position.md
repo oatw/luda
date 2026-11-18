@@ -21,12 +21,12 @@ to set the value of an element's position property to
 
 ## Align to Edges
 
-There're some additonal classes for quickly align an element
+There are some additonal classes for quickly align an element
 to the edges of its ancestor or the document viewport.
 They are named using the formats:
 `.abs-{position}`, `.fix-{position}`, `.sti-{position}`.
 We use the first letter of each position word for short,
-all position abbreviations are listed in the below table.
+all position abbreviations are listed in the following table.
 
 <div class="table table-border">
   <table>
