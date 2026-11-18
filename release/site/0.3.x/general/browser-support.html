@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en" data-init-theme="default" data-applied-theme="default" data-theme-path-pattern="/luda/0.3.x/.dist/css/luda-$theme$.min.css">
   <head>
-    <title>Browser Support | Luda is a library helps to build cross-framework UI components.</title>
+    <title>Browser Support | Luda is a library that helps build cross-framework UI components.</title>
     <!-- markdownlint-disable -->
 <meta charset="UTF-8">
 <!-- viewport -->
@@ -33,7 +33,7 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="author" content="Oatw">
 <meta name="keywords" content="luda, cross-framework, component-based, ui-library">
-<meta name="description" content="Luda is a library helps to build cross-framework UI components.">
+<meta name="description" content="Luda is a library that helps build cross-framework UI components.">
     <link rel="shortcut icon" href="/luda/0.3.x/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
@@ -404,7 +404,7 @@
   <main id="doc-container" class="col-auto p-medium pt-small-m px-large-m pb-large-m">
     <article class="article max-w-100 p-none">
       <h1 class="page-title display fw-semibold mt-large-m">Browser Support</h1>
-      <p class="h3 page-sub-title fw-light">Luda supports most modern browsers, for browsers not supported, you can use Luda degeradation script as a fallback.</p>
+      <p class="h3 page-sub-title fw-light">Luda supports most modern browsers, for browsers not supported, you can use Luda degradation script as a fallback.</p>
       <h2 id="supported-browsers">Supported Browsers</h2>
 
 <!-- markdownlint-disable -->
@@ -441,25 +441,25 @@ you can add extra polyfills and prefixers by yourself
 with tools like <a href="https://babeljs.io/">Babel</a>
 and <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>.</p>
 
-<h2 id="the-degeradation-script">The Degeradation Script</h2>
+<h2 id="the-degradation-script">The Degradation Script</h2>
 
-<p>Luda degeradation script is a tiny Javascript file which
+<p>Luda degradation script is a tiny Javascript file which
 can detect if the APIs used in Luda are supported in browsers.
-If any API not supported, the degeradation script will try to
+If any API not supported, the degradation script will try to
 redirect to a degradation url. The url can be defined by adding
 the <code class="highlighter-rouge">data-degradation-url</code> attribute to the <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> tag
 or the <code class="highlighter-rouge">&lt;script&gt;</code> tag which includes the degradation script.
 If this attribute is not defined, the content of body will be
 replaced by <em>“Please visit this site with a modern browser.”</em>.</p>
 
-<p>The degeradation script is simple to use,
+<p>The degradation script is simple to use,
 include the script before any other scripts in your template
 and set a degradation url like below.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">data-degradation-url=</span><span class="s">"your_degradation_url"</span> <span class="na">src=</span><span class="s">"https://unpkg.com/luda@0.3.3/dist/js/luda-degradation.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
-<p class="c-danger">If you use assets bundlers to import the degeradation script,
+<p class="c-danger">If you use assets bundlers to import the degradation script,
 make sure it’s bundled as a standalone file.</p>
 
 <!-- markdownlint-disable -->
@@ -517,6 +517,8 @@ make sure it’s bundled as a standalone file.</p>
   </button>
 
 </div>
+
 </div>
+
   </body>
 </html>
