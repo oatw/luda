@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en" data-init-theme="default" data-applied-theme="default" data-theme-path-pattern="/luda/0.3.x/.dist/css/luda-$theme$.min.css">
   <head>
-    <title>Theming | Luda is a library helps to build cross-framework UI components.</title>
+    <title>Theming | Luda is a library that helps build cross-framework UI components.</title>
     <!-- markdownlint-disable -->
 <meta charset="UTF-8">
 <!-- viewport -->
@@ -33,7 +33,7 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="author" content="Oatw">
 <meta name="keywords" content="luda, cross-framework, component-based, ui-library">
-<meta name="description" content="Luda is a library helps to build cross-framework UI components.">
+<meta name="description" content="Luda is a library that helps build cross-framework UI components.">
     <link rel="shortcut icon" href="/luda/0.3.x/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
@@ -413,7 +413,7 @@ The source code is idempotent, that means you focus on selector priorities
 but not orders when overriding.
 In this way, your styles are more stable and maintainable.</p>
 
-<p>For convinence, there are some built-in modifier classes
+<p>For convenience, there are some built-in modifier classes
 to change the appearances of components.
 Each modifier class is marked as
 <span class="badge bc-dark">Modifier</span> in this documentation.
@@ -423,14 +423,14 @@ If they’re not enough for you, you can create your own modifiers.</p>
 
 <p>Theme Sass variables are defined with the <code class="highlighter-rouge">!default</code> flag.
 You should define your variables before importing Luda theme variables,
-so built-in variables with the same names will be overriten.</p>
+so built-in variables with the same names will be overwritten.</p>
 
 <p>There are two types of theme variables, global variables and component variables.
-Component variables targets spefic components,
+Component variables targets specific components,
 they can be referenced in each component’s document.
 Global variables are used to define global style rules across components.
 If a global variable is changed, any component references to it
-will inherit its style defination.
+will inherit its style definition.
 You can find all global variables in the list below.</p>
 
 <h2 id="global-sass-variables">Global Sass Variables</h2>
@@ -451,14 +451,14 @@ which will be added to the end of responsive components’ classnames.</p>
 
 <div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$breakpoint-aspect-ratios</span><span class="p">:</span> <span class="p">(</span><span class="n">p</span><span class="o">:</span> <span class="m">0</span><span class="o">,</span> <span class="n">l</span><span class="o">:</span> <span class="m">1</span><span class="mi">.0001</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
 </code></pre></div></div>
-<p>Default defination of screen aspect ratio breakpoints,
+<p>Default definition of screen aspect ratio breakpoints,
 make sure the value is a map if you want to change it.</p>
 
 <!-- markdownlint-disable -->
 
 <div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$breakpoint-resolutions</span><span class="p">:</span> <span class="p">(</span><span class="n">l</span><span class="o">:</span> <span class="m">0</span><span class="o">,</span> <span class="n">h</span><span class="o">:</span> <span class="m">105</span><span class="mi">.6dpi</span><span class="o">,</span> <span class="n">xh</span><span class="o">:</span> <span class="m">201</span><span class="mi">.6dpi</span><span class="p">)</span> <span class="o">!</span><span class="nb">default</span>
 </code></pre></div></div>
-<p>Default defination of screen resolution breakpoints,
+<p>Default definition of screen resolution breakpoints,
 make sure the value is a map if you want to change it.</p>
 
 <h3 id="baseline">Baseline</h3>
@@ -466,7 +466,7 @@ make sure the value is a map if you want to change it.</p>
 <div class="language-sass highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$baseline-height-px</span><span class="p">:</span> <span class="m">12px</span> <span class="o">!</span><span class="nb">default</span>
 </code></pre></div></div>
 
-<p>Default baseline height. For calculation convinence,
+<p>Default baseline height. For calculation convenience,
 the font size of <code class="highlighter-rouge"><span class="nt">&lt;html&gt;</span></code> is set at the value of this variable,
 except when the value is less than 12px.</p>
 
@@ -833,6 +833,8 @@ and might not match the calcualted values exactly.</p>
   </button>
 
 </div>
+
 </div>
+
   </body>
 </html>

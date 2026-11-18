@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en" data-init-theme="default" data-applied-theme="default" data-theme-path-pattern="/luda/0.3.x/.dist/css/luda-$theme$.min.css">
   <head>
-    <title>Build A Component | Luda is a library helps to build cross-framework UI components.</title>
+    <title>Build A Component | Luda is a library that helps build cross-framework UI components.</title>
     <!-- markdownlint-disable -->
 <meta charset="UTF-8">
 <!-- viewport -->
@@ -33,7 +33,7 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="author" content="Oatw">
 <meta name="keywords" content="luda, cross-framework, component-based, ui-library">
-<meta name="description" content="Luda is a library helps to build cross-framework UI components.">
+<meta name="description" content="Luda is a library that helps build cross-framework UI components.">
     <link rel="shortcut icon" href="/luda/0.3.x/favicon.ico">
     <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700,900|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
@@ -476,7 +476,7 @@ anonymous component which can not be accessed by component users.</p>
 a component class which can create multiple instances.
 Any element matches the selector will be treated as a component root element.
 An instance will be created for each root element, after document ready or a root
-element appended to document. A created instance will be destroied after its root
+element appended to document. A created instance will be destroyed after its root
 element removed from document or attributes changed which makes it don’t match the
 root selector anymore.</p>
 
@@ -489,15 +489,15 @@ root selector anymore.</p>
 <p>You won’t need a singleton component except you want to handle global behaviors.
 A singleton component class can be defined by passing in
 <code class="highlighter-rouge">document</code> as the root selector. Only one instance will be created after document
-ready and it will never be destroied since the document object is always there,
-except current web page is destroied or redirected.</p>
+ready and it will never be destroyed since the document object is always there,
+except current web page is destroyed or redirected.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Create a singleton component class.</span>
 <span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'mySingletonComponent'</span><span class="p">,</span> <span class="nb">document</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>You may wonder why a singleton component class cannot be created by passing in
-a specfic html element but only the <code class="highlighter-rouge">document</code> object? That’s because in single
+a specific html element but only the <code class="highlighter-rouge">document</code> object? That’s because in single
 page applications, you can not ensure the element picked is the same object
 after page redirections. That may lead to instance lifecycles not able to be
 tracked.</p>
@@ -514,7 +514,7 @@ execution context.</p>
 <p>All properties of a component instance are treated private by default.
 Additionally, you can define private properties with the <code class="highlighter-rouge">.protect</code> method for
 a clear meaning. If a component user tries to access private properties of
-components, warning messages will be shown on the console pannel.</p>
+components, warning messages will be shown on the console panel.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// @example Define private properties and methods.</span>
 <span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'myComponent'</span><span class="p">,</span> <span class="s1">'.my-component'</span><span class="p">)</span>
@@ -568,7 +568,7 @@ can be defined as css selectors, functions and any other objects.</p>
 current instance’s root element. Matched elements will be collected and cached
 when necessary. After matched elements added to or removed from the root element
 dom tree, cached results of the getters will be updated automatically.
-(For nested components, only elements directly warpped in current instance’s
+(For nested components, only elements directly wrapped in current instance’s
 root element but not nested in descendant root elements will be collected.)</p>
 
 <p>If a rule is not defined as css selectors, the searching range, return
@@ -589,8 +589,8 @@ value and cache of the getter are totally controlled by the rule itself.</p>
 <h3 id="the-listen-helper">The Listen Helper</h3>
 
 <p>The listen helper should return event listener definitions in an array for
-binding component event listeners. All listeners will be binded to document
-only once and triggered under delegation mode. The binding syntax is similiar
+binding component event listeners. All listeners will be bound to document
+only once and triggered under delegation mode. The binding syntax is similar
 to the <a href="./api#on-name-selector-callback"><code class="highlighter-rouge">luda(selector).on</code></a> method but allows
 multiple callbacks.</p>
 
@@ -621,7 +621,7 @@ document will be captured. It’s just like define event listeners by calling
 
 <p>The watch helper is used to watch node and attribute mutations on component dom trees.
 An mutation observer will be created for each component instance according to the
-definitions. The syntax of defining observers is similiar to binding event listeners
+definitions. The syntax of defining observers is similar to binding event listeners
 in the listen helper.</p>
 
 <p>If a callback is defined on the current component’s prototype, the callback’s
@@ -666,7 +666,7 @@ to rewrite properties inherited from the component class’s prototype.</p>
 <h3 id="the-destroy-helper">The Destroy Helper</h3>
 
 <p>The destroy helper executes whenever a created component instance is going to
-be destroied.</p>
+be destroyed.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">luda</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="s1">'myComponent'</span><span class="p">,</span> <span class="s1">'.my-component'</span><span class="p">)</span>
 <span class="p">.</span><span class="nx">help</span><span class="p">({</span>
@@ -828,7 +828,7 @@ root element.</p>
   </li>
   <li>
     <p>If a component user calls instance methods through a component proxy, the return
-value will be the proxy itself. This provides a chain api experience for convinence.
+value will be the proxy itself. This provides a chain api experience for convenience.
 If the methods’ return values are needed, an additional option parameter can be
 passed into the methods to break the chain, and the method’s return values will
 be collected in an array.</p>
@@ -880,6 +880,8 @@ the <a href="./api#luda-component">API</a> page.</li>
   </button>
 
 </div>
+
 </div>
+
   </body>
 </html>

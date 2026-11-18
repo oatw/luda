@@ -1,6 +1,6 @@
 /*! 
    * Luda 0.3.3 | https://oatw.github.io/luda
-   * Copyright 2019 - 2020 Oatw
+   * Copyright 2019 - 2026 Oatw
    * MIT license | http://opensource.org/licenses/MIT
    */
 (function (global, factory) {
